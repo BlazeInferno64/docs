@@ -61,6 +61,7 @@ This diagram shows:
 
 Have you ever saved different versions of a file? Something like:
 
+
 * `story.txt`
 * `story-edit.txt`
 * `story-edit-reviewed.txt`
