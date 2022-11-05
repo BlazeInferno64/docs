@@ -74,6 +74,9 @@ The following table indicates where each context and special function can be use
 
 | Workflow key | Context | Special functions |
 | ---- | ------- | ----------------- |
+{%- ifversion actions-run-name %}
+| <code>run-name</code> | <code>github, inputs</code> | |
+{%- endif %}
 | <code>concurrency</code> | <code>github, inputs</code> | |
 | <code>env</code> | <code>github, secrets, inputs</code> | |
 | <code>jobs.&lt;job_id&gt;.concurrency</code> | <code>github, needs, strategy, matrix, inputs</code> | |
@@ -198,7 +201,7 @@ The `github` context contains information about the workflow run and the event t
 | `github.ref` | `string` | {% data reusables.actions.ref-description %} |
 {%- ifversion fpt or ghec or ghes > 3.3 or ghae > 3.3 %}
 | `github.ref_name` | `string` | {% data reusables.actions.ref_name-description %} |
-| `github.ref_protected` | `string` | {% data reusables.actions.ref_protected-description %} |
+| `github.ref_protected` | `boolean` | {% data reusables.actions.ref_protected-description %} |
 | `github.ref_type` | `string` | {% data reusables.actions.ref_type-description %} |
 {%- endif %}
 | `github.path` | `string` | Path on the runner to the file that sets system `PATH` variables from workflow commands. This file is unique to the current step and is a different file for each step in a job. For more information, see "[Workflow commands for {% data variables.product.prodname_actions %}](/actions/learn-github-actions/workflow-commands-for-github-actions#adding-a-system-path)." |
@@ -210,6 +213,9 @@ The `github` context contains information about the workflow run and the event t
 | `github.run_number` | `string` | {% data reusables.actions.run_number_description %} |
 {%- ifversion fpt or ghec or ghes > 3.5 or ghae > 3.4 %}
 | `github.run_attempt` | `string` | A unique number for each attempt of a particular workflow run in a repository. This number begins at 1 for the workflow run's first attempt, and increments with each re-run. |
+{%- endif %}
+{%- ifversion fpt or ghec or ghes > 3.3 or ghae > 3.3 %}
+| `github.secret_source` | `string` | The source of a secret used in a workflow. Possible values are `None`, `Actions`, `Dependabot`, or `Codespaces`. |
 {%- endif %}
 | `github.server_url` | `string` | The URL of the GitHub server. For example: `https://github.com`. |
 | `github.sha` | `string` | {% data reusables.actions.github_sha_description %} |
@@ -463,10 +469,18 @@ jobs:
       output1: ${{ steps.step1.outputs.firstword }}
       output2: ${{ steps.step2.outputs.secondword }}
     steps:
-      - id: step1
+      - id: step1{% endraw %}
+{%- ifversion actions-save-state-set-output-envs %}
+        run: echo "firstword=hello" >> $GITHUB_OUTPUT
+{%- else %}
         run: echo "::set-output name=firstword::hello"
-      - id: step2
+{%- endif %}{% raw %}
+      - id: step2{% endraw %}
+{%- ifversion actions-save-state-set-output-envs %}
+        run: echo "secondword=world" >> $GITHUB_OUTPUT
+{%- else %}
         run: echo "::set-output name=secondword::world"
+{%- endif %}{% raw %}
 ```
 {% endraw %}
 
@@ -520,7 +534,11 @@ jobs:
         uses: {% data reusables.actions.action-checkout %}
       - name: Generate 0 or 1
         id: generate_number
+{%- ifversion actions-save-state-set-output-envs %}
+        run:  echo "random_number=$(($RANDOM % 2))" >> $GITHUB_OUTPUT
+{%- else %}
         run:  echo "::set-output name=random_number::$(($RANDOM % 2))"
+{%- endif %}
       - name: Pass or fail
         run: |
           if [[ {% raw %}${{ steps.generate_number.outputs.random_number }}{% endraw %} == 0 ]]; then exit 0; else exit 1; fi
@@ -590,7 +608,7 @@ jobs:
 
 ## `secrets` context
 
-The `secrets` context contains the names and values of secrets that are available to a workflow run. The `secrets` context is not available for composite actions. For more information about secrets, see "[Encrypted secrets](/actions/security-guides/encrypted-secrets)."
+The `secrets` context contains the names and values of secrets that are available to a workflow run. The `secrets` context is not available for composite actions due to security reasons. If you want to pass a secret to a composite action, you need to do it explicitly as an input. For more information about secrets, see "[Encrypted secrets](/actions/security-guides/encrypted-secrets)."
 
 `GITHUB_TOKEN` is a secret that is automatically created for every workflow run, and is always included in the `secrets` context. For more information, see "[Automatic token authentication](/actions/security-guides/automatic-token-authentication)."
 
@@ -718,7 +736,7 @@ jobs:
 
 ## `needs` context
 
-The `needs` context contains outputs from all jobs that are defined as a dependency of the current job. For more information on defining job dependencies, see "[Workflow syntax for {% data variables.product.prodname_actions %}](/actions/learn-github-actions/workflow-syntax-for-github-actions#jobsjob_idneeds)."
+The `needs` context contains outputs from all jobs that are defined as a direct dependency of the current job. Note that this doesn't include implicitly dependent jobs (for example, dependent jobs of a dependent job). For more information on defining job dependencies, see "[Workflow syntax for {% data variables.product.prodname_actions %}](/actions/learn-github-actions/workflow-syntax-for-github-actions#jobsjob_idneeds)."
 
 | Property name | Type | Description |
 |---------------|------|-------------|
@@ -766,7 +784,11 @@ jobs:
         id: build_step
         run: |
           ./build
+{%- ifversion actions-save-state-set-output-envs %}
+          echo "build_id=$BUILD_ID" >> $GITHUB_OUTPUT
+{%- else %}
           echo "::set-output name=build_id::$BUILD_ID"
+{%- endif %}
   deploy:
     needs: build
     runs-on: ubuntu-latest
@@ -785,7 +807,7 @@ jobs:
 {% ifversion fpt or ghec or ghes > 3.3 or ghae > 3.3 %}
 ## `inputs` context
 
-The `inputs` context contains input properties passed to a reusable workflow{% ifversion actions-unified-inputs %} or to a manually triggered workflow{% endif %}. {% ifversion actions-unified-inputs %}For reusable workflows, the{% else %}The{% endif %} input names and types are defined in the [`workflow_call` event configuration](/actions/learn-github-actions/events-that-trigger-workflows#workflow-reuse-events) of a reusable workflow, and the input values are passed from [`jobs.<job_id>.with`](/actions/learn-github-actions/workflow-syntax-for-github-actions#jobsjob_idwith) in an external workflow that calls the reusable workflow. {% ifversion actions-unified-inputs %}For manually triggered workflows, the inputs are defined in the [`workflow_dispatch` event configuration](/actions/learn-github-actions/events-that-trigger-workflows#workflow_dispatch) of a workflow.{% endif %}
+The `inputs` context contains input properties passed to an action{% ifversion actions-unified-inputs %},{% else %} or{% endif %} to a reusable workflow{% ifversion actions-unified-inputs %}, or to a manually triggered workflow{% endif %}. {% ifversion actions-unified-inputs %}For reusable workflows, the{% else %}The{% endif %} input names and types are defined in the [`workflow_call` event configuration](/actions/learn-github-actions/events-that-trigger-workflows#workflow-reuse-events) of a reusable workflow, and the input values are passed from [`jobs.<job_id>.with`](/actions/learn-github-actions/workflow-syntax-for-github-actions#jobsjob_idwith) in an external workflow that calls the reusable workflow. {% ifversion actions-unified-inputs %}For manually triggered workflows, the inputs are defined in the [`workflow_dispatch` event configuration](/actions/learn-github-actions/events-that-trigger-workflows#workflow_dispatch) of a workflow.{% endif %}
 
 There are no standard properties in the `inputs` context, only those which are defined in the workflow file.
 

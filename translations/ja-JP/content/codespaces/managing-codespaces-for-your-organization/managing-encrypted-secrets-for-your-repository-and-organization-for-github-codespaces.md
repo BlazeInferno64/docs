@@ -13,12 +13,12 @@ topics:
   - Security
 redirect_from:
   - /codespaces/managing-codespaces-for-your-organization/managing-encrypted-secrets-for-your-repository-and-organization-for-codespaces
-ms.openlocfilehash: 86755c5858fb230ddd12b16bd18148511f8d8277
-ms.sourcegitcommit: 47bd0e48c7dba1dde49baff60bc1eddc91ab10c5
+ms.openlocfilehash: b57b094fe18a76cb1a7cae3f69858af31d5a4037
+ms.sourcegitcommit: f638d569cd4f0dd6d0fb967818267992c0499110
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2022
-ms.locfileid: '147111511'
+ms.lasthandoff: 10/25/2022
+ms.locfileid: '148008681'
 ---
 ## シークレットについて
 
@@ -44,8 +44,8 @@ Organization ごとに最大 100 個のシークレット、リポジトリご�
 
 Organization リポジトリのシークレットを作成するには、管理者アクセス権が必要です。
 
-{% data reusables.repositories.navigate-to-repo %} {% data reusables.repositories.sidebar-settings %}
-1. サイドバーの [セキュリティ] セクションで、 **{% octicon "key-asterisk" aria-label="The key-asterisk icon" %} [シークレット]** を選択し、 **{% data variables.product.prodname_codespaces %}** をクリックします。
+{% data reusables.repositories.navigate-to-repo %} {% data reusables.repositories.sidebar-settings %} {% data reusables.codespaces.sidebar-secret %}
+
 2. ページの上部にある **[新しいリポジトリ シークレット]** をクリックします。
 3. **[名前]** 入力ボックスにシークレットの名前を入力します。
 4. シークレットの値を入力します。
@@ -57,8 +57,8 @@ Organizationでシークレットを作成する場合、ポリシーを使用�
 
 {% data reusables.actions.permissions-statement-secrets-organization %}
 
-{% data reusables.organizations.navigate-to-org %} {% data reusables.organizations.org_settings %}
-1. サイドバーの [セキュリティ] セクションで、 **{% octicon "key-asterisk" aria-label="The key-asterisk icon" %} [シークレット]** を選択し、 **{% data variables.product.prodname_codespaces %}** をクリックします。
+{% data reusables.organizations.navigate-to-org %} {% data reusables.organizations.org_settings %} {% data reusables.codespaces.sidebar-secret %}
+
 2. ページの上部にある **[新しい Organization のシークレット]** をクリックします。
 3. **[名前]** 入力ボックスにシークレットの名前を入力します。
 4. シークレットの **[値]** を入力します。
@@ -70,7 +70,8 @@ Organizationでシークレットを作成する場合、ポリシーを使用�
 
 Organization 内のシークレットに適用されているアクセスポリシーを確認できます。
 
-{% data reusables.organizations.navigate-to-org %} {% data reusables.organizations.org_settings %} {% data reusables.actions.sidebar-secret %}
+{% data reusables.organizations.navigate-to-org %} {% data reusables.organizations.org_settings %} {% data reusables.codespaces.sidebar-secret %}
+
 1. シークレットのリストには、設定済みのアクセス許可とポリシーが含まれます。 次に例を示します。 ![シークレットの一覧](/assets/images/help/settings/actions-org-secrets-list.png)
 1. 各シークレットに構成されているアクセス許可の詳細については、 **[更新]** をクリックします。
 

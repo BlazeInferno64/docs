@@ -1,6 +1,6 @@
 ---
 title: エンタープライズ向けの Dependabot の有効化
-intro: '{% data variables.product.prodname_dependabot_alerts %}{% ifversion ghes > 3.2 %} と {% data variables.product.prodname_dependabot_updates %}{% endif %} を有効にすることで、{% data variables.product.product_location %} のユーザーがコード依存関係の脆弱性を見つけて修正できるようにすることができます。'
+intro: '{% data variables.product.prodname_dependabot_alerts %}{% ifversion ghes %} と {% data variables.product.prodname_dependabot_updates %}{% endif %} を有効にすることで、{% data variables.location.product_location %} のユーザーがコードの依存関係の脆弱性を見つけて修正できるようにすることができます。'
 miniTocMaxHeadingLevel: 3
 shortTitle: Dependabot
 redirect_from:
@@ -22,23 +22,23 @@ topics:
   - Security
   - Dependency graph
   - Dependabot
-ms.openlocfilehash: 271e0ad3a81ea8c8cefac9c4a4db6e18ecad5069
-ms.sourcegitcommit: 1309b46201604c190c63bfee47dce559003899bf
+ms.openlocfilehash: 2a7df1dbbe0f8d905bbd1378592dedbec4f43a19
+ms.sourcegitcommit: f638d569cd4f0dd6d0fb967818267992c0499110
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2022
-ms.locfileid: '146455574'
+ms.lasthandoff: 10/25/2022
+ms.locfileid: '148106726'
 ---
 ## {% data variables.product.product_name %} の {% data variables.product.prodname_dependabot %} について
 
-{% data variables.product.prodname_dependabot %} を使用すると、{% data variables.product.product_location %} のユーザーが依存関係の脆弱性を見つけて修正するのに役立ちます。{% ifversion ghes > 3.2 %}{% data variables.product.prodname_dependabot_alerts %} を有効にして、脆弱な依存関係についてユーザーに通知し、{% data variables.product.prodname_dependabot_updates %} を有効にして脆弱性を修正し、依存関係を最新バージョンに更新することができます。
+{% data variables.product.prodname_dependabot %} を使用すると、{% data variables.location.product_location %} のユーザーが依存関係の脆弱性を見つけて修正するのに役立ちます。{% ifversion ghes %}{% data variables.product.prodname_dependabot_alerts %} を有効にして、脆弱な依存関係についてユーザーに通知し、{% data variables.product.prodname_dependabot_updates %} を有効にして脆弱性を修正し、依存関係を最新バージョンに更新することができます。
 
 ### {% data variables.product.prodname_dependabot_alerts %} について
 {% endif %}
 
 {% data reusables.dependabot.dependabot-alerts-beta %}
 
-{% data variables.product.prodname_dependabot_alerts %} を使用して、{% data variables.product.prodname_dotcom %} ではリポジトリ内の安全でない依存関係を特定し、{% data variables.product.prodname_advisory_database %} のデータと依存関係グラフ サービスを使用して、{% data variables.product.product_location %} にアラートを作成します。
+{% data variables.product.prodname_dependabot_alerts %} により、{% data variables.product.prodname_dotcom %} は、{% data variables.product.prodname_advisory_database %} のデータと依存関係グラフ サービスを使い、リポジトリ内の安全でない依存関係を特定して {% data variables.location.product_location %} にアラートを作成します。
 
 {% data reusables.repositories.tracks-vulnerabilities %}
 
@@ -48,20 +48,20 @@ ms.locfileid: '146455574'
 
 {% note %}
 
-**注**: {% data variables.product.prodname_dependabot_alerts %} を有効にすると、{% data variables.product.product_location %} のコードやコードに関する情報は、{% data variables.product.prodname_dotcom_the_website %} にアップロードされません。 
+**注:** {% data variables.product.prodname_dependabot_alerts %} を有効にすると、{% data variables.location.product_location %} のコードやコードに関する情報は、{% data variables.product.prodname_dotcom_the_website %} にアップロードされません。 
 
 {% endnote %}
 
-{% data variables.product.product_location %} が脆弱性に関する情報を受け取ると、影響を受けるバージョンの依存関係を使用する {% data variables.product.product_location %} 内のリポジトリを識別し、{% data variables.product.prodname_dependabot_alerts %} を生成します。 新しい {% data variables.product.prodname_dependabot_alerts %} についてユーザーに自動的に通知するかどうかを選択できます。 
+{% data variables.location.product_location %} は、脆弱性に関する情報を受け取ると、影響を受けるバージョンの依存関係を使用する {% data variables.location.product_location %} 内のリポジトリを識別して、{% data variables.product.prodname_dependabot_alerts %} を生成します。 新しい {% data variables.product.prodname_dependabot_alerts %} についてユーザーに自動的に通知するかどうかを選択できます。 
 
-{% data variables.product.prodname_dependabot_alerts %} が有効になっているリポジトリの場合、マニフェスト ファイルまたはロック ファイルを含む既定のブランチへの任意のプッシュでスキャンがトリガーされます。 さらに、{% data variables.product.product_location %} に新しい脆弱性レコードが追加されると、{% data variables.product.product_name %} では {% data variables.product.product_location %} のすべての既存のリポジトリをスキャンし、脆弱なリポジトリについてのアラートを生成します。 詳細については、「[{% data variables.product.prodname_dependabot_alerts %}について](/github/managing-security-vulnerabilities/about-alerts-for-vulnerable-dependencies)」を参照してください。
+{% data variables.product.prodname_dependabot_alerts %} が有効になっているリポジトリの場合、マニフェスト ファイルまたはロック ファイルを含む既定のブランチへの任意のプッシュでスキャンがトリガーされます。 さらに、新しい脆弱性レコードが {% data variables.location.product_location %} に追加されると、{% data variables.product.product_name %} は {% data variables.location.product_location %} のすべての既存のリポジトリをスキャンして、脆弱なリポジトリについてのアラートを生成します。 詳細については、「[{% data variables.product.prodname_dependabot_alerts %} について](/github/managing-security-vulnerabilities/about-alerts-for-vulnerable-dependencies)」を参照してください。
 
-{% ifversion ghes > 3.2 %}
+{% ifversion ghes %}
 ### {% data variables.product.prodname_dependabot_updates %} について
 
 {% data reusables.dependabot.beta-security-and-version-updates %}
 
-{% data variables.product.prodname_dependabot_alerts %} を有効にした後、{% data variables.product.prodname_dependabot_updates %} を有効にすることができます。 {% data variables.product.prodname_dependabot_updates %} が {% data variables.product.product_location %} に対して有効になっている場合、ユーザーはリポジトリを構成して、依存関係の更新とセキュリティ保護が自動的に行われるようにすることができます。 
+{% data variables.product.prodname_dependabot_alerts %} を有効にした後、{% data variables.product.prodname_dependabot_updates %} を有効にすることができます。 {% data variables.product.prodname_dependabot_updates %} が {% data variables.location.product_location %} に対して有効になっている場合、ユーザーはリポジトリを構成して、依存関係の更新とセキュリティ保護が自動的に行われるようにすることができます。 
 
 {% note %} 
 
@@ -101,7 +101,7 @@ ms.locfileid: '146455574'
 
 エンタープライズで {% data variables.product.prodname_dependabot_alerts %} を有効にした後、{% data variables.product.prodname_dependabot_updates %} を有効にできます。
 
-{% ifversion ghes %}{% data variables.product.prodname_dependabot_updates %} を有効にする前に、セルフホステッド ランナーで {% data variables.product.prodname_actions %} を使用するように {% data variables.product.product_location %} を構成する必要があります。 詳細については、「[GitHub Enterprise Server の {% data variables.product.prodname_actions %} の概要](/admin/github-actions/enabling-github-actions-for-github-enterprise-server/getting-started-with-github-actions-for-github-enterprise-server)」を参照してください。
+{% ifversion ghes %}{% data reusables.dependabot.enabling-actions-for-ghes %}詳しくは、「[GitHub Enterprise Server の {% data variables.product.prodname_actions %} の概要](/admin/github-actions/enabling-github-actions-for-github-enterprise-server/getting-started-with-github-actions-for-github-enterprise-server)」をご覧ください。
 
 エンタープライズでクラスタリングを使用している場合、{% data variables.product.prodname_dependabot_updates %} は {% data variables.product.product_name %} ではサポートされません。
 {% endif %}
@@ -113,13 +113,13 @@ ms.locfileid: '146455574'
 
 {% data reusables.enterprise_management_console.save-settings %}
 1. **[Visit your instance]\(インスタンスにアクセスする)** をクリックします。
-1. 依存関係を更新するプル要求を作成するようにセルフホステッド ランナーを構成します。 詳細については、「[エンタープライズでの {% data variables.product.prodname_dependabot_updates %} のセルフホステッド ランナーの管理](/admin/github-actions/enabling-github-actions-for-github-enterprise-server/managing-self-hosted-runners-for-dependabot-updates)」を参照してください。
+1. 依存関係を更新する pull request を作成するように、専用セルフホステッド ランナーを構成します。 これは、ワークフローで特定のランナー ラベルが使われるために必要です。 詳細については、「[エンタープライズでの {% data variables.product.prodname_dependabot_updates %} のセルフホステッド ランナーの管理](/admin/github-actions/enabling-github-actions-for-github-enterprise-server/managing-self-hosted-runners-for-dependabot-updates)」を参照してください。
 {% data reusables.enterprise-accounts.access-enterprise %} {% data reusables.enterprise-accounts.github-connect-tab %}
 1. [{% data variables.product.prodname_dependabot %}] で、[ユーザーは脆弱でないオープン ソース コードの依存関係に簡単にアップグレードできる] の右側にある **[有効]** をクリックします。
 
    ![脆弱な依存関係の更新を有効にするドロップダウン メニューのスクリーンショット](/assets/images/enterprise/site-admin-settings/dependabot-updates-button.png)
 
-{% endif %} {% ifversion ghes > 3.2 %}
+{% endif %} {% ifversion ghes %}
 
 {% data variables.product.prodname_dependabot_alerts %} を有効にする場合は、{% data variables.product.prodname_dependabot_security_updates %} に対して {% data variables.product.prodname_actions %} を設定することも検討する必要があります。 この機能により、開発者は依存関係の脆弱性を修正できます。 詳細については、「[エンタープライズでの {% data variables.product.prodname_dependabot_updates %} のセルフホステッド ランナーの管理](/admin/github-actions/enabling-github-actions-for-github-enterprise-server/managing-self-hosted-runners-for-dependabot-updates)」を参照してください。
 

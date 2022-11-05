@@ -10,12 +10,12 @@ topics:
   - Fundamentals
 permissions: Enterprise owners can access compliance reports for the enterprise.
 shortTitle: Access compliance reports
-ms.openlocfilehash: 87ecd673b2b1a8877e9d30eba9b6f778394e21c0
-ms.sourcegitcommit: fcf3546b7cc208155fb8acdf68b81be28afc3d2d
+ms.openlocfilehash: d9391e9bb029620ee9c034a5ad3092588e914c36
+ms.sourcegitcommit: f638d569cd4f0dd6d0fb967818267992c0499110
 ms.translationtype: HT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 09/10/2022
-ms.locfileid: '147875691'
+ms.lasthandoff: 10/25/2022
+ms.locfileid: '148007631'
 ---
 ## Sobre os relatórios de conformidade de {% data variables.product.company_short %}
 
@@ -32,4 +32,5 @@ Você pode acessar os relatórios de conformidade de {% data variables.product.c
 
 ## Leitura adicional
 
-- "[Como acessar relatórios de conformidade da sua organização](/organizations/keeping-your-organization-secure/managing-security-settings-for-your-organization/accessing-compliance-reports-for-your-organization)"
+- "[Como acessar relatórios de conformidade da organização](/organizations/keeping-your-organization-secure/managing-security-settings-for-your-organization/accessing-compliance-reports-for-your-organization)"{% ifversion enterprise-member-csv %}
+- "[Como exportar informações de associação da empresa](/admin/user-management/managing-users-in-your-enterprise/exporting-membership-information-for-your-enterprise)"{% endif %}

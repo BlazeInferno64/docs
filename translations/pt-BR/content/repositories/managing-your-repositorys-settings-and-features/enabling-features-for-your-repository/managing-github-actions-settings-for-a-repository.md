@@ -120,7 +120,11 @@ By default, when you create a new repository in your personal account, `GITHUB_T
 {% data reusables.repositories.settings-sidebar-actions-general %}
 1. Under "Workflow permissions", choose whether you want the `GITHUB_TOKEN` to have read and write access for all scopes, or just read access for the `contents` scope.
 
-   ![Set GITHUB_TOKEN permissions for this repository](/assets/images/help/settings/actions-workflow-permissions-repository{% ifversion allow-actions-to-approve-pr-with-ent-repo %}-with-pr-approval{% endif %}.png)
+   {% ifversion allow-actions-to-approve-pr-with-ent-repo %}
+   ![Set GITHUB_TOKEN permissions for this repository](/assets/images/help/settings/actions-workflow-permissions-repository-with-pr-approval.png)
+   {% else %}
+   ![Set GITHUB_TOKEN permissions for this repository](/assets/images/help/settings/actions-workflow-permissions-repository.png)
+   {% endif %}
 
 1. Click **Save** to apply the settings.
 
@@ -181,7 +185,16 @@ You can also define a custom retention period for a specific artifact created by
 
 {% data reusables.actions.cache-default-size %} However, these default sizes might be different if an enterprise owner has changed them. {% data reusables.actions.cache-eviction-process %}
 
-You can set a total cache storage size for your repository up to the maximum size allowed by the enterprise policy setting.
+You can set a total cache storage size for your repository up to the maximum size allowed by the {% ifversion actions-cache-admin-ui %}organization or{% endif %} enterprise policy setting{% ifversion actions-cache-admin-ui %}s{% endif %}.
+
+{% ifversion actions-cache-admin-ui %}
+
+{% data reusables.repositories.navigate-to-repo %}
+{% data reusables.repositories.sidebar-settings %}
+{% data reusables.repositories.settings-sidebar-actions-general %}
+{% data reusables.actions.change-cache-size-limit  %}
+
+{% else %}
 
 The repository settings for {% data variables.product.prodname_actions %} cache storage can currently only be modified using the REST API:
 
@@ -189,5 +202,7 @@ The repository settings for {% data variables.product.prodname_actions %} cache 
 * To change the cache storage limit for a repository, see "[Set GitHub Actions cache usage policy for a repository](/rest/actions/cache#set-github-actions-cache-usage-policy-for-a-repository)."
 
 {% data reusables.actions.cache-no-org-policy %}
+
+{% endif %}
 
 {% endif %}

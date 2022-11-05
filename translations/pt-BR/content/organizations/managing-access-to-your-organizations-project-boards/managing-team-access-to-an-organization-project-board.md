@@ -14,12 +14,12 @@ topics:
   - Teams
 shortTitle: Manage team access
 allowTitleToDifferFromFilename: true
-ms.openlocfilehash: 9672dddc31d39349ec99488313e021bca0c12c60
-ms.sourcegitcommit: 47bd0e48c7dba1dde49baff60bc1eddc91ab10c5
+ms.openlocfilehash: c49fab76bbf286f865e3845356213bc1af18b20a
+ms.sourcegitcommit: f638d569cd4f0dd6d0fb967818267992c0499110
 ms.translationtype: HT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 09/05/2022
-ms.locfileid: '147422858'
+ms.lasthandoff: 10/25/2022
+ms.locfileid: '148107962'
 ---
 {% data reusables.projects.project_boards_old %}
 
@@ -57,3 +57,12 @@ Se o acesso de uma equipe a um {% data variables.projects.projects_v1_board %} f
   ![A guia Repositórios da equipe](/assets/images/help/organizations/team-project-board-button.png)
 5. Para alterar os níveis de permissão, à direita do {% data variables.projects.projects_v1_board %} que deseja atualizar, use o menu suspenso. Para remover um {% data variables.projects.projects_v1_board %}, clique em **{% octicon "trash" aria-label="The trash icon" %}** .
   ![Botão Remover um quadro de projetos da sua equipe da lixeira](/assets/images/help/organizations/trash-button.png)
+
+{% ifversion projects-v2-add-to-team %}
+
+## Leitura adicional
+
+- [Adicionar o projeto a uma equipe](/issues/planning-and-tracking-with-projects/managing-your-project/adding-your-project-to-a-team)
+
+
+{% endif %}

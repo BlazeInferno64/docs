@@ -11,12 +11,12 @@ type: tutorial
 topics:
   - Projects
 allowTitleToDifferFromFilename: true
-ms.openlocfilehash: 05fa60d5690074c217db87cd52a44b46433c014e
-ms.sourcegitcommit: 47bd0e48c7dba1dde49baff60bc1eddc91ab10c5
+ms.openlocfilehash: 9c414ab3bfbbd9bbf488a73e5dd2600458074914
+ms.sourcegitcommit: f638d569cd4f0dd6d0fb967818267992c0499110
 ms.translationtype: HT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 09/05/2022
-ms.locfileid: '147423749'
+ms.lasthandoff: 10/25/2022
+ms.locfileid: '148107913'
 ---
 ## Sobre o acesso ao projeto
 
@@ -45,6 +45,12 @@ A função base padrão é `write`, o que significa que todos na organização p
 ### Gerenciando o acesso de equipes e integrantes individuais da sua organização
 
 Também é possível adicionar equipes, colaboradores externos e integrantes da organização individuais como colaboradores em um projeto no nível da organização. Para obter mais informações, confira "[Sobre as equipes](/organizations/organizing-members-into-teams/about-teams)".
+
+{% ifversion projects-v2-add-to-team %}
+
+Se você conceder a uma equipe permissões de leitura ou superiores em um projeto, o projeto também será exibido na página de projetos da equipe. Você também pode adicionar projetos a uma equipe na página de projetos da equipe. Para obter mais informações, confira "[Como adicionar um projeto a uma equipe](/issues/planning-and-tracking-with-projects/managing-your-project/adding-your-project-to-a-team)".  
+
+{% endif %}
 
 Você pode apenas convidar um usuário individual para colaborar no projeto a nível da organização se ele já for integrante da organização ou colaborador externo em pelo menos um repositório na organização.
 

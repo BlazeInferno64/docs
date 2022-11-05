@@ -15,12 +15,12 @@ topics:
   - GitHub Apps
   - OAuth Apps
 shortTitle: GitHub Apps & OAuth Apps
-ms.openlocfilehash: ffdb9fcaa54acd9ef3ecbc26d5822f435bc5a9db
-ms.sourcegitcommit: 47bd0e48c7dba1dde49baff60bc1eddc91ab10c5
+ms.openlocfilehash: d70304b71de11a4a24f2acc6c2545e78cbd19b0c
+ms.sourcegitcommit: f638d569cd4f0dd6d0fb967818267992c0499110
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2022
-ms.locfileid: '146058493'
+ms.lasthandoff: 10/25/2022
+ms.locfileid: '148008711'
 ---
 ## GitHub App のインストール、OAuth App の承認が可能なユーザ
 
@@ -28,7 +28,9 @@ GitHub App は、個人アカウントおよび自分が所有する Organizatio
 
 {% data reusables.apps.app_manager_role %}
 
-一方、ユーザーが OAuth アプリを _認可_ すると、認証されたユーザーとして動作する機能がアプリに提供されます。 たとえば、認証されたユーザに対するすべての通知を検索する OAuth App を承認できます。 OAuth App の権限はいつでも取り消すことができます。
+一方、ユーザーが OAuth アプリを 認可 すると、認証されたユーザーとして動作する機能がアプリに提供されます。 たとえば、認証されたユーザに対するすべての通知を検索する OAuth App を承認できます。 OAuth App の権限はいつでも取り消すことができます。
+
+{% ifversion limit-app-access-requests %} {% data reusables.organizations.restricted-app-access-requests %}{% endif %}
 
 {% data reusables.apps.deletes_ssh_keys %}
 

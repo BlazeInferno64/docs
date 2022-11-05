@@ -1,12 +1,12 @@
 ---
-ms.openlocfilehash: 2aec9cd701a3503386b9d751c1da74f64940c431
-ms.sourcegitcommit: 47bd0e48c7dba1dde49baff60bc1eddc91ab10c5
+ms.openlocfilehash: 85db1024fd3a47bebaf0a6fef56843c8be2509a9
+ms.sourcegitcommit: f638d569cd4f0dd6d0fb967818267992c0499110
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/05/2022
-ms.locfileid: "147496440"
+ms.lasthandoff: 10/25/2022
+ms.locfileid: "148009696"
 ---
-{% ifversion fpt %} {% note %}
+{% ifversion fpt or ghec %} {% note %}
 
 **Nota:** La característica de cola de fusión mediante combinación de solicitudes de incorporación de cambios se encuentra actualmente en versión beta pública y está sujeta a cambios.
 

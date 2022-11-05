@@ -6,20 +6,14 @@ versions:
 topics:
   - Profiles
 shortTitle: Set profile to private
-ms.openlocfilehash: 51fd476bc77856b525ce3e991e4eb30e8a881361
-ms.sourcegitcommit: 47bd0e48c7dba1dde49baff60bc1eddc91ab10c5
+ms.openlocfilehash: c00718c84d99de95a9ca1352f32954279906451d
+ms.sourcegitcommit: f638d569cd4f0dd6d0fb967818267992c0499110
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2022
-ms.locfileid: '147062915'
+ms.lasthandoff: 10/25/2022
+ms.locfileid: '148008670'
 ---
 ## プライベート プロファイルについて
-
-{% note %}
-
-**注:** プライベート プロファイルは現在ベータ版であり、変更される可能性があります。
-
-{% endnote %}
 
 プロファイル ページの一部を非表示にするには、プロファイルをプライベートにします。 これにより、{% data variables.product.prodname_dotcom_the_website %} のさまざまなソーシャル機能のアクティビティも非表示になります。 プライベート プロファイルでは、すべてのユーザーに対し情報が非表示になります。現在、指定したユーザーにアクティビティを表示するオプションはありません。
 

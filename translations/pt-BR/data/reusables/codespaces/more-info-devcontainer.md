@@ -1,9 +1,9 @@
 ---
-ms.openlocfilehash: 092efb17cc53ec608a9dee07ae46474207217d2b
-ms.sourcegitcommit: fcf3546b7cc208155fb8acdf68b81be28afc3d2d
+ms.openlocfilehash: c4d14deef7dc4c8811dec367203f5c4377227e05
+ms.sourcegitcommit: 5ee600fa0b52d1d1b138d8565740e2a0b5e4c4da
 ms.translationtype: HT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 09/10/2022
-ms.locfileid: "147880129"
+ms.lasthandoff: 10/25/2022
+ms.locfileid: "148007626"
 ---
-Para obter informações sobre as configurações e as propriedades que podem ser definidas em um arquivo `devcontainer.json`, confira a "[Referência do devcontainer.json](https://aka.ms/vscode-remote/devcontainer.json)" na documentação do {% data variables.product.prodname_vscode_shortname %}.
+Para obter informações sobre as configurações e as propriedades que você pode definir em um arquivo `devcontainer.json`, confira a [Especificação](https://containers.dev/implementors/spec) no site de contêineres de desenvolvimento.

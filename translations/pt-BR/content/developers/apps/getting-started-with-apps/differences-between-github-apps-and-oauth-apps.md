@@ -15,12 +15,12 @@ topics:
   - GitHub Apps
   - OAuth Apps
 shortTitle: GitHub Apps & OAuth Apps
-ms.openlocfilehash: ffdb9fcaa54acd9ef3ecbc26d5822f435bc5a9db
-ms.sourcegitcommit: 47bd0e48c7dba1dde49baff60bc1eddc91ab10c5
+ms.openlocfilehash: d70304b71de11a4a24f2acc6c2545e78cbd19b0c
+ms.sourcegitcommit: f638d569cd4f0dd6d0fb967818267992c0499110
 ms.translationtype: HT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 09/05/2022
-ms.locfileid: '146058489'
+ms.lasthandoff: 10/25/2022
+ms.locfileid: '148007645'
 ---
 ## Quem pode instalar aplicativos GitHub e autorizar aplicativos OAuth?
 
@@ -28,7 +28,9 @@ Você pode instalar os aplicativos GitHub em sua conta pessoal ou em organizaç�
 
 {% data reusables.apps.app_manager_role %}
 
-Por outro lado, os usuários _autorizam_ os Aplicativos OAuth, o que oferece ao aplicativo a capacidade de atuar como o usuário autenticado. Por exemplo, você pode autorizar um aplicativo OAuth que encontra todas as notificações para o usuário autenticado. Você sempre pode revogar as permissões de um aplicativo OAuth.
+Por outro lado, os usuários autorizam os Aplicativos OAuth, o que oferece ao aplicativo a capacidade de atuar como o usuário autenticado. Por exemplo, você pode autorizar um aplicativo OAuth que encontra todas as notificações para o usuário autenticado. Você sempre pode revogar as permissões de um aplicativo OAuth.
+
+{% ifversion limit-app-access-requests %} {% data reusables.organizations.restricted-app-access-requests %}{% endif %}
 
 {% data reusables.apps.deletes_ssh_keys %}
 

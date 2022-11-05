@@ -11,12 +11,12 @@ type: tutorial
 topics:
   - Projects
 allowTitleToDifferFromFilename: true
-ms.openlocfilehash: 05fa60d5690074c217db87cd52a44b46433c014e
-ms.sourcegitcommit: 47bd0e48c7dba1dde49baff60bc1eddc91ab10c5
+ms.openlocfilehash: 9c414ab3bfbbd9bbf488a73e5dd2600458074914
+ms.sourcegitcommit: f638d569cd4f0dd6d0fb967818267992c0499110
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2022
-ms.locfileid: '147424044'
+ms.lasthandoff: 10/25/2022
+ms.locfileid: '148109260'
 ---
 ## プロジェクトへのアクセスについて
 
@@ -45,6 +45,12 @@ Organizationレベルのプロジェクトの管理者は、Organization全体�
 ### Team及びOrganizationの個々のメンバーのアクセス管理
 
 Organizationレベルのプロジェクトには、Team、外部のコラボレータ、個々のOrganizationのメンバーをコラボレータとして追加することもできます。 詳細については、「[Team について](/organizations/organizing-members-into-teams/about-teams)」を参照してください。
+
+{% ifversion projects-v2-add-to-team %}
+
+プロジェクトに対する読み取り以上のアクセス許可をチームに付与すると、そのプロジェクトはチームのプロジェクト ページにも表示されます。 また、チームのプロジェクト ページでチームにプロジェクトを追加することもできます。 詳しくは、「[チームへのプロジェクトの追加](/issues/planning-and-tracking-with-projects/managing-your-project/adding-your-project-to-a-team)」を参照してください。  
+
+{% endif %}
 
 個人ユーザが既にOrganizationのメンバーになっているか、Organizationの少なくとも1つのリポジトリで外部のコラボレータになっている場合にのみ、Organizationレベルのプロジェクトに共同作業をするように招待できます。
 

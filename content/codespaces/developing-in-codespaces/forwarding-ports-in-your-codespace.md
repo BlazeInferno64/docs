@@ -23,6 +23,8 @@ When an application running inside a codespace prints output to the terminal tha
 
 ![Automatic port forwarding](/assets/images/help/codespaces/automatic-port-forwarding.png)
 
+{% data reusables.codespaces.forwarded-ports-environment-variable %}
+
 You can also forward a port manually, label forwarded ports, share forwarded ports with members of your organization, share forwarded ports publicly, and add forwarded ports to the codespace configuration.
 
 {% note %}
@@ -48,7 +50,7 @@ You can manually forward a port that wasn't forwarded automatically.
 
 ## Using HTTPS forwarding
 
-By default, {% data variables.product.prodname_github_codespaces %} forwards ports using HTTP but you can update any port to use HTTPS, as needed.
+By default, {% data variables.product.prodname_github_codespaces %} forwards ports using HTTP but you can update any port to use HTTPS, as needed. If you update a port with public visibility to use HTTPS, the port's visibility will automatically change to private.
 
 {% data reusables.codespaces.navigate-to-ports-tab %}
 1. Right click the port you want to update, then hover over **Change Port Protocol**.
@@ -78,7 +80,7 @@ By default, {% data variables.product.prodname_github_codespaces %} forwards por
 To forward a port use the `gh codespace ports forward` subcommand. Replace `codespace-port:local-port` with the remote and local ports that you want to connect. After entering the command choose from the list of codespaces that's displayed.
 
 ```shell
-gh codespace ports forward <em>codespace-port</em>:<em>local-port</em>
+gh codespace ports forward CODESPACE-PORT:LOCAL-PORT
 ```
 
 For more information about this command, see [the {% data variables.product.prodname_cli %} manual](https://cli.github.com/manual/gh_codespace_ports_forward).
@@ -132,7 +134,7 @@ To change the visibility of a forwarded port, use the `gh codespace ports visibi
 Replace `codespace-port` with the forwarded port number. Replace `setting` with `private`, `org`, or `public`. After entering the command choose from the list of codespaces that's displayed.
 
 ```shell
-gh codespace ports visibility <em>codespace-port</em>:<em>setting</em>
+gh codespace ports visibility CODESPACE-PORT:SETTINGS
 ```
 
 You can set the visibility for multiple ports with one command. For example:

@@ -6,20 +6,14 @@ versions:
 topics:
   - Profiles
 shortTitle: Set profile to private
-ms.openlocfilehash: 51fd476bc77856b525ce3e991e4eb30e8a881361
-ms.sourcegitcommit: 47bd0e48c7dba1dde49baff60bc1eddc91ab10c5
+ms.openlocfilehash: c00718c84d99de95a9ca1352f32954279906451d
+ms.sourcegitcommit: f638d569cd4f0dd6d0fb967818267992c0499110
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2022
-ms.locfileid: '147062912'
+ms.lasthandoff: 10/25/2022
+ms.locfileid: '148007886'
 ---
 ## 关于私密配置文件
-
-{% note %}
-
-注意：私密配置文件目前以 beta 版本提供，可能会随时更改。
-
-{% endnote %}
 
 若要隐藏配置文件页的某些部分，可以将配置文件设置为私密。 这还会隐藏你在 {% data variables.product.prodname_dotcom_the_website %} 上的各种社交功能中的活动。 私密配置文件对所有用户隐藏信息，目前没有允许指定用户查看你的活动的选项。
 

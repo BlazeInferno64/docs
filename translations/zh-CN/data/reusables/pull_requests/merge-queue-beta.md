@@ -1,12 +1,12 @@
 ---
-ms.openlocfilehash: 2aec9cd701a3503386b9d751c1da74f64940c431
-ms.sourcegitcommit: 47bd0e48c7dba1dde49baff60bc1eddc91ab10c5
+ms.openlocfilehash: 85db1024fd3a47bebaf0a6fef56843c8be2509a9
+ms.sourcegitcommit: f638d569cd4f0dd6d0fb967818267992c0499110
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2022
-ms.locfileid: "147496434"
+ms.lasthandoff: 10/25/2022
+ms.locfileid: "148007904"
 ---
-{% ifversion fpt %} {% note %}
+{% ifversion fpt or ghec %} {% note %}
 
 注意：拉取请求合并队列功能目前处于有限公测阶段，可能会发生更改。
 

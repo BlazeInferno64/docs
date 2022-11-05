@@ -6,20 +6,14 @@ versions:
 topics:
   - Profiles
 shortTitle: Set profile to private
-ms.openlocfilehash: 51fd476bc77856b525ce3e991e4eb30e8a881361
-ms.sourcegitcommit: 47bd0e48c7dba1dde49baff60bc1eddc91ab10c5
+ms.openlocfilehash: c00718c84d99de95a9ca1352f32954279906451d
+ms.sourcegitcommit: f638d569cd4f0dd6d0fb967818267992c0499110
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/05/2022
-ms.locfileid: '147062918'
+ms.lasthandoff: 10/25/2022
+ms.locfileid: '148009678'
 ---
 ## Acerca de los perfiles privados
-
-{% note %}
-
-**Nota:** los perfiles privados están actualmente en versión beta y están sujetos a cambios.
-
-{% endnote %}
 
 Para ocultar partes de la página de perfil, puedes hacer que tu perfil sea privado. Esto también oculta la actividad en varias características sociales en {% data variables.product.prodname_dotcom_the_website %}. Un perfil privado oculta la información a todos los usuarios; actualmente no hay ninguna opción para permitir que usuarios específicos vean tu actividad.
 

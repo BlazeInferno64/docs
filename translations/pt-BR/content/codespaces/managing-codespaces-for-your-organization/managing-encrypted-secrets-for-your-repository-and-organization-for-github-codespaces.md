@@ -13,12 +13,12 @@ topics:
   - Security
 redirect_from:
   - /codespaces/managing-codespaces-for-your-organization/managing-encrypted-secrets-for-your-repository-and-organization-for-codespaces
-ms.openlocfilehash: 86755c5858fb230ddd12b16bd18148511f8d8277
-ms.sourcegitcommit: 47bd0e48c7dba1dde49baff60bc1eddc91ab10c5
+ms.openlocfilehash: b57b094fe18a76cb1a7cae3f69858af31d5a4037
+ms.sourcegitcommit: f638d569cd4f0dd6d0fb967818267992c0499110
 ms.translationtype: HT
 ms.contentlocale: pt-BR
-ms.lasthandoff: 09/05/2022
-ms.locfileid: '147111378'
+ms.lasthandoff: 10/25/2022
+ms.locfileid: '148007635'
 ---
 ## Sobre segredos
 
@@ -44,8 +44,8 @@ Os segredos são limitados a 64 kB.
 
 Para criar segredos para um repositório da organização, você deve ter acesso de administrador.
 
-{% data reusables.repositories.navigate-to-repo %} {% data reusables.repositories.sidebar-settings %}
-1. Na seção "Segurança" da barra lateral, selecione **{% octicon "key-asterisk" aria-label="The key-asterisk icon" %} Segredos** e clique em **{% data variables.product.prodname_codespaces %}** .
+{% data reusables.repositories.navigate-to-repo %} {% data reusables.repositories.sidebar-settings %} {% data reusables.codespaces.sidebar-secret %}
+
 2. Na parte superior da página, clique em **Novo segredo do repositório**.
 3. Digite um nome para o segredo na caixa de entrada **Nome**.
 4. Insira o valor para o seu segredo.
@@ -57,8 +57,8 @@ Ao criar um segredo em uma organização, você pode usar uma política para lim
 
 {% data reusables.actions.permissions-statement-secrets-organization %}
 
-{% data reusables.organizations.navigate-to-org %} {% data reusables.organizations.org_settings %}
-1. Na seção "Segurança" da barra lateral, selecione **{% octicon "key-asterisk" aria-label="The key-asterisk icon" %} Segredos** e clique em **{% data variables.product.prodname_codespaces %}** .
+{% data reusables.organizations.navigate-to-org %} {% data reusables.organizations.org_settings %} {% data reusables.codespaces.sidebar-secret %}
+
 2. Na parte superior da página, clique em **Novo segredo da organização**.
 3. Digite um nome para o segredo na caixa de entrada **Nome**.
 4. Insira o **Valor** do segredo.
@@ -70,7 +70,8 @@ Ao criar um segredo em uma organização, você pode usar uma política para lim
 
 Você pode verificar quais políticas de acesso são aplicadas a um segredo na sua organização.
 
-{% data reusables.organizations.navigate-to-org %} {% data reusables.organizations.org_settings %} {% data reusables.actions.sidebar-secret %}
+{% data reusables.organizations.navigate-to-org %} {% data reusables.organizations.org_settings %} {% data reusables.codespaces.sidebar-secret %}
+
 1. A lista de segredos inclui quaisquer permissões e políticas configuradas. Por exemplo: ![lista de segredos](/assets/images/help/settings/actions-org-secrets-list.png)
 1. Para obter mais detalhes sobre as permissões configuradas para cada segredo, clique em **Atualizar**.
 

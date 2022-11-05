@@ -14,12 +14,12 @@ topics:
   - Teams
 shortTitle: Manage team access
 allowTitleToDifferFromFilename: true
-ms.openlocfilehash: 9672dddc31d39349ec99488313e021bca0c12c60
-ms.sourcegitcommit: 47bd0e48c7dba1dde49baff60bc1eddc91ab10c5
+ms.openlocfilehash: c49fab76bbf286f865e3845356213bc1af18b20a
+ms.sourcegitcommit: f638d569cd4f0dd6d0fb967818267992c0499110
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2022
-ms.locfileid: '147422868'
+ms.lasthandoff: 10/25/2022
+ms.locfileid: '148109459'
 ---
 {% data reusables.projects.project_boards_old %}
 
@@ -57,3 +57,12 @@ ms.locfileid: '147422868'
   ![Team の [リポジトリ] タブ](/assets/images/help/organizations/team-project-board-button.png)
 5. アクセス許可レベルを変更するには、更新する {% data variables.projects.projects_v1_board %} の右側にあるドロップダウンを使用します。 {% data variables.projects.projects_v1_board %} を削除するには、 **{% octicon "trash" aria-label="The trash icon" %}** をクリックします。
   ![Team からプロジェクト ボードを削除するごみ箱ボタン](/assets/images/help/organizations/trash-button.png)
+
+{% ifversion projects-v2-add-to-team %}
+
+## 参考資料
+
+- [チームへのプロジェクトの追加](/issues/planning-and-tracking-with-projects/managing-your-project/adding-your-project-to-a-team)
+
+
+{% endif %}

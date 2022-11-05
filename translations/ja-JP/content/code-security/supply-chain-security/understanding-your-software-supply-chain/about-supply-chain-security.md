@@ -1,6 +1,6 @@
 ---
 title: サプライ チェーンのセキュリティについて
-intro: '{% data variables.product.product_name %} は、環境内の依存関係の理解から、それらの依存関係の脆弱性の把握{% ifversion fpt or ghec or ghes > 3.2 %}やパッチの適用{% endif %}まで、サプライ チェーンをセキュリティで保護するのに役立ちます。'
+intro: '{% data variables.product.product_name %} は、環境内の依存関係の理解から、それらの依存関係の脆弱性の把握{% ifversion fpt or ghec or ghes %}やパッチの適用{% endif %}まで、サプライ チェーンをセキュリティで保護するのに役立ちます。'
 miniTocMaxHeadingLevel: 3
 shortTitle: Supply chain security
 redirect_from:
@@ -19,12 +19,12 @@ topics:
   - Dependencies
   - Pull requests
   - Repositories
-ms.openlocfilehash: 2ad16960d0445994d5414390a62e16d719a10e6c
-ms.sourcegitcommit: 47bd0e48c7dba1dde49baff60bc1eddc91ab10c5
+ms.openlocfilehash: 7c059876a27969b4664d5c8d94dec357a135c2de
+ms.sourcegitcommit: f638d569cd4f0dd6d0fb967818267992c0499110
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2022
-ms.locfileid: '147064891'
+ms.lasthandoff: 10/25/2022
+ms.locfileid: '148106502'
 ---
 ## GitHub でのサプライ チェーンのセキュリティについて
 
@@ -32,12 +32,12 @@ ms.locfileid: '147064891'
 
 依存関係をサプライ チェーンに直接追加するときは、マニフェスト ファイルまたはロックファイルで指定します。 依存関係は推移的に含めることもできます。つまり、特定の依存関係を指定しなくても、使用している依存関係が別の依存関係を使用している場合は、その依存関係にも依存することになります。
 
-{% data variables.product.product_name %} には、環境内の依存関係を理解し{% ifversion ghes < 3.3 or ghae %}、それらの依存関係の脆弱性を把握{% endif %}{% ifversion fpt or ghec or ghes > 3.2 %}、それらの依存関係の脆弱性を把握してパッチを適用{% endif %}できるように、さまざまな機能が用意されています。 
+{% data variables.product.product_name %} には、環境内の依存関係を理解し{% ifversion ghae %}、それらの依存関係の脆弱性を把握{% endif %}{% ifversion fpt or ghec or ghes %}、それらの依存関係の脆弱性を把握してパッチを適用{% endif %}できるように、さまざまな機能が用意されています。 
 
 {% data variables.product.product_name %} のサプライ チェーン機能は次のとおりです。
 - **依存関係グラフ**
 - **依存関係レビュー**
-- **{% data variables.product.prodname_dependabot_alerts %} ** {% ifversion fpt or ghec or ghes > 3.2 %}- **{% data variables.product.prodname_dependabot_updates %}**
+- **{% data variables.product.prodname_dependabot_alerts %} ** {% ifversion fpt or ghec or ghes %}- **{% data variables.product.prodname_dependabot_updates %}**
   - **{% data variables.product.prodname_dependabot_security_updates %}**
   - **{% data variables.product.prodname_dependabot_version_updates %}** {% endif %}
 
@@ -47,7 +47,7 @@ ms.locfileid: '147064891'
 
 - 依存関係レビューは、依存関係グラフを使用して依存関係の変更を特定し、ユーザーが pull request を確認するときにそれらの変更がセキュリティに及ぼす影響を理解するのに役立ちます。
 - {% data variables.product.prodname_dependabot %} は、依存関係グラフによって提供される依存関係データと {% data variables.product.prodname_advisory_database %} で公開されるアドバイザリの一覧を相互参照し、依存関係をスキャンして、潜在的な脆弱性{% ifversion GH-advisory-db-supports-malware %}またはマルウェア{% endif %}が検出されると {% data variables.product.prodname_dependabot_alerts %}を生成します。
-{% ifversion fpt or ghec or ghes > 3.2 %}- {% data variables.product.prodname_dependabot_security_updates %}は、依存関係グラフと {% data variables.product.prodname_dependabot_alerts %}を使用して、リポジトリ内の既知の脆弱性を含む依存関係をユーザーが更新できるように役立ちます。
+{% ifversion fpt or ghec or ghes %}- {% data variables.product.prodname_dependabot_security_updates %}は、依存関係グラフと {% data variables.product.prodname_dependabot_alerts %}を使用して、リポジトリ内の既知の脆弱性を含む依存関係をユーザーが更新できるように役立ちます。
 
 {% data variables.product.prodname_dependabot_version_updates %} では、依存関係グラフは使用されません。代わりに依存関係のセマンティック バージョン管理が利用されます。 {% data variables.product.prodname_dependabot_version_updates %} は、依存関係に脆弱性が含まれない場合でも、依存関係を最新状態に保つために役立ちます。
 {% endif %}
@@ -80,13 +80,28 @@ ms.locfileid: '147064891'
 
 ### Dependabot とは
 
-{% data variables.product.prodname_dependabot %} は、依存関係のセキュリティ脆弱性をユーザーに通知しすることで、ご使用の依存関係を最新状態に保ちます{% ifversion fpt or ghec or ghes > 3.2 or ghae %}。また、自動的に pull request を開き、依存関係を次に使用可能なセキュア バージョン ({% data variables.product.prodname_dependabot %} アラートがトリガーされたとき) または最新バージョン (リリースが公開されたとき) にアップグレードします{% else %}。こうしてユーザーが依存関係を更新できるようにします{% endif %}。
+{% data variables.product.prodname_dependabot %} は、依存関係のセキュリティ脆弱性をユーザーに通知しすることで、ご使用の依存関係を最新状態に保ちます{% ifversion fpt or ghec or ghes %}。また、自動的に pull request を開き、依存関係を次に使用可能なセキュア バージョン ({% data variables.product.prodname_dependabot %} アラートがトリガーされたとき) または最新バージョン (リリースが公開されたとき) にアップグレードします{% else %}。こうしてユーザーが依存関係を更新できるようにします{% endif %}。
 
-{% ifversion fpt or ghec or ghes > 3.2 %} "{% data variables.product.prodname_dependabot %}" という用語には、次の機能が含まれます。
+{% ifversion fpt or ghec or ghes %} "{% data variables.product.prodname_dependabot %}" という用語には、次の機能が含まれます。
 - {% data variables.product.prodname_dependabot_alerts %}— リポジトリの **[セキュリティ]** タブとリポジトリの依存関係グラフに表示される通知。 アラートには、プロジェクト内で影響を受けるファイルへのリンクと、修正バージョンに関する情報が含まれています。
 - {% data variables.product.prodname_dependabot_updates %}:
    - {% data variables.product.prodname_dependabot_security_updates %}— アラートがトリガーされたときに、更新プログラムをトリガーし、依存関係をセキュアなバージョンにアップグレードします。
    - {% data variables.product.prodname_dependabot_version_updates %}— 更新プログラムをスケジュールして、ご使用の依存関係を最新バージョンに保ちます。
+
+{% endif %}
+
+{% ifversion fpt or ghec %}
+
+{% data variables.product.prodname_dependabot_alerts %}、{% data variables.product.prodname_dependabot_security_updates %}、{% data variables.product.prodname_dependabot_version_updates %} は、{% data variables.product.product_name %} で実行するときに {% data variables.product.prodname_actions %} を使用しません。 ただし、{% data variables.product.prodname_dependabot %} によって開かれた pull request は、アクションを実行するワークフローをトリガーできます。 詳細については、「[{% data variables.product.prodname_actions %} による {% data variables.product.prodname_dependabot %} の自動化](/code-security/dependabot/working-with-dependabot/automating-dependabot-with-github-actions)」を参照してください。
+
+{% elsif ghes %}
+
+{% data variables.product.prodname_dependabot_security_updates %}、{% data variables.product.prodname_dependabot_version_updates %} は、{% data variables.product.product_name %} で実行するために {% data variables.product.prodname_actions %} が必要です。 {% data variables.product.prodname_dependabot_alerts %}では、{% data variables.product.prodname_actions %} は必要ありません。 詳細については、「[企業に対する {% data variables.product.prodname_dependabot %} の有効化](/admin/configuration/configuring-github-connect/enabling-dependabot-for-your-enterprise)」を参照してください。
+
+{% elsif ghae %}
+
+{% data variables.product.prodname_actions %} では、{% data variables.product.product_name %} で実行するために {% data variables.product.prodname_dependabot_alerts %}は必要ありません。
+
 {% endif %}
 
 #### Dependabot アラートとは
@@ -95,13 +110,13 @@ ms.locfileid: '147064891'
 
 - {% data variables.product.prodname_dependabot %} は、次の場合に、スキャンを実行して安全ではない依存関係を検出し、{% data variables.product.prodname_dependabot_alerts %}を送信します。{% ifversion fpt or ghec %}
    - {% data variables.product.prodname_advisory_database %} に新しいアドバイザリが追加されたとき。{% else %}
-   - 新しいアドバイザリ データが {% data variables.product.prodname_dotcom_the_website %} から 1 時間ごとに {% data variables.product.product_location %} に同期されたとき。 {% data reusables.security-advisory.link-browsing-advisory-db %}{% endif %}
+   - 新しいアドバイザリ データが {% data variables.product.prodname_dotcom_the_website %} から 1 時間ごとに {% data variables.location.product_location %} に同期されたとき。 {% data reusables.security-advisory.link-browsing-advisory-db %}{% endif %}
    - リポジトリの依存関係グラフが変更されたとき。 
 - {% data variables.product.prodname_dependabot_alerts %}が、{% ifversion fpt or ghec or ghes %}リポジトリの **[セキュリティ]** タブと{% endif %}リポジトリの依存関係グラフに表示されたとき。 アラートには、{% ifversion fpt or ghec or ghes %}プロジェクト内の影響を受けるファイルへのリンクと、{% endif %}固定バージョンに関する情報が含まれます。
 
 詳細については、「[{% data variables.product.prodname_dependabot_alerts %}について](/code-security/supply-chain-security/managing-vulnerabilities-in-your-projects-dependencies/about-alerts-for-vulnerable-dependencies)」を参照してください。
 
-{% ifversion fpt or ghec or ghes > 3.2 %}
+{% ifversion fpt or ghec or ghes %}
 #### Dependabot 更新プログラムとは
 
 2 種類の {% data variables.product.prodname_dependabot_updates %}があります。{% data variables.product.prodname_dependabot %} "_セキュリティ_" 更新プログラムと "_バージョン_" 更新プログラムです。 {% data variables.product.prodname_dependabot %} は、どちらのケースでも依存関係を更新するために自動 pull request を生成しますが、いくつかの違いがあります。
@@ -147,8 +162,8 @@ ms.locfileid: '147064891'
 
 {% ifversion ghes or ghae %}
 - **依存関係グラフ** および **{% data variables.product.prodname_dependabot_alerts %}** — 既定で有効になっていません。 どちらの機能も、エンタープライズ所有者によってエンタープライズ レベルで構成されます。 詳細については、{% ifversion ghes %}「[エンタープライズの依存関係グラフの有効化](/admin/code-security/managing-supply-chain-security-for-your-enterprise/enabling-the-dependency-graph-for-your-enterprise)」および{% endif %}「[エンタープライズの {% data variables.product.prodname_dependabot %} の有効化](/admin/configuration/configuring-github-connect/enabling-dependabot-for-your-enterprise)」を参照してください。
-- **依存関係レビュー**— {% data variables.product.product_location %}に対して依存関係グラフが有効になっており、{% data variables.product.prodname_advanced_security %} が組織またはリポジトリで有効になっている場合に使用できます。 詳細については、「[{% data variables.product.prodname_GH_advanced_security %} について](/get-started/learning-about-github/about-github-advanced-security)」を参照してください。
-{% endif %} {% ifversion ghes > 3.2 %}
+- **依存関係レビュー**— {% data variables.location.product_location %}に対して依存関係グラフが有効になっており、{% data variables.product.prodname_advanced_security %} が組織またはリポジトリで有効になっている場合に使用できます。 詳細については、「[{% data variables.product.prodname_GH_advanced_security %} について](/get-started/learning-about-github/about-github-advanced-security)」を参照してください。
+{% endif %} {% ifversion ghes %}
 - **{% data variables.product.prodname_dependabot_security_updates %}** — 既定で有効になっていません。 {% data variables.product.prodname_dependabot_alerts %} と依存関係グラフを使用する任意のリポジトリで {% data variables.product.prodname_dependabot_security_updates %} を有効にすることができます。 セキュリティ更新プログラムの有効化の詳細については、「[{% data variables.product.prodname_dependabot_security_updates %}の構成](/code-security/dependabot/dependabot-security-updates/configuring-dependabot-security-updates)」を参照してください。
 - **{% data variables.product.prodname_dependabot_version_updates %}** — 既定で有効になっていません。 リポジトリへの書き込みアクセス許可を持つユーザーは、{% data variables.product.prodname_dependabot_version_updates %}を有効にすることができます。 セキュリティ更新プログラムの有効化の詳細については、「[{% data variables.product.prodname_dependabot_version_updates %} の構成](/code-security/dependabot/dependabot-version-updates/configuring-dependabot-version-updates)」を参照してください。
 {% endif %}
