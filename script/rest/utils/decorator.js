@@ -2,7 +2,6 @@ import { existsSync, mkdirSync } from 'fs'
 import { readFile, writeFile } from 'fs/promises'
 import path from 'path'
 import { slug } from 'github-slugger'
-import rimraf from 'rimraf'
 
 import { allVersions } from '../../../lib/all-versions.js'
 import { categoriesWithoutSubcategories } from '../../../lib/rest/index.js'
@@ -24,7 +23,7 @@ export async function decorate(schemas) {
 }
 
 async function getRestOperations(restSchemas) {
-  console.log('⏭️  Start generating static REST files\n')
+  console.log('\n⏭️  Start generating static REST files\n')
   const restSchemaData = await getDereferencedFiles(restSchemas)
   const restOperations = {}
   for (const [schemaName, schema] of Object.entries(restSchemaData)) {
@@ -48,7 +47,7 @@ async function getRestOperations(restSchemas) {
 
 async function getWebhookOperations(webhookSchemas) {
   console.log('⏭️  Start generating static webhook files\n')
-  const webhookSchemaData = getDereferencedFiles(webhookSchemas)
+  const webhookSchemaData = await getDereferencedFiles(webhookSchemas)
   const webhookOperations = {}
   for (const [schemaName, schema] of Object.entries(webhookSchemaData)) {
     try {
@@ -68,7 +67,6 @@ async function getWebhookOperations(webhookSchemas) {
 }
 
 async function createStaticRestFiles(restOperations) {
-  rimraf.sync(`${REST_DECORATED_DIR}/*`)
   const operationsEnabledForGitHubApps = {}
   const clientSideRedirects = await getCategoryOverrideRedirects()
   for (const schemaName in restOperations) {
@@ -174,7 +172,6 @@ async function createStaticWebhookFiles(webhookSchemas) {
     )
     return
   }
-  rimraf.sync(`${WEBHOOK_DECORATED_DIR}/*`)
   // Create a map of webhooks (e.g. check_run, issues, release) to the
   // webhook's actions (e.g. created, deleted, etc.).
   //
