@@ -1408,6 +1408,40 @@
       ]
     },
     {
+      "name": "closeDiscussion",
+      "kind": "mutations",
+      "id": "closediscussion",
+      "href": "/graphql/reference/mutations#closediscussion",
+      "description": "<p>Close a discussion.</p>",
+      "inputFields": [
+        {
+          "name": "input",
+          "type": "CloseDiscussionInput!",
+          "id": "closediscussioninput",
+          "kind": "input-objects",
+          "href": "/graphql/reference/input-objects#closediscussioninput"
+        }
+      ],
+      "returnFields": [
+        {
+          "name": "clientMutationId",
+          "type": "String",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string",
+          "description": "<p>A unique identifier for the client performing the mutation.</p>"
+        },
+        {
+          "name": "discussion",
+          "type": "Discussion",
+          "id": "discussion",
+          "kind": "objects",
+          "href": "/graphql/reference/objects#discussion",
+          "description": "<p>The discussion that was closed.</p>"
+        }
+      ]
+    },
+    {
       "name": "closeIssue",
       "kind": "mutations",
       "id": "closeissue",
@@ -3980,6 +4014,40 @@
       ]
     },
     {
+      "name": "reopenDiscussion",
+      "kind": "mutations",
+      "id": "reopendiscussion",
+      "href": "/graphql/reference/mutations#reopendiscussion",
+      "description": "<p>Reopen a discussion.</p>",
+      "inputFields": [
+        {
+          "name": "input",
+          "type": "ReopenDiscussionInput!",
+          "id": "reopendiscussioninput",
+          "kind": "input-objects",
+          "href": "/graphql/reference/input-objects#reopendiscussioninput"
+        }
+      ],
+      "returnFields": [
+        {
+          "name": "clientMutationId",
+          "type": "String",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string",
+          "description": "<p>A unique identifier for the client performing the mutation.</p>"
+        },
+        {
+          "name": "discussion",
+          "type": "Discussion",
+          "id": "discussion",
+          "kind": "objects",
+          "href": "/graphql/reference/objects#discussion",
+          "description": "<p>The discussion that was reopened.</p>"
+        }
+      ]
+    },
+    {
       "name": "reopenIssue",
       "kind": "mutations",
       "id": "reopenissue",
@@ -6219,7 +6287,7 @@
       "description": "<p>Creates, updates and/or deletes multiple refs in a repository.</p>\n<p>This mutation takes a list of <code>RefUpdate</code>s and performs these updates\non the repository. All updates are performed atomically, meaning that\nif one of them is rejected, no other ref will be modified.</p>\n<p><code>RefUpdate.beforeOid</code> specifies that the given reference needs to point\nto the given value before performing any updates. A value of\n<code>0000000000000000000000000000000000000000</code> can be used to verify that\nthe references should not exist.</p>\n<p><code>RefUpdate.afterOid</code> specifies the value that the given reference\nwill point to after performing all updates. A value of\n<code>0000000000000000000000000000000000000000</code> can be used to delete a\nreference.</p>\n<p>If <code>RefUpdate.force</code> is set to <code>true</code>, a non-fast-forward updates\nfor the given reference will be allowed.</p>",
       "isDeprecated": false,
       "preview": {
-        "title": "Update refs preview",
+        "title": "Update refs preview update multiple refs in a single operation preview",
         "description": "This preview adds support for updating multiple refs in a single operation.",
         "toggled_by": "update-refs-preview",
         "toggled_on": [
@@ -6231,7 +6299,7 @@
           "@github/reponauts"
         ],
         "accept_header": "application/vnd.github.update-refs-preview+json",
-        "href": "/graphql/overview/schema-previews#update-refs-preview"
+        "href": "/graphql/overview/schema-previews#update-refs-preview-update-multiple-refs-in-a-single-operation-preview"
       },
       "inputFields": [
         {
@@ -8161,6 +8229,14 @@
           "href": "/graphql/reference/scalars#int"
         },
         {
+          "name": "requiredDeploymentEnvironments",
+          "description": "<p>List of required deployment environments that must be deployed successfully to update matching branches.</p>",
+          "type": "[String]",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string"
+        },
+        {
           "name": "requiredStatusCheckContexts",
           "description": "<p>List of required status check contexts that must pass for commits to be accepted to matching branches.</p>",
           "type": "[String]",
@@ -8203,6 +8279,14 @@
         {
           "name": "requiresConversationResolution",
           "description": "<p>Are conversations required to be resolved before merging.</p>",
+          "type": "Boolean!",
+          "id": "boolean",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#boolean"
+        },
+        {
+          "name": "requiresDeployments",
+          "description": "<p>Does this branch require deployment to specific environments before merging.</p>",
           "type": "Boolean!",
           "id": "boolean",
           "kind": "scalars",
@@ -13937,7 +14021,7 @@
       "description": "<p>A dependency manifest entry.</p>",
       "isDeprecated": false,
       "preview": {
-        "title": "Access to a repository s dependency graph preview",
+        "title": "Access to a repository's dependency graph preview",
         "description": "This preview adds support for reading a dependency graph for a repository.",
         "toggled_by": "hawkgirl-preview",
         "toggled_on": [
@@ -13954,7 +14038,7 @@
           "@github/dependency-graph"
         ],
         "accept_header": "application/vnd.github.hawkgirl-preview+json",
-        "href": "/graphql/overview/schema-previews#access-to-a-repository-s-dependency-graph-preview"
+        "href": "/graphql/overview/schema-previews#access-to-a-repositorys-dependency-graph-preview"
       },
       "fields": [
         {
@@ -14017,7 +14101,7 @@
       "description": "<p>The connection type for DependencyGraphDependency.</p>",
       "isDeprecated": false,
       "preview": {
-        "title": "Access to a repository s dependency graph preview",
+        "title": "Access to a repository's dependency graph preview",
         "description": "This preview adds support for reading a dependency graph for a repository.",
         "toggled_by": "hawkgirl-preview",
         "toggled_on": [
@@ -14034,7 +14118,7 @@
           "@github/dependency-graph"
         ],
         "accept_header": "application/vnd.github.hawkgirl-preview+json",
-        "href": "/graphql/overview/schema-previews#access-to-a-repository-s-dependency-graph-preview"
+        "href": "/graphql/overview/schema-previews#access-to-a-repositorys-dependency-graph-preview"
       },
       "fields": [
         {
@@ -14079,7 +14163,7 @@
       "description": "<p>An edge in a connection.</p>",
       "isDeprecated": false,
       "preview": {
-        "title": "Access to a repository s dependency graph preview",
+        "title": "Access to a repository's dependency graph preview",
         "description": "This preview adds support for reading a dependency graph for a repository.",
         "toggled_by": "hawkgirl-preview",
         "toggled_on": [
@@ -14096,7 +14180,7 @@
           "@github/dependency-graph"
         ],
         "accept_header": "application/vnd.github.hawkgirl-preview+json",
-        "href": "/graphql/overview/schema-previews#access-to-a-repository-s-dependency-graph-preview"
+        "href": "/graphql/overview/schema-previews#access-to-a-repositorys-dependency-graph-preview"
       },
       "fields": [
         {
@@ -14125,7 +14209,7 @@
       "description": "<p>Dependency manifest for a repository.</p>",
       "isDeprecated": false,
       "preview": {
-        "title": "Access to a repository s dependency graph preview",
+        "title": "Access to a repository's dependency graph preview",
         "description": "This preview adds support for reading a dependency graph for a repository.",
         "toggled_by": "hawkgirl-preview",
         "toggled_on": [
@@ -14142,7 +14226,7 @@
           "@github/dependency-graph"
         ],
         "accept_header": "application/vnd.github.hawkgirl-preview+json",
-        "href": "/graphql/overview/schema-previews#access-to-a-repository-s-dependency-graph-preview"
+        "href": "/graphql/overview/schema-previews#access-to-a-repositorys-dependency-graph-preview"
       },
       "implements": [
         {
@@ -14260,7 +14344,7 @@
       "description": "<p>The connection type for DependencyGraphManifest.</p>",
       "isDeprecated": false,
       "preview": {
-        "title": "Access to a repository s dependency graph preview",
+        "title": "Access to a repository's dependency graph preview",
         "description": "This preview adds support for reading a dependency graph for a repository.",
         "toggled_by": "hawkgirl-preview",
         "toggled_on": [
@@ -14277,7 +14361,7 @@
           "@github/dependency-graph"
         ],
         "accept_header": "application/vnd.github.hawkgirl-preview+json",
-        "href": "/graphql/overview/schema-previews#access-to-a-repository-s-dependency-graph-preview"
+        "href": "/graphql/overview/schema-previews#access-to-a-repositorys-dependency-graph-preview"
       },
       "fields": [
         {
@@ -14322,7 +14406,7 @@
       "description": "<p>An edge in a connection.</p>",
       "isDeprecated": false,
       "preview": {
-        "title": "Access to a repository s dependency graph preview",
+        "title": "Access to a repository's dependency graph preview",
         "description": "This preview adds support for reading a dependency graph for a repository.",
         "toggled_by": "hawkgirl-preview",
         "toggled_on": [
@@ -14339,7 +14423,7 @@
           "@github/dependency-graph"
         ],
         "accept_header": "application/vnd.github.hawkgirl-preview+json",
-        "href": "/graphql/overview/schema-previews#access-to-a-repository-s-dependency-graph-preview"
+        "href": "/graphql/overview/schema-previews#access-to-a-repositorys-dependency-graph-preview"
       },
       "fields": [
         {
@@ -16053,6 +16137,14 @@
           "href": "/graphql/reference/scalars#uri"
         },
         {
+          "name": "stateReason",
+          "description": "<p>Identifies the reason for the discussion's state.</p>",
+          "type": "DiscussionStateReason",
+          "id": "discussionstatereason",
+          "kind": "enums",
+          "href": "/graphql/reference/enums#discussionstatereason"
+        },
+        {
           "name": "title",
           "description": "<p>The title of this discussion.</p>",
           "type": "String!",
@@ -16135,6 +16227,14 @@
           ]
         },
         {
+          "name": "viewerCanClose",
+          "description": "<p>Indicates if the object can be closed by the viewer.</p>",
+          "type": "Boolean!",
+          "id": "boolean",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#boolean"
+        },
+        {
           "name": "viewerCanDelete",
           "description": "<p>Check if the current viewer can delete this object.</p>",
           "type": "Boolean!",
@@ -16145,6 +16245,14 @@
         {
           "name": "viewerCanReact",
           "description": "<p>Can user react to this subject.</p>",
+          "type": "Boolean!",
+          "id": "boolean",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#boolean"
+        },
+        {
+          "name": "viewerCanReopen",
+          "description": "<p>Indicates if the object can be reopened by the viewer.</p>",
           "type": "Boolean!",
           "id": "boolean",
           "kind": "scalars",
@@ -23718,8 +23826,24 @@
           ]
         },
         {
+          "name": "viewerCanClose",
+          "description": "<p>Indicates if the object can be closed by the viewer.</p>",
+          "type": "Boolean!",
+          "id": "boolean",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#boolean"
+        },
+        {
           "name": "viewerCanReact",
           "description": "<p>Can user react to this subject.</p>",
+          "type": "Boolean!",
+          "id": "boolean",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#boolean"
+        },
+        {
+          "name": "viewerCanReopen",
+          "description": "<p>Indicates if the object can be reopened by the viewer.</p>",
           "type": "Boolean!",
           "id": "boolean",
           "kind": "scalars",
@@ -26708,6 +26832,22 @@
           "id": "uri",
           "kind": "scalars",
           "href": "/graphql/reference/scalars#uri"
+        },
+        {
+          "name": "viewerCanClose",
+          "description": "<p>Indicates if the object can be closed by the viewer.</p>",
+          "type": "Boolean!",
+          "id": "boolean",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#boolean"
+        },
+        {
+          "name": "viewerCanReopen",
+          "description": "<p>Indicates if the object can be reopened by the viewer.</p>",
+          "type": "Boolean!",
+          "id": "boolean",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#boolean"
         }
       ]
     },
@@ -33218,6 +33358,16 @@
                 "kind": "scalars",
                 "href": "/graphql/reference/scalars#id"
               }
+            },
+            {
+              "name": "states",
+              "description": "<p>A list of states to filter the discussions by.</p>",
+              "type": {
+                "name": "[DiscussionState!]",
+                "id": "discussionstate",
+                "kind": "enums",
+                "href": "/graphql/reference/enums#discussionstate"
+              }
             }
           ]
         },
@@ -35683,6 +35833,22 @@
           "href": "/graphql/reference/scalars#uri"
         },
         {
+          "name": "viewerCanClose",
+          "description": "<p>Indicates if the object can be closed by the viewer.</p>",
+          "type": "Boolean!",
+          "id": "boolean",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#boolean"
+        },
+        {
+          "name": "viewerCanReopen",
+          "description": "<p>Indicates if the object can be reopened by the viewer.</p>",
+          "type": "Boolean!",
+          "id": "boolean",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#boolean"
+        },
+        {
           "name": "viewerCanUpdate",
           "description": "<p>Check if the current viewer can update this object.</p>",
           "type": "Boolean!",
@@ -36561,7 +36727,7 @@
           "href": "/graphql/reference/scalars#boolean",
           "isDeprecated": false,
           "preview": {
-            "title": "Merge info preview",
+            "title": "Merge info preview more detailed information about a pull request's merge state preview",
             "description": "This preview adds support for accessing fields that provide more detailed information about a pull request's merge state.",
             "toggled_by": "merge-info-preview",
             "toggled_on": [
@@ -36572,7 +36738,7 @@
               "@github/pe-pull-requests"
             ],
             "accept_header": "application/vnd.github.merge-info-preview+json",
-            "href": "/graphql/overview/schema-previews#merge-info-preview"
+            "href": "/graphql/overview/schema-previews#merge-info-preview-more-detailed-information-about-a-pull-requests-merge-state-preview"
           }
         },
         {
@@ -37191,7 +37357,7 @@
           "href": "/graphql/reference/enums#mergestatestatus",
           "isDeprecated": false,
           "preview": {
-            "title": "Merge info preview",
+            "title": "Merge info preview more detailed information about a pull request's merge state preview",
             "description": "This preview adds support for accessing fields that provide more detailed information about a pull request's merge state.",
             "toggled_by": "merge-info-preview",
             "toggled_on": [
@@ -37202,7 +37368,7 @@
               "@github/pe-pull-requests"
             ],
             "accept_header": "application/vnd.github.merge-info-preview+json",
-            "href": "/graphql/overview/schema-previews#merge-info-preview"
+            "href": "/graphql/overview/schema-previews#merge-info-preview-more-detailed-information-about-a-pull-requests-merge-state-preview"
           }
         },
         {
@@ -37932,6 +38098,14 @@
           "href": "/graphql/reference/scalars#boolean"
         },
         {
+          "name": "viewerCanClose",
+          "description": "<p>Indicates if the object can be closed by the viewer.</p>",
+          "type": "Boolean!",
+          "id": "boolean",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#boolean"
+        },
+        {
           "name": "viewerCanDeleteHeadRef",
           "description": "<p>Check if the viewer can restore the deleted head ref.</p>",
           "type": "Boolean!",
@@ -37980,6 +38154,14 @@
           "href": "/graphql/reference/scalars#boolean"
         },
         {
+          "name": "viewerCanReopen",
+          "description": "<p>Indicates if the object can be reopened by the viewer.</p>",
+          "type": "Boolean!",
+          "id": "boolean",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#boolean"
+        },
+        {
           "name": "viewerCanSubscribe",
           "description": "<p>Check if the viewer is able to change their subscription status for the repository.</p>",
           "type": "Boolean!",
@@ -37990,6 +38172,14 @@
         {
           "name": "viewerCanUpdate",
           "description": "<p>Check if the current viewer can update this object.</p>",
+          "type": "Boolean!",
+          "id": "boolean",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#boolean"
+        },
+        {
+          "name": "viewerCanUpdateBranch",
+          "description": "<p>Whether or not the viewer can update the head ref of this PR, by merging or rebasing the base ref.\nIf the head ref is up to date or unable to be updated by this user, this will return false.</p>",
           "type": "Boolean!",
           "id": "boolean",
           "kind": "scalars",
@@ -46479,6 +46669,16 @@
               }
             },
             {
+              "name": "login",
+              "description": "<p>The login of one specific collaborator.</p>",
+              "type": {
+                "name": "String",
+                "id": "string",
+                "kind": "scalars",
+                "href": "/graphql/reference/scalars#string"
+              }
+            },
+            {
               "name": "query",
               "description": "<p>Filters users with query on user name and login.</p>",
               "type": {
@@ -46661,7 +46861,7 @@
           ],
           "isDeprecated": false,
           "preview": {
-            "title": "Access to a repository s dependency graph preview",
+            "title": "Access to a repository's dependency graph preview",
             "description": "This preview adds support for reading a dependency graph for a repository.",
             "toggled_by": "hawkgirl-preview",
             "toggled_on": [
@@ -46678,7 +46878,7 @@
               "@github/dependency-graph"
             ],
             "accept_header": "application/vnd.github.hawkgirl-preview+json",
-            "href": "/graphql/overview/schema-previews#access-to-a-repository-s-dependency-graph-preview"
+            "href": "/graphql/overview/schema-previews#access-to-a-repositorys-dependency-graph-preview"
           }
         },
         {
@@ -46984,6 +47184,16 @@
                 "id": "discussionorder",
                 "kind": "input-objects",
                 "href": "/graphql/reference/input-objects#discussionorder"
+              }
+            },
+            {
+              "name": "states",
+              "description": "<p>A list of states to filter the discussions by.</p>",
+              "type": {
+                "name": "[DiscussionState!]",
+                "id": "discussionstate",
+                "kind": "enums",
+                "href": "/graphql/reference/enums#discussionstate"
               }
             }
           ]
@@ -51653,6 +51863,105 @@
           "id": "boolean",
           "kind": "scalars",
           "href": "/graphql/reference/scalars#boolean"
+        }
+      ]
+    },
+    {
+      "name": "SocialAccount",
+      "kind": "objects",
+      "id": "socialaccount",
+      "href": "/graphql/reference/objects#socialaccount",
+      "description": "<p>Social media profile associated with a user.</p>",
+      "fields": [
+        {
+          "name": "displayName",
+          "description": "<p>Name of the social media account as it appears on the profile.</p>",
+          "type": "String!",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string"
+        },
+        {
+          "name": "provider",
+          "description": "<p>Software or company that hosts the social media account.</p>",
+          "type": "SocialAccountProvider!",
+          "id": "socialaccountprovider",
+          "kind": "enums",
+          "href": "/graphql/reference/enums#socialaccountprovider"
+        },
+        {
+          "name": "url",
+          "description": "<p>URL of the social media account.</p>",
+          "type": "URI!",
+          "id": "uri",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#uri"
+        }
+      ]
+    },
+    {
+      "name": "SocialAccountConnection",
+      "kind": "objects",
+      "id": "socialaccountconnection",
+      "href": "/graphql/reference/objects#socialaccountconnection",
+      "description": "<p>The connection type for SocialAccount.</p>",
+      "fields": [
+        {
+          "name": "edges",
+          "description": "<p>A list of edges.</p>",
+          "type": "[SocialAccountEdge]",
+          "id": "socialaccountedge",
+          "kind": "objects",
+          "href": "/graphql/reference/objects#socialaccountedge"
+        },
+        {
+          "name": "nodes",
+          "description": "<p>A list of nodes.</p>",
+          "type": "[SocialAccount]",
+          "id": "socialaccount",
+          "kind": "objects",
+          "href": "/graphql/reference/objects#socialaccount"
+        },
+        {
+          "name": "pageInfo",
+          "description": "<p>Information to aid in pagination.</p>",
+          "type": "PageInfo!",
+          "id": "pageinfo",
+          "kind": "objects",
+          "href": "/graphql/reference/objects#pageinfo"
+        },
+        {
+          "name": "totalCount",
+          "description": "<p>Identifies the total count of items in the connection.</p>",
+          "type": "Int!",
+          "id": "int",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#int"
+        }
+      ]
+    },
+    {
+      "name": "SocialAccountEdge",
+      "kind": "objects",
+      "id": "socialaccountedge",
+      "href": "/graphql/reference/objects#socialaccountedge",
+      "description": "<p>An edge in a connection.</p>",
+      "fields": [
+        {
+          "name": "cursor",
+          "description": "<p>A cursor for use in pagination.</p>",
+          "type": "String!",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string"
+        },
+        {
+          "name": "node",
+          "description": "<p>The item at the end of the edge.</p>",
+          "type": "SocialAccount",
+          "id": "socialaccount",
+          "kind": "objects",
+          "href": "/graphql/reference/objects#socialaccount"
         }
       ]
     },
@@ -58397,6 +58706,16 @@
                 "kind": "scalars",
                 "href": "/graphql/reference/scalars#id"
               }
+            },
+            {
+              "name": "states",
+              "description": "<p>A list of states to filter the discussions by.</p>",
+              "type": {
+                "name": "[DiscussionState!]",
+                "id": "discussionstate",
+                "kind": "enums",
+                "href": "/graphql/reference/enums#discussionstate"
+              }
             }
           ]
         },
@@ -58464,6 +58783,56 @@
                 "id": "savedreplyorder",
                 "kind": "input-objects",
                 "href": "/graphql/reference/input-objects#savedreplyorder"
+              }
+            }
+          ]
+        },
+        {
+          "name": "socialAccounts",
+          "description": "<p>The user's social media accounts, ordered as they appear on the user's profile.</p>",
+          "type": "SocialAccountConnection!",
+          "id": "socialaccountconnection",
+          "kind": "objects",
+          "href": "/graphql/reference/objects#socialaccountconnection",
+          "arguments": [
+            {
+              "name": "after",
+              "description": "<p>Returns the elements in the list that come after the specified cursor.</p>",
+              "type": {
+                "name": "String",
+                "id": "string",
+                "kind": "scalars",
+                "href": "/graphql/reference/scalars#string"
+              }
+            },
+            {
+              "name": "before",
+              "description": "<p>Returns the elements in the list that come before the specified cursor.</p>",
+              "type": {
+                "name": "String",
+                "id": "string",
+                "kind": "scalars",
+                "href": "/graphql/reference/scalars#string"
+              }
+            },
+            {
+              "name": "first",
+              "description": "<p>Returns the first <em>n</em> elements from the list.</p>",
+              "type": {
+                "name": "Int",
+                "id": "int",
+                "kind": "scalars",
+                "href": "/graphql/reference/scalars#int"
+              }
+            },
+            {
+              "name": "last",
+              "description": "<p>Returns the last <em>n</em> elements from the list.</p>",
+              "type": {
+                "name": "Int",
+                "id": "int",
+                "kind": "scalars",
+                "href": "/graphql/reference/scalars#int"
               }
             }
           ]
@@ -59471,6 +59840,14 @@
           ]
         },
         {
+          "name": "event",
+          "description": "<p>The event that triggered the workflow run.</p>",
+          "type": "String!",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string"
+        },
+        {
           "name": "pendingDeploymentRequests",
           "description": "<p>The pending deployment requests of all check runs in this workflow run.</p>",
           "type": "DeploymentRequestConnection!",
@@ -59910,6 +60287,22 @@
           "id": "datetime",
           "kind": "scalars",
           "href": "/graphql/reference/scalars#datetime"
+        },
+        {
+          "name": "viewerCanClose",
+          "description": "<p>Indicates if the object can be closed by the viewer.</p>",
+          "type": "Boolean!",
+          "id": "boolean",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#boolean"
+        },
+        {
+          "name": "viewerCanReopen",
+          "description": "<p>Indicates if the object can be reopened by the viewer.</p>",
+          "type": "Boolean!",
+          "id": "boolean",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#boolean"
         }
       ]
     },
@@ -61255,6 +61648,16 @@
                 "id": "id",
                 "kind": "scalars",
                 "href": "/graphql/reference/scalars#id"
+              }
+            },
+            {
+              "name": "states",
+              "description": "<p>A list of states to filter the discussions by.</p>",
+              "type": {
+                "name": "[DiscussionState!]",
+                "id": "discussionstate",
+                "kind": "enums",
+                "href": "/graphql/reference/enums#discussionstate"
               }
             }
           ]
@@ -62692,6 +63095,27 @@
       ]
     },
     {
+      "name": "DiscussionCloseReason",
+      "kind": "enums",
+      "id": "discussionclosereason",
+      "href": "/graphql/reference/enums#discussionclosereason",
+      "description": "<p>The possible reasons for closing a discussion.</p>",
+      "values": [
+        {
+          "name": "DUPLICATE",
+          "description": "<p>The discussion is a duplicate of another.</p>"
+        },
+        {
+          "name": "OUTDATED",
+          "description": "<p>The discussion is no longer relevant.</p>"
+        },
+        {
+          "name": "RESOLVED",
+          "description": "<p>The discussion has been resolved.</p>"
+        }
+      ]
+    },
+    {
       "name": "DiscussionOrderField",
       "kind": "enums",
       "id": "discussionorderfield",
@@ -62705,6 +63129,48 @@
         {
           "name": "UPDATED_AT",
           "description": "<p>Order discussions by most recent modification time.</p>"
+        }
+      ]
+    },
+    {
+      "name": "DiscussionState",
+      "kind": "enums",
+      "id": "discussionstate",
+      "href": "/graphql/reference/enums#discussionstate",
+      "description": "<p>The possible states of a discussion.</p>",
+      "values": [
+        {
+          "name": "CLOSED",
+          "description": "<p>A discussion that has been closed.</p>"
+        },
+        {
+          "name": "OPEN",
+          "description": "<p>A discussion that is open.</p>"
+        }
+      ]
+    },
+    {
+      "name": "DiscussionStateReason",
+      "kind": "enums",
+      "id": "discussionstatereason",
+      "href": "/graphql/reference/enums#discussionstatereason",
+      "description": "<p>The possible state reasons of a discussion.</p>",
+      "values": [
+        {
+          "name": "DUPLICATE",
+          "description": "<p>The discussion is a duplicate of another.</p>"
+        },
+        {
+          "name": "OUTDATED",
+          "description": "<p>The discussion is no longer relevant.</p>"
+        },
+        {
+          "name": "REOPENED",
+          "description": "<p>The discussion was reopened.</p>"
+        },
+        {
+          "name": "RESOLVED",
+          "description": "<p>The discussion has been resolved.</p>"
         }
       ]
     },
@@ -65648,6 +66114,55 @@
         {
           "name": "MODERATE",
           "description": "<p>Moderate.</p>"
+        }
+      ]
+    },
+    {
+      "name": "SocialAccountProvider",
+      "kind": "enums",
+      "id": "socialaccountprovider",
+      "href": "/graphql/reference/enums#socialaccountprovider",
+      "description": "<p>Software or company that hosts social media accounts.</p>",
+      "values": [
+        {
+          "name": "FACEBOOK",
+          "description": "<p>Social media and networking website.</p>"
+        },
+        {
+          "name": "GENERIC",
+          "description": "<p>Catch-all for social media providers that do not yet have specific handling.</p>"
+        },
+        {
+          "name": "HOMETOWN",
+          "description": "<p>Fork of Mastodon with a greater focus on local posting.</p>"
+        },
+        {
+          "name": "INSTAGRAM",
+          "description": "<p>Social media website with a focus on photo and video sharing.</p>"
+        },
+        {
+          "name": "LINKEDIN",
+          "description": "<p>Professional networking website.</p>"
+        },
+        {
+          "name": "MASTODON",
+          "description": "<p>Open-source federated microblogging service.</p>"
+        },
+        {
+          "name": "REDDIT",
+          "description": "<p>Social news aggregation and discussion website.</p>"
+        },
+        {
+          "name": "TWITCH",
+          "description": "<p>Live-streaming service.</p>"
+        },
+        {
+          "name": "TWITTER",
+          "description": "<p>Microblogging website.</p>"
+        },
+        {
+          "name": "YOUTUBE",
+          "description": "<p>Online video platform.</p>"
         }
       ]
     },
@@ -68876,6 +69391,40 @@
       ]
     },
     {
+      "name": "CloseDiscussionInput",
+      "kind": "inputObjects",
+      "id": "closediscussioninput",
+      "href": "/graphql/reference/input-objects#closediscussioninput",
+      "description": "<p>Autogenerated input type of CloseDiscussion.</p>",
+      "inputFields": [
+        {
+          "name": "clientMutationId",
+          "description": "<p>A unique identifier for the client performing the mutation.</p>",
+          "type": "String",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string"
+        },
+        {
+          "name": "discussionId",
+          "description": "<p>ID of the discussion to be closed.</p>",
+          "type": "ID!",
+          "id": "id",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#id",
+          "isDeprecated": false
+        },
+        {
+          "name": "reason",
+          "description": "<p>The reason why the discussion is being closed.</p>",
+          "type": "DiscussionCloseReason",
+          "id": "discussionclosereason",
+          "kind": "enums",
+          "href": "/graphql/reference/enums#discussionclosereason"
+        }
+      ]
+    },
+    {
       "name": "CloseIssueInput",
       "kind": "inputObjects",
       "id": "closeissueinput",
@@ -69310,6 +69859,14 @@
           "href": "/graphql/reference/scalars#int"
         },
         {
+          "name": "requiredDeploymentEnvironments",
+          "description": "<p>The list of required deployment environments.</p>",
+          "type": "[String!]",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string"
+        },
+        {
           "name": "requiredStatusCheckContexts",
           "description": "<p>List of required status check contexts that must pass for commits to be accepted to matching branches.</p>",
           "type": "[String!]",
@@ -69352,6 +69909,14 @@
         {
           "name": "requiresConversationResolution",
           "description": "<p>Are conversations required to be resolved before merging.</p>",
+          "type": "Boolean",
+          "id": "boolean",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#boolean"
+        },
+        {
+          "name": "requiresDeployments",
+          "description": "<p>Are successful deployments required before merging.</p>",
           "type": "Boolean",
           "id": "boolean",
           "kind": "scalars",
@@ -71364,6 +71929,14 @@
           "href": "/graphql/reference/scalars#string"
         },
         {
+          "name": "expectedHeadOid",
+          "description": "<p>The expected head OID of the pull request.</p>",
+          "type": "GitObjectID",
+          "id": "gitobjectid",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#gitobjectid"
+        },
+        {
           "name": "mergeMethod",
           "description": "<p>The merge method to use. If omitted, defaults to <code>MERGE</code>. NOTE: when merging\nwith a merge queue any input value for merge method is ignored.</p>",
           "type": "PullRequestMergeMethod",
@@ -72666,7 +73239,7 @@
       "description": "<p>A ref update.</p>",
       "isDeprecated": false,
       "preview": {
-        "title": "Update refs preview",
+        "title": "Update refs preview update multiple refs in a single operation preview",
         "description": "This preview adds support for updating multiple refs in a single operation.",
         "toggled_by": "update-refs-preview",
         "toggled_on": [
@@ -72678,7 +73251,7 @@
           "@github/reponauts"
         ],
         "accept_header": "application/vnd.github.update-refs-preview+json",
-        "href": "/graphql/overview/schema-previews#update-refs-preview"
+        "href": "/graphql/overview/schema-previews#update-refs-preview-update-multiple-refs-in-a-single-operation-preview"
       },
       "inputFields": [
         {
@@ -72999,6 +73572,32 @@
         {
           "name": "subjectId",
           "description": "<p>The Node ID of the discussion or comment to remove upvote.</p>",
+          "type": "ID!",
+          "id": "id",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#id",
+          "isDeprecated": false
+        }
+      ]
+    },
+    {
+      "name": "ReopenDiscussionInput",
+      "kind": "inputObjects",
+      "id": "reopendiscussioninput",
+      "href": "/graphql/reference/input-objects#reopendiscussioninput",
+      "description": "<p>Autogenerated input type of ReopenDiscussion.</p>",
+      "inputFields": [
+        {
+          "name": "clientMutationId",
+          "description": "<p>A unique identifier for the client performing the mutation.</p>",
+          "type": "String",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string"
+        },
+        {
+          "name": "discussionId",
+          "description": "<p>ID of the discussion to be reopened.</p>",
           "type": "ID!",
           "id": "id",
           "kind": "scalars",
@@ -74223,6 +74822,14 @@
           "href": "/graphql/reference/scalars#int"
         },
         {
+          "name": "requiredDeploymentEnvironments",
+          "description": "<p>The list of required deployment environments.</p>",
+          "type": "[String!]",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string"
+        },
+        {
           "name": "requiredStatusCheckContexts",
           "description": "<p>List of required status check contexts that must pass for commits to be accepted to matching branches.</p>",
           "type": "[String!]",
@@ -74265,6 +74872,14 @@
         {
           "name": "requiresConversationResolution",
           "description": "<p>Are conversations required to be resolved before merging.</p>",
+          "type": "Boolean",
+          "id": "boolean",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#boolean"
+        },
+        {
+          "name": "requiresDeployments",
+          "description": "<p>Are successful deployments required before merging.</p>",
           "type": "Boolean",
           "id": "boolean",
           "kind": "scalars",
@@ -75963,7 +76578,7 @@
       "description": "<p>Autogenerated input type of UpdateRefs.</p>",
       "isDeprecated": false,
       "preview": {
-        "title": "Update refs preview",
+        "title": "Update refs preview update multiple refs in a single operation preview",
         "description": "This preview adds support for updating multiple refs in a single operation.",
         "toggled_by": "update-refs-preview",
         "toggled_on": [
@@ -75975,7 +76590,7 @@
           "@github/reponauts"
         ],
         "accept_header": "application/vnd.github.update-refs-preview+json",
-        "href": "/graphql/overview/schema-previews#update-refs-preview"
+        "href": "/graphql/overview/schema-previews#update-refs-preview-update-multiple-refs-in-a-single-operation-preview"
       },
       "inputFields": [
         {
@@ -76526,7 +77141,7 @@
       "description": "<p>A fully qualified reference name (e.g. <code>refs/heads/master</code>).</p>",
       "isDeprecated": false,
       "preview": {
-        "title": "Update refs preview",
+        "title": "Update refs preview update multiple refs in a single operation preview",
         "description": "This preview adds support for updating multiple refs in a single operation.",
         "toggled_by": "update-refs-preview",
         "toggled_on": [
@@ -76538,7 +77153,7 @@
           "@github/reponauts"
         ],
         "accept_header": "application/vnd.github.update-refs-preview+json",
-        "href": "/graphql/overview/schema-previews#update-refs-preview"
+        "href": "/graphql/overview/schema-previews#update-refs-preview-update-multiple-refs-in-a-single-operation-preview"
       }
     },
     {

@@ -189,8 +189,6 @@ Accept: application/xml
 
 Your device will show the user verification code and prompt the user to enter the code at {% data variables.product.device_authorization_url %}.
 
-  ![Field to enter the user verification code displayed on your device](/assets/images/github-apps/device_authorization_page_for_user_code.png)
-
 ### Step 3: App polls GitHub to check if the user authorized the device
 
     POST {% data variables.product.oauth_host_code %}/login/oauth/access_token
@@ -258,17 +256,7 @@ For more information, see the "[OAuth 2.0 Device Authorization Grant](https://to
 
 ## Non-Web application flow
 
-Non-web authentication is available for limited situations like testing. If you need to, you can use [Basic Authentication](/rest/overview/other-authentication-methods#basic-authentication) to create a {% data variables.product.pat_generic %} using your [{% data variables.product.pat_generic %}s settings page](/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token). This technique enables the user to revoke access at any time.
-
-{% ifversion fpt or ghes or ghec %}
-{% note %}
-
-**Note:** When using the non-web application flow to create an OAuth2 token, make sure to understand how to [work with
-two-factor authentication](/rest/overview/other-authentication-methods#working-with-two-factor-authentication) if
-you or your users have two-factor authentication enabled.
-
-{% endnote %}
-{% endif %}
+Non-web authentication is available for limited situations like testing. If you need to, you can use [Basic Authentication](/rest/overview/authenticating-to-the-rest-api#using-basic-authentication) to create a {% data variables.product.pat_generic %} using your [{% data variables.product.pat_generic %}s settings page](/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token). This technique enables the user to revoke access at any time.
 
 ## Redirect URLs
 

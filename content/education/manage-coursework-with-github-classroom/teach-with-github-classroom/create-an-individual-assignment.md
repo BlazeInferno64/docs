@@ -96,21 +96,18 @@ Optionally, you can automatically grade assignments and create a space for discu
 
 ### Creating a pull request for feedback
 
-{% data reusables.classroom.you-can-create-a-pull-request-for-feedback %}
+{% data reusables.classroom.you-can-create-a-pull-request-for-feedback %} For more information on leaving feedback in a pull request, see "[AUTOTITLE](/education/manage-coursework-with-github-classroom/teach-with-github-classroom/leave-feedback-with-pull-requests)."
 
 {% data reusables.classroom.assignments-guide-create-review-pull-request %}
 
 {% data reusables.classroom.assignments-guide-click-create-assignment-button %}
+
 
 ## Inviting students to an assignment
 
 {% data reusables.classroom.assignments-guide-invite-students-to-assignment %}
 
 You can see whether a student has joined the classroom and accepted or submitted an assignment in the **Classroom roster** tab for the assignment. You can also link students' {% data variables.product.prodname_dotcom %} aliases to their associated roster identifier and vice versa in this tab. {% data reusables.classroom.assignments-to-prevent-submission %}
-
-<div class="procedural-image-wrapper">
-  <img alt="Individual assignment" class="procedural-image-wrapper" src="/assets/images/help/classroom/assignment-individual-hero.png">
-</div>
 
 ## Monitoring students' progress
 The assignment overview page provides an overview of your assignment acceptances and student progress. You may have different summary information based on the configurations of your assignments.
