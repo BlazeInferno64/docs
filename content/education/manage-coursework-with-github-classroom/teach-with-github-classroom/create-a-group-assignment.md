@@ -20,8 +20,6 @@ When a student accepts a group assignment, the student can create a new team or 
 
 You can decide how many teams one assignment can have, and how many members each team can have. Each team that a student creates for an assignment is a team within your organization on {% data variables.product.product_name %}. The visibility of the team is secret. Teams that you create on {% data variables.product.product_name %} will not appear in {% data variables.product.prodname_classroom %}. For more information, see "[AUTOTITLE](/organizations/organizing-members-into-teams/about-teams)."
 
-For a video demonstration of the creation of a group assignment, see "[AUTOTITLE](/education/manage-coursework-with-github-classroom/get-started-with-github-classroom/basics-of-setting-up-github-classroom)."
-
 {% data reusables.classroom.reuse-assignment-link %}
 
 ## Prerequisites
@@ -51,6 +49,8 @@ For a group assignment, {% data variables.product.prodname_classroom %} names re
 ### Assigning a deadline for an assignment
 
 {% data reusables.classroom.assignments-guide-assign-a-deadline %}
+
+{% data reusables.classroom.assignments-guide-make-cutoff-date %}
 
 ### Choosing an assignment type
 
@@ -146,5 +146,6 @@ The assignment overview page displays information about your assignment acceptan
 
 ## Further reading
 
-- [{% data variables.product.prodname_global_campus %} for teachers](/education/explore-the-benefits-of-teaching-and-learning-with-github-education/github-global-campus-for-teachers)
+- "[{% data variables.product.prodname_global_campus %} for teachers](/education/explore-the-benefits-of-teaching-and-learning-with-github-education/github-global-campus-for-teachers)"
 - "[AUTOTITLE](/education/manage-coursework-with-github-classroom/teach-with-github-classroom/connect-a-learning-management-system-course-to-a-classroom)"
+- "[AUTOTITLE](/education/manage-coursework-with-github-classroom/teach-with-github-classroom/using-github-classroom-with-github-cli)"

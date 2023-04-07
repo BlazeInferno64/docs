@@ -17,8 +17,6 @@ shortTitle: Individual assignment
 
 {% data reusables.classroom.about-assignments %}
 
-For a video demonstration of the creation of an individual assignment, see "[AUTOTITLE](/education/manage-coursework-with-github-classroom/get-started-with-github-classroom/basics-of-setting-up-github-classroom)."
-
 {% data reusables.classroom.reuse-assignment-link %}
 
 ## Prerequisites
@@ -47,6 +45,8 @@ For an individual assignment, {% data variables.product.prodname_classroom %} na
 ### Assigning a deadline for an assignment
 
 {% data reusables.classroom.assignments-guide-assign-a-deadline %}
+
+{% data reusables.classroom.assignments-guide-make-cutoff-date %}
 
 ### Choosing an assignment type
 
@@ -130,3 +130,4 @@ The assignment overview page provides an overview of your assignment acceptances
 
 - "[AUTOTITLE](/education/explore-the-benefits-of-teaching-and-learning-with-github-education/github-global-campus-for-teachers)"
 - "[AUTOTITLE](/education/manage-coursework-with-github-classroom/teach-with-github-classroom/connect-a-learning-management-system-course-to-a-classroom)"
+- "[AUTOTITLE](/education/manage-coursework-with-github-classroom/teach-with-github-classroom/using-github-classroom-with-github-cli)"
