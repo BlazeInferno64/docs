@@ -4,7 +4,6 @@ intro: 'An overview of {% data variables.product.prodname_dotcom %} security fea
 versions:
   fpt: '*'
   ghes: '*'
-  ghae: '*'
   ghec: '*'
 type: overview
 topics:
@@ -30,7 +29,7 @@ Make it easy for your users to confidentially report security vulnerabilities th
 
 ### Security advisories
 
-Privately discuss and fix security vulnerabilities in your repository's code. You can then publish a security advisory to alert your community to the vulnerability and encourage community members to upgrade. For more information, see "[AUTOTITLE](/code-security/security-advisories/repository-security-advisories/about-repository-security-advisories)."
+Privately discuss and fix security vulnerabilities in your repository's code. You can then publish a security advisory to alert your community to the vulnerability and encourage community members to upgrade. For more information, see "[AUTOTITLE](/code-security/security-advisories/working-with-repository-security-advisories/about-repository-security-advisories)."
 
 {% endif %}
 {% ifversion fpt or ghec or ghes %}
@@ -39,6 +38,12 @@ Privately discuss and fix security vulnerabilities in your repository's code. Yo
 
 View alerts about dependencies that are known to contain security vulnerabilities, and choose whether to have pull requests generated automatically to update these dependencies. For more information, see "[AUTOTITLE](/code-security/dependabot/dependabot-alerts/about-dependabot-alerts)"
 and "[AUTOTITLE](/code-security/dependabot/dependabot-security-updates/about-dependabot-security-updates)."
+{% endif %}
+
+{% ifversion dependabot-auto-triage-rules %}
+
+{% data reusables.dependabot.dependabot-alert-rules %}
+
 {% endif %}
 
 {% data reusables.dependabot.quickstart-link %}
@@ -71,7 +76,7 @@ You can find the dependency graph on the **Insights** tab for your repository. F
 
 ### Security overview
 
-Security overview allows you to review security configurations and alerts, making it easy to identify the repositories and organizations at greatest risk. For more information, see "[AUTOTITLE](/code-security/security-overview/about-security-overview)."
+Security overview allows you to review the overall security landscape of your organization, view trends and other insights, and manage security configurations, making it easy to monitor your organization's security status and identify the repositories and organizations at greatest risk. For more information, see "[AUTOTITLE](/code-security/security-overview/about-security-overview)."
 
 {% else %}
 
@@ -125,7 +130,7 @@ Show the full impact of changes to dependencies and see details of any vulnerabl
 
 {% else %}
 
-### Security overview for organizations{% ifversion ghes or ghae  %}, enterprises,{% endif %} and teams
+### Security overview for organizations{% ifversion ghes %}, enterprises,{% endif %} and teams
 
 Review the security configuration and alerts for your organization and identify the repositories at greatest risk. For more information, see "[AUTOTITLE](/code-security/security-overview/about-security-overview)."
 {% endif %}

@@ -7,7 +7,6 @@ redirect_from:
 versions:
   fpt: '*'
   ghes: '*'
-  ghae: '*'
   ghec: '*'
 type: tutorial
 topics:
@@ -15,7 +14,6 @@ topics:
   - Java
   - Ant
 shortTitle: Build & test Java & Ant
-layout: inline
 ---
 
 {% data reusables.actions.enterprise-github-hosted-runners %}
@@ -24,11 +22,7 @@ layout: inline
 
 This guide shows you how to create a workflow that performs continuous integration (CI) for your Java project using the Ant build system. The workflow you create will allow you to see when commits to a pull request cause build or test failures against your default branch; this approach can help ensure that your code is always healthy. You can extend your CI workflow to upload artifacts from a workflow run.
 
-{% ifversion ghae %}
-{% data reusables.actions.self-hosted-runners-software %}
-{% else %}
 {% data variables.product.prodname_dotcom %}-hosted runners have a tools cache with pre-installed software, which includes Java Development Kits (JDKs) and Ant. For a list of software and the pre-installed versions for JDK and Ant, see "[AUTOTITLE](/actions/using-github-hosted-runners/about-github-hosted-runners#supported-software)".
-{% endif %}
 
 ## Prerequisites
 
@@ -40,39 +34,54 @@ We recommend that you have a basic understanding of Java and the Ant framework. 
 
 {% data reusables.actions.enterprise-setup-prereq %}
 
-## Using the Ant starter workflow
+## Using an Ant starter workflow
 
-{% data variables.product.prodname_dotcom %} provides an Ant starter workflow that will work for most Ant-based Java projects. For more information, see the [Ant starter workflow](https://github.com/actions/starter-workflows/blob/main/ci/ant.yml). {% data reusables.actions.workflows.starter-workflows %}
+{% data reusables.actions.starter-workflow-get-started %}
 
-To get started quickly, you can choose the preconfigured Ant starter workflow when you create a new workflow. For more information, see the "[AUTOTITLE](/actions/quickstart)."
+{% data variables.product.prodname_dotcom %} provides a starter workflow for Ant that should work for most Java with Ant projects. The subsequent sections of this guide give examples of how you can customize this starter workflow.
 
-You can also add this workflow manually by creating a new file in the `.github/workflows` directory of your repository.
+{% data reusables.repositories.navigate-to-repo %}
+{% data reusables.repositories.actions-tab %}
+{% data reusables.actions.new-starter-workflow %}
+1. The "{% ifversion actions-starter-template-ui %}Choose a workflow{% else %}Choose a workflow template{% endif %}" page shows a selection of recommended starter workflows. Search for "Java with Ant".
+1. On the "Java with Ant" workflow, click {% ifversion actions-starter-template-ui %}**Configure**{% else %}**Set up this workflow**{% endif %}.
 
-```yaml annotate copy
-# {% data reusables.actions.workflows.workflow-syntax-name %}
-name: Java CI
+{%- ifversion ghes %}
 
-#
-on: [push]
-#
-jobs:
-  build:
-    {% data reusables.actions.example-github-runner-comment %}
-    runs-on: ubuntu-latest
-#
-    steps:
-      {% data reusables.actions.workflows.workflow-checkout-step-explainer %}
-      - uses: {% data reusables.actions.action-checkout %}
-      {% data reusables.actions.workflows.setup-java-step-explainer %}
-      - name: Set up JDK 17
-        uses: {% data reusables.actions.action-setup-java %}
-        with:
-          java-version: '17'
-          distribution: 'temurin'
-      # This step runs the default target in your `build.xml` file in non-interactive mode.
-      - name: Build with Ant
-        run: ant -noinput -buildfile build.xml
-```
+   If you don't find the "Java with Ant" starter workflow, copy the following workflow code to a new file called `ant.yml` in the `.github/workflows` directory of your repository.
+
+   ```yaml copy
+   name: Java CI
+
+   on:
+     push:
+       branches: [ $default-branch ]
+     pull_request:
+       branches: [ $default-branch ]
+
+   jobs:
+     build:
+       runs-on: ubuntu-latest
+
+       steps:
+       - uses: {% data reusables.actions.action-checkout %}
+       - name: Set up JDK 11
+         uses: {% data reusables.actions.action-setup-java %}
+         with:
+           java-version: '11'
+           distribution: 'temurin'
+       - name: Build with Ant
+         run: ant -noinput -buildfile build.xml
+   ```
+
+{%- endif %}
+
+1. Edit the workflow as required. For example, change the Java version.
+1. Click **Commit changes**.
+
+{% ifversion fpt or ghec %}
+   The `ant.yml` workflow file is added to the `.github/workflows` directory of your repository.
+{% endif %}
 
 {% data reusables.actions.java-jvm-architecture %}
 

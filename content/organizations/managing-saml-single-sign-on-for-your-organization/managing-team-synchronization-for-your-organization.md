@@ -23,6 +23,8 @@ You can enable team synchronization between your IdP and {% data variables.produ
 
 {% data reusables.identity-and-permissions.about-team-sync %}
 
+{% data reusables.identity-and-permissions.team-and-idp-group %}
+
 {% data reusables.saml.ghec-only %}
 
 {% data reusables.identity-and-permissions.supported-idps-team-sync %}
@@ -57,7 +59,7 @@ You must have a linked SAML identity. To create a linked identity, you must auth
 
 {% endnote %}
 
-### Enabling team synchronization for Azure AD
+### Enabling team synchronization for Entra ID
 
 {% data reusables.identity-and-permissions.team-sync-azure-permissions %}
 

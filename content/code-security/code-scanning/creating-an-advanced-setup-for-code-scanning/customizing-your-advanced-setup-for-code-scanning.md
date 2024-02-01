@@ -13,7 +13,6 @@ redirect_from:
 versions:
   fpt: '*'
   ghes: '*'
-  ghae: '*'
   ghec: '*'
 type: how_to
 topics:
@@ -37,7 +36,7 @@ make sure that you also update the MS short link: https://aka.ms/code-scanning-d
 
 ## About {% data variables.product.prodname_code_scanning %} configuration
 
-You can run {% data variables.product.prodname_code_scanning %} on {% data variables.product.product_name %}, using {% data variables.product.prodname_actions %}, or from your continuous integration (CI) system. For more information, see "[AUTOTITLE](/actions/learn-github-actions)" or "[AUTOTITLE](/code-security/code-scanning/using-codeql-code-scanning-with-your-existing-ci-system/about-codeql-code-scanning-in-your-ci-system)."
+You can run {% data variables.product.prodname_code_scanning %} on {% data variables.product.product_name %}, using {% data variables.product.prodname_actions %}, or from your continuous integration (CI) system. For more information, see "[AUTOTITLE](/actions/learn-github-actions)" or "[AUTOTITLE](/code-security/code-scanning/integrating-with-code-scanning/using-code-scanning-with-your-existing-ci-system)."
 
 {% ifversion code-scanning-without-workflow %}With advanced setup for {% data variables.product.prodname_code_scanning %}, you can customize a {% data variables.product.prodname_code_scanning %} workflow for granular control over your configuration. For more information, see "[AUTOTITLE](/code-security/code-scanning/creating-an-advanced-setup-for-code-scanning/configuring-advanced-setup-for-code-scanning)."{% else %}This article is about running {% data variables.product.prodname_code_scanning %} on {% data variables.product.product_name %} using actions.{% endif %}
 
@@ -158,7 +157,7 @@ This workflow scans:
 
 - Code scanning of Swift code uses macOS runners by default. {% ifversion fpt or ghec %}{% data variables.product.company_short %}-hosted macOS runners are more expensive than Linux and Windows runners, so you should consider only scanning the build step. For more information about configuring code scanning for Swift, see "[AUTOTITLE](/code-security/code-scanning/creating-an-advanced-setup-for-code-scanning/codeql-code-scanning-for-compiled-languages#considerations-for-building-swift)." For more information about pricing for {% data variables.product.company_short %}-hosted runners, see "[AUTOTITLE](/billing/managing-billing-for-github-actions/about-billing-for-github-actions)."{% endif %}
 
-- Code scanning of Swift code is not supported for runners that are part of an Actions Runner Controller (ARC), but you can have a mixture of both ARC runners and self-hosted macOS runners. For more information, see "[AUTOTITLE](/actions/hosting-your-own-runners/managing-self-hosted-runners-with-actions-runner-controller/about-actions-runner-controller)."
+- {% data reusables.code-scanning.default-setup-swift-self-hosted-runners %}
 
 {% endnote %}
 
@@ -208,6 +207,10 @@ If this parameter is not used, the {% data variables.code-scanning.codeql_workfl
 
 {% data reusables.code-scanning.codeql-languages-bullets %}
 
+{% data variables.product.prodname_codeql %} uses the following language identifiers:
+
+{% data reusables.code-scanning.codeql-language-identifiers-table %}
+
 The default {% data variables.code-scanning.codeql_workflow %} file contains a matrix called `language` which lists the languages in your repository that are analyzed. {% data variables.product.prodname_codeql %} automatically populates this matrix when you add {% data variables.product.prodname_code_scanning %} to a repository. Using the `language` matrix optimizes {% data variables.product.prodname_codeql %} to run each analysis in parallel. We recommend that all workflows adopt this configuration due to the performance benefits of parallelizing builds. For more information about matrices, see "[AUTOTITLE](/actions/using-jobs/using-a-matrix-for-your-jobs)."
 
 {% data reusables.code-scanning.specify-language-to-analyze %}
@@ -222,7 +225,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: ['javascript', 'python']
+        language: [{% ifversion codeql-language-identifiers-311 %}'javascript-typescript'{% else %}'javascript'{% endif %}, 'python']
 ```
 
 If your workflow does not contain a matrix called `language`, then {% data variables.product.prodname_codeql %} is configured to run analysis sequentially. If you don't specify languages in the workflow, {% data variables.product.prodname_codeql %} automatically detects, and attempts to analyze, any supported languages in the repository. If you want to choose which languages to analyze, without using a matrix, you can use the `languages` parameter under the `init` action.
@@ -230,7 +233,7 @@ If your workflow does not contain a matrix called `language`, then {% data varia
 ```yaml copy
 - uses: {% data reusables.actions.action-codeql-action-init %}
   with:
-    languages: cpp, csharp, python
+    languages: {% ifversion codeql-language-identifiers-311 %}c-cpp{% else %}cpp{% endif %}, csharp, python
 ```
 
 {% ifversion codeql-python-no-auto-dependencies %}
@@ -289,15 +292,23 @@ jobs:
 
 {% endif %}
 
-## Defining the alert severities that give a check failure for a pull request
+## Defining the alert severities that cause a check failure for a pull request
 
-By default, only alerts with the severity level of `Error` or security severity level of `Critical` or `High` will cause a pull request check failure, and a check will still succeed with alerts of lower severities. You can change the levels of alert severities and of security severities that will cause a pull request check failure in your repository settings. For more information about severity levels, see "[AUTOTITLE](/code-security/code-scanning/managing-code-scanning-alerts/about-code-scanning-alerts#about-alert-details)."
+{% data reusables.code-scanning.pull-request-checks %}
+
+{% ifversion code-scanning-without-workflow %}
+
+You can edit which severity and security severity alert levels cause a check failure. For more information, see "[AUTOTITLE](/code-security/code-scanning/managing-your-code-scanning-configuration/editing-your-configuration-of-default-setup#defining-the-alert-severities-that-cause-a-check-failure-for-a-pull-request)."
+
+{% else %}
 
 {% data reusables.repositories.navigate-to-repo %}
 {% data reusables.repositories.sidebar-settings %}
 {% data reusables.repositories.navigate-to-code-security-and-analysis %} {% ifversion fpt or ghec %}
 1. Under "{% data variables.product.prodname_code_scanning_caps %}", in the "Protection rules" section, use the drop-down menu to define which alerts should cause a check failure. Choose one level for alerts of type "Security" and one level for all other alerts.{% else %}
 1. Under "{% data variables.product.prodname_code_scanning_caps %}", to the right of "Check Failure", use the drop-down menu to select the level of severity you would like to cause a pull request check failure.{% endif %}
+
+{% endif %}
 
 ## Configuring a category for the analysis
 
@@ -317,11 +328,39 @@ This parameter is particularly useful if you work with monorepos and have multip
 
 If you don't specify a `category` parameter in your workflow, {% data variables.product.product_name %} will generate a category name for you, based on the name of the workflow file triggering the action, the action name, and any matrix variables. For example:
 - The `.github/workflows/codeql-analysis.yml` workflow and the `analyze` action will produce the category `.github/workflows/codeql.yml:analyze`.
-- The `.github/workflows/codeql-analysis.yml` workflow, the `analyze` action, and the `{language: javascript, os: linux}` matrix variables will produce the category `.github/workflows/codeql-analysis.yml:analyze/language:javascript/os:linux`.
+- The `.github/workflows/codeql-analysis.yml` workflow, the `analyze` action, and the `{language: {% ifversion codeql-language-identifiers-311 %}javascript-typescript{% else %}javascript{% endif %}, os: linux}` matrix variables will produce the category `.github/workflows/codeql-analysis.yml:analyze/language:{% ifversion codeql-language-identifiers-311 %}javascript-typescript{% else %}javascript{% endif %}/os:linux`.
 
 The `category` value will appear as the `<run>.automationDetails.id` property in SARIF v2.1.0. For more information, see "[AUTOTITLE](/code-security/code-scanning/integrating-with-code-scanning/sarif-support-for-code-scanning#runautomationdetails-object)."
 
 Your specified category will not overwrite the details of the `runAutomationDetails` object in the SARIF file, if included.
+
+{% ifversion codeql-model-packs-java %}
+
+## Extending {% data variables.product.prodname_codeql %} coverage with {% data variables.product.prodname_codeql %} model packs
+
+If your codebase depends on a library or framework that is not recognized by the standard queries in {% data variables.product.prodname_codeql %}, you can extend the {% data variables.product.prodname_codeql %} coverage in your {% data variables.product.prodname_code_scanning %} workflow by specifying published {% data variables.product.prodname_codeql %} model packs. For more information about creating your own model packs, see "[AUTOTITLE](/code-security/codeql-cli/using-the-advanced-functionality-of-the-codeql-cli/creating-and-working-with-codeql-packs#creating-a-model-pack)."
+
+{% data reusables.code-scanning.beta-model-packs %}
+
+{% ifversion codeql-threat-models-java %}
+
+### Using {% data variables.product.prodname_codeql %} model packs
+
+{% endif %}
+
+To add one or more published {% data variables.product.prodname_codeql %} model packs, specify them inside the `with: packs:` entry within the `uses: {% data reusables.actions.action-codeql-action-init %}` section of the workflow. Within `packs` you specify one or more packages to use and, optionally, which version to download. Where you don't specify a version, the latest version is downloaded. If you want to use packages that are not publicly available, you need to set the `GITHUB_TOKEN` environment variable to a secret that has access to the packages. For more information, see "[AUTOTITLE](/actions/security-guides/automatic-token-authentication)" and "[AUTOTITLE](/actions/security-guides/encrypted-secrets)."
+
+``` yaml copy
+- uses: {% data reusables.actions.action-codeql-action-init %}
+  with:
+    config-file: ./.github/codeql/codeql-config.yml
+    queries: security-extended
+    packs: my-company/my-java-queries@~7.8.9,my-repo/my-java-model-pack
+```
+
+In this example, the default queries will be run for Java, as well as the queries from a version greater than or equal to `7.8.9` and less than `7.9.0` of the query pack `my-company/my-java-queries`. The dependencies modeled in the latest version of the model pack `my-repo/my-java-model-pack` will be available to both the default queries and those in `my-company/my-java-queries`.
+
+{% endif %}
 
 ## Running additional queries
 
@@ -329,7 +368,7 @@ Your specified category will not overwrite the details of the `runAutomationDeta
 
 {% ifversion codeql-packs %}
 
-### Using {% data variables.product.prodname_codeql %} query packs
+### Using query packs
 
 {% data reusables.code-scanning.beta-codeql-packs-cli %}
 
@@ -517,6 +556,16 @@ packs:
 ```
 
 {% endraw %}
+{% endif %}
+
+{% ifversion codeql-threat-models-java %}
+
+### Extending {% data variables.product.prodname_codeql %} coverage with threat models
+
+{% data reusables.code-scanning.beta-threat-models %}
+
+The default threat model includes remote sources of untrusted data. You can extend the {% data variables.product.prodname_codeql %} threat model to include local sources of untrusted data (for example: command-line arguments, environment variables, file systems, and databases) by specifying `threat-models: local` in a custom configuration file. If you extend the threat model, the default threat model will also be used.
+
 {% endif %}
 
 ### Specifying additional queries

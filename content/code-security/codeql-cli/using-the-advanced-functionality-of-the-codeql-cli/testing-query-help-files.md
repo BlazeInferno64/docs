@@ -5,7 +5,6 @@ product: '{% data reusables.gated-features.codeql %}'
 versions:
   fpt: '*'
   ghes: '*'
-  ghae: '*'
   ghec: '*'
 topics:
   - Advanced Security
@@ -15,8 +14,6 @@ redirect_from:
   - /code-security/codeql-cli/testing-query-help-files
   - /code-security/codeql-cli/using-the-codeql-cli/testing-query-help-files
 ---
-
-{% data reusables.codeql-cli.codeql-site-migration-note %}
 
 ## About testing query help files
 

@@ -10,7 +10,6 @@ redirect_from:
 versions:
   fpt: '*'
   ghes: '*'
-  ghae: '*'
   ghec: '*'
 topics:
   - Accounts
@@ -51,10 +50,11 @@ The repository owner has full control of the repository. In addition to the acti
 | Manage data use for a private repository | "[AUTOTITLE](/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-security-and-analysis-settings-for-your-repository#enabling-or-disabling-security-and-analysis-features-for-private-repositories)" |{% endif %}
 | Define code owners for the repository | "[AUTOTITLE](/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners)" |
 | Archive the repository | "[AUTOTITLE](/repositories/archiving-a-github-repository/archiving-repositories)" |{% ifversion fpt or ghec %}
-| Create security advisories | "[AUTOTITLE](/code-security/security-advisories/repository-security-advisories/about-repository-security-advisories)" |
+| Create security advisories | "[AUTOTITLE](/code-security/security-advisories/working-with-repository-security-advisories/about-repository-security-advisories)" |
 | Display a sponsor button | "[AUTOTITLE](/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/displaying-a-sponsor-button-in-your-repository)" |{% endif %}
 | Allow or disallow auto-merge for pull requests | "[AUTOTITLE](/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-auto-merge-for-pull-requests-in-your-repository)" |
-| Manage webhooks and deploy keys	| "[AUTOTITLE](/authentication/connecting-to-github-with-ssh/managing-deploy-keys#deploy-keys)" |
+| Manage deploy keys | "[AUTOTITLE](/authentication/connecting-to-github-with-ssh/managing-deploy-keys#deploy-keys)" |
+| Manage webhooks | "[AUTOTITLE](/webhooks/about-webhooks)" |
 
 ## Collaborator access for a repository owned by a personal account
 
@@ -84,7 +84,7 @@ Collaborators can also perform the following actions.
 | Submit a review on a pull request that affects the mergeability of the pull request | "[AUTOTITLE](/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/reviewing-proposed-changes-in-a-pull-request)" |
 | Create and edit a wiki for the repository | "[AUTOTITLE](/communities/documenting-your-project-with-wikis/about-wikis)" |
 | Create and edit releases for the repository | "[AUTOTITLE](/repositories/releasing-projects-on-github/managing-releases-in-a-repository)" |
-| Act as a code owner for the repository | "[AUTOTITLE](/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners)" |{% ifversion fpt or ghae or ghec %}
+| Act as a code owner for the repository | "[AUTOTITLE](/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners)" |{% ifversion fpt or ghec %}
 | Publish, view, or install packages | "[AUTOTITLE](/packages/learn-github-packages)" |{% endif %}
 | Remove themselves as collaborators on the repository | "[AUTOTITLE](/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-access-to-your-personal-repositories/removing-yourself-from-a-collaborators-repository)" |
 

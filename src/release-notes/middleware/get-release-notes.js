@@ -1,4 +1,4 @@
-import { getDataByLanguage, getDeepDataByLanguage } from '../../../lib/get-data.js'
+import { getDataByLanguage, getDeepDataByLanguage } from '#src/data-directory/lib/get-data.js'
 
 // If we one day support release-notes for other products, add it here.
 // Checking against this is only really to make sure there's no typos
@@ -32,7 +32,7 @@ export function getReleaseNotes(prefix, langCode) {
   // then for each nested key, try to pull it from the translation.
   // If we encounter valid sections, use it. If not valid,
   // use the English ones.
-  // The output of `getDeepDataByLanguage()` is a mutatable object
+  // The output of `getDeepDataByLanguage()` is a mutable object
   // from a memoize cache, so don't mutate it to avoid confusing bugs.
   const translatedReleaseNotes = {}
 

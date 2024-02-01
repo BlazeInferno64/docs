@@ -2,7 +2,6 @@
 title: database create
 versions: # DO NOT MANUALLY EDIT. CHANGES WILL BE OVERWRITTEN BY A 🤖
   fpt: '*'
-  ghae: '*'
   ghec: '*'
   ghes: '*'
 topics:
@@ -35,7 +34,9 @@ codeql database create [--language=<lang>[,<lang>...]] [--github-auth-stdin] [--
 Create a CodeQL database for a source tree that can be analyzed using
 one of the CodeQL products.
 
-## Primary options
+## Options
+
+### Primary Options
 
 #### `<database>`
 
@@ -137,6 +138,14 @@ extractor.
 because no source code was seen during the build. The empty database
 will be left unfinalized.
 
+#### `--[no-]linkage-aware-import`
+
+\[Advanced] Controls whether [codeql dataset import](/code-security/codeql-cli/codeql-cli-manual/dataset-import) is linkage-aware _(default)_ or not. On projects where this part of database creation
+consumes too much memory, disabling this option may help them progress
+at the expense of database completeness.
+
+Available since `v2.15.3`.
+
 ### Baseline calculation options
 
 #### `--[no-]calculate-baseline`
@@ -146,6 +155,16 @@ analyzed and add it to the database. By default, this is enabled unless
 the source root is the root of a filesystem. This flag can be used to
 either disable, or force the behavior to be enabled even in the root of
 the filesystem.
+
+#### `--[no-]sublanguage-file-coverage`
+
+\[GitHub.com and GitHub Enterprise Server v3.12.0+ only] Use
+sub-language file coverage information. This calculates, displays, and
+exports separate file coverage information for languages which share a
+CodeQL extractor like C and C++, Java and Kotlin, and JavaScript and
+TypeScript.
+
+Available since `v2.15.2`.
 
 ### Extractor selection options
 
@@ -185,7 +204,7 @@ default to <https://github.com/>
 #### `--registries-auth-stdin`
 
 Authenticate to GitHub Enterprise Server Container registries by passing
-a comma-separated list of `<registry_url>=<token>` pairs.
+a comma-separated list of \<registry\_url>=\<token> pairs.
 
 For example, you can pass
 `https://containers.GHEHOSTNAME1/v2/=TOKEN1,https://containers.GHEHOSTNAME2/v2/=TOKEN2`
@@ -229,13 +248,13 @@ below this percentage.
 
 Select how aggressively to trim the cache. Choices include:
 
-`brutal`: Remove the entire cache, trimming down to the state of a
+`clear`: Remove the entire cache, trimming down to the state of a
 freshly extracted dataset
 
-`normal` _(default)_: Trim everything except explicitly "cached"
+`trim` _(default)_: Trim everything except explicitly "cached"
 predicates.
 
-`light`: Simply make sure the defined size limits for the disk cache are
+`fit`: Simply make sure the defined size limits for the disk cache are
 observed, deleting as many intermediates as necessary.
 
 #### `--cleanup-upgrade-backups`
@@ -363,3 +382,13 @@ the running subcommand.
 
 (To write a log file with a name you have full control over, instead
 give `--log-to-stderr` and redirect stderr as desired.)
+
+#### `--common-caches=<dir>`
+
+\[Advanced] Controls the location of cached data on disk that will
+persist between several runs of the CLI, such as downloaded QL packs and
+compiled query plans. If not set explicitly, this defaults to a
+directory named `.codeql` in the user's home directory; it will be
+created if it doesn't already exist.
+
+Available since `v2.15.2`.

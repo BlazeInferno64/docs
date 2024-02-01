@@ -7,7 +7,6 @@ redirect_from:
 versions:
   fpt: '*'
   ghes: '*'
-  ghae: '*'
   ghec: '*'
 type: overview
 topics:
@@ -84,7 +83,7 @@ The recommended formats explicitly define which versions are used for all direct
 {%- ifversion github-actions-in-dependency-graph %}
 | {% data variables.product.prodname_actions %} workflows | YAML | `.yml`, `.yaml` | `.yml`, `.yaml` |
 {%- endif %}
-| Go modules | Go | `go.mod`| `go.mod`{% ifversion ghes < 3.9 or ghae < 3.9 %}, `go.sum`{% endif %} |
+| Go modules | Go | `go.mod`| `go.mod`{% ifversion ghes < 3.9 %}, `go.sum`{% endif %} |
 | Maven | Java, Scala |  `pom.xml`  | `pom.xml`  |
 | npm | JavaScript |            `package-lock.json` | `package-lock.json`, `package.json`|
 | pip             | Python                    | `requirements.txt`, `pipfile.lock` | `requirements.txt`, `pipfile`, `pipfile.lock`, `setup.py` |
@@ -111,6 +110,8 @@ The recommended formats explicitly define which versions are used for all direct
 - {% data variables.product.prodname_actions %} workflows must be located in the `.github/workflows/` directory of a repository to be recognized as manifests. Any actions or workflows referenced using the syntax `jobs[*].steps[*].uses` or `jobs.<job_id>.uses` will be parsed as dependencies. For more information, see "[AUTOTITLE](/actions/using-workflows/workflow-syntax-for-github-actions)."
 
 {% endif %}
+
+- {% data reusables.dependabot.dependabot-alert-actions-semver %} For more information, see "[AUTOTITLE](/code-security/dependabot/dependabot-alerts/about-dependabot-alerts){% ifversion fpt or ghec or ghes %}" and "[AUTOTITLE](/code-security/dependabot/dependabot-version-updates/about-dependabot-version-updates){% endif %}."
 
 {% endnote %}
 

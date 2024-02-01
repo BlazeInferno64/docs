@@ -13,11 +13,11 @@
 
 import { existsSync } from 'fs'
 import { readFile, readdir, writeFile, cp } from 'fs/promises'
-import { rimraf } from 'rimraf'
+import { rimrafSync } from 'rimraf'
 import { difference, intersection } from 'lodash-es'
 import { mkdirp } from 'mkdirp'
 
-import { deprecated, supported } from '../../../lib/enterprise-server-releases.js'
+import { deprecated, supported } from '#src/versions/lib/enterprise-server-releases.js'
 
 const [currentReleaseNumber, previousReleaseNumber] = supported
 const pipelines = JSON.parse(await readFile('src/automated-pipelines/lib/config.json'))[
@@ -29,17 +29,17 @@ await updateAutomatedConfigFiles(pipelines, deprecated)
 // src/rest/lib/config.json file. We want to update 'api-versions'
 // before the allVersions object is created so we need to import it
 // after calling updateAutomatedConfigFiles.
-const { allVersions } = await import('../../../lib/all-versions.js')
+const { allVersions } = await import('#src/versions/lib/all-versions.js')
 
 // Gets all of the base names (e.g., ghes-) in the allVersions object
 // Currently, this is only ghes- but if we had more than one type of
 // numbered release it would get all of them.
 const numberedReleaseBaseNames = Array.from(
-  new Set([
-    ...Object.values(allVersions)
+  new Set(
+    Object.values(allVersions)
       .filter((version) => version.hasNumberedReleases)
       .map((version) => version.openApiBaseName),
-  ]),
+  ),
 )
 
 // A list of currently supported versions (calendar date inclusive)
@@ -79,13 +79,15 @@ for (const pipeline of pipelines) {
   const expectedDirectory = isCalendarDateVersioned ? versionNamesCalDate : versionNames
 
   // Get a list of data directories to remove (deprecate) and remove them
+  // This should only happen if a release is being deprecated.
   const removeFiles = difference(existingDataDir, expectedDirectory)
   for (const directory of removeFiles) {
     console.log(`Removing src/${pipeline}/data/${directory}`)
-    rimraf(`src/${pipeline}/data/${directory}`)
+    rimrafSync(`src/${pipeline}/data/${directory}`)
   }
 
   // Get a list of data directories to create (release) and create them
+  // This should only happen if a relase is being added.
   const addFiles = difference(expectedDirectory, existingDataDir)
   if (addFiles.length > numberedReleaseBaseNames.length) {
     throw new Error(
@@ -132,7 +134,7 @@ const addRelNoteDirs = difference(supportedHyphenated, ghesReleaseNotesDirs)
 const removeRelNoteDirs = intersection(deprecatedHyphenated, ghesReleaseNotesDirs)
 for (const directory of removeRelNoteDirs) {
   console.log(`Removing data/release-notes/enterprise-server/${directory}`)
-  rimraf(`data/release-notes/enterprise-server/${directory}`)
+  rimrafSync(`data/release-notes/enterprise-server/${directory}`)
 }
 for (const directory of addRelNoteDirs) {
   console.log(`Create new directory data/release-notes/enterprise-server/${directory}`)
@@ -153,13 +155,13 @@ async function updateAutomatedConfigFiles(pipelines, deprecated) {
     if (!apiVersions) continue
     for (const key of Object.keys(apiVersions)) {
       // Copy the previous release's calendar date versions to the new release
-      if (key.includes(previousReleaseNumber)) {
+      if (key.endsWith(previousReleaseNumber)) {
         const newKey = key.replace(previousReleaseNumber, currentReleaseNumber)
         apiVersions[newKey] = apiVersions[key]
       }
       // Remove any deprecated versions
       for (const deprecatedRelease of deprecated) {
-        if (key.includes(deprecatedRelease)) {
+        if (key.endsWith(deprecatedRelease)) {
           delete apiVersions[key]
         }
       }

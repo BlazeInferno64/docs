@@ -1,7 +1,7 @@
 import Document, { DocumentContext, Html, Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
 
-import { defaultCSSTheme } from 'components/hooks/useTheme'
+import { defaultCSSTheme } from 'src/color-schemes/components/useTheme'
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -31,16 +31,16 @@ export default class MyDocument extends Document {
 
   render() {
     return (
-      <Html>
+      <Html
+        // These values are always the SSR rendering defaults.
+        // The will get updated later in a useEffect hook, in the client,
+        // in the MyApp component.
+        data-color-mode={defaultCSSTheme.colorMode}
+        data-light-theme={defaultCSSTheme.lightTheme}
+        data-dark-theme={defaultCSSTheme.darkTheme}
+      >
         <Head />
-        <body
-          // These values are always the SSR rendereding defaults.
-          // The will get updated later in a useEffect hook, in the client,
-          // in the MyApp component.
-          data-color-mode={defaultCSSTheme.colorMode}
-          data-light-theme={defaultCSSTheme.lightTheme}
-          data-dark-theme={defaultCSSTheme.darkTheme}
-        >
+        <body>
           <Main />
           <NextScript />
         </body>

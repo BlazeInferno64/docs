@@ -108,7 +108,7 @@ For complex pull requests that require many reviews, requiring an approval from 
 
 ### Require status checks before merging
 
-Required status checks ensure that all required CI tests are passing before collaborators can make changes to a protected branch. Required status checks can be checks or statuses. For more information, see "[AUTOTITLE](/pull-requests/collaborating-with-pull-requests/collaborating-on-repositories-with-code-quality-features/about-status-checks)."
+Required status checks ensure that all required CI tests are either passing or skipped before collaborators can make changes to a protected branch. Required status checks can be checks or statuses. For more information, see "[AUTOTITLE](/pull-requests/collaborating-with-pull-requests/collaborating-on-repositories-with-code-quality-features/about-status-checks)."
 
 You can use the commit status API to allow external services to mark commits with an appropriate status. For more information, see "[AUTOTITLE](/rest/commits/statuses)" in the REST API documentation.
 
@@ -169,7 +169,8 @@ Before you can require a linear commit history, your repository must allow squas
 
 {% endif %}
 
-{% ifversion fpt or ghec or ghes > 3.6 %}
+{% ifversion fpt or ghec or ghes %}
+
 ### Require deployments to succeed before merging
 
 You can require that changes are successfully deployed to specific environments before a branch can be merged. For example, you can use this rule to ensure that changes are successfully deployed to a staging environment before the changes merge to your default branch.
@@ -179,7 +180,8 @@ You can require that changes are successfully deployed to specific environments 
 
 ### Lock branch
 
-Locking a branch ensures that no commits can be made to the branch.
+Locking a branch will make the branch read-only and ensures that no commits can be made to the branch. Locked branches can also not be deleted.
+
 By default, a forked repository does not support syncing from its upstream repository. You can enable **Allow fork syncing** to pull changes from the upstream repository while preventing other contributions to the fork's branch.
 {%  endif %}
 
@@ -219,10 +221,16 @@ If someone force pushes to a branch, the force push may mean commits that other 
 
 Enabling force pushes will not override any other branch protection rules. For example, if a branch requires a linear commit history, you cannot force push merge commits to that branch.
 
-{% ifversion ghes or ghae %}You cannot enable force pushes for a protected branch if a site administrator has blocked force pushes to all branches in your repository. For more information, see "[AUTOTITLE](/admin/policies/enforcing-policies-for-your-enterprise/enforcing-repository-management-policies-in-your-enterprise)."
+{% ifversion ghes %}You cannot enable force pushes for a protected branch if a site administrator has blocked force pushes to all branches in your repository. For more information, see "[AUTOTITLE](/admin/policies/enforcing-policies-for-your-enterprise/enforcing-repository-management-policies-in-your-enterprise)."
 
 If a site administrator has blocked force pushes to the default branch only, you can still enable force pushes for any other protected branch.{% endif %}
 
 ### Allow deletions
 
 By default, you cannot delete a protected branch. When you enable deletion of a protected branch, anyone with at least write permissions to the repository can delete the branch.
+
+{% note %}
+
+**Note:** If the branch is locked, you cannot delete the branch even if you have permission to delete it.
+
+{% endnote %}

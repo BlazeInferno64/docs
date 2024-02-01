@@ -11,7 +11,6 @@ redirect_from:
 versions:
   ghec: '*'
   ghes: '*'
-  ghae: '*'
 topics:
   - Enterprise
 shortTitle: View people in your enterprise
@@ -21,7 +20,7 @@ shortTitle: View people in your enterprise
 
 To audit access to your enterprise's resources and manage license usage, you can see a list of all the people who have access to your enterprise.
 
-You can see all current enterprise members and enterprise administrators{% ifversion ghec %}, as well as pending invitations to become members and administrators{% endif %}. To make it easier to consume this information, you can search and filter the lists.
+You can see all current enterprise members and enterprise administrators{% ifversion ghec %}, as well as pending invitations to become members and administrators{% endif %}. To make it easier to consume this information, you can search and filter the lists. You can also view an overview of the number of members in your enterprise, grouped by role{% ifversion ghec %}, type of license, or type of deployment{% endif %}.
 
 {% ifversion ghec %}
 
@@ -30,10 +29,7 @@ If {% data variables.product.prodname_github_connect %} is configured for your e
 - The filter for two-factor authentication (2FA) status does not show people who only have an account on a {% data variables.product.prodname_ghe_server %} instance.
 - If you combine the filter for accounts on {% data variables.product.prodname_ghe_server %} instances with either the filter for organizations or 2FA status, you will not see any results.
 
-For more information about {% data variables.product.prodname_github_connect %}, see the following articles.
-
-- "[AUTOTITLE](/enterprise-server@latest/admin/configuration/configuring-github-connect/about-github-connect)" in the {% data variables.product.prodname_ghe_server %} documentation
-- "[AUTOTITLE](/github-ae@latest/admin/configuration/configuring-github-connect/about-github-connect)" in the {% data variables.product.prodname_ghe_managed %} documentation
+For more information about {% data variables.product.prodname_github_connect %}, see "[AUTOTITLE](/enterprise-server@latest/admin/configuration/configuring-github-connect/about-github-connect)" in the {% data variables.product.prodname_ghe_server %} documentation.
 
 {% endif %}
 
@@ -49,9 +45,7 @@ You can view all the current enterprise owners{% ifversion ghec %} and billing m
 Enterprise owners whose accounts are suspended are included in the list of enterprise administrators, and are identified as suspended. You should consider demoting any suspended owners you see. For more information, see "[AUTOTITLE](/admin/user-management/managing-users-in-your-enterprise/promoting-or-demoting-a-site-administrator#demoting-a-site-administrator-from-the-enterprise-settings)."
 {% endif %}
 
-{% ifversion not ghae %}
 You can also remove an administrator. For more information. see "[AUTOTITLE](/admin/user-management/managing-users-in-your-enterprise/inviting-people-to-manage-your-enterprise#removing-an-enterprise-administrator-from-your-enterprise-account)."
-{% endif %}
 
 {% data reusables.enterprise-accounts.access-enterprise %}
 {% data reusables.enterprise-accounts.people-tab %}
@@ -59,17 +53,58 @@ You can also remove an administrator. For more information. see "[AUTOTITLE](/ad
 
 ## Viewing members {% ifversion enterprise-membership-view-improvements %}{% else %}and outside collaborators{% endif %}
 
-You can see all the current members {% ifversion enterprise-membership-view-improvements %}{% else %}or outside collaborators{% endif %} for your enterprise. You can see useful information about each account and filter the list in useful ways, such as by role. You can find a specific person by searching for their username or display name.
+You can see all the current members {% ifversion enterprise-membership-view-improvements %}{% else %}or outside collaborators{% endif %} for your enterprise. You can see useful information about each account and filter the list in useful ways, such as by role. In addition to the list of members, you will see an overview of the number of members in your enterprise, grouped by role{% ifversion ghec %}, type of license, and type of deployment{% endif %}.
 
-You can view more information about the person's access to your enterprise, such as the organizations the person belongs to, by clicking on the person's name.
+You can find a specific person by searching for the person's username or display name. To view more information about the person's access to your enterprise, such as the organizations the person belongs to, you can click the person's name.
 
 {% ifversion remove-enterprise-members %}
 You can also remove any enterprise member from all organizations owned by the enterprise. For more information, see "[AUTOTITLE](/admin/user-management/managing-users-in-your-enterprise/removing-a-member-from-your-enterprise)."
 {% endif %}
 
 {% data reusables.enterprise-accounts.access-enterprise %}
-{% data reusables.enterprise-accounts.people-tab %}{% ifversion enterprise-membership-view-improvements %}{% else %}
-1. Optionally, to view a list of outside collaborators rather than the list of members, under "Members", click **Outside collaborators**.
+{% data reusables.enterprise-accounts.people-tab %}{% ifversion enterprise-membership-view-improvements %}
+{% else %}
+1. Optionally, to view a list of outside collaborators rather than the list of members, under "Members", click **Outside collaborators**.{% endif %}
+{% ifversion enterprise-member-csv %}
+1. Optionally, to export the list of members as a CSV report, click **CSV report**. For more information about the information included in the report, see "[AUTOTITLE](/admin/user-management/managing-users-in-your-enterprise/exporting-membership-information-for-your-enterprise)."{% endif %}
+
+{% ifversion enterprise-members-breakdown %}
+
+### About the membership overview
+
+On the "Members" page, you will find an overview of the number of members in your enterprise, grouped by role{% ifversion ghec %}, type of license consumed, and the type of deployment the member is on. The following sections explain how the numbers in this overview are calculated.
+
+If your enterprise uses both {% data variables.product.prodname_ghe_cloud %} and {% data variables.product.prodname_ghe_server %}, to get accurate data about your members and licenses across your deployments, you will need to enable {% data variables.product.prodname_github_connect %} and synchronize license usage. For more information, see "[AUTOTITLE](/enterprise-server@latest/admin/configuration/configuring-github-connect/about-github-connect)" in the {% data variables.product.prodname_ghe_server %} documentation.
+
+#### Roles
+
+The "Roles" column groups members by their role in the enterprise{% endif %}. For more information, see "[AUTOTITLE](/admin/managing-accounts-and-repositories/managing-users-in-your-enterprise/roles-in-an-enterprise)."
+
+If a user has multiple roles in an enterprise, the user is counted once for each role. For example, if the same user is a member of three organizations and an owner of two organizations, the user counts once towards "Organization member" and once towards "Organization owner."
+
+An "outside collaborator" is a user who has access to a repository in an organization, but is not a member of the organization. The user might be an outside collaborator in one organization in your enterprise and a member of another organization. In this case, the user counts towards each total. For more information, see "[AUTOTITLE](/organizations/managing-user-access-to-your-organizations-repositories/managing-outside-collaborators/adding-outside-collaborators-to-repositories-in-your-organization)."
+
+{% ifversion ghec %}
+If your enterprise uses {% data variables.enterprise.prodname_managed_users %}, an "unaffiliated user" is someone who been provisioned with a user account, but is not a member of any of your organizations.
+{% endif %}
+
+{% ifversion ghec %}
+
+#### User licenses consumed
+
+The "User licenses consumed" column shows you how licenses are consumed in your enterprise. For more information, see "[AUTOTITLE](/billing/managing-your-license-for-github-enterprise/about-licenses-for-github-enterprise)."
+
+If there are outside collaborators in your enterprise, the "total consumed" number of licenses may be larger than the number of people listed for your enterprise. An outside collaborator consumes a license, but is not counted in the total member count displayed next to "people in YOUR-ENTERPRISE". A pending invitation to an outside collaborator also consumes a license, but is not counted in the "By invitations" count in the overview.
+
+For more information about how license usage is calculated across deployments, see "[AUTOTITLE](/billing/managing-your-license-for-github-enterprise/troubleshooting-license-usage-for-github-enterprise#about-the-calculation-of-consumed-licenses)."
+
+#### Deployment
+
+The "Deployment" column groups users by the type of deployment they are using. For more information, see "[AUTOTITLE](/admin/overview/about-github-for-enterprises#about-deployment-options)."
+
+"Cloud members" are a member or owner of any organization in your enterprise on {% data variables.product.prodname_dotcom_the_website %}. "Server members" have an account on a {% data variables.product.prodname_ghe_server %} instance owned by your enterprise. "Members on cloud and server" are users who match both these criteria.
+{% endif %}
+
 {% endif %}
 
 {% ifversion ghec %}
@@ -149,13 +184,13 @@ If your enterprise uses {% data variables.product.prodname_emus %}, you can view
 
 ## Viewing dormant users
 
-You can view a list of all dormant users {% ifversion ghes or ghae %} who have not been suspended and {% endif %}who are not site administrators. {% data reusables.enterprise-accounts.dormant-user-activity-threshold %} For more information, see "[AUTOTITLE](/admin/user-management/managing-users-in-your-enterprise/managing-dormant-users)."
+You can view a list of all dormant users {% ifversion ghes %} who have not been suspended and {% endif %}who are not site administrators. {% data reusables.enterprise-accounts.dormant-user-activity-threshold %} For more information, see "[AUTOTITLE](/admin/user-management/managing-users-in-your-enterprise/managing-dormant-users)."
 
 {% ifversion filter-by-enterprise-member-type %}
 
 ## Filtering by member type{% ifversion ghec %} in an {% data variables.enterprise.prodname_emu_enterprise %}{% endif %}
 
-{% ifversion ghec %}If your enterprise uses {% data variables.product.prodname_emus %}, you{% elsif ghes or ghae %}You{% endif %} can filter the member list of an organization by type to determine if memberships are managed through an IdP or managed directly. Memberships managed through an IdP were added through an IdP group, and the IdP group was connected to a team within the organization. Memberships managed directly were added to the organization manually. The way a membership is mananaged in an organization determines how it must be removed. You can use this filter to determine how members were added to an organization, so you know how to remove them.{% ifversion ghec %} For more information, see "[AUTOTITLE](/enterprise-cloud@latest/admin/identity-and-access-management/using-enterprise-managed-users-for-iam/about-enterprise-managed-users#about-organization-membership-management)."{% endif %}
+{% ifversion ghec %}If your enterprise uses {% data variables.product.prodname_emus %}, you{% elsif ghes %}You{% endif %} can filter the member list of an organization by type to determine if memberships are managed through an IdP or managed directly. Memberships managed through an IdP were added through an IdP group, and the IdP group was connected to a team within the organization. Memberships managed directly were added to the organization manually. The way a membership is managed in an organization determines how it must be removed. You can use this filter to determine how members were added to an organization, so you know how to remove them.{% ifversion ghec %} For more information, see "[AUTOTITLE](/enterprise-cloud@latest/admin/identity-and-access-management/using-enterprise-managed-users-for-iam/about-enterprise-managed-users#about-organization-membership-management)."{% endif %}
 
 {% data reusables.enterprise-accounts.access-enterprise %}
 1. Under "Organizations", in the search bar, begin typing the organization's name until it appears in the search results.

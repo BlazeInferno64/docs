@@ -26,7 +26,15 @@ shortTitle: Delete organization
 {% endtip %}
 
 {% endif %}
-Deleting your organization account removes all repositories, forks of private repositories, wikis, issues, pull requests, and project or organization pages. {% ifversion fpt or ghec %}Your billing will end and, after 90 days, the organization name becomes available for use on a new user or organization account.{% endif %}
+Deleting your organization account removes all repositories, forks of private repositories, wikis, issues, pull requests, and project or organization pages. {% ifversion fpt or ghec %}Your billing will end and, after 90 days, the organization name becomes available for use on a new user or organization account.
+
+{% tip %}
+
+**Tip**: If you rename an organization, you can create a new organization with the same name immediately. For more information, see "[AUTOTITLE](/organizations/managing-organization-settings/renaming-an-organization)."
+
+{% endtip %}
+
+{% endif %}
 
 {% ifversion fpt or ghec %}
 
@@ -42,7 +50,7 @@ You can also archive an organization, instead of deleting it. Archiving an organ
 
 ## Backing up your organization content
 
-{% ifversion not ghes %} After you delete an organization, {% data variables.product.company_short %} **cannot restore your content**. Therefore, before{% else %}Before{% endif %} you delete your organization, make sure you have a copy of all repositories, wikis, issues, and project boards from the account.
+{% ifversion not ghes %} After you delete an organization, {% data variables.product.company_short %} **cannot restore your content**. Therefore, before{% else %}Before{% endif %} you delete your organization, make sure you have a copy of all repositories, wikis, issues, and projects from the account.
 
 {% ifversion ghes %}
 {% note %}

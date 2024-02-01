@@ -2,7 +2,6 @@
 title: execute query-server
 versions: # DO NOT MANUALLY EDIT. CHANGES WILL BE OVERWRITTEN BY A 🤖
   fpt: '*'
-  ghae: '*'
   ghec: '*'
   ghes: '*'
 topics:
@@ -35,7 +34,9 @@ codeql execute query-server <options>...
 The
 [codeql execute query-server](/code-security/codeql-cli/codeql-cli-manual/execute-query-server) subcommand is unsupported and no longer works. If you are using the official CodeQL extension for Visual Studio Code, please upgrade the extension to 1.7.6 or a later version. Otherwise please migrate your CodeQL IDE integration to the `codeql execute query-server2` subcommand.
 
-## Primary options
+## Options
+
+### Primary Options
 
 ### Common options
 
@@ -71,3 +72,13 @@ the running subcommand.
 
 (To write a log file with a name you have full control over, instead
 give `--log-to-stderr` and redirect stderr as desired.)
+
+#### `--common-caches=<dir>`
+
+\[Advanced] Controls the location of cached data on disk that will
+persist between several runs of the CLI, such as downloaded QL packs and
+compiled query plans. If not set explicitly, this defaults to a
+directory named `.codeql` in the user's home directory; it will be
+created if it doesn't already exist.
+
+Available since `v2.15.2`.

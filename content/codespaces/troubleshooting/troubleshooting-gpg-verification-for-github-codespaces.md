@@ -30,7 +30,7 @@ If you have disabled GPG verification, and are working in an existing codespace,
 
 To keep making regular, unsigned commits in your codespace, reset `commit.gpgsign` to the default value of `false` by entering the following command in the terminal.
 
-```Shell copy
+```shell copy
 git config --unset commit.gpgsign
 ```
 
@@ -40,7 +40,7 @@ To check that the value has been correctly removed from your configuration, you 
 
 To automatically sign your commits, {% data variables.product.prodname_github_codespaces %} sets certain Git configuration values in your codespace. If you override the values set by {% data variables.product.prodname_github_codespaces %}, you may be unable to sign your commits.
 
-You may be inadvertently overriding these values if you have linked {% data variables.product.prodname_github_codespaces %} with a dotfiles repository that contains Git configuration files. For more information about using dotfiles with {% data variables.product.prodname_github_codespaces %}, see "[AUTOTITLE](/codespaces/customizing-your-codespace/personalizing-github-codespaces-for-your-account#dotfiles)."
+You may be inadvertently overriding these values if you have linked {% data variables.product.prodname_github_codespaces %} with a dotfiles repository that contains Git configuration files. For more information about using dotfiles with {% data variables.product.prodname_github_codespaces %}, see "[AUTOTITLE](/codespaces/setting-your-user-preferences/personalizing-github-codespaces-for-your-account#dotfiles)."
 
 ### Checking for conflicting configuration
 
@@ -54,7 +54,7 @@ To sign your commits with GPG, {% data variables.product.prodname_github_codespa
 
 To check that these values are set correctly in a codespace, you can use the `git config --list --show-origin` command. Because {% data variables.product.prodname_github_codespaces %} sets this configuration at the system level, the required configuration settings should come from `/usr/local/etc/gitconfig`.
 
-```Shell
+```shell
 $ git config --list --show-origin
 file:/usr/local/etc/gitconfig   credential.helper=/.codespaces/bin/gitcredential_github.sh
 file:/usr/local/etc/gitconfig   user.name=Mona Lisa
@@ -82,7 +82,7 @@ For example, if the global `.gitconfig` file on your local machine contains a `g
 1. On your local machine, open a terminal.
 1. To remove the conflicting value from `~/.gitconfig` (Mac/Linux) or `C:\Users\YOUR-USER\.gitconfig` (Windows), use the `git config --global --unset` command.
 
-   ```Shell
+   ```shell
    git config --global --unset gpg.program
    ```
 
@@ -91,13 +91,13 @@ For example, if the global `.gitconfig` file on your local machine contains a `g
 
    For example, you can use the `--system` flag to set the configuration in the system-level file at `PATH/etc/gitconfig`, where `PATH` is the directory in which Git is installed on your system.
 
-   ```Shell
+   ```shell
    git config --system gpg.program gpg2
    ```
 
 Alternatively, if your dotfiles repository contains an installation script in a recognized file such as `install.sh`, you can use the `$CODESPACES` environment variable to add conditional logic, such as only setting `gpg.program` when you are not in a codespace. In the following example, `-z "$CODESPACES"` returns `true` if you are not in a codespace.
 
-```Shell copy
+```shell copy
 if [ -z "$CODESPACES" ]; then
   git config --global gpg.program gpg2
 fi
@@ -118,7 +118,7 @@ If GPG verification is disabled in your settings for {% data variables.product.p
 
 If you find this setting is enabled, you should either deselect the checkbox to stop {% data variables.product.prodname_vscode_shortname %} trying to sign your commits, or you should enable GPG verification for the repository you're working in so your commits can be signed successfully.
 
-If you change your {% data variables.product.prodname_vscode_shortname %} settings, you must ensure Settings Sync is enabled if you want to share your changes with other codespaces you create. You should only turn on Settings Sync in a codespace created from a repository you trust. For more information, see "[AUTOTITLE](/codespaces/customizing-your-codespace/personalizing-github-codespaces-for-your-account#settings-sync)."
+If you change your {% data variables.product.prodname_vscode_shortname %} settings, you must ensure Settings Sync is enabled if you want to share your changes with other codespaces you create. You should only turn on Settings Sync in a codespace created from a repository you trust. For more information, see "[AUTOTITLE](/codespaces/setting-your-user-preferences/personalizing-github-codespaces-for-your-account#settings-sync)."
 
 ## Further reading
 

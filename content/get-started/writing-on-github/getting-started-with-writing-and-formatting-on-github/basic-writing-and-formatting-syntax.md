@@ -16,7 +16,7 @@ shortTitle: Basic formatting syntax
 
 To create a heading, add one to six <kbd>#</kbd> symbols before your heading text. The number of <kbd>#</kbd> you use will determine the hierarchy level and typeface size of the heading.
 
-```
+```markdown
 # A first-level heading
 ## A second-level heading
 ### A third-level heading
@@ -35,10 +35,10 @@ You can indicate emphasis with bold, italic, strikethrough, subscript, or supers
 | Style | Syntax | Keyboard shortcut | Example | Output |
 | --- | --- | --- | --- | --- |
 | Bold | `** **` or `__ __`| <kbd>Command</kbd>+<kbd>B</kbd> (Mac) or <kbd>Ctrl</kbd>+<kbd>B</kbd> (Windows/Linux) | `**This is bold text**` | **This is bold text** |
-| Italic | `* *` or `_ _`     | <kbd>Command</kbd>+<kbd>I</kbd> (Mac) or <kbd>Ctrl</kbd>+<kbd>I</kbd> (Windows/Linux) | `_This text is italicized_` | *This text is italicized* |
+| Italic | `* *` or `_ _`     | <kbd>Command</kbd>+<kbd>I</kbd> (Mac) or <kbd>Ctrl</kbd>+<kbd>I</kbd> (Windows/Linux) | `_This text is italicized_` | _This text is italicized_ |
 | Strikethrough | `~~ ~~` | None | `~~This was mistaken text~~` | ~~This was mistaken text~~ |
 | Bold and nested italic | `** **` and `_ _` | None | `**This text is _extremely_ important**` | **This text is _extremely_ important** |
-| All bold and italic | `*** ***` | None | `***All this text is important***` | ***All this text is important*** |
+| All bold and italic | `*** ***` | None | `***All this text is important***` | ***All this text is important*** | <!-- markdownlint-disable-line emphasis-style -->
 | Subscript | `<sub> </sub>` | None | `This is a <sub>subscript</sub> text` | This is a <sub>subscript</sub> text |
 | Superscript | `<sup> </sup>` | None | `This is a <sup>superscript</sup> text` | This is a <sup>superscript</sup> text |
 
@@ -58,7 +58,7 @@ Quoted text is indented, with a different type color.
 
 {% note %}
 
-**Note:** When viewing a conversation, you can automatically quote text in a comment by highlighting the text, then typing <kbd>R</kbd>. You can quote an entire comment by clicking {% octicon "kebab-horizontal" aria-label="The horizontal kebab icon" %}, then **Quote reply**. For more information about keyboard shortcuts, see "[AUTOTITLE](/get-started/using-github/keyboard-shortcuts)."
+**Note:** When viewing a conversation, you can automatically quote text in a comment by highlighting the text, then typing <kbd>R</kbd>. You can quote an entire comment by clicking {% octicon "kebab-horizontal" aria-label="The horizontal kebab icon" %}, then **Quote reply**. For more information about keyboard shortcuts, see "[AUTOTITLE](/get-started/accessibility/keyboard-shortcuts)."
 
 {% endnote %}
 
@@ -224,7 +224,7 @@ To create a nested list using the web editor on {% data variables.product.produc
 
 {% endnote %}
 
-![Screenshot of Markdown in Visual Studio Code showing how indented bullets align vertically with the first letter of the text lines above them.](/assets/images/help/writing/nested-list-alignment.png)
+![Screenshot of Markdown in {% data variables.product.prodname_vscode %} showing how indented bullets align vertically with the first letter of the text lines above them.](/assets/images/help/writing/nested-list-alignment.png)
 
 ![Screenshot of rendered GitHub Markdown showing a numbered item followed by a bulleted item nested one level to the right, and another bulleted item nested yet further to the right.](/assets/images/help/writing/nested-list-example-1.png)
 
@@ -252,6 +252,7 @@ You can create multiple levels of nested lists using the same method. For exampl
 For more examples, see the [GitHub Flavored Markdown Spec](https://github.github.com/gfm/#example-265).
 
 {% ifversion task-lists-v1 %}
+
 ## Task lists
 
 {% data reusables.repositories.task-list-markdown %}
@@ -297,7 +298,7 @@ For more information, see "[AUTOTITLE](/get-started/writing-on-github/working-wi
 
 You can upload assets like images by dragging and dropping, selecting from a file browser, or pasting. You can upload assets to issues, pull requests, comments, and `.md` files in your repository.
 
-## Using emoji
+## Using emojis
 
 You can add emoji to your writing by typing `:EMOJICODE:`, a colon followed by the name of the emoji.
 
@@ -317,7 +318,7 @@ You can create a new paragraph by leaving a blank line between lines of text.
 
 You can add footnotes to your content by using this bracket syntax:
 
-```
+```text
 Here is a simple footnote[^1].
 
 A footnote can also have multiple lines[^2].
@@ -343,32 +344,32 @@ Footnotes are not supported in wikis.
 
 ## Alerts
 
-{% note %}
+Alerts are a Markdown extension based on the blockquote syntax that you can use to emphasize critical information. On {% data variables.product.product_name %}, they are displayed with distinctive colors and icons to indicate the significance of the content.
 
-**Note**: The syntax used during the beta testing period is now deprecated and will be removed. You can use the syntax as described in this section.
+Use alerts only when they are crucial for user success and limit them to one or two per article to prevent overloading the reader. Additionally, you should avoid placing alerts consecutively. Alerts cannot be nested within other elements.
 
-{% endnote %}
+To add an alert, use a special blockquote line specifying the alert type, followed by the alert information in a standard blockquote. Five types of alerts are available:
 
-Alerts are an extension of Markdown used to emphasize critical information. On {% data variables.product.product_name %}, they are displayed with distinctive colors and icons to indicate the importance of the content.
-
-We recommend restricting the use of alerts to one or two per article to avoid overloading the reader. Consecutive notes should be avoided.
-
-There are three types of alerts available.
-
-```
+```markdown
 > [!NOTE]
-> Highlights information that users should take into account, even when skimming.
+> Useful information that users should know, even when skimming content.
+
+> [!TIP]
+> Helpful advice for doing things better or more easily.
 
 > [!IMPORTANT]
-> Crucial information necessary for users to succeed.
+> Key information users need to know to achieve their goal.
 
 > [!WARNING]
-> Critical content demanding immediate user attention due to potential risks.
+> Urgent info that needs immediate user attention to avoid problems.
+
+> [!CAUTION]
+> Advises about risks or negative outcomes of certain actions.
 ```
 
-Here are the rendered alerts.
+Here are the rendered alerts:
 
-![Screenshot of rendered Markdown showing how alerts render as colored boxes with icons.](/assets/images/help/writing/alerts-rendered.png)
+![Screenshot of rendered Markdown alerts showing how Note, Tip, Important, Warning, and Caution render with different colored text and icons.](/assets/images/help/writing/alerts-rendered.png)
 
 {% endif %}
 

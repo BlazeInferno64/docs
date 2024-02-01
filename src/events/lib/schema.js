@@ -1,6 +1,6 @@
-import { languageKeys } from '../../../lib/languages.js'
-import { allVersionKeys } from '../../../lib/all-versions.js'
-import { productIds } from '../../../lib/all-products.js'
+import { languageKeys } from '#src/languages/lib/languages.js'
+import { allVersionKeys } from '#src/versions/lib/all-versions.js'
+import { productIds } from '#src/products/lib/all-products.js'
 import { allTools } from '#src/tools/lib/all-tools.js'
 
 const versionPattern = '^\\d+(\\.\\d+)?(\\.\\d+)?$' // eslint-disable-line
@@ -90,7 +90,7 @@ const context = {
     page_type: {
       type: 'string',
       description: 'Optional page type from the content frontmatter.',
-      enum: ['overview', 'quick_start', 'tutorial', 'how_to', 'reference'], // frontmatter.js
+      enum: ['overview', 'quick_start', 'tutorial', 'how_to', 'reference', 'rai'], // frontmatter.js
     },
     status: {
       type: 'number',
@@ -252,7 +252,7 @@ const link = {
     link_container: {
       type: 'string',
       enum: ['header', 'nav', 'article', 'toc', 'footer'],
-      description: 'The part of the page whwere the user clicked the link.',
+      description: 'The part of the page where the user clicked the link.',
     },
   },
 }

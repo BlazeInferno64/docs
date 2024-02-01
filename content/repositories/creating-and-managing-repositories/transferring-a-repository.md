@@ -30,9 +30,9 @@ Prerequisites for repository transfers:
 - When you transfer a repository that you own to another personal account, the new owner will receive a confirmation email.{% ifversion fpt or ghec %} The confirmation email includes instructions for accepting the transfer. If the new owner doesn't accept the transfer within one day, the invitation will expire.{% endif %}
 - To transfer a repository that you own to an organization, you must have permission to create a repository in the target organization.
 - The target account must not have a repository with the same name, or a fork in the same network.
-- The original owner of the repository is added as a collaborator on the transferred repository. Other collaborators to the transferred repository remain intact.{% ifversion ghes < 3.7 or ghae %}
+- The original owner of the repository is added as a collaborator on the transferred repository. Other collaborators to the transferred repository remain intact.{% ifversion ghae %}
 - Internal repositories can't be transferred.{% endif %}
-- Private forks can't be transferred.
+- Single repositories forked from a private upstream network cannot be transferred.
 {%- ifversion ghec %}
 - Internal repositories can only be transferred to an organization in the enterprise. You cannot transfer an internal repository from an organization owned by one enterprise account to an organization owned by a different enterprise account.
 {%- endif %}
@@ -58,10 +58,9 @@ When you transfer a repository, its issues, pull requests, wiki, stars, and watc
 
   {% warning %}
 
-  **Warning**: If you create a new repository under your account in the future, do not reuse the original name of the transferred repository. If you do, redirects to the transferred repository will no longer work.
+  **Warning**: If you create a new repository or fork at the previous repository location, the redirects to the transferred repository will be deactivated. They can be reactivated by renaming or deleting the new repository or fork.
 
   {% endwarning %}
-
 - When you transfer a repository from an organization to a personal account, the repository's read-only collaborators will not be transferred. This is because collaborators can't have read-only access to repositories owned by a personal account. For more information about repository permission levels, see "[AUTOTITLE](/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-personal-account-settings/permission-levels-for-a-personal-account-repository)" and "[AUTOTITLE](/organizations/managing-user-access-to-your-organizations-repositories/managing-repository-roles/repository-roles-for-an-organization)."{% ifversion fpt or ghec %}
 - Sponsors who have access to the repository through a sponsorship tier may be affected. For more information, see "[AUTOTITLE](/sponsors/receiving-sponsorships-through-github-sponsors/managing-your-sponsorship-tiers#adding-a-repository-to-a-sponsorship-tier)".{% endif %}
 - Packages associated with the repository {% ifversion packages-registries-v2 %}may be transferred, or may lose their link to the repository, depending on the registry they belong to{% else %}are transferred as part of the transfer process{% endif %}. For more information, see "[AUTOTITLE](/packages/learn-github-packages/about-permissions-for-github-packages#about-repository-transfers)."

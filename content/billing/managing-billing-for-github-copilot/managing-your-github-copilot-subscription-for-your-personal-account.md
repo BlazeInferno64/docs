@@ -13,6 +13,14 @@ topics:
 shortTitle: Your individual subscription
 ---
 
+## About managing your {% data variables.product.prodname_copilot_for_individuals %} subscription
+
+This article applies to setting up and managing a {% data variables.product.prodname_copilot %} subscription for your personal account. If you are an organization {% ifversion ghec %}or enterprise{% endif %} administrator and want to set up {% data variables.product.prodname_copilot %} for your organization{% ifversion ghec %} or enterprise{% endif %}, see "[AUTOTITLE](/billing/managing-billing-for-github-copilot/managing-your-github-copilot-subscription-for-your-organization-or-enterprise)."
+
+If you have access to {% data variables.product.prodname_copilot %} through a {% data variables.product.prodname_copilot_for_business %} seat, you will not be able to make administrative changes.
+
+{% data reusables.billing.billing-info %}
+
 ## Setting up a {% data variables.product.prodname_copilot %} trial or subscription for your personal account
 
 Before you can start using {% data variables.product.prodname_copilot_for_individuals %}, you will need to set up a free trial or subscription.
@@ -31,7 +39,7 @@ Before you can start using {% data variables.product.prodname_copilot_for_indivi
 
 ## Canceling your {% data variables.product.prodname_copilot_individuals_short %} subscription
 
-You can cancel your {% data variables.product.prodname_copilot_individuals_short %} subscription at any time. The cancellation will take effect at the end of your current billing cycle. You can also cancel your {% data variables.product.prodname_copilot_individuals_short %} trial, during the {% data reusables.copilot.trial-period %}-day trial period. For more information, see "[Canceling your {% data variables.product.prodname_copilot_individuals_short %} trial](#canceling-your-copilot-for-individuals-trial)."
+You can cancel your {% data variables.product.prodname_copilot_individuals_short %} subscription at any time. The cancellation will take effect at the end of your current billing cycle. You can also cancel your {% data variables.product.prodname_copilot_individuals_short %} trial, during the {% data reusables.copilot.trial-period %}-day trial period. For more information, see "[Canceling your {% data variables.product.prodname_copilot_individuals_short %} trial](#canceling-your-copilot-individual-trial)."
 
 {% data reusables.user-settings.access_settings %}
 {% data reusables.user-settings.billing_plans %}
@@ -53,5 +61,5 @@ You can cancel your {% data variables.product.prodname_copilot_individuals_short
 
 ## Further reading
 
-- [About {% data variables.product.prodname_copilot_for_individuals %}](/copilot/overview-of-github-copilot/about-github-copilot-for-individuals)
-- [Getting started with {% data variables.product.prodname_copilot %}](/copilot/getting-started-with-github-copilot)
+- "[AUTOTITLE](/copilot/overview-of-github-copilot/about-github-copilot-individual)"
+- "[AUTOTITLE](/copilot/using-github-copilot/getting-started-with-github-copilot)"

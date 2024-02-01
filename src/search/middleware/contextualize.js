@@ -2,7 +2,7 @@ import got from 'got'
 import { errors } from '@elastic/elasticsearch'
 import statsd from '#src/observability/lib/statsd.js'
 
-import { getPathWithoutVersion, getPathWithoutLanguage } from '../../../lib/path-utils.js'
+import { getPathWithoutVersion, getPathWithoutLanguage } from '#src/frame/lib/path-utils.js'
 import { getSearchFromRequest } from './get-search-request.js'
 import { getSearchResults } from './es-search.js'
 
@@ -51,7 +51,7 @@ export default async function contextualizeSearch(req, res, next) {
   if (!validationErrors.length && search.query) {
     if (!process.env.ELASTICSEARCH_URL) {
       // This is only true in local dev or in Preview environments.
-      // And in local dev, it's usually for content contritbutors who
+      // And in local dev, it's usually for content contributors who
       // want to test a preview locally, but don't want to have to
       // set up Elasticsearch.
       // This same proxying logic happens in `middleware/api/index.js`

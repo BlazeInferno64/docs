@@ -1,6 +1,6 @@
 import cx from 'classnames'
 
-import { useTranslation } from 'components/hooks/useTranslation'
+import { useTranslation } from 'src/languages/components/useTranslation'
 import { ChildBodyParametersRows } from './ChildBodyParametersRows'
 import type { ChildParameter } from './types'
 
@@ -43,7 +43,7 @@ export function ParameterRow({
   bodyParamExpandCallback,
   clickedBodyParameterName,
 }: Props) {
-  const { t } = useTranslation(['parameter_table', 'products'])
+  const { t } = useTranslation(['parameter_table'])
 
   // This will be true if `rowParams` does not have a key called `default`
   // and it will be true if it does and its actual value is `undefined`.
@@ -158,7 +158,7 @@ export function ParameterRow({
           an API request to get the nested parameter data.
        */}
       {rowParams.type &&
-      (rowParams.type === 'object' || rowParams.type.includes('array of')) &&
+      (rowParams.type.includes('object') || rowParams.type.includes('array of')) &&
       rowParams.childParamsGroups &&
       rowParams.childParamsGroups.length === 0 &&
       !NO_CHILD_WEBHOOK_PROPERTIES.includes(rowParams.name) ? (

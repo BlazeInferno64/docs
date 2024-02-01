@@ -46,6 +46,12 @@ If you customize the `dependabot.yml` file, you may notice some changes to the p
 
 For an example, see "[Setting custom labels](#setting-custom-labels)" below.
 
+{% ifversion dependabot-grouped-security-updates %}{% note %}
+
+**Note:** If you use grouped security updates, the grouped pull requests will also inherit relevant configuration settings from the `dependabot.yml` file. However, they will not inherit any customizations made with the `groups` option, which only applies to version updates. For more information, see "[AUTOTITLE](/code-security/dependabot/dependabot-security-updates/about-dependabot-security-updates#about-grouped-security-updates)."
+
+{% endnote %}{% endif %}
+
 ## Modifying scheduling
 
 When you set a `daily` update schedule, by default, {% data variables.product.prodname_dependabot %} checks for new versions at 05:00 UTC. You can use `schedule.time` to specify an alternative time of day to check for updates (format: `hh:mm`).
@@ -141,27 +147,24 @@ updates:
 ```
 
 {% ifversion dependabot-version-updates-groups %}
+
 ## Grouping {% data variables.product.prodname_dependabot_version_updates %} into one pull request
 
 {% data reusables.dependabot.dependabot-version-updates-groups-about %}
 
 {% data reusables.dependabot.dependabot-version-updates-groups-semver %}
 
-{% data reusables.dependabot.dependabot-version-updates-groups-supported %}
+{% data reusables.dependabot.dependabot-version-updates-groups-match-first %}
 
-The first example _dependabot.yml_ file uses a mixture of `patterns` and `dependency-type` options to include specific dependencies in the group, and `exclude-patterns` to exclude a dependency (or multiple dependencies) from the group.
-
-The second example changes the bundler configuration to create a group of dependencies. The configuration specifies `patterns` (strings of characters) that match with the name of a dependency (or multiple dependencies) in order to include the dependencies in the group.
-
-In the third example, any packages matching the pattern `@angular*` where the highest resolvable version is `minor` or `patch` will be grouped together. {% data variables.product.prodname_dependabot %}  will create a separate pull request for any package that doesn't match the pattern, or that doesn't update to a `minor` or `patch` version.
-
-The fourth example uses an `ignore` condition to exclude updates to `major` versions of `@angular*` packages.
-
-For more information about configuring dependency groups in the _dependabot.yml_ file, see "[AUTOTITLE](/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file#groups)."
+{% ifversion dependabot-grouped-security-updates %}{% data reusables.dependabot.dependabot-security-updates-groups-supported %}{% else %}{% data reusables.dependabot.dependabot-version-updates-groups-supported %}{% endif %}
 
 You must configure groups per package ecosystem.
 
+### Example configurations for `groups`
+
 {% data reusables.dependabot.dependabot-version-updates-groups-yaml-example %}
+
+For more information about configuring dependency groups in the `dependabot.yml` file, see "[AUTOTITLE](/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file#groups)."
 
 {% endif %}
 

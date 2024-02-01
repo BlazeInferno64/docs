@@ -13,6 +13,7 @@ topics:
   - Policy
   - Legal
 ---
+<!-- markdownlint-disable search-replace -->
 
 Thank you for using GitHub! We're happy you're here. Please read this Terms of Service agreement carefully before accessing or using GitHub. Because it is such an important contract between us and our users, we have tried to make it as clear as possible. For your convenience, we have presented these terms in a short non-binding summary followed by the full legal terms.
 
@@ -85,7 +86,7 @@ We have a few simple rules for Personal Accounts on GitHub's Service.
 You are responsible for keeping your Account secure while you use our Service. We offer tools such as two-factor authentication to help you maintain your Account's security, but the content of your Account and its security are up to you.
 - You are responsible for all content posted and activity that occurs under your Account (even when content is posted by others who have Accounts under your Account).
 - You are responsible for maintaining the security of your Account and password. GitHub cannot and will not be liable for any loss or damage from your failure to comply with this security obligation.
-- You will promptly [notify GitHub](https://support.github.com/contact?tags=docs-policy) if you become aware of any unauthorized use of, or access to, our Service through your Account, including any unauthorized use of your password or Account.
+- You will promptly notify GitHub by contacting us through the [GitHub Support portal](https://support.github.com/) if you become aware of any unauthorized use of, or access to, our Service through your Account, including any unauthorized use of your password or Account.
 
 ### 5. Additional Terms
 
@@ -119,7 +120,7 @@ We have the right to refuse or remove any User-Generated Content that, in our so
 
 You retain ownership of and responsibility for Your Content. If you're posting anything you did not create yourself or do not own the rights to, you agree that you are responsible for any Content you post; that you will only submit Content that you have the right to post; and that you will fully comply with any third party licenses relating to Content you post.
 
-Because you retain ownership of and responsibility for Your Content, we need you to grant us — and other GitHub Users — certain legal permissions, listed in Sections D.4 — D.1. These license grants apply to Your Content. If you upload Content that already comes with a license granting GitHub the permissions we need to run our Service, no additional license is required. You understand that you will not receive any payment for any of the rights granted in Sections D.4 — D.1. The licenses you grant to us will end when you remove Your Content from our servers, unless other Users have forked it.
+Because you retain ownership of and responsibility for Your Content, we need you to grant us — and other GitHub Users — certain legal permissions, listed in Sections D.4 — D.7. These license grants apply to Your Content. If you upload Content that already comes with a license granting GitHub the permissions we need to run our Service, no additional license is required. You understand that you will not receive any payment for any of the rights granted in Sections D.4 — D.7. The licenses you grant to us will end when you remove Your Content from our servers, unless other Users have forked it.
 
 ### 4. License Grant to Us
 
@@ -180,7 +181,7 @@ We will terminate the Accounts of [repeat infringers](/site-policy/content-remov
 
 ### 1. GitHub's Rights to Content
 
-GitHub and our licensors, vendors, agents, and/or our content providers retain ownership of all intellectual property rights of any kind related to the Website and Service. We reserve all rights that are not expressly granted to you under this Agreement or by law. The look and feel of the Website and Service is copyright © GitHub, Inc. All rights reserved. You may not duplicate, copy, or reuse any portion of the HTML/CSS, Javascript, or visual design elements or concepts without express written permission from GitHub.
+GitHub and our licensors, vendors, agents, and/or our content providers retain ownership of all intellectual property rights of any kind related to the Website and Service. We reserve all rights that are not expressly granted to you under this Agreement or by law. The look and feel of the Website and Service is copyright © GitHub, Inc. All rights reserved. You may not duplicate, copy, or reuse any portion of the HTML/CSS, JavaScript, or visual design elements or concepts without express written permission from GitHub.
 
 ### 2. GitHub Trademarks and Logos
 
@@ -259,7 +260,7 @@ By agreeing to these Terms, you are giving us permission to charge your on-file 
 
 ### 5. Responsibility for Payment
 
-You are responsible for all fees, including taxes, associated with your use of the Service. By using the Service, you agree to pay GitHub any charge incurred in connection with your use of the Service.  If you dispute the matter, contact [GitHub Support](https://support.github.com/contact?tags=docs-policy). You are responsible for providing us with a valid means of payment for paid Accounts. Free Accounts are not required to provide payment information.
+You are responsible for all fees, including taxes, associated with your use of the Service. By using the Service, you agree to pay GitHub any charge incurred in connection with your use of the Service.  If you dispute the matter, contact us through the [GitHub Support portal](https://support.github.com/). You are responsible for providing us with a valid means of payment for paid Accounts. Free Accounts are not required to provide payment information.
 
 ## L. Cancellation and Termination
 
@@ -271,7 +272,7 @@ It is your responsibility to properly cancel your Account with GitHub. You can [
 
 ### 2. Upon Cancellation
 
-We will retain and use your information as necessary to comply with our legal obligations, resolve disputes, and enforce our agreements, but barring legal requirements, we will delete your full profile and the Content of your repositories within 90 days of cancellation or termination (though some information may remain in encrypted backups). This information can not be recovered once your Account is canceled.
+We will retain and use your information as necessary to comply with our legal obligations, resolve disputes, and enforce our agreements, but barring legal requirements, we will delete your full profile and the Content of your repositories within 90 days of cancellation or termination (though some information may remain in encrypted backups). This information cannot be recovered once your Account is canceled.
 
 We will not delete Content that you have contributed to other Users' repositories or that other Users have forked.
 
@@ -366,4 +367,4 @@ This Agreement may only be modified by a written amendment signed by an authoriz
 
 ### 6. Questions
 
-Questions about the Terms of Service? [Contact us](https://support.github.com/contact?tags=docs-policy).
+Questions about the Terms of Service? Contact us through the [GitHub Support portal](https://support.github.com/).

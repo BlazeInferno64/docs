@@ -11,7 +11,7 @@ versions:
 
 The {% data variables.product.prodname_docs %} site was originally a Ruby on Rails web application. Some time later it was converted into a static site powered by [Jekyll](https://jekyllrb.com/). A few years after that it was migrated to [Nanoc](https://nanoc.app/), another Ruby static site generator.
 
-Today it's a dynamic Node.js webserver powered by Express, using [middleware](https://github.com/github/docs/blob/main/middleware/README.md) to support proper HTTP redirects, language header detection, and dynamic content generation to support the various flavors of {% data variables.product.company_short %}'s product documentation, like {% data variables.product.prodname_dotcom_the_website %} and {% data variables.product.prodname_ghe_server %}.
+Today it's a dynamic Node.js webserver powered by Express, using middleware to support proper HTTP redirects, language header detection, and dynamic content generation to support the various flavors of {% data variables.product.company_short %}'s product documentation, like {% data variables.product.prodname_dotcom_the_website %} and {% data variables.product.prodname_ghe_server %}.
 
 The tooling for this site has changed over the years, but many of the tried-and-true authoring conventions of the original Jekyll site have been preserved.
 
@@ -43,11 +43,10 @@ If you're using `nodenv`, see the [`nodenv` docs](https://github.com/nodenv/node
 
 Once you've installed Node.js (which includes the popular `npm` package manager), open your terminal and run the following commands.
 
-```sh
+```shell
 git clone https://github.com/github/docs
 cd docs
 npm ci
-npm run build
 npm start
 ```
 
@@ -63,17 +62,17 @@ When you're ready to stop your local server, type <kbd>Ctrl</kbd>+<kbd>C</kbd> i
 
 {% endnote %}
 
-If you would like to read more about debugging and troubleshooting the {% data variables.product.prodname_docs %} application, see "[Troubleshooting](https://github.com/github/docs/blob/main/contributing/troubleshooting.md)" in the github/docs repository.
+If you would like to read more about debugging and troubleshooting the {% data variables.product.prodname_docs %} application, see "[AUTOTITLE](/contributing/setting-up-your-environment-to-work-on-github-docs/troubleshooting-your-environment)" in the github/docs repository.
 
 ### Using browser shortcuts
 
-The [`script/bookmarklets`](https://github.com/github/docs/tree/main/script/bookmarklets) directory in the {% data variables.product.prodname_docs %} repository contains browser shortcuts that can help with reviewing {% data variables.product.company_short %} documentation. For more information, see the directory's [`README`](https://github.com/github/docs/tree/main/script/bookmarklets/README.md).
+The [`src/bookmarklets`](https://github.com/github/docs/tree/main/src/bookmarklets) directory in the {% data variables.product.prodname_docs %} repository contains browser shortcuts that can help with reviewing {% data variables.product.company_short %} documentation. For more information, see the directory's [`README`](https://github.com/github/docs/tree/main/src/bookmarklets/README.md).
 
 ### Enabling different languages
 
-By default, the local server does not run with all supported languages enabled.  If you need to run a local server with a particular language, you can temporarily edit the `start` script in `package.json` and update the `ENABLED_LANGUAGES` variable.  
+By default, the local server does not run with all supported languages enabled.  If you need to run a local server with a particular language, you can temporarily edit the `start` script in `package.json` and update the `ENABLED_LANGUAGES` variable.
 
-For example, to enable Japanese and Portuguese in addition to English, you can edit `package.json` and set `ENABLED_LANGUAGES='en,ja,pt'` in the `start` script. Then restart the server for the change to take effect. 
+For example, to enable Japanese and Portuguese in addition to English, you can edit `package.json` and set `ENABLED_LANGUAGES='en,ja,pt'` in the `start` script. Then restart the server for the change to take effect.
 
 {% note %}
 
@@ -81,20 +80,17 @@ For example, to enable Japanese and Portuguese in addition to English, you can e
 
 {% endnote %}
 
-The supported language codes are defined in [`lib/languages.js`](https://github.com/github/docs/blob/main/lib/languages.js).
+The supported language codes are defined in [`src/languages/lib/languages.js`](https://github.com/github/docs/blob/main/src/languages/lib/languages.js).
 
 ## Using {% data variables.product.prodname_github_codespaces %}
 
-As an alternative to running {% data variables.product.prodname_docs %} locally, you can use {% data variables.product.prodname_github_codespaces %}. {% data variables.product.prodname_github_codespaces %} enable you to edit, preview, and test your changes directly from your browser. 
+As an alternative to running {% data variables.product.prodname_docs %} locally, you can use {% data variables.product.prodname_github_codespaces %}. {% data variables.product.prodname_github_codespaces %} enable you to edit, preview, and test your changes directly from your browser.
 
 For more information about using a codespace for working on {% data variables.product.company_short %} documentation, see "[AUTOTITLE](/contributing/setting-up-your-environment-to-work-on-github-docs/working-on-github-docs-in-a-codespace)."
 
 ## Further reading
 
 - [AUTOTITLE](/contributing/writing-for-github-docs/creating-reusable-content)
-- [Components](https://github.com/github/docs/blob/main/components/README.md)
+- [Components](https://github.com/github/docs/blob/main/src/frame/components/README.md)
 - [Data](https://github.com/github/docs/blob/main/data/README.md)
-- [Middleware](https://github.com/github/docs/blob/main/middleware/README.md)
-- [Scripts](https://github.com/github/docs/blob/main/script/README.md)
-- [Styles](https://github.com/github/docs/blob/main/stylesheets/README.md)
-- [Tests](https://github.com/github/docs/blob/main/tests/README.md) 
+- [Tests](https://github.com/github/docs/blob/main/src/tests/README.md)

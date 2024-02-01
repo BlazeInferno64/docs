@@ -11,13 +11,13 @@ introLinks:
 featuredLinks:
   startHere:
     - /get-started/learning-about-github/types-of-github-accounts
-    - /organizations/managing-user-access-to-your-organizations-repositories/managing-repository-roles/repository-roles-for-an-organization    - /organizations/organizing-members-into-teams/about-teams
+    - /organizations/managing-user-access-to-your-organizations-repositories/managing-repository-roles/repository-roles-for-an-organization
+    - /organizations/organizing-members-into-teams/about-teams
   popular:
     - /organizations/collaborating-with-groups-in-organizations/creating-a-new-organization-from-scratch
-    - /organizations/managing-user-access-to-your-organizations-repositories/repository-roles-for-an-organization
+    - /organizations/managing-user-access-to-your-organizations-repositories/managing-repository-roles/repository-roles-for-an-organization
     - /organizations/managing-organization-settings/verifying-or-approving-a-domain-for-your-organization
     - /organizations/managing-oauth-access-to-your-organizations-data/about-oauth-app-access-restrictions
-    - '{% ifversion ghae %}/organizations/keeping-your-organization-secure/managing-security-settings-for-your-organization/managing-security-and-analysis-settings-for-your-organization{% endif %}'
   guideCards:
     - /organizations/managing-membership-in-your-organization/inviting-users-to-join-your-organization
     - /organizations/managing-membership-in-your-organization/adding-people-to-your-organization

@@ -74,8 +74,8 @@ Below is an example comparing the syntax for each system.
 ```yaml
 matrix:
   include:
-    - rvm: 2.5
-    - rvm: 2.6.3
+    - rvm: '2.5'
+    - rvm: '2.6.3'
 ```
 
 {% endraw %}
@@ -89,7 +89,7 @@ jobs:
   build:
     strategy:
       matrix:
-        ruby: [2.5, 2.6.3]
+        ruby: ['2.5', '2.6.3']
 ```
 
 {% endraw %}
@@ -146,15 +146,11 @@ git:
 
 #### {% data variables.product.prodname_actions %} syntax for checking out submodules
 
-{% raw %}
-
 ```yaml
 - uses: {% data reusables.actions.action-checkout %}
   with:
     submodules: false
 ```
-
-{% endraw %}
 
 ### Using environment variables in a matrix
 
@@ -168,7 +164,7 @@ When migrating from Travis CI, consider the following key features in {% data va
 
 ### Storing secrets
 
-{% data variables.product.prodname_actions %} allows you to store secrets and reference them in your jobs. {% data variables.product.prodname_actions %} organizations can limit which repositories can access organization secrets. Deployment protection rules can require manual approval for a workflow to access environment secrets. For more information, see "[AUTOTITLE](/actions/security-guides/encrypted-secrets)."
+{% data variables.product.prodname_actions %} allows you to store secrets and reference them in your jobs. {% data variables.product.prodname_actions %} organizations can limit which repositories can access organization secrets. Deployment protection rules can require manual approval for a workflow to access environment secrets. For more information, see "[AUTOTITLE](/actions/security-guides/using-secrets-in-github-actions)."
 
 ### Sharing files between jobs and workflows
 
@@ -259,8 +255,6 @@ script:
 
 ### {% data variables.product.prodname_actions %} syntax for steps and actions
 
-{% raw %}
-
 ```yaml
 jobs:
   run_python:
@@ -272,8 +266,6 @@ jobs:
           architecture: 'x64'
       - run: python script.py
 ```
-
-{% endraw %}
 
 ## Caching dependencies
 
@@ -337,7 +329,7 @@ jobs:
 
 ### Building with Node.js
 
-##### Travis CI for building with Node.js
+#### Travis CI for building with Node.js
 
 {% raw %}
 
@@ -351,7 +343,7 @@ script:
 
 {% endraw %}
 
-##### {% data variables.product.prodname_actions %} workflow for building with Node.js
+#### {% data variables.product.prodname_actions %} workflow for building with Node.js
 
 ```yaml
 name: Node.js CI

@@ -37,13 +37,14 @@ import { fromMarkdown } from 'mdast-util-from-markdown'
 import { toHast } from 'mdast-util-to-hast'
 import { header } from './code-header.js'
 
-const languages = yaml.load(fs.readFileSync('./data/variables/code-languages.yml', 'utf8'))
+const languages = yaml.load(fs.readFileSync('./data/code-languages.yml', 'utf8'))
 
 const commentRegexes = {
   number: /^\s*#\s*/, // also known has hash or sharp; but the unicode name is "number sign"
   slash: /^\s*\/\/\s*/,
   xml: /^\s*<!--\s*/,
   percent: /^\s*%%?\s*/,
+  hyphen: /^\s*--\s*/,
 }
 
 const matcher = (node) =>

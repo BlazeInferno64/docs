@@ -18,8 +18,8 @@ topics:
 
 
 In this section, we're going to focus on the basics of authentication. Specifically,
-we're going to create a Ruby server (using [Sinatra][Sinatra]) that implements
-the [web flow][webflow] of an application in several different ways.
+we're going to create a Ruby server (using [Sinatra](http://www.sinatrarb.com/)) that implements
+the [web flow](/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps) of an application in several different ways.
 
 {% tip %}
 
@@ -29,15 +29,15 @@ You can download the complete source code for this project [from the platform-sa
 
 ## Registering your app
 
-First, you'll need to [register your application][new oauth app]. Every
+First, you'll need to [register your application](https://github.com/settings/applications/new). Every
 registered {% data variables.product.prodname_oauth_app %} is assigned a unique Client ID and Client Secret.
 The client secret is used to get an access token for the signed-in user. You must
 include the client secret in your native application, however web applications should not leak this value.
 
 You can fill out every other piece of information however you like, except the
 **Authorization callback URL**. This is the most important piece to securely setting
-up your application. It's the callback URL that {% data variables.product.product_name %} 
-returns the user to after successful authentication. Ownership of that URL is what ensures 
+up your application. It's the callback URL that {% data variables.product.product_name %}
+returns the user to after successful authentication. Ownership of that URL is what ensures
 that users sign into your app, instead of leaking tokens to an attacker.
 
 Since we're running a regular Sinatra server, the location of the local instance
@@ -63,13 +63,13 @@ end
 ```
 
 Your client ID and client secret come from [your application's configuration
-page][app settings]. We recommend storing these values as
-[environment variables][about env vars] for ease of replacement and use -- 
+page](https://github.com/settings/developers). We recommend storing these values as
+[environment variables](http://en.wikipedia.org/wiki/Environment_variable#Getting_and_setting_environment_variables) for ease of replacement and use --
 which is exactly what we've done here.
 
 Next, in _views/index.erb_, paste this content:
 
-``` erb
+```html
 <html>
   <head>
   </head>
@@ -88,10 +88,10 @@ Next, in _views/index.erb_, paste this content:
 </html>
 ```
 
-(If you're unfamiliar with how Sinatra works, we recommend [reading the Sinatra guide][Sinatra guide].)
+(If you're unfamiliar with how Sinatra works, we recommend [reading the Sinatra guide](https://github.com/sinatra/sinatra-book/blob/master/book/Introduction.markdown#hello-world-application).)
 
 Also, notice that the URL uses the `scope` query parameter to define the
-[scopes][oauth scopes] requested by the application. For our application, we're
+[scopes](/apps/oauth-apps/building-oauth-apps/scopes-for-oauth-apps) requested by the application. For our application, we're
 requesting `user:email` scope for reading private email addresses.
 
 Navigate your browser to `http://127.0.0.1:4567`. After clicking on the link, you should be taken to {% data variables.product.product_name %}, and presented with an "Authorize application" dialog.
@@ -107,7 +107,7 @@ the app. Let's fix that now!
 
 In _server.rb_, add a route to specify what the callback should do:
 
-``` ruby
+```ruby
 get '/callback' do
   # get temporary GitHub code...
   session_code = request.env['rack.request.query_hash']['code']
@@ -125,11 +125,11 @@ end
 ```
 
 After a successful app authentication, {% data variables.product.product_name %} provides a temporary `code` value.
-You'll need to `POST` this code back to {% data variables.product.product_name %} with your client secret 
+You'll need to `POST` this code back to {% data variables.product.product_name %} with your client secret
 in exchange for an `access_token`.
-To simplify our GET and POST HTTP requests, we're using the [rest-client][REST Client].
+To simplify our GET and POST HTTP requests, we're using the [rest-client](https://github.com/archiloque/rest-client).
 Note that you'll probably never access the API through REST. For a more serious
-application, you should probably use [a library written in the language of your choice][libraries].
+application, you should probably use [a library written in the language of your choice](/rest/overview/libraries).
 
 ### Checking granted scopes
 
@@ -158,10 +158,10 @@ checked for those as well.
 Also, since there's a hierarchical relationship between scopes, you should
 check if you were granted any higher levels of the required scope. For example,
 if the application had asked for `user` scope, it won't have been granted explicitly the
-`user:email` scope. In that case, it would receive a token with the `user` scope, which 
+`user:email` scope. In that case, it would receive a token with the `user` scope, which
 would work for requesting the user's email address, even though it doesn't explicitly include
-`user:email` on the token. Checking for both `user` and `user:email` ensures that you 
-check for both scenarios. 
+`user:email` on the token. Checking for both `user` and `user:email` ensures that you
+check for both scenarios.
 
 Checking for scopes only before making requests is not enough since it's possible
 that users will change the scopes in between your check and the actual request.
@@ -169,7 +169,7 @@ In case that happens, API calls you expected to succeed might fail with a `404`
 or `401` status, or return a different subset of information.
 
 To help you gracefully handle these situations, all API responses for requests
-made with valid OAuth app tokens also contain an [`X-OAuth-Scopes` header][oauth scopes].
+made with valid OAuth app tokens also contain an [`X-OAuth-Scopes` header](/apps/oauth-apps/building-oauth-apps/scopes-for-oauth-apps).
 This header contains the list of scopes of the token that was used to make the
 request. In addition to that, the REST API provides an endpoint to {% ifversion fpt or ghes or ghec %}
 [check a token for validity](/rest/apps#check-a-token){% else %}[check a token for validity](/rest/apps#check-an-authorization){% endif %}.
@@ -198,7 +198,7 @@ erb :basic, :locals => auth_result
 
 We can do whatever we want with our results. In this case, we'll just dump them straight into _basic.erb_:
 
-``` erb
+```html
 <p>Hello, <%= login %>!</p>
 <p>
   <% if !email.nil? && !email.empty? %> It looks like your public email address is <%= email %>.
@@ -327,7 +327,7 @@ OAuth flow and updates the session with the granted token and scopes.
 
 Next, create a file in _views_ called _advanced.erb_, and paste this markup into it:
 
-``` erb
+```html
 <html>
   <head>
   </head>
@@ -362,14 +362,3 @@ the same callback URL, we've got to do a little bit of wonkiness to make it work
 
 Also, if we had never authorized this application to access our {% data variables.product.product_name %} data,
 we would've seen the same confirmation dialog from earlier pop-up and warn us.
-
-[webflow]: /apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps
-[new oauth app]: https://github.com/settings/applications/new
-[Sinatra]: http://www.sinatrarb.com/
-[about env vars]: http://en.wikipedia.org/wiki/Environment_variable#Getting_and_setting_environment_variables
-[Sinatra guide]: https://github.com/sinatra/sinatra-book/blob/master/book/Introduction.markdown#hello-world-application
-[REST Client]: https://github.com/archiloque/rest-client
-[libraries]: /rest/overview/libraries
-[oauth scopes]: /apps/oauth-apps/building-oauth-apps/scopes-for-oauth-apps
-[platform samples]: https://github.com/github/platform-samples/tree/master/api/ruby/basics-of-authentication
-[app settings]: https://github.com/settings/developers

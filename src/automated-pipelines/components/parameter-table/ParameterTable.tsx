@@ -1,5 +1,5 @@
 import cx from 'classnames'
-import { useTranslation } from 'components/hooks/useTranslation'
+import { useTranslation } from 'src/languages/components/useTranslation'
 
 import { ParameterRow } from './ParameterRow'
 import { BodyParameter, ChildParameter, Parameter } from './types'
@@ -29,7 +29,7 @@ export function ParameterTable({
   clickedBodyParameterName = '',
   variant = 'rest',
 }: Props) {
-  const { t } = useTranslation(['parameter_table', 'products'])
+  const { t } = useTranslation(['parameter_table'])
   const queryParams = parameters.filter((param) => param.in === 'query')
   const pathParams = parameters.filter((param) => param.in === 'path')
 

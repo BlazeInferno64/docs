@@ -1,27 +1,31 @@
 date: '2023-08-24'
 intro: |
   {% warning %}
-  
-  **Warning**: This release contains known issues that can impact the performance of your instance. Before you upgrade, make sure you've read the "[Known issues](#3.9.4-known-issues)" section of these release notes.
-  
+
+  **Warning**: A change to MySQL in GitHub Enterprise Server 3.9 and later may impact the performance of your instance. Before you upgrade, make sure you've read the "[Known issues](#3.9.4-known-issues)" section of these release notes.
+
   {% endwarning %}
 sections:
   security_fixes:
-    - To prevent commits from a detached repository from syncing to prior forks that are now in a separate repository network, GitHub Enterprise Server closes pull requests between repositories during detachment. 
-    - Packages have been updated to the latest security versions. 
+    - |
+      An authorization/sensitive information disclosure vulnerability was identified in GitHub Enterprise Server that allowed a fork to retain read access to an upstream repository after the fork's visibility was changed to private. This vulnerability was reported via the [GitHub Bug Bounty Program](https://bounty.github.com/) and assigned [CVE-2023-23763](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2023-23763). [Updated: 2023-09-01]
+    - Packages have been updated to the latest security versions.
   bugs:
-    - On an instance with GitHub Actions enabled, scale sets configured at the enterprise level did not appear for use within the instance's organizations or repositories. 
-    - When an administrator tried to validate blob storage connection settings for GitHub Enterprise Importer in the Management Console using the **Test storage settings** button, the operation failed. 
-    - syslog-ng configurations for containerized services caused errors for log forwarding services. The configurations have been removed. 
-    - When an instance exhausted available memory, in some cases, the system's out-of-memory killer (OOMK) killed the process for `dockerd`, causing Nomad to fail to recover after systemd restarted Docker. 
-    - In some cases, when starting a new GitHub Enterprise Server instance, the preflight page indicated that there was no user disk of sufficient size attached. 
-    - When running the ghe-migrator, certain error messages contained an invalid link to import documentation. 
-    - On an instance with GitHub Actions enabled, due to mismatched values, users could not easily associate workflow job run IDs from the GitHub Enterprise Server APIs or webhooks with a job in the UI. Workflow job runs now use a new URL pattern of `...actions/runs/job/{job_id}`, and `job_id` matches values from APIs and webhook payloads. 
+    - On an instance with GitHub Actions enabled, scale sets configured at the enterprise level did not appear for use within the instance's organizations or repositories.
+    - When an administrator tried to validate blob storage connection settings for GitHub Enterprise Importer in the Management Console using the **Test storage settings** button, the operation failed.
+    - syslog-ng configurations for containerized services caused errors for log forwarding services. The configurations have been removed.
+    - When an instance exhausted available memory, in some cases, the system's out-of-memory killer (OOMK) killed the process for `dockerd`, causing Nomad to fail to recover after systemd restarted Docker.
+    - In some cases, when starting a new GitHub Enterprise Server instance, the preflight page indicated that there was no user disk of sufficient size attached.
+    - When running the ghe-migrator, certain error messages contained an invalid link to import documentation.
+    - On an instance with GitHub Actions enabled, due to mismatched values, users could not easily associate workflow job run IDs from the GitHub Enterprise Server APIs or webhooks with a job in the UI. Workflow job runs now use a new URL pattern of `...actions/runs/job/{job_id}`, and `job_id` matches values from APIs and webhook payloads.
+    - |
+      Administrators could not see or use the "Migrations" section in an instance's Management Console, which prevented the configuration of blob storage for GitHub Enterprise Importer. [Updated: 2023-08-31]
   known_issues:
     - |
-      Custom firewall rules are removed during the upgrade process.
+      {% data reusables.release-notes.2023-10-git-push-made-but-not-registered %} [Updated: 2023-10-26]
     - |
-      The GitHub Packages npm registry no longer returns a time value in metadata responses. This was done to allow for substantial performance improvements. We continue to have all the data necessary to return a time value as part of the metadata response and will resume returning this value in the future once we have solved the existing performance issues.
+      Custom firewall rules are removed during the upgrade process.
+
     - |
       During the validation phase of a configuration run, a `No such object` error may occur for the Notebook and Viewscreen services. This error can be ignored as the services should still correctly start.
     - |
@@ -39,10 +43,28 @@ sections:
     - |
       When enabling CodeQL via default setup [at scale](/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/configuring-code-scanning-at-scale), some checks related to GitHub Actions are omitted, potentially preventing the process from completing.
     - |
-      {% data reusables.release-notes.upgrade-mysql8-cannot-start-up %}
+      {% data reusables.release-notes.upgrade-to-3-9-or-to-3-10-mysql-cannot-start-up %} [Updated: 2023-08-11]
     - |
       {% data reusables.release-notes.upgrade-to-3-9-or-to-3-10-io-utilization-increase %}
     - |
-      {% data reusables.release-notes.migrations-blob-storage-unconfigurable-known-issue %}
+      {% data reusables.release-notes.2023-08-mssql-replication-known-issue %} [Updated: 2023-09-04]
     - |
-      {% data reusables.release-notes.migrations-missing-section-known-issue %}
+      {% data reusables.release-notes.2023-09-config-apply-timeout-hookshot-go-replicas %} [Updated: 2023-09-21]
+    - |
+      {% data reusables.release-notes.2023-09-ephemeral-self-hosted-runners-not-auto-upgrading %} [Updated: 2023-09-29]
+    - |
+      {% data reusables.release-notes.2023-10-resource-activity-queue-not-processed %} [Updated: 2023-10-10]
+    - |
+      {% data reusables.release-notes.2023-10-support-bundle-p-flag-not-working %} [Updated: 2023-10-13]
+    - |
+      {% data reusables.release-notes.scheduled-reminders-unintentional %} [Updated: 2023-10-17]
+    - |
+      {% data reusables.release-notes.2023-10-actions-upgrade-bug %} [Updated: 2023-12-04]
+    - |
+      {% data reusables.release-notes.2023-11-aws-system-time %} [Updated 2023-11-10]
+    - |
+      {% data reusables.release-notes.2023-12-backup-utils-exit-early-redis %} [Updated 2023-12-05]
+    - |
+      {% data reusables.release-notes.2023-12-client-ip-addresses-incorrect-in-audit-log %} [Updated 2023-12-13]
+    - |
+      {% data reusables.release-notes.2024-01-ha-proxy-out-of-memory %} [Updated 2024-01-23]

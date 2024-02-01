@@ -9,7 +9,7 @@ versions:
 
 {% data variables.product.prodname_dotcom %} documentation is open source. Anyone can contribute to the docs in the public `docs` repository: https://github.com/github/docs. {% data variables.product.prodname_dotcom %} employees work on the documentation in a copy of this repository called `docs-internal`. The two repositories are automatically synced to keep them both up to date with changes merged into the `main` branch of either repository. For simplicity, we'll refer to "the documentation repository" in the articles about contributing to {% data variables.product.prodname_docs %}.
 
-The documentation repository is the place to discuss and collaborate on the documentation that is published here on [docs.github.com](/).
+The documentation repository is the place to discuss and collaborate on the documentation that is published here on [docs.github.com](/).<!-- markdownlint-disable-line search-replace -->
 
 {% ifversion discussions %}
 
@@ -31,7 +31,7 @@ If you'd like help troubleshooting a documentation issue or pull request you're 
 
 [Issues](/github/managing-your-work-on-github/about-issues) are used to track tasks that contributors can help with. If an issue has a `triage` label, we haven't reviewed it yet, and you shouldn't begin work on it.
 
-If you've found something in the documentation content, or something about the docs.github.com website, that should be updated, search the open issues to see if someone else has reported the same thing. If it's something new, open an issue using a [template](https://github.com/github/docs/issues/new/choose). We'll use the issue to have a conversation about the problem you'd like to be fixed.
+If you've found something in the documentation content, or something about the docs.github.com website, that should be updated, search the open issues to see if someone else has reported the same thing. If it's something new, open an issue using a [template](https://github.com/github/docs/issues/new/choose). We'll use the issue to have a conversation about the problem you'd like to be fixed.<!-- markdownlint-disable-line search-replace -->
 
 {% note %}
 
@@ -45,6 +45,8 @@ A [pull request](/github/collaborating-with-issues-and-pull-requests/about-pull-
 
 We cannot accept contributions to the [REST API reference documentation](/rest/reference). If you spot an inaccuracy in the REST API reference documentation, open an issue in the [`rest-api-description`](https://github.com/github/rest-api-description/issues/new?template=schema-inaccuracy.md) repository.
 
+We only document {% data variables.product.prodname_dotcom %} products, features, tools, and extensions. We may mention or link to third-party tools to demonstrate how a feature works, but we do not accept pull requests to document third-party tools or integrations unless they were codeveloped with {% data variables.product.company_short %}.
+
 ### Reviewing your own pull requests
 
 You should always review your own pull request first, before marking it as ready for review by others.
@@ -53,9 +55,9 @@ For content changes, make sure that you:
 
 - Confirm that the changes meet the user experience and goals outlined in the content design plan (if there is one).
 - Review the content for technical accuracy.
-- Check your changes for grammar, spelling, and adherence to the [style guide](https://github.com/github/docs/blob/main/contributing/content-style-guide.md).
-- Make sure the text in your pull request will be easy to translate. For more information, see "[Translations guide for writers](https://github.com/github/docs/blob/main/contributing/translations-for-writers.md)."
-- Check new or updated Liquid statements to confirm that versioning is correct. For more information, see "[Liquid helpers](https://github.com/github/docs/blob/main/contributing/liquid-helpers.md)."
+- Check your changes for grammar, spelling, and adherence to the [AUTOTITLE](/contributing/style-guide-and-content-model/style-guide).
+- Make sure the text in your pull request will be easy to translate. For more information, see "[AUTOTITLE](/contributing/writing-for-github-docs/writing-content-to-be-translated)."
+- Check new or updated Liquid statements to confirm that versioning is correct. For more information, see "[AUTOTITLE](/contributing/syntax-and-versioning-for-github-docs/versioning-documentation)."
 - Check the preview of any pages you have changed. A preview is automatically generated after you submit a pull request and links are added to the pull request. The preview sometimes takes several minutes before it is ready to view. Confirm that everything is rendering as expected. Checking the preview will help you identify problems such as typos, content that doesn't follow the style guide, or content that isn't rendering due to versioning problems. Make sure to check the rendered output for lists and tables, which can sometimes have problems that are difficult to identify in the Markdown.
 - If there are any failing checks in your pull request, troubleshoot them until they're all passing.
 
@@ -75,6 +77,6 @@ We do not currently accept pull requests for translated content.
 
 ## Site policy
 
-{% data variables.product.prodname_dotcom %}'s site policies are also published on docs.github.com.
+{% data variables.product.prodname_dotcom %}'s site policies are also published on docs.github.com.<!-- markdownlint-disable-line search-replace -->
 
 If you find a typo in the site policy section, you can open a pull request to fix it. For anything else, see "[Contributing](https://github.com/github/site-policy/blob/main/CONTRIBUTING.md)" in the `site-policy` repository.

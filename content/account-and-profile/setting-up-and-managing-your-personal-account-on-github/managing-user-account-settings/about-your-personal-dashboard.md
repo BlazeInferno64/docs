@@ -19,10 +19,6 @@ topics:
 shortTitle: Your personal dashboard
 ---
 
-{% ifversion global-nav-update %}
-{% data reusables.navigation.global-nav-beta-note %}
-{% endif %}
-
 ## Accessing your personal dashboard
 
 Your personal dashboard is the first page you'll see when you sign in on {% data variables.product.product_name %}.
@@ -48,11 +44,31 @@ In the left sidebar of your dashboard, you can access the top repositories and t
 
 The list of top repositories is automatically generated, and can include any repository you have interacted with, whether it's owned directly by your account or not. Interactions include making commits and opening or commenting on issues and pull requests. The list of top repositories cannot be edited, but repositories will drop off the list 1 year after you last interacted with them.
 
-You can also find a list of your recently visited repositories, teams, and project boards when you click into the search bar at the top of any page on {% data variables.product.product_name %}.
+You can also find a list of your recently visited repositories, teams, and projects when you click into the search bar at the top of any page on {% data variables.product.product_name %}.
 
 ## Staying updated with activity from the community
 
-{% ifversion for-you-feed %}
+{% ifversion feed %}
+
+{% note %}
+
+**Note:** The new feed is currently in public beta and subject to change.
+
+{% endnote %}
+
+The feed is designed to help you discover relevant content from projects you follow, keep up with your friends and community members, and track recent activity in your communities.
+
+You can use the {% octicon "filter" aria-hidden="true" %} **Filter** dropdown in the upper right corner to filter the feed to show only the exact event types you'd like to see. For example, you'll see updates when someone you follow:
+
+- Stars a repository.
+- Follows another user.
+- Creates a public repository.
+- Opens an issue or pull request with `help wanted` or `good first issue` label on a repository you're watching.
+- Pushes commits to a repository you watch.
+- Forks a public repository.
+- Publishes a new release.
+
+{% else %}
 The main section of your dashboard has two activity feeds:
 
 - Following: Activity by people you follow and from repositories you watch.
@@ -62,23 +78,15 @@ The main section of your dashboard has two activity feeds:
 
 This feed shows activity from repositories and users you have shown a direct interest in, by following a user or watching a repository. For example, you'll see updates when a user you follow:
 
-{% else %}
-In the "All activity" section of your news feed, you can view updates from repositories you watch and users you follow.
-
-You'll see updates in your news feed when a user you follow:
-{% endif %}
-
 - Stars a repository.
-- Follows another user.{% ifversion fpt or ghes or ghec %}
-- Creates a public repository.{% endif %}
+- Follows another user.
+- Creates a public repository.
 - Opens an issue or pull request with "help wanted" or "good first issue" label on a repository you're watching.
-- Pushes commits to a repository you watch.{% ifversion fpt or ghes or ghec %}
-- Forks a public repository.{% endif %}
+- Pushes commits to a repository you watch.
+- Forks a public repository.
 - Publishes a new release.
 
-For more information about following people and watching repositories, see "[AUTOTITLE](/get-started/exploring-projects-on-github/following-people)" and "[AUTOTITLE](/get-started/quickstart/be-social)."
-
-{% ifversion for-you-feed %}
+For more information about following people and starring repositories, see "[AUTOTITLE](/get-started/exploring-projects-on-github/following-people)" and "[AUTOTITLE](/get-started/exploring-projects-on-github/saving-repositories-with-stars)."
 
 ### For you feed
 

@@ -13,10 +13,10 @@ versions:
 topics:
   - Enterprise
 children:
-  - /administering-your-instance-from-the-management-console
   - /configuring-user-applications-for-your-enterprise
   - /hardening-security-for-your-enterprise
   - /configuring-network-settings
+  - /configuring-private-networking-for-hosted-compute-products
   - /configuring-github-connect
 ---
 {% ifversion ghes %}

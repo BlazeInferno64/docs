@@ -1,8 +1,8 @@
 import { describe, jest } from '@jest/globals'
 
-import enterpriseServerReleases from '../../../lib/enterprise-server-releases.js'
-import { get } from '../../../tests/helpers/e2etest.js'
-import Page from '../../../lib/page.js'
+import enterpriseServerReleases from '#src/versions/lib/enterprise-server-releases.js'
+import { get } from '#src/tests/helpers/e2etest.js'
+import Page from '#src/frame/lib/page.js'
 
 // The English content page's `versions:` frontmatter is the source
 // of (convenient) truth about which versions of this page is available.
@@ -28,7 +28,14 @@ describe('server', () => {
     expect(res.statusCode).toBe(200)
   })
 
-  test.each(page.applicableVersions)('version %s that has release-notes', async (version) => {
+  const applicableVersions = page.applicableVersions.filter(
+    // github-ae can't be deleted from the list of all versions until
+    // all front matter and all Liquid is cleaned up. This is a legacy
+    // version and we always redirect it out anyway to enterprise-cloud.
+    (version) => version !== 'github-ae@latest',
+  )
+
+  test.each(applicableVersions)('version %s that has release-notes', async (version) => {
     const url = `/en/${version}/admin/release-notes`
     const res = await get(url)
     expect(res.statusCode).toBe(200)

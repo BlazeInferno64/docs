@@ -40,20 +40,22 @@ For repositories that are not eligible for default setup, you can configure adva
 A repository must meet all the following criteria to be eligible for default setup, otherwise you need to use advanced setup.
 
 - {% data variables.product.prodname_code_scanning_caps %} is not already enabled.
-- {% data variables.product.prodname_actions %} are enabled.
-- Uses {% ifversion code-scanning-default-setup-go %} Go, {% endif %}JavaScript/TypeScript, Python, or Ruby.{% ifversion fpt %}
+- {% data variables.product.prodname_actions %} are enabled.{% ifversion code-scanning-default-setup-recommended-languages %}
+- Uses {% ifversion code-scanning-default-setup-go %} Go, {% endif %}JavaScript/TypeScript, Python, or Ruby.{% else %}
+- Uses any {% data variables.product.prodname_codeql %}-supported language.{% endif %}{% ifversion fpt %}
 - Publicly visible.{%- elsif ghec %}
-- Publicly visible, or {% data variables.product.prodname_GH_advanced_security %} is enabled.{%- elsif ghes or ghae %}
+- Publicly visible, or {% data variables.product.prodname_GH_advanced_security %} is enabled.{%- elsif ghes %}
 - {% data variables.product.prodname_GH_advanced_security %} is enabled.{% endif %}
 
 {% ifversion code-scanning-default-setup-automatic-311 %}
 
 ### About adding languages to an existing default setup configuration
 
-If the code in a repository changes to include {% ifversion code-scanning-default-setup-go %}Go, {% endif %}JavaScript/TypeScript, Python, or Ruby, {% data variables.product.prodname_dotcom %} will automatically update the {% data variables.product.prodname_code_scanning %} configuration to include the new language. If {% data variables.product.prodname_code_scanning %} fails with the new configuration, {% data variables.product.prodname_dotcom %} will resume the previous configuration automatically so the repository does not lose {% data variables.product.prodname_code_scanning %} coverage.
+If the code in a repository changes to include {% ifversion code-scanning-default-setup-recommended-languages %}{% ifversion code-scanning-default-setup-go %}Go, {% endif %}JavaScript/TypeScript, Python, or Ruby,{% else %}a {% data variables.product.prodname_codeql %}-supported language,{% endif %} {% data variables.product.prodname_dotcom %} will automatically update the {% data variables.product.prodname_code_scanning %} configuration to include the new language. If {% data variables.product.prodname_code_scanning %} fails with the new configuration, {% data variables.product.prodname_dotcom %} will resume the previous configuration automatically so the repository does not lose {% data variables.product.prodname_code_scanning %} coverage.
 
 {% endif %}
 {% ifversion org-enable-code-scanning %}
+
 ## Configuring default setup for all eligible repositories in an organization
 
 Through the "Code security and analysis" page of your organization's settings, you can enable default setup for all eligible repositories in your organization. For more information on repository eligibility, see "[Eligible repositories for {% data variables.product.prodname_codeql %} default setup at scale](#eligible-repositories-default-setup)."
@@ -64,7 +66,7 @@ Through the "Code security and analysis" page of your organization's settings, y
 1. Click **Settings** next to your organization.
 1. Click **Code security & analysis**.
 1. Click **Enable all** next to "{% data variables.product.prodname_code_scanning_caps %}".{% ifversion bulk-code-scanning-query-suite%}
-1. In the "Query suites" section of the "Enable {% data variables.product.prodname_code_scanning %} default setup" dialog box displayed, select the query suite your configuration of default setup will run. For more information, see "[AUTOTITLE](/code-security/code-scanning/managing-your-code-scanning-configuration/built-in-codeql-query-suites)."
+1. In the "Query suites" section of the "Enable {% data variables.product.prodname_code_scanning %} default setup" dialog box displayed, select the query suite your configuration of default setup will run. For more information, see "[AUTOTITLE](/code-security/code-scanning/managing-your-code-scanning-configuration/codeql-query-suites)."
 1. To enable your configuration of default setup, click **Enable for eligible repositories**.
 1. Optionally, to recommend the "Extended" query suite throughout your organization when enabling default setup, select "Recommend the extended query suite for repositories enabling default setup."{% else %}
 1. In the "Enable {% data variables.product.prodname_code_scanning %} for eligible repositories" dialog box displayed, click **Enable for eligible repositories** to enable your configuration of default setup.{% endif %}
@@ -80,6 +82,7 @@ Through the "Code security and analysis" page of your organization's settings, y
 {% data variables.product.prodname_code_scanning_caps %} is configured at the repository level. For more information, see "[AUTOTITLE](/code-security/code-scanning/enabling-code-scanning/configuring-default-setup-for-code-scanning)."
 {% endif %}
 {% ifversion code-security-multi-repo-enablement %}
+
 ## Configuring default setup for a subset of repositories in an organization
 
 Through security overview for your organization, you can find eligible repositories for default setup, then enable default setup across each of those repositories simultaneously. For more information on repository eligibility, see "[Eligible repositories for {% data variables.product.prodname_codeql %} default setup at scale](#eligible-repositories-default-setup)."
@@ -95,7 +98,7 @@ Through security overview for your organization, you can find eligible repositor
     - `code-scanning-default-setup:eligible is:public` shows repositories that have languages suitable for default setup and are eligible because they are visible to the public.
     - `code-scanning-default-setup:eligible advanced-security:enabled` shows private or internal repositories that have languages suitable for default setup and are eligible because they have {% data variables.product.prodname_GH_advanced_security %} enabled.
     - `code-scanning-default-setup:eligible is:private,internal advanced-security:not-enabled` shows private or internal repositories that have languages suitable for default setup but do not have {% data variables.product.prodname_GH_advanced_security %} enabled. Once you enable {% data variables.product.prodname_GH_advanced_security %} for these repositories, they can also be added to default setup.
-{%- elsif ghes or ghae %}
+{%- elsif ghes %}
     - `code-scanning-default-setup:eligible advanced-security:enabled` shows which repositories can be added to default setup immediately.
     - `code-scanning-default-setup:eligible advanced-security:not-enabled` shows which repositories have languages suitable for default setup but do not have {% data variables.product.prodname_GH_advanced_security %} enabled. Once you enable {% data variables.product.prodname_GH_advanced_security %} for these repositories, they can also be added to default setup.
 {%- endif %}
@@ -116,7 +119,7 @@ You can select all of the displayed repositories, or a subset of them, and enabl
 1. In the list of repositories, select each repository you want to enable {% data variables.product.prodname_code_scanning %} for. To select all repositories on the page, click the checkbox next to **NUMBER Active**. To select all repositories that match the current search, click the checkbox next to **NUMBER Active** and then click **Select all NUMBER repos**.
 1. Click **Security settings** next to **NUMBER selected**.
 1. In the side panel, in the "{% data variables.product.prodname_codeql %} Default Setup" section, select **No change**, then click **Enable**.{% ifversion bulk-code-scanning-query-suite %}
-1. Optionally, to choose a different query suite than your organization's default query suite, select **Query suite: SUITE NAME**, then click the query suite your configuration of default setup should use. For more information, see "[AUTOTITLE](/code-security/code-scanning/managing-your-code-scanning-configuration/built-in-codeql-query-suites)."{% endif %}
+1. Optionally, to choose a different query suite than your organization's default query suite, select **Query suite: SUITE NAME**, then click the query suite your configuration of default setup should use. For more information, see "[AUTOTITLE](/code-security/code-scanning/managing-your-code-scanning-configuration/codeql-query-suites)."{% endif %}
 1. To confirm the enablement of {% data variables.product.prodname_code_scanning %} for the selected repositories, click **Apply changes NUMBER**. Alternatively, to select or deselect more repositories for {% data variables.product.prodname_code_scanning %} enablement, click {% octicon "x" aria-label="Close" %} to close the panel without applying your changes.
 
   {% note %}

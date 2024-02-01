@@ -26,7 +26,7 @@ redirect_from:
 
 {% data reusables.codespaces.codespaces-free-for-personal-intro %}
 
-Organizations can choose whether codespaces created from their repositories will be user-owned or organization-owned. For more information, see "[AUTOTITLE](/codespaces/managing-codespaces-for-your-organization/choosing-who-owns-and-pays-for-codespaces-in-your-organization)." An organization pays for a codespace if all the following things are true. 
+Organizations can choose whether codespaces created from their repositories will be user-owned or organization-owned. For more information, see "[AUTOTITLE](/codespaces/managing-codespaces-for-your-organization/choosing-who-owns-and-pays-for-codespaces-in-your-organization)." An organization pays for a codespace if all the following things are true.
 
 - The organization has chosen for codespaces to be organization-owned.
 {% data reusables.codespaces.when-an-org-pays %}
@@ -110,7 +110,7 @@ The compute usage of a codespace is the length of time for which that codespace 
 
 As an example, if a codespace is active for 1 hour and 15 minutes, then the compute cost will be the hourly cost of the codespace, as determined by its machine type, multiplied by 1.25.
 
-You can control compute usage by stopping your codespaces. For information, see "[AUTOTITLE](/codespaces/developing-in-codespaces/stopping-and-starting-a-codespace)." Codespaces are stopped automatically after a configurable period of inactivity. The timeout period can be configured by the user, or at the organization level. For more information, see "[AUTOTITLE](/codespaces/customizing-your-codespace/setting-your-timeout-period-for-github-codespaces)" and "[AUTOTITLE](/codespaces/managing-codespaces-for-your-organization/restricting-the-idle-timeout-period)."
+You can control compute usage by stopping your codespaces. For information, see "[AUTOTITLE](/codespaces/developing-in-codespaces/stopping-and-starting-a-codespace)." Codespaces are stopped automatically after a configurable period of inactivity. The timeout period can be configured by the user, or at the organization level. For more information, see "[AUTOTITLE](/codespaces/setting-your-user-preferences/setting-your-timeout-period-for-github-codespaces)" and "[AUTOTITLE](/codespaces/managing-codespaces-for-your-organization/restricting-the-idle-timeout-period)."
 
 ## About billing for storage usage
 
@@ -139,7 +139,7 @@ Organization owners can:
 - See the total {% data variables.product.prodname_github_codespaces %} compute and storage usage for your organization for the current month to date. For more information, see "[AUTOTITLE](/billing/managing-billing-for-github-codespaces/viewing-your-github-codespaces-usage)."
 - Configure your organization settings to manage the cost of {% data variables.product.prodname_github_codespaces %}. For more information, see "[AUTOTITLE](/codespaces/managing-codespaces-for-your-organization/managing-the-cost-of-github-codespaces-in-your-organization)."
 
-To estimate the costs for metered services, you can use the {% data variables.product.prodname_dotcom %} [pricing calculator](https://github.com/pricing/calculator?feature=codespaces).
+To estimate the costs for usage-based billing, you can use the {% data variables.product.prodname_dotcom %} [pricing calculator](https://github.com/pricing/calculator?feature=codespaces).
 
 ## About billing for {% data variables.product.prodname_codespaces %} prebuilds
 
@@ -200,6 +200,18 @@ For information on managing and changing your account's spending limit, see "[AU
 
 {% data reusables.codespaces.exporting-changes %}
 
+## Viewing projected usage for an organization
+
+Organization owners and billing managers can view an estimated total usage cost for {% data variables.product.prodname_github_codespaces %} for the organization, for the current monthly billing cycle. For more information, see "[AUTOTITLE](/billing/managing-billing-for-github-codespaces/viewing-your-github-codespaces-usage#viewing-github-codespaces-usage-for-your-organization-account)."
+
+The projected usage shown on the billing page for an organization is calculated based on the total cost for {% data variables.product.prodname_codespaces %} compute and storage usage incurred during the previous seven days, prior to the current day. This is projected forward for the remainder of the billing month to give you an idea of how much the total cost might be for the current billing cycle.
+
+The calculation used for this estimate is:
+
+`<cost for the previous 7 full days>/7 * <days remaining in the billing month, including the current day> + <cost already accrued in this billing month>`
+
+The projected usage does not take into account information such as whether {% data variables.product.prodname_github_codespaces %} is still enabled, the number or size of codespaces that currently exist, or your prebuild settings. For this reason, if all of the organization's codespaces and prebuilds were deleted today, the projected usage for the billing month would still show a figure higher than the accrued usage. However, after seven days have elapsed, with no further {% data variables.product.prodname_codespaces %} usage, the projected usage will be the same as the currently accrued usage.
+
 ## Limiting the machine types for organization-owned codespaces
 
 By default the machine type with the lowest valid resources is used when a codespace is created. However, users may be able to choose a machine type with more resources. They can do this either when they create a codespace, or they can change the machine type of an existing codespace. For more information, see "[AUTOTITLE](/codespaces/developing-in-codespaces/creating-a-codespace-for-a-repository#creating-a-codespace-for-a-repository)" and "[AUTOTITLE](/codespaces/customizing-your-codespace/changing-the-machine-type-for-your-codespace)."
@@ -218,7 +230,7 @@ Usage of codespaces created from a forked repository will be billed to your pers
 
 For example, consider a member, or outside collaborator, of an organization that has allowed billing for codespaces for that user. If the user has permission to fork an organization-owned private repository, they can subsequently create and use a codespace for the new repository at the organization's expense. This is because the organization is the owner of the parent repository. Note that the organization owner can remove the user's access to the private repository, the forked repository, and therefore also the codespace. The organization owner can also delete the parent repository which will also delete the forked repository. For more information, see "[AUTOTITLE](/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/managing-the-forking-policy-for-your-repository)."
 
-{% data reusables.codespaces.prebuilds-billing-for-forks %} 
+{% data reusables.codespaces.prebuilds-billing-for-forks %}
 
 ## How billing is handled when a repository is transferred to another organization
 

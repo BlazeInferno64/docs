@@ -70,7 +70,7 @@ The `configure` CLI command is used to set required credentials and options for 
 
    - For "Which CI providers are you configuring?", use the arrow keys to select `GitLab`, press <kbd>Space</kbd> to select it, then press <kbd>Enter</kbd>.
    - For "{% data variables.product.pat_generic_caps %} for GitHub", enter the value of the {% data variables.product.pat_v1 %} that you created earlier, and press <kbd>Enter</kbd>.
-   - For "Base url of the GitHub instance", {% ifversion ghes or ghae %}enter the URL for your {% data variables.product.product_name %} instance, and press <kbd>Enter</kbd>.{% else %}press <kbd>Enter</kbd> to accept the default value (`https://github.com`).{% endif %}
+   - For "Base url of the GitHub instance", {% ifversion ghes %}enter the URL for your {% data variables.product.product_name %} instance, and press <kbd>Enter</kbd>.{% else %}press <kbd>Enter</kbd> to accept the default value (`https://github.com`).{% endif %}
    - For "Private token for GitLab", enter the value for the GitLab {% data variables.product.pat_generic %} that you created earlier, and press <kbd>Enter</kbd>.
    - For "Base url of the GitLab instance", enter the URL of your GitLab instance, and press <kbd>Enter</kbd>.
 
@@ -262,7 +262,7 @@ The `--config-file-path` argument can also be used to specify which repository a
 In this example, {% data variables.product.prodname_actions_importer %} uses the specified YAML configuration file to perform an audit.
 
 ```shell
-gh actions-importer audit gitlab --output-dir path/to/output/ --config-file-path path/to/gitlab/config.yml
+gh actions-importer audit gitlab --output-dir path/to/output/ --namespace my-gitlab-namespace --config-file-path path/to/gitlab/config.yml
 ```
 
 To audit a GitLab instance using a configuration file, the file must be in the following format, and each `repository_slug` value must be unique:

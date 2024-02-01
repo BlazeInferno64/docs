@@ -31,6 +31,14 @@ You can also monitor replication status from the overview dashboard on your inst
 
 `http(s)://HOSTNAME/setup/replication`
 
+{% ifversion ghes-manage-api-cli-extension %}
+
+## Monitoring replication using the {% data variables.product.prodname_cli %}
+
+You can monitor replication status on your instance using the `gh es` extension for {% data variables.product.prodname_cli %}. For more information, see the [GH ES CLI usage documentation](https://github.com/github/gh-es/blob/main/USAGE.md#gh-es-replication-status)" and "[AUTOTITLE](/admin/administering-your-instance/administering-your-instance-from-the-command-line/administering-your-instance-using-the-github-cli)".
+  
+{% endif %}
+
 {% ifversion replication-management-api %}
 
 ## Monitoring replication using the REST API
@@ -84,7 +92,7 @@ If you've recently configured high availability or geo-replication, the initial 
 
 You can view a specific repository's replication status by connecting to a node and running the following {% ifversion ghe-spokes-deprecation-phase-1 %}commands{% else %}command{% endif %}, replacing OWNER with the repository's owner and REPOSITORY with the repository's name.
 
-```
+```text
 {%- ifversion ghe-spokes-deprecation-phase-1 %}
 ghe-spokesctl check OWNER/REPOSITORY
 ghe-spokesctl info OWNER/REPOSITORY
@@ -95,7 +103,7 @@ ghe-spokes diagnose OWNER/REPOSITORY
 
 Alternatively, if you want to view a repository network's replication status, replace NETWORK-ID/REPOSITORY-ID with the network ID and repository ID number.
 
-```
+```text
 {%- ifversion ghe-spokes-deprecation-phase-1 %}
 ghe-spokesctl check NETWORK-ID/REPOSITORY-ID
 ghe-spokesctl info NETWORK-ID/REPOSITORY-ID
@@ -108,13 +116,13 @@ ghe-spokes diagnose NETWORK-ID/REPOSITORY-ID
 
 You can view a specific storage object's status by connecting to a node and running the following command, replacing OID with the object's ID.
 
-```
+```shell
 ghe-storage info OID
 ```
 
 ### Getting support from {% data variables.product.company_short %}
 
-If you review the troubleshooting advice for replication and continue to experience issues on your instance, collect the following information, then contact {% data variables.contact.contact_ent_support %}.
+If you review the troubleshooting advice for replication and continue to experience issues on your instance, collect the following information, then contact us by visiting {% data variables.contact.contact_ent_support %}.
 
 - On each affected node, run `ghe-repl-status -vv`, then copy the output to your ticket. For more information, see "[AUTOTITLE](/admin/configuration/configuring-your-enterprise/command-line-utilities#ghe-repl-status)."
 - On each affected node, create a support bundle to attach to your ticket. For more information, see "[AUTOTITLE](/support/contacting-github-support/providing-data-to-github-support#creating-and-sharing-support-bundles)."

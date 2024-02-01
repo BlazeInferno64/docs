@@ -16,24 +16,20 @@ topics:
 shortTitle: Push protection for repositories
 ---
 
-{% data reusables.secret-scanning.beta %}
 {% data reusables.secret-scanning.enterprise-enable-secret-scanning %}
 
 ## About push protection for repositories and organizations
 
-Up to now, {% data variables.product.prodname_secret_scanning %} checks for secrets _after_ a push and alerts users to exposed secrets. {% data reusables.secret-scanning.push-protection-overview %} {% ifversion secret-scanning-push-protection-custom-patterns %}{% data variables.product.prodname_secret_scanning_caps %} can also check pushes for custom patterns. For more information, see "[AUTOTITLE](/code-security/secret-scanning/defining-custom-patterns-for-secret-scanning)."{% endif %}
+{% data reusables.secret-scanning.pre-push-protection %} {% data reusables.secret-scanning.push-protection-overview %} {% data reusables.secret-scanning.push-protection-custom-pattern %} {% ifversion secret-scanning-push-protection-custom-patterns %}For more information, see "[AUTOTITLE](/code-security/secret-scanning/defining-custom-patterns-for-secret-scanning)."{% endif %}
 
-If a contributor bypasses a push protection block for a secret, {% data variables.product.prodname_dotcom %}:
-- creates an alert in the **Security** tab of the repository in the state described in the table below.
-- adds the bypass event to the audit log.{% ifversion secret-scanning-push-protection-email %}
-- sends an email alert to organization or personal account owners, security managers, and repository administrators who are watching the repository, with a link to the secret and the reason why it was allowed.{% endif %}
+{% data reusables.secret-scanning.push-protection-bypass %}
 
-{% ifversion ghec or fpt %}
-{% note %}
+{% data reusables.secret-scanning.bypass-reasons-and-alerts %}
 
-**Note:** The github.dev web-based editor doesn't support push protection. For more information about the editor, see "[AUTOTITLE](/codespaces/the-githubdev-web-based-editor)." 
+{% ifversion secret-scanning-bypass-filter %}
 
-{% endnote %}
+On the {% data variables.product.prodname_secret_scanning %} alerts page for a repository or organization, you can apply the `bypassed:true` filter to easily see which alerts are the result of a user bypassing push protection.
+
 {% endif %}
 
 You can monitor security alerts to discover when users are bypassing push protections and creating alerts. For more information, see "[AUTOTITLE](/code-security/getting-started/auditing-security-alerts)."
@@ -42,9 +38,15 @@ You can monitor security alerts to discover when users are bypassing push protec
 If you are an organization owner or security manager, you can view metrics on how push protection is performing across your organization. For more information, see "[AUTOTITLE](/code-security/security-overview/viewing-metrics-for-secret-scanning-push-protection-in-your-organization)."
 {% endif %}
 
-{% data reusables.secret-scanning.bypass-reasons-and-alerts %}
-
 For information on the secrets and service providers supported for push protection, see "[AUTOTITLE](/code-security/secret-scanning/secret-scanning-patterns#supported-secrets)."
+
+{% ifversion ghec or fpt %}
+{% note %}
+
+**Note:** The github.dev web-based editor doesn't support push protection. For more information about the editor, see "[AUTOTITLE](/codespaces/the-githubdev-web-based-editor)."
+
+{% endnote %}
+{% endif %}
 
 {% ifversion secret-scanning-push-protection-for-users %}
 
@@ -60,6 +62,12 @@ Organization owners, security managers, and repository administrators can also e
 
 {% ifversion secret-scanning-enterprise-level-api %}
 Enterprise administrators can also enable or disable {% data variables.product.prodname_secret_scanning %} as a push protection for the enterprise via the API. For more information, see "[AUTOTITLE](/rest/enterprise-admin/code-security-and-analysis)" in the REST API documentation.{% endif %}
+
+{% note %}
+
+**Note:** When you fork a repository with {% data variables.product.prodname_secret_scanning %} as a push protection enabled, this is not enabled by default on the fork. You can enable it on the fork the same way you enable it on a standalone repository.
+
+{% endnote %}
 
 {% ifversion secret-scanning-enterprise-level %}
 
@@ -97,19 +105,19 @@ You can use the organization settings page for "Code security and analysis" to e
 {% data reusables.repositories.navigate-to-ghas-settings %}
 {% data reusables.advanced-security.secret-scanning-push-protection-repo %}
 
-{% ifversion secret-scanning-push-protection %}
+{% ifversion secret-scanning-push-protection-custom-patterns %}
 
 ## Enabling push protection for a custom pattern
 
-You can enable {% data variables.product.prodname_secret_scanning %} as a push protection for custom patterns stored at {% ifversion ghec or ghes or ghae %}the enterprise, organization, or repository level{% else%} the organization or repository level{% endif %}.
+You can enable {% data variables.product.prodname_secret_scanning %} as a push protection for custom patterns stored at {% ifversion ghec or ghes %}the enterprise, organization, or repository level{% else%} the organization or repository level{% endif %}.
 
-{% ifversion ghec or ghes or ghae %}
+{% ifversion ghec or ghes %}
 
 ### Enabling push protection for a custom pattern stored in an enterprise
 
 {% data reusables.secret-scanning.push-protection-enterprise-note %}
 
-Before enabling push protection for a custom pattern at enterprise level, you must also{% ifversion secret-scanning-custom-enterprise-36 or custom-pattern-dry-run-ga %} test your custom patterns using dry runs. {% data reusables.secret-scanning.dry-runs-enterprise-permissions %}{% else %} test your custom patterns in a repository before defining them for your entire enterprise, as there is no dry-run functionality. That way, you can avoid creating excess false-positive {% data variables.secret-scanning.alerts %}.{% endif %}
+Before enabling push protection for a custom pattern at enterprise level, you must also{% ifversion custom-pattern-dry-run-ga %} test your custom patterns using dry runs. {% data reusables.secret-scanning.dry-runs-enterprise-permissions %}{% else %} test your custom patterns in a repository before defining them for your entire enterprise, as there is no dry-run functionality. That way, you can avoid creating excess false-positive {% data variables.secret-scanning.alerts %}.{% endif %}
 
 {% data reusables.enterprise-accounts.access-enterprise %}
 {% data reusables.enterprise-accounts.policies-tab %}{% ifversion security-feature-enablement-policies %}
@@ -118,7 +126,7 @@ Before enabling push protection for a custom pattern at enterprise level, you mu
 {% data reusables.enterprise-accounts.advanced-security-policies %}
 {% data reusables.enterprise-accounts.advanced-security-security-features %}{% endif %}
 {% data reusables.advanced-security.secret-scanning-edit-custom-pattern %}
-{% ifversion secret-scanning-custom-enterprise-36 or custom-pattern-dry-run-ga %}
+{% ifversion custom-pattern-dry-run-ga %}
    {% note %}
 
    **Note**: At the enterprise level, you can only edit and enable push protection for custom patterns that you created.

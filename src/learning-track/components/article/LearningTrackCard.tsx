@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router'
 
-import { Link } from 'components/Link'
-import type { LearningTrack } from 'components/context/ArticleContext'
-import { useTranslation } from 'components/hooks/useTranslation'
+import { Link } from 'src/frame/components/Link'
+import type { LearningTrack } from 'src/frame/components/context/ArticleContext'
+import { useTranslation } from 'src/languages/components/useTranslation'
 
 type Props = {
   track: LearningTrack
@@ -25,8 +25,8 @@ export function LearningTrackCard({ track }: Props) {
         </h2>
         <span className="f5 color-fg-muted">
           {t('current_progress')
-            .replace('{n}', numberOfGuides)
-            .replace('{i}', currentGuideIndex + 1)}
+            .replace('{n}', `${numberOfGuides}`)
+            .replace('{i}', `${currentGuideIndex + 1}`)}
         </span>
         <hr />
         <span className="h5 color-fg-default">

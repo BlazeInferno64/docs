@@ -53,7 +53,7 @@ If there is no existing account with a matching username on the instance, the us
 
 {% ifversion scim-for-ghes %}
 
-During SAML authentication, some environments may use a value other than `NameID` as the unique identifying claim. If your environment does not use `NameID` to identify users, a site administrator can configure custom user attributes for the instance. {% data variables.product.product_name %} will respect this mapping when SCIM is configured. {% ifversion ghes = 3.6 or ghes = 3.7 %} Custom mappings are supported in {% data variables.product.product_name %} 3.6.5 or 3.7.2 and later.{% endif %} For more information about mapping user attributes, see "[AUTOTITLE](/admin/identity-and-access-management/using-saml-for-enterprise-iam/configuring-saml-single-sign-on-for-your-enterprise#configuring-saml-sso)."
+During SAML authentication, some environments may use a value other than `NameID` as the unique identifying claim. If your environment does not use `NameID` to identify users, a site administrator can configure custom user attributes for the instance. {% data variables.product.product_name %} will respect this mapping when SCIM is configured. For more information about mapping user attributes, see "[AUTOTITLE](/admin/identity-and-access-management/using-saml-for-enterprise-iam/configuring-saml-single-sign-on-for-your-enterprise#configuring-saml-sso)."
 
 {% endif %}
 
@@ -64,20 +64,6 @@ If {% data variables.product.product_name %} successfully identifies a user from
 {% ifversion ghes %}
 
 During the private beta, your account team will provide documentation for the configuration of SCIM for {% data variables.product.product_name %} on a supported IdP.
-
-{% elsif ghae %}
-
-The following IdPs support user provisioning with SCIM for {% data variables.product.product_name %}.
-
-{% data reusables.saml.okta-ae-sso-beta %}
-
-{% data reusables.github-ae.saml-idp-table %}
-
-{% data reusables.scim.ghes-scim-beta-note %}
-
-{% data reusables.scim.ghes-scim-idp-table %}
-
-For IdPs that support team mapping, you can assign or unassign the application for {% data variables.product.product_name %} to groups of users in your IdP. These groups are then available to organization owners and team maintainers in {% data variables.location.product_location %} to map to {% data variables.product.product_name %} teams. For more information, see "[AUTOTITLE](/admin/identity-and-access-management/using-saml-for-enterprise-iam/mapping-okta-groups-to-teams)."
 
 {% endif %}
 
@@ -167,7 +153,7 @@ After you enable SCIM on a {% data variables.product.product_name %} instance, a
 
    | IdP | More information |
    | :- | :- |
-   | Azure AD | [Tutorial: Configure {% data variables.product.prodname_ghe_managed %} for automatic user provisioning](https://docs.microsoft.com/azure/active-directory/saas-apps/github-ae-provisioning-tutorial) in the Microsoft Docs. To configure Azure AD for {% data variables.product.product_name %}, see "[AUTOTITLE](/admin/identity-and-access-management/using-saml-for-enterprise-iam/configuring-authentication-and-provisioning-for-your-enterprise-using-azure-ad)." |
+   | Microsoft Entra ID (previously known as Azure AD) | [Tutorial: Configure {% data variables.product.prodname_ghe_managed %} for automatic user provisioning](https://docs.microsoft.com/azure/active-directory/saas-apps/github-ae-provisioning-tutorial) in the Microsoft Docs. To configure Entra ID for {% data variables.product.product_name %}, see "[AUTOTITLE](/admin/identity-and-access-management/using-saml-for-enterprise-iam/configuring-authentication-and-provisioning-for-your-enterprise-using-azure-ad)." |
    | Okta | (beta) To configure Okta for {% data variables.product.product_name %}, see "[AUTOTITLE](/admin/identity-and-access-management/using-saml-for-enterprise-iam/configuring-authentication-and-provisioning-for-your-enterprise-using-okta)." |
 
    The application on your IdP requires two values to provision or deprovision user accounts on {% data variables.location.product_location %}.

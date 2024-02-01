@@ -7,8 +7,8 @@ import { rimraf } from 'rimraf'
 import { mkdirp } from 'mkdirp'
 import { difference, isEqual } from 'lodash-es'
 
-import { allVersions } from '../../../lib/all-versions.js'
-import getApplicableVersions from '../../../lib/get-applicable-versions.js'
+import { allVersions } from '#src/versions/lib/all-versions.js'
+import getApplicableVersions from '#src/versions/lib/get-applicable-versions.js'
 
 const ROOT_INDEX_FILE = 'content/index.md'
 export const MARKDOWN_COMMENT = '\n<!-- Content after this section is automatically generated -->\n'
@@ -72,7 +72,7 @@ async function updateMarkdownFiles(targetDirectory, sourceContent, frontmatter, 
   // of the directories under targetDirectory
   await updateDirectory(targetDirectory, frontmatter, { indexOrder })
   // We don't want to update directories that the pipelines don't affect
-  // so we make one call to update only only the root index.md file
+  // so we make one call to update only the root index.md file
   // in targetDirectory to prevent any unintended changes
   await updateDirectory(path.dirname(targetDirectory), frontmatter, { rootDirectoryOnly: true })
 }
@@ -113,7 +113,7 @@ async function updateMarkdownFile(
 
     // Create a new object so that we don't mutate the original data
     const newData = { ...data }
-    // Only modify the versions property when a file already existss
+    // Only modify the versions property when a file already exists
     newData.versions = sourceData.versions
     const targetContent = manuallyCreatedContent + commentDelimiter + sourceContent
     const newFileContent = appendVersionComment(matter.stringify(targetContent, newData))

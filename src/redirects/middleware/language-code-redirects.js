@@ -1,5 +1,5 @@
-import languages from '../../../lib/languages.js'
-import { defaultCacheControl } from '../../../middleware/cache-control.js'
+import languages from '#src/languages/lib/languages.js'
+import { defaultCacheControl } from '#src/frame/middleware/cache-control.js'
 
 const redirectPatterns = Object.values(languages)
   .map((language) => language.redirectPatterns || [])

@@ -47,6 +47,14 @@ admin@ghe-data-node-0:~$ ghe-cluster-status | grep error
 
 {% endnote %}
 
+{% ifversion ghes-manage-api-cli-extension %}
+
+## Monitoring cluster status using the {% data variables.product.prodname_cli %}
+
+You can use the `gh es` extension for {% data variables.product.prodname_cli %} to check the status of your {% data variables.product.product_name %} cluster. For more information, see the [GH ES CLI usage documentation](https://github.com/github/gh-es/blob/main/USAGE.md#gh-es-cluster-status) and "[AUTOTITLE](/admin/administering-your-instance/administering-your-instance-from-the-command-line/administering-your-instance-using-the-github-cli)".
+
+{% endif %}
+
 ## Monitoring cluster status with Nagios
 
 You can configure [Nagios](https://www.nagios.org/) to monitor {% data variables.product.prodname_ghe_server %}. In addition to monitoring basic connectivity to each of the cluster nodes, you can check the cluster status by configuring Nagios to use the `ghe-cluster-status -n` command. This returns output in a format that Nagios understands.
@@ -113,7 +121,7 @@ You can configure [Nagios](https://www.nagios.org/) to monitor {% data variables
 
    **Example definition**
 
-   ```
+   ```text
    define command {
         command_name    check_ssh_ghe_cluster
         command_line    $USER1$/check_by_ssh -H $HOSTADDRESS$ -C "ghe-cluster-status -n" -l admin -p 122 -t 30
@@ -124,7 +132,7 @@ You can configure [Nagios](https://www.nagios.org/) to monitor {% data variables
 
    **Example definition**
 
-   ```
+   ```text
    define host{
         use                     generic-host
         host_name               ghe-data-node-0

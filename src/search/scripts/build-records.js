@@ -7,8 +7,8 @@ import { HTTPError } from 'got'
 
 import parsePageSectionsIntoRecords from './parse-page-sections-into-records.js'
 import getPopularPages from './popular-pages.js'
-import languages from '../../../lib/languages.js'
-import domwaiter from '../../../script/domwaiter.js'
+import languages from '#src/languages/lib/languages.js'
+import domwaiter from './domwaiter.js'
 
 const pageMarker = chalk.green('|')
 const recordMarker = chalk.grey('.')
@@ -21,7 +21,7 @@ dotenv.config()
 // For example:
 //  echo 'BUILD_RECORDS_MAX_CONCURRENT=20' >> .env
 //  echo 'BUILD_RECORDS_MIN_TIME=50' >> .env
-const MAX_CONCURRENT = parseInt(process.env.BUILD_RECORDS_MAX_CONCURRENT || '200', 10)
+const MAX_CONCURRENT = parseInt(process.env.BUILD_RECORDS_MAX_CONCURRENT || '100', 10)
 const MIN_TIME = parseInt(process.env.BUILD_RECORDS_MIN_TIME || '5', 10)
 
 // These products, forcibly always get a popularity of 0 independent of

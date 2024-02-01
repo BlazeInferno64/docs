@@ -9,10 +9,9 @@ redirect_from:
   - /enterprise/admin/user-management/configuring-email-for-notifications
   - /admin/configuration/configuring-email-for-notifications
   - /admin/configuration/configuring-your-enterprise/configuring-email-for-notifications
-permissions: '{% ifversion ghes %}Site administrators{% elsif ghae %}Enterprise owners{% endif %} can configure email for notifications.'
+permissions: 'Site administrators can configure email for notifications.'
 versions:
   ghes: '*'
-  ghae: '*'
 type: how_to
 topics:
   - Enterprise
@@ -24,7 +23,6 @@ shortTitle: Configure email notifications
 
 ## Configuring SMTP for your enterprise
 
-{% ifversion ghes %}
 {% data reusables.enterprise_site_admin_settings.email-settings %}
 1. Select **Enable email**. This will enable both outbound and inbound email. However, for inbound email to work you will also need to configure your DNS settings as described below in "[Configuring DNS and firewall
 settings to allow incoming emails](#configuring-dns-and-firewall-settings-to-allow-incoming-emails)."
@@ -39,24 +37,6 @@ settings to allow incoming emails](#configuring-dns-and-firewall-settings-to-all
     - **Email:** An internal email address.
     - **URL:** A link to an internal support site. You must include either `http://` or `https://`.
 1. [Test email delivery](#testing-email-delivery).
-{% elsif ghae %}
-{% data reusables.enterprise-accounts.access-enterprise %}
-{% data reusables.enterprise-accounts.settings-tab %}
-1. Under {% octicon "gear" aria-hidden="true" %} **Settings**, click **Email**.
-1. Select **Enable email**.
-1. Type the settings for your email server.
-    - In the **Server address** field, type the address of your SMTP server.
-    - In the **Port** field, type the port that your SMTP server uses to send email.
-    - In the **Domain** field, type the domain name that your SMTP server will send with a HELO response, if any.
-    - Select the **Authentication** dropdown, and choose the type of encryption used by your SMTP server.
-    - In the **No-reply email address** field, type the email address to use in the From and To fields for all notification emails.
-1. If you want to discard all incoming emails that are addressed to the no-reply email address, select **Discard email addressed to the no-reply email address**.
-1. Click **Test email settings**.
-1. Under "Send test email to," type the email address where you want to send a test email, then click **Send test email**.
-1. Click **Save**.
-{% endif %}
-
-{% ifversion ghes %}
 
 ## Testing email delivery
 
@@ -64,11 +44,11 @@ settings to allow incoming emails](#configuring-dns-and-firewall-settings-to-all
 1. Under "Send test email to," type an address to send the test email to.
 1. Click **Send test email**.
 
-  {% tip %}
+   {% tip %}
 
-  **Tip:** If SMTP errors occur while sending a test email—such as an immediate delivery failure or an outgoing mail configuration error—you will see them in the Test email settings dialog box.
+   **Tip:** If SMTP errors occur while sending a test email—such as an immediate delivery failure or an outgoing mail configuration error—you will see them in the Test email settings dialog box.
 
-  {% endtip %}
+   {% endtip %}
 
 1. If the test email fails, [troubleshoot your email settings](#troubleshooting-email-delivery).
 1. When the test email succeeds, under the "Settings" sidebar, click **Save settings**.
@@ -79,14 +59,6 @@ settings to allow incoming emails](#configuring-dns-and-firewall-settings-to-all
 ## Enforcing TLS for SMTP connections
 
 You can enforce TLS encryption for all incoming SMTP connections, which can help satisfy an ISO-27017 certification requirement.
-
-{%- ifversion ghes = 3.6 %}
-{% note %}
-
-**Note**: Enforcement of TLS for SMTP connections is unavailable in {% data variables.product.product_name %} 3.6.0 and 3.6.1. The feature is available in 3.6.2 and later.
-
-{% endnote %}
-{%- endif %}
 
 {% data reusables.enterprise_site_admin_settings.email-settings %}
 1. Under "Authentication", select **Enforce TLS auth (recommended)**.
@@ -155,7 +127,7 @@ If you need to verify that your inbound email is functioning, you can review `/v
 
 `/var/log/mail.log` verifies that messages are reaching your server. Here's an example of a successful email reply:
 
-```
+```text
 Oct 30 00:47:18 54-171-144-1 postfix/smtpd[13210]: connect from st11p06mm-asmtp002.mac.com[17.172.124.250]
 Oct 30 00:47:19 54-171-144-1 postfix/smtpd[13210]: 51DC9163323: client=st11p06mm-asmtp002.mac.com[17.172.124.250]
 Oct 30 00:47:19 54-171-144-1 postfix/cleanup[13216]: 51DC9163323: message-id=<b2b9c260-4aaa-4a93-acbb-0b2ddda68579@me.com>
@@ -169,7 +141,7 @@ Note that the client first connects; then, the queue becomes active. Then, the m
 
 `/var/log/mail-replies/metroplex.log` shows whether inbound emails are being processed to add to issues and pull requests as replies. Here's an example of a successful message:
 
-```
+```text
 [2014-10-30T00:47:23.306 INFO (5284) #] metroplex: processing <b2b9c260-4aaa-4a93-acbb-0b2ddda68579@me.com>
 [2014-10-30T00:47:23.333 DEBUG (5284) #] Matched /data/user/mail/reply/new/1414630039.Vfc00I12000eM445784.ghe-tjl2-co-ie
 [2014-10-30T00:47:23.334 DEBUG (5284) #] Moving /data/user/mail/reply/new/1414630039.Vfc00I12000eM445784.ghe-tjl2-co-ie => /data/user/incoming-mail/success
@@ -185,12 +157,6 @@ In order to properly process inbound emails, you must configure a valid A Record
 
 If {% data variables.location.product_location %} is behind a firewall or is being served through an AWS security group, make sure port 25 is open to all mail servers that send emails to `reply@reply.[hostname]`.
 
-{% endif %}
-
 ### Contact support
 
-{% ifversion ghes %}
-If you're still unable to resolve the problem, contact {% data variables.contact.contact_ent_support %}. Please attach the output file from `http(s)://[hostname]/setup/diagnostics` to your email to help us troubleshoot your problem.
-{% elsif ghae %}
-You can contact {% data variables.contact.github_support %} for help configuring email for notifications to be sent through your SMTP server. For more information, see "[AUTOTITLE](/support/contacting-github-support)."
-{% endif %}
+If you're still unable to resolve the problem, contact us by visiting {% data variables.contact.contact_ent_support %}. Please attach the output file from `http(s)://[hostname]/setup/diagnostics` to your email to help us troubleshoot your problem.

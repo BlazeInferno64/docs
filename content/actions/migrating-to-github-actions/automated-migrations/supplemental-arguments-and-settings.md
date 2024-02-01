@@ -51,7 +51,7 @@ A credentials file must be a YAML file containing a list of server and access to
 
 For example:
 
-```yml
+```yaml
 - url: https://github.com
   access_token: ghp_mygeneraltoken
 - url: https://github.com/specific_org/
@@ -69,7 +69,7 @@ For the above credentials file, {% data variables.product.prodname_actions_impor
 
 For example:
 
-```yml
+```yaml
 - url: https://gitlab.com
   access_token: super_secret_token
   provider: gitlab
@@ -108,6 +108,8 @@ gh actions-importer list-features
 
 You should see an output similar to the following.
 
+<!-- markdownlint-disable search-replace -->
+
 ```shell
 Available feature flags:
 
@@ -130,6 +132,8 @@ workflow-concurrency-option-allowed (enabled):
 Enable features by passing --enable-features feature-1 feature-2
 Disable features by passing --disable-features feature-1 feature-2
 ```
+
+<!-- markdownlint-enable search-replace -->
 
 To toggle feature flags, you can use either of the following methods:
 - Use the `--enable-features` and `--disable-features` options when running a `gh actions-importer` command.

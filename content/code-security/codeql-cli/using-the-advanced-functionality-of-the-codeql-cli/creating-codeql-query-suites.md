@@ -5,7 +5,6 @@ product: '{% data reusables.gated-features.codeql %}'
 versions:
   fpt: '*'
   ghes: '*'
-  ghae: '*'
   ghec: '*'
 topics:
   - Advanced Security
@@ -15,8 +14,6 @@ redirect_from:
   - /code-security/codeql-cli/creating-codeql-query-suites
   - /code-security/codeql-cli/using-the-codeql-cli/creating-codeql-query-suites
 ---
-
-{% data reusables.codeql-cli.codeql-site-migration-note %}
 
 ## About creating {% data variables.product.prodname_codeql %} query suites
 
@@ -236,7 +233,7 @@ recommendation`, use:
 ```
 
 To create a suite that selects all queries with `@tag security` and
-`@problem.severity high` or `very-high` from the `codeql/cpp-queries` {% data variables.product.prodname_codeql %} pack,
+`@precision high` or `very-high` from the `codeql/cpp-queries` {% data variables.product.prodname_codeql %} pack,
 use:
 
 ```yaml
@@ -244,7 +241,7 @@ use:
   from: codeql/cpp-queries
 - include:
     tags contain: security
-    problem.severity:
+    precision:
     - high
     - very-high
 ```

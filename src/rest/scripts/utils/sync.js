@@ -4,7 +4,7 @@ import path from 'path'
 import { mkdirp } from 'mkdirp'
 
 import { updateRestFiles } from './update-markdown.js'
-import { allVersions } from '../../../../lib/all-versions.js'
+import { allVersions } from '#src/versions/lib/all-versions.js'
 import { createOperations, processOperations } from './get-operations.js'
 import { REST_DATA_DIR, REST_SCHEMA_FILENAME } from '../../lib/index.js'
 
@@ -23,12 +23,13 @@ export async function syncRestData(sourceDirectory, restSchemas) {
 
       const operations = []
       try {
+        console.log('Proccessing operations for version ', schemaName)
         const newOperations = await createOperations(schema)
         operations.push(...newOperations)
         await processOperations(operations)
       } catch (error) {
         throw new Error(
-          "🐛 Whoops! It looks like the script wasn't able to parse the dereferenced schema. A recent change may not yet be supported by the decorator. Please reach out in the #docs-engineering slack channel for help.",
+          `${error}\n\n🐛 Whoops! It looks like the script wasn't able to parse the dereferenced schema. A recent change may not yet be supported by the decorator. Please reach out in the #docs-engineering slack channel for help.`,
         )
       }
       const formattedOperations = await formatRestData(operations)

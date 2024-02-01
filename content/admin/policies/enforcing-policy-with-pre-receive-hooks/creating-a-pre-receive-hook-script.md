@@ -25,7 +25,7 @@ A pre-receive hook script executes in a pre-receive hook environment on {% data 
 
 After a push occurs and before any refs are updated for the remote repository, the `git-receive-pack` process on {% data variables.location.product_location %} invokes the pre-receive hook script. Standard input for the script, `stdin`, is a string containing a line for each ref to update. Each line contains the old object name for the ref, the new object name for the ref, and the full name of the ref.
 
-```
+```shell
 <old-value> SP <new-value> SP <ref-name> LF
 ```
 
@@ -104,7 +104,9 @@ The `$GITHUB_VIA` variable is available in the pre-receive hook environment when
 | <pre>releases delete button</pre> | Deletion of a release | "[AUTOTITLE](/repositories/releasing-projects-on-github/managing-releases-in-a-repository#deleting-a-release)" |
 | <pre>stafftools branch restore</pre> | Restoration of a branch from the site admin dashboard | "[AUTOTITLE](/admin/configuration/configuring-your-enterprise/site-admin-dashboard#repositories)" |
 | <pre>tag create api</pre> | Creation of a tag via the API | "[AUTOTITLE](/rest/git#create-a-tag-object)" in the REST API documentation |
+{%- ifversion ghes < 3.13 %}
 | <pre>slumlord (#SHA)</pre> | Commit via Subversion | "[AUTOTITLE](/get-started/working-with-subversion-on-github/support-for-subversion-clients#making-commits-to-subversion)" |
+{%- endif %}
 | <pre>web branch create</pre> | Creation of a branch via the web interface | "[AUTOTITLE](/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-and-deleting-branches-within-your-repository#creating-a-branch)" |
 
 #### Available for pull request merges
@@ -180,7 +182,7 @@ You can test a pre-receive hook script locally before you create or update it on
 
 1. Create a test pre-receive script called `always_reject.sh`. This example script will reject all pushes, which is useful for locking a repository:
 
-   ```
+   ```shell
    #!/usr/bin/env bash
 
    echo "error: rejecting all pushes"

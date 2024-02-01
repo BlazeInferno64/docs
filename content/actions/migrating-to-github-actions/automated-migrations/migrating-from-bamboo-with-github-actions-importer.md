@@ -14,12 +14,6 @@ topics:
 shortTitle: Bamboo migration
 ---
 
-{% note %}
-
-**Note:** Bamboo support for {% data variables.product.prodname_actions_importer %} is currently in public beta and subject to change.
-
-{% endnote %}
-
 [Legal notice](#legal-notice)
 
 ## About migrating from Bamboo with GitHub Actions Importer
@@ -48,7 +42,7 @@ There are some limitations when migrating from Bamboo to {% data variables.produ
 - Pattern match labeling is not transformed because there is no equivalent in {% data variables.product.prodname_actions %}.
 - All artifacts are transformed into an `actions/upload-artifact`, regardless of whether they are `shared` or not, so they can be downloaded from any job in the workflow.
 - Permissions are not transformed because there is no suitable equivalent in {% data variables.product.prodname_actions %}.
-- {% data variables.product.prodname_actions_importer %} supports Bamboo version between 7.1.1 and 8.1.1, however, project and plan variables will not be migrated.
+- If the Bamboo version is between 7.1.1 and 8.1.1, project and plan variables will not be migrated.
 
 #### Manual tasks
 
@@ -91,7 +85,7 @@ The `configure` CLI command is used to set required credentials and options for 
 
    - For "Which CI providers are you configuring?", use the arrow keys to select `Bamboo`, press <kbd>Space</kbd> to select it, then press <kbd>Enter</kbd>.
    - For "{% data variables.product.pat_generic_caps %} for GitHub", enter the value of the {% data variables.product.pat_v1 %} that you created earlier, and press <kbd>Enter</kbd>.
-   - For "Base url of the GitHub instance", {% ifversion ghes or ghae %}enter the URL for your {% data variables.product.product_name %} instance, and press <kbd>Enter</kbd>.{% else %}press <kbd>Enter</kbd> to accept the default value (`https://github.com`).{% endif %}
+   - For "Base url of the GitHub instance", {% ifversion ghes %}enter the URL for your {% data variables.product.product_name %} instance, and press <kbd>Enter</kbd>.{% else %}press <kbd>Enter</kbd> to accept the default value (`https://github.com`).{% endif %}
    - For "{% data variables.product.pat_generic_caps %} for Bamboo", enter the value for the Bamboo {% data variables.product.pat_generic %} that you created earlier, and press <kbd>Enter</kbd>.
    - For "Base url of the Bamboo instance", enter the URL for your Bamboo Server or Bamboo Data Center instance, and press <kbd>Enter</kbd>.
 

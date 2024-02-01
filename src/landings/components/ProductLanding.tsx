@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { DefaultLayout } from 'components/DefaultLayout'
+import { DefaultLayout } from 'src/frame/components/DefaultLayout'
 import { useProductLandingContext } from 'src/landings/components/ProductLandingContext'
 
 import { LandingHero } from 'src/landings/components/LandingHero'
@@ -8,10 +8,10 @@ import { GuideCards } from 'src/landings/components/GuideCards'
 import { SponsorsExamples } from 'src/landings/components/SponsorsExamples'
 import { CommunityExamples } from 'src/landings/components/CommunityExamples'
 import { LandingSection } from 'src/landings/components/LandingSection'
-import { useTranslation } from 'components/hooks/useTranslation'
+import { useTranslation } from 'src/languages/components/useTranslation'
 import { ProductArticlesList } from 'src/landings/components/ProductArticlesList'
 import { ProductReleases } from 'src/landings/components/ProductReleases'
-import { useVersion } from 'components/hooks/useVersion'
+import { useVersion } from 'src/versions/components/useVersion'
 import { RestRedirect } from 'src/rest/components/RestRedirect'
 
 export const ProductLanding = () => {

@@ -2,7 +2,6 @@
 title: query run
 versions: # DO NOT MANUALLY EDIT. CHANGES WILL BE OVERWRITTEN BY A 🤖
   fpt: '*'
-  ghae: '*'
   ghec: '*'
   ghes: '*'
 topics:
@@ -47,7 +46,9 @@ source-code alerts, you may find [codeql database analyze](/code-security/codeql
 
 To run multiple queries in parallel, see [codeql database run-queries](/code-security/codeql-cli/codeql-cli-manual/database-run-queries).
 
-## Primary options
+## Options
+
+### Primary Options
 
 #### `<file.ql>`
 
@@ -148,7 +149,7 @@ below this percentage.
 
 #### `--external=<pred>=<file.csv>`
 
-A CSV file that contains rows for external predicate `<pred>`.
+A CSV file that contains rows for external predicate _\<pred>_.
 Multiple `--external` options can be supplied.
 
 #### `--xterm-progress=<mode>`
@@ -193,7 +194,13 @@ expense of making it much less human readable.
 
 #### `-M, --ram=<MB>`
 
-Set total amount of RAM the query evaluator should be allowed to use.
+The query evaluator will try hard to keep its total memory footprint
+below this value. (However, for large databases it is possible that the
+threshold may be broken by file-backed memory maps, which can be swapped
+to disk in case of memory pressure).
+
+The value should be at least 2048 MB; smaller values will be
+transparently rounded up.
 
 ### Options to control QL compilation
 
@@ -250,6 +257,11 @@ Don't check embedded query metadata in QLDoc comments for validity.
 
 \[Advanced] Override the default maximum size for a compilation cache
 directory.
+
+#### `--fail-on-ambiguous-relation-name`
+
+\[Advanced] Fail compilation if an ambiguous relation name is generated
+during compilation.
 
 ### Options to set up compilation environment
 
@@ -322,7 +334,7 @@ directory.
 #### `--registries-auth-stdin`
 
 Authenticate to GitHub Enterprise Server Container registries by passing
-a comma-separated list of `<registry_url>=<token>` pairs.
+a comma-separated list of \<registry\_url>=\<token> pairs.
 
 For example, you can pass
 `https://containers.GHEHOSTNAME1/v2/=TOKEN1,https://containers.GHEHOSTNAME2/v2/=TOKEN2`
@@ -379,3 +391,13 @@ the running subcommand.
 
 (To write a log file with a name you have full control over, instead
 give `--log-to-stderr` and redirect stderr as desired.)
+
+#### `--common-caches=<dir>`
+
+\[Advanced] Controls the location of cached data on disk that will
+persist between several runs of the CLI, such as downloaded QL packs and
+compiled query plans. If not set explicitly, this defaults to a
+directory named `.codeql` in the user's home directory; it will be
+created if it doesn't already exist.
+
+Available since `v2.15.2`.

@@ -1,4 +1,4 @@
-# Content <!-- omit in toc -->
+# Content <!-- omit in toc --><!-- markdownlint-disable -->
 
 The `/content` directory is where all the site's (English) Markdown content lives!
 
@@ -54,7 +54,7 @@ See [`lib/frontmatter.js`](../lib/frontmatter.js).
 
 ### `versions`
 
-- Purpose: Indicates the [versions](../lib/all-versions.js) to which a page applies.
+- Purpose: Indicates the [versions](#src/versions/lib/all-versions.js) to which a page applies.
 See [Versioning](#versioning) for more info.
 - Type: `Object`. Allowable keys map to product names and can be found in the `versions` object in [`lib/frontmatter.js`](../lib/frontmatter.js).
 - This frontmatter value is currently **required** for all pages.
@@ -196,7 +196,7 @@ featuredLinks:
 
 ### `allowTitleToDifferFromFilename`
 
-- Purpose: Indicates whether a page is allowed to have a title that differs from its filename. Pages with this frontmatter set to `true` will not be flagged in tests or updated by `script/reconcile-ids-with-filenames.js`. Use this value if a file's `title` frontmatter includes Liquid or punctuation that cannot be part of the filename. For example, the article "[About Enterprise Managed Users](https://docs.github.com/en/enterprise-cloud@latest/admin/identity-and-access-management/using-enterprise-managed-users-for-iam/about-enterprise-managed-users)" uses a Liquid reusable in its title, `'About {% data variables.product.prodname_emus %}'`, which cannot be in the filename, `about-enterprise-managed-users.md`, so the `allowTitleToDifferFromFilename` frontmatter is set to `true`.
+- Purpose: Indicates whether a page is allowed to have a title that differs from its filename. Pages with this frontmatter set to `true` will not be flagged in tests or updated by `src/content-render/scripts/reconcile-filenames-with-ids.js`. Use this value if a file's `title` frontmatter includes Liquid or punctuation that cannot be part of the filename. For example, the article "[About Enterprise Managed Users](https://docs.github.com/en/enterprise-cloud@latest/admin/identity-and-access-management/using-enterprise-managed-users-for-iam/about-enterprise-managed-users)" uses a Liquid reusable in its title, `'About {% data variables.product.prodname_emus %}'`, which cannot be in the filename, `about-enterprise-managed-users.md`, so the `allowTitleToDifferFromFilename` frontmatter is set to `true`.
 - Type: `Boolean`. Default is `false`.
 - Optional.
 
@@ -293,19 +293,19 @@ Do not add hardcoded "In this article" sections in the Markdown source or else t
 A content file can have **two** types of versioning:
 
 - [`versions`](#versions) frontmatter (**required**)
-    - Determines in which versions the page is available. See [contributing/permalinks](../contributing/permalinks.md) for more info.
+    - Determines in which versions the page is available. See "[Versioning documentation](https://docs.github.com/en/contributing/writing-for-github-docs/versioning-documentation) for more info.
 - Liquid statements in content (**optional**)
-    - Conditionally render content depending on the current version being viewed. See [contributing/liquid-helpers](../contributing/liquid-helpers.md) for more info. Note Liquid conditionals can also appear in `data` and `include` files.
+    - Conditionally render content depending on the current version being viewed. See "[Versioning documentation](https://docs.github.com/en/contributing/writing-for-github-docs/versioning-documentation#versioning-with-liquid-conditional-operators)" for more info. Note Liquid conditionals can also appear in `data` and `include` files.
 
 **Note**: As of early 2021, the `free-pro-team@latest` version is not included URLs. A helper function called `lib/remove-fpt-from-path.js` removes the version from URLs.
 
 ## Filenames
 
-When adding a new article, the filename is a [kebab-cased](https://en.wikipedia.org/wiki/Letter_case#Special_case_styles) version of the article's [`title`](#title) frontmatter. For example, the article "[About GitHub CLI](https://docs.github.com/en/github-cli/github-cli/about-github-cli)" has a `title` frontmatter of `About GitHub CLI` and a filename of `about-github-cli.md`.
+When adding a new article, the filename is a [kebab-cased](https://en.wikipedia.org/wiki/Letter_case#Kebab_case) version of the article's [`title`](#title) frontmatter. For example, the article "[About GitHub CLI](https://docs.github.com/en/github-cli/github-cli/about-github-cli)" has a `title` frontmatter of `About GitHub CLI` and a filename of `about-github-cli.md`.
 
 Directory names for categories and map topics can match the `title` or `shortTitle` frontmatter.
 
-For titles that have punctuation (such as "GitHub's Billing Plans"), you can omit punctuation in filenames (`githubs-billing-plans.md`). For titles that use Liquid variables (such as `About {% data variables.product.prodname_emus %}`), you can use the words that the Liquid renders as in filenames (`about-enterprise-managed-users.md`). A test will flag any discrepancies between title and filename. To override the requirement that titles and filenames match for a given article, you can add [`allowTitleToDifferFromFilename`](#allowtitletodifferfromfilename) in the frontmatter.
+For a title that contains punctuation (such as "GitHub's Billing Plans"), you can omit the punctuation in the filename (`githubs-billing-plans.md`). For a title that uses a Liquid variable (such as `About {% data variables.product.prodname_emus %}`), you can use the words that the Liquid renders as in the filename (`about-enterprise-managed-users.md`). A test will flag any discrepancies between title and filename. To override the requirement that titles and filenames match for a given article, you can add [`allowTitleToDifferFromFilename`](#allowtitletodifferfromfilename) in the frontmatter.
 
 ## Whitespace control
 

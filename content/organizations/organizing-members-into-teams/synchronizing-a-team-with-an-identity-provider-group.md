@@ -59,7 +59,7 @@ After you connect a team to an IdP group, team synchronization will add each mem
 - The person has already logged in with their personal account on {% data variables.product.product_name %} and authenticated to the organization or enterprise account via SAML single sign-on at least once.
 - The person's SSO identity is a member of the IdP group.
 
-Existing teams or group members who do not meet these criteria will be automatically removed from the team on {% data variables.product.product_name %} and lose access to repositories. Revoking a user's linked identity will also remove the user from from any teams mapped to IdP groups. For more information, see "[AUTOTITLE](/organizations/granting-access-to-your-organization-with-saml-single-sign-on/viewing-and-managing-a-members-saml-access-to-your-organization#viewing-and-revoking-a-linked-identity)" and "[AUTOTITLE](/enterprise-cloud@latest/admin/user-management/managing-users-in-your-enterprise/viewing-and-managing-a-users-saml-access-to-your-enterprise#viewing-and-revoking-a-linked-identity)."
+Existing teams or group members who do not meet these criteria will be automatically removed from the team on {% data variables.product.product_name %} and lose access to repositories. Revoking a user's linked identity will also remove the user from any teams mapped to IdP groups. For more information, see "[AUTOTITLE](/organizations/granting-access-to-your-organization-with-saml-single-sign-on/viewing-and-managing-a-members-saml-access-to-your-organization#viewing-and-revoking-a-linked-identity)" and "[AUTOTITLE](/enterprise-cloud@latest/admin/user-management/managing-users-in-your-enterprise/viewing-and-managing-a-users-saml-access-to-your-enterprise#viewing-and-revoking-a-linked-identity)."
 
 A removed team member can be added back to a team automatically once they have authenticated to the organization or enterprise account using SSO and are moved to the connected IdP group.
 
@@ -69,8 +69,10 @@ To avoid unintentionally removing team members, we recommend enforcing SAML SSO 
 
 ## Prerequisites
 
+{% data reusables.identity-and-permissions.team-and-idp-group %}
+
 {% ifversion ghec %}
-Before you can connect a {% data variables.product.product_name %} team with an identity provider group, an organization or enterprise owner must enable team synchronization for your organization or enterprise account. For more information, see "[AUTOTITLE](/organizations/managing-saml-single-sign-on-for-your-organization/managing-team-synchronization-for-your-organization)" and "[AUTOTITLE](/enterprise-cloud@latest/admin/identity-and-access-management/using-saml-for-enterprise-iam/managing-team-synchronization-for-organizations-in-your-enterprise)."
+Before you can connect a {% data variables.product.product_name %} team with an IdP group, an organization or enterprise owner must enable team synchronization for your organization or enterprise account. For more information, see "[AUTOTITLE](/organizations/managing-saml-single-sign-on-for-your-organization/managing-team-synchronization-for-your-organization)" and "[AUTOTITLE](/enterprise-cloud@latest/admin/identity-and-access-management/using-saml-for-enterprise-iam/managing-team-synchronization-for-organizations-in-your-enterprise)."
 
 To avoid unintentionally removing team members, visit the administrative portal for your IdP and confirm that each current team member is also in the IdP groups that you want to connect to this team. If you don't have this access to your identity provider, you can reach out to your IdP administrator.
 
@@ -103,8 +105,6 @@ When you connect an IdP group to a {% data variables.product.product_name %} tea
 1. Click **Save changes**.
 
 ## Disconnecting an IdP group from a team
-
-If you disconnect an IdP group from a {% data variables.product.prodname_dotcom %} team, team members that were assigned to the {% data variables.product.prodname_dotcom %} team through the IdP group will be removed from the team. {% ifversion ghae %} Any users who were members of the parent organization only because of that team connection are also removed from the organization.{% endif %}
 
 {% data reusables.profile.access_org %}
 {% data reusables.user-settings.access_org %}

@@ -66,6 +66,12 @@ Upgrading an organization does not affect your personal account or repositories 
 
 {% data reusables.dotcom_billing.org-billing-perms %}
 
+{% note %}
+
+**Note:** {% data reusables.actions.org-to-enterprise-actions-permissions %}
+
+{% endnote %}
+
 {% data reusables.organizations.billing-settings %}
 {% data reusables.dotcom_billing.upgrade_org %}
 {% data reusables.dotcom_billing.choose_org_plan %}
@@ -79,7 +85,7 @@ Upgrading an organization does not affect your personal account or repositories 
 
 As part of your upgrade to {% data variables.product.prodname_ghe_cloud %}, you set up an enterprise account on {% data variables.location.product_location %}. An enterprise account allows you to manage multiple organizations. Optionally, you can set up identity and access management for an individual organization or enterprise account. For more information, see "[AUTOTITLE](/enterprise-cloud@latest/admin/overview/about-enterprise-accounts)" and "[AUTOTITLE](/enterprise-cloud@latest/admin/identity-and-access-management/managing-iam-for-your-enterprise/about-authentication-for-your-enterprise#authentication-through-githubcom-with-additional-saml-access-restriction){% ifversion fpt %}" in the {% data variables.product.prodname_ghe_cloud %} documentation.{% else %}."{% endif %}
 
-{% data reusables.enterprise.create-an-enterprise-account %} For more information, see "[AUTOTITLE](/enterprise-cloud@latest/admin/overview/creating-an-enterprise-account){% ifversion fpt %}" in the {% data variables.product.prodname_ghe_cloud %} documentation.{% else %}."{% endif %}
+{% data reusables.enterprise.create-an-enterprise-account %} For more information, see "[AUTOTITLE](/enterprise-cloud@latest/admin/managing-your-enterprise-account/creating-an-enterprise-account){% ifversion fpt %}" in the {% data variables.product.prodname_ghe_cloud %} documentation.{% else %}."{% endif %}
 
 ### Adding seats to your organization
 

@@ -2,8 +2,8 @@ import { parseTemplate } from 'url-template'
 import { stringify } from 'javascript-stringify'
 
 import type { CodeSample, Operation } from 'src/rest/components/types'
-import { useVersion } from 'components/hooks/useVersion'
-import { useMainContext } from 'components/context/MainContext'
+import { useVersion } from 'src/versions/components/useVersion'
+import { useMainContext } from 'src/frame/components/context/MainContext'
 
 type CodeExamples = Record<string, any>
 
@@ -62,7 +62,7 @@ export function getShellExample(operation: Operation, codeSample: CodeSample) {
       if (bodyParameters && typeof bodyParameters === 'object' && !Array.isArray(bodyParameters)) {
         const paramNames = Object.keys(bodyParameters)
         paramNames.forEach((elem) => {
-          requestBodyParams = `${requestBodyParams} ${CURL_CONTENT_TYPE_MAPPING[contentType]} "${elem}=${bodyParameters[elem]}"`
+          requestBodyParams = `${requestBodyParams} ${CURL_CONTENT_TYPE_MAPPING[contentType]} '${elem}=${bodyParameters[elem]}'`
         })
       } else {
         requestBodyParams = `${CURL_CONTENT_TYPE_MAPPING[contentType]} "${bodyParameters}"`
@@ -138,20 +138,26 @@ export function getGHExample(operation: Operation, codeSample: CodeSample) {
   // and the type is a string.
   const { bodyParameters } = codeSample.request
   if (bodyParameters) {
-    if (typeof bodyParameters === 'object' && !Array.isArray(bodyParameters)) {
+    if (typeof bodyParameters === 'object') {
       const bodyParamValues = Object.values(codeSample.request.bodyParameters)
-      // GitHub CLI does not support sending Objects and arrays using the -F or
+      // GitHub CLI does not support sending Objects using the -F or
       // -f flags. That support may be added in the future. It is possible to
       // use gh api --input to take a JSON object from standard input
       // constructed by jq and piped to gh api. However, we'll hold off on adding
       // that complexity for now.
-      if (bodyParamValues.some((elem) => typeof elem === 'object')) {
+      if (bodyParamValues.some((elem) => typeof elem === 'object' && !Array.isArray(elem))) {
         return undefined
       }
       requestBodyParams = Object.keys(codeSample.request.bodyParameters)
         .map((key) => {
           if (typeof codeSample.request.bodyParameters[key] === 'string') {
             return `-f ${key}='${codeSample.request.bodyParameters[key]}' `
+          } else if (Array.isArray(codeSample.request.bodyParameters[key])) {
+            let cliLine = ''
+            for (const value of codeSample.request.bodyParameters[key]) {
+              cliLine += `${typeof value === 'string' ? '-f' : '-F'} "${key}[]=${value}" `
+            }
+            return cliLine
           } else {
             return `-F ${key}=${codeSample.request.bodyParameters[key]} `
           }

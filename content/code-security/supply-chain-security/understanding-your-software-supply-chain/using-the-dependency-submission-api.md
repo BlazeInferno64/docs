@@ -30,7 +30,7 @@ The simplest way to use the Dependency submission API is by adding a pre-made ac
 Ecosystem | Action | Maintained by {% data variables.product.prodname_dotcom %}
 --- | --- | --- |
 Go | [Go Dependency Submission](https://github.com/marketplace/actions/go-dependency-submission) | {% octicon "check" aria-label="Maintained by {% data variables.product.prodname_dotcom %}" %} |
-Gradle | [Gradle Dependency Submission](https://github.com/marketplace/actions/gradle-dependency-submission) | {% octicon "x" aria-label="Not maintained by {% data variables.product.prodname_dotcom %}" %} |
+Gradle | [Gradle Build Action](https://github.com/marketplace/actions/gradle-build-action) | {% octicon "x" aria-label="Not maintained by {% data variables.product.prodname_dotcom %}" %} |
 Maven | [Maven Dependency Tree Dependency Submission](https://github.com/marketplace/actions/maven-dependency-tree-dependency-submission) | {% octicon "check" aria-label="Maintained by {% data variables.product.prodname_dotcom %}" %} |
 Mill | [Mill Dependency Submission](https://github.com/marketplace/actions/mill-dependency-submission) | {% octicon "x" aria-label="Not maintained by {% data variables.product.prodname_dotcom %}" %} |
 Scala | [Sbt Dependency Submission](https://github.com/marketplace/actions/sbt-dependency-submission) | {% octicon "x" aria-label="Not maintained by {% data variables.product.prodname_dotcom %}" %} |
@@ -38,7 +38,6 @@ Scala | [Sbt Dependency Submission](https://github.com/marketplace/actions/sbt-d
 For example, the following [Go Dependency Submission](https://github.com/actions/go-dependency-submission) workflow calculates the dependencies for a Go build-target (a Go file with a `main` function) and submits the list to the Dependency submission API.
 
 ```yaml
-
 name: Go Dependency Submission
 on:
   push:
@@ -77,7 +76,6 @@ jobs:
             # used by all build targets for the module. This may
             # include Go dependencies used by tests and tooling.
             go-build-target: go-example/cmd/octocat.go
-
 ```
 
 ### Creating your own action

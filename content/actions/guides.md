@@ -1,5 +1,5 @@
 ---
-title: Guides for GitHub Actions
+title: Guides for {% data variables.product.prodname_actions %}
 intro: 'These guides for {% data variables.product.prodname_actions %} include specific use cases and examples to help you configure workflows.'
 allowTitleToDifferFromFilename: true
 layout: product-guides
@@ -18,7 +18,7 @@ includeGuides:
   - /actions/quickstart
   - /actions/learn-github-actions/understanding-github-actions
   - /actions/creating-actions/creating-a-docker-container-action
-  - /actions/using-workflows/using-starter-workflows
+  - /actions/learn-github-actions/using-starter-workflows
   - /actions/automating-builds-and-tests/building-and-testing-python
   - /actions/automating-builds-and-tests/building-and-testing-nodejs
   - /actions/publishing-packages/about-packaging-with-github-actions
@@ -70,4 +70,3 @@ includeGuides:
   - /actions/deployment/deploying-to-your-cloud-provider/deploying-to-azure/deploying-to-azure-static-web-app
   - /actions/deployment/deploying-to-your-cloud-provider/deploying-to-azure/deploying-to-azure-kubernetes-service
 ---
-
