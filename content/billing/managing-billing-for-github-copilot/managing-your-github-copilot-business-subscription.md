@@ -12,6 +12,12 @@ topics:
 shortTitle: Your business subscription
 ---
 
+{% ifversion enhanced-billing-platform %}
+
+{% data reusables.billing.enhanced-billing-platform %}
+
+{% endif %}
+
 {% note %}
 
 **Note:** If you are a member of your organization{% ifversion ghec %} or enterprise{% endif %}, and you want to set up a {% data variables.product.prodname_copilot_for_business %} subscription, you will need to contact your organization{% ifversion ghec %} or enterprise{% endif %} administrator.
@@ -27,6 +33,8 @@ This article applies to setting up and managing a {% data variables.product.prod
 You can set up a {% data variables.product.prodname_copilot_business_short %} subscription for your organization or enterprise account. If you set up a subscription for your organization account, you can grant access to {% data variables.product.prodname_copilot %} for individuals and teams within your organization. If you set up a subscription for your enterprise account, you can grant access to {% data variables.product.prodname_copilot %} for organizations within your enterprise.
 
 {% endif %}
+
+The {% data variables.product.prodname_copilot_for_business %} subscription for organizations and enterprises is available on a monthly cycle. For more general information about billing for {% data variables.product.prodname_copilot_for_business %}, see "[AUTOTITLE](/billing/managing-billing-for-github-copilot/about-billing-for-github-copilot#about-billing-for-github-copilot-business-and-github-copilot-enterprise)."
 
 {% data reusables.billing.billing-info %}
 

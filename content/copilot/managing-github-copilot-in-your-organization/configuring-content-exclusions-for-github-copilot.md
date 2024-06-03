@@ -2,7 +2,7 @@
 title: Configuring content exclusions for GitHub Copilot
 shortTitle: Excluding content
 intro: 'You can prevent specified files from being used to inform code completion suggestions made by {% data variables.product.prodname_copilot %}. {% data variables.product.prodname_copilot %} will not be available in excluded files.'
-product: 'This feature is available for organization{% ifversion ghec %} and enterprise{% endif %} accounts with a {% data variables.product.prodname_copilot_business_short %} subscription{% ifversion ghec %}, and for enterprise accounts with a {% data variables.product.prodname_copilot_enterprise_short %} subscription{% endif %}.'
+product: 'This feature is available for organization and enterprise accounts with a {% data variables.product.prodname_copilot_business_short %} subscription, and for enterprise accounts with a {% data variables.product.prodname_copilot_enterprise_short %} subscription.'
 permissions: 'Repository administrators and organization owners can manage the content exclusion settings for {% data variables.product.prodname_copilot %}.
 <br><br>
 People with the "Maintain" role for a repository can view the content exclusion settings for that repository, but can''t change these settings. For more information, see "[AUTOTITLE](/organizations/managing-user-access-to-your-organizations-repositories/managing-repository-roles/repository-roles-for-an-organization)."'
@@ -151,7 +151,7 @@ You can use your organization settings to specify content, in any repository, th
      - ...
    ```
 
-   The following syntax is supported for `REPOSITORY-REFERENCE`:
+   Repositories can be referenced using various protocols. You can use any of the following syntaxes for `REPOSITORY-REFERENCE` and {% data variables.product.prodname_copilot_short %} will match them regardless of how the repository was cloned locally:
 
    ```text
    http[s]://host.xz[:port]/path/to/repo.git/
@@ -166,9 +166,9 @@ You can use your organization settings to specify content, in any repository, th
    {% note %}
 
    **Notes**:
-
    - The `user@` and `:port` parts of the `REPOSITORY-REFERENCE` are ignored in the calculation of which paths to ignore for a repository.
    - Each repository reference can contain a single `*` wildcard. For example, `https://github.com/octo-org/*` matches all repositories in the `octo-org` organization.
+   - There is additional support for Azure DevOps URLs. For more information, see "[Azure DevOps `REPOSITORY-REFERENCE` support](#azure-devops-repository-reference-support)."
 
    {% endnote %}
 
@@ -297,6 +297,11 @@ To reload content exclusions into your JetBrains IDE, either close and reopen th
 1. On the "Device Activation" page, paste in the device code and click **Continue**.
 1. On the next page, click **Authorize {% data variables.product.prodname_copilot %} Plugin**.
 
+### Azure DevOps `REPOSITORY-REFERENCE` support
+
+Both the new (dev.azure.com) and old (visualstudio.com) formats for Azure DevOps are treated as equivalent in the `REPOSITORY-REFERENCE` syntax. You can use either host when specifying `REPOSITORY-REFERENCE`, and {% data variables.product.prodname_copilot_short %} will match them regardless of which host was used to clone the repository locally.
+
 ## Further reading
 
-- "[AUTOTITLE](/copilot/managing-copilot-business/reviewing-your-organization-or-enterprises-audit-logs-for-copilot-business)"
+- "[AUTOTITLE](/copilot/managing-github-copilot-in-your-organization/reviewing-audit-logs-for-copilot-business)"
+- "[AUTOTITLE](/enterprise-cloud@latest/copilot/troubleshooting-github-copilot/troubleshooting-common-issues-with-github-copilot#github-copilot-content-exclusions-are-not-being-applied)"

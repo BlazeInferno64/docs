@@ -4,7 +4,7 @@ import { createProxyMiddleware } from 'http-proxy-middleware'
 import events from '#src/events/middleware.js'
 import anchorRedirect from '#src/rest/api/anchor-redirect.js'
 import search from '#src/search/middleware/search.js'
-import pageInfo from '#src/pageinfo/middleware.js'
+import pageInfo from '#src/pageinfo/middleware'
 import webhooks from '#src/webhooks/middleware/webhooks.js'
 
 const router = express.Router()
@@ -28,17 +28,9 @@ if (process.env.ELASTICSEARCH_URL) {
     createProxyMiddleware({
       target: 'https://docs.github.com',
       changeOrigin: true,
-      // By default, http-proxy-middleware will `this.logger.info(...)`
-      // to say the following:
-      //
-      //    [HPM] Proxy created: /  -> https://docs.github.com
-      //
-      // This can be misleading and confusing for anybody starting the
-      // server. Besides, in a sense we aren't particularly interested
-      // in this proxy from a developer point of view. If you don't
-      // have your own ELASTICSEARCH_URL locally, then search functionality
-      // isn't what you're developing/debugging.
-      logLevel: 'warn',
+      pathRewrite: function (path, req) {
+        return req.originalUrl
+      },
     }),
   )
 }

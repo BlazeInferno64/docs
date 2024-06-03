@@ -11,11 +11,19 @@ topics:
 shortTitle: Your enterprise subscription
 ---
 
+{% ifversion enhanced-billing-platform %}
+
+{% data reusables.billing.enhanced-billing-platform %}
+
+{% endif %}
+
 ## About managing your {% data variables.product.prodname_copilot_enterprise %} subscription
 
 To allow members to benefit from {% data variables.product.prodname_copilot %} features on their local machine and on {% data variables.product.prodname_dotcom_the_website %}, you can set up a subscription to {% data variables.product.prodname_copilot_enterprise %} for an enterprise on {% data variables.product.prodname_ghe_cloud %}. When you set up a subscription, you'll be able to enable {% data variables.product.prodname_copilot_short %} for organizations in your enterprise. Organization owners can then grant access to organization members.
 
 To manage a {% data variables.product.prodname_copilot_short %} subscription for your personal account, see "[AUTOTITLE](/billing/managing-billing-for-github-copilot/managing-your-github-copilot-individual-subscription)." To manage a {% data variables.product.prodname_copilot_business_short %} subscription for an organization or enterprise, see "[AUTOTITLE](/billing/managing-billing-for-github-copilot/managing-your-github-copilot-business-subscription)."
+
+The {% data variables.product.prodname_copilot_enterprise %} subscription for organizations and enterprises is available on a monthly cycle. For more general information about billing for {% data variables.product.prodname_copilot_enterprise %}, see "[AUTOTITLE](/billing/managing-billing-for-github-copilot/about-billing-for-github-copilot#about-billing-for-github-copilot-business-and-github-copilot-enterprise)."
 
 {% data reusables.billing.billing-info %}
 
@@ -56,7 +64,7 @@ You can set policies for the use of {% data variables.product.prodname_copilot %
 
 ## Downgrading your {% data variables.product.prodname_copilot_enterprise_short %} subscription
 
-To downgrade from a {% data variables.product.prodname_copilot_enterprise_short %} subscription to a {% data variables.product.prodname_copilot_business_short %} subscription, you must contact {% data variables.contact.contact_ent_support %}.
+To downgrade from a {% data variables.product.prodname_copilot_enterprise_short %} subscription to a {% data variables.product.prodname_copilot_business_short %} subscription, you must contact [{% data variables.product.prodname_dotcom %} Billing Support](https://support.github.com).
 
 ## Canceling your {% data variables.product.prodname_copilot_enterprise_short %} subscription
 

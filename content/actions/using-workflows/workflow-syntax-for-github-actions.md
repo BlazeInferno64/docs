@@ -26,11 +26,9 @@ You must store workflow files in the `.github/workflows` directory of your repos
 
 {% data reusables.actions.workflows.workflow-syntax-name %}
 
-{% ifversion actions-run-name %}
-
 ## `run-name`
 
-The name for workflow runs generated from the workflow. {% data variables.product.prodname_dotcom %} displays the workflow run name in the list of workflow runs on your repository's "Actions" tab. If `run-name` is omitted or is only whitespace, then the run name is set to event-specific information for the workflow run. For example, for a workflow triggered by a `push` or `pull_request` event, it is set as the commit message.
+The name for workflow runs generated from the workflow. {% data variables.product.prodname_dotcom %} displays the workflow run name in the list of workflow runs on your repository's "Actions" tab. If `run-name` is omitted or is only whitespace, then the run name is set to event-specific information for the workflow run. For example, for a workflow triggered by a `push` or `pull_request` event, it is set as the commit message or the title of the pull request.
 
 This value can include expressions and can reference the [`github`](/actions/learn-github-actions/contexts#github-context) and [`inputs`](/actions/learn-github-actions/contexts#inputs-context) contexts.
 
@@ -43,7 +41,6 @@ run-name: Deploy to ${{ inputs.deploy_target }} by @${{ github.actor }}
 ```
 
 {% endraw %}
-{% endif %}
 
 ## `on`
 
@@ -316,7 +313,19 @@ env:
 
 ## `jobs.<job_id>.runs-on`
 
-{% data reusables.actions.jobs.section-choosing-the-runner-for-a-job %}
+{% data reusables.actions.jobs.choosing-runner-overview %}
+
+### Choosing {% data variables.product.prodname_dotcom %}-hosted runners
+
+{% data reusables.actions.jobs.choosing-runner-github-hosted %}
+
+### Choosing self-hosted runners
+
+{% data reusables.actions.jobs.choosing-runner-self-hosted %}
+
+### Choosing runners in a group
+
+{% data reusables.actions.jobs.choosing-runner-group %}
 
 ## `jobs.<job_id>.environment`
 
@@ -1095,8 +1104,6 @@ jobs:
 
 {% endraw %}
 
-{% ifversion actions-inherit-secrets-reusable-workflows %}
-
 ## `jobs.<job_id>.secrets.inherit`
 
 Use the `inherit` keyword to pass all the calling workflow's secrets to the called workflow. This includes all secrets the calling workflow has access to, namely organization, repository, and environment secrets. The `inherit` keyword can be used to pass secrets across repositories within the same organization, or across organizations within the same enterprise.
@@ -1134,7 +1141,6 @@ jobs:
 A pair consisting of a string identifier for the secret and the value of the secret. The identifier must match the name of a secret defined by [`on.workflow_call.secrets.<secret_id>`](#onworkflow_callsecretssecret_id) in the called workflow.
 
 Allowed expression contexts: `github`, `needs`, and `secrets`.
-{% endif %}
 
 ## Filter pattern cheat sheet
 

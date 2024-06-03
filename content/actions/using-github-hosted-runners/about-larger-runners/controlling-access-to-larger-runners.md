@@ -10,9 +10,11 @@ redirect_from:
   - /actions/using-github-hosted-runners/controlling-access-to-larger-runners
 ---
 
-{% data reusables.actions.enterprise-github-hosted-runners %}
+{% note %}
 
-{% data reusables.actions.windows-linux-larger-runners-note %}
+**Note:** {% data reusables.actions.windows-linux-larger-runners-note %}
+
+{% endnote %}
 
 ## About runner groups
 
@@ -33,7 +35,7 @@ Runner groups are used to control which repositories can run jobs on your {% dat
 
 For example, the following diagram has a runner group named `grp-ubuntu-20.04-16core` at the enterprise level. Before the repository named `octo-repo` can use the runners in the group, you must first configure the group at the enterprise level to allow access to the `octo-org` organization. You must then configure the group at the organization level to allow access to `octo-repo`.
 
-![Diagram that shows a lock between a runner group at the enterprise level and an organization, and between the organization and two repositories owned by the organization.](/assets/images/help/actions/hosted-runner-mgmt.png)
+![Diagram showing a runner group defined at the enterprise level with an organization configuration that allows access for two repositories.](/assets/images/help/actions/hosted-runner-mgmt.png)
 
 ## Creating a runner group for an organization
 
@@ -84,16 +86,6 @@ For runner groups in an organization, you can change what repositories in the or
 - [Changing which workflows can access an organization runner group](#changing-which-workflows-can-access-an-organization-runner-group)
 - [Changing which workflows can access an enterprise runner group](#changing-which-workflows-can-access-an-enterprise-runner-group)
 
-{% ifversion actions-private-networking-azure-vnet %}
-
-## Configuring private network access for larger runners
-
-{% data reusables.actions.azure-vnet-injected-runners-intro %}
-
-If you have configured your enterprise to connect to an Azure VNET, you can give runner groups access to the virtual network. For more information, see "[AUTOTITLE](/actions/using-github-hosted-runners/connecting-to-a-private-network#using-an-azure-virtual-network-vnet)."
-
-{% endif %}
-
 ### Changing which workflows can access an organization runner group
 
 {% data reusables.actions.runner-groups-org-navigation %}
@@ -106,13 +98,23 @@ If you have configured your enterprise to connect to an Azure VNET, you can give
 
 {% endif %}
 
+{% ifversion actions-private-networking-azure-vnet %}
+
+## Configuring private network access for larger runners
+
+{% data reusables.actions.azure-vnet-network-configuration-intro %}
+
+If you have configured your {% ifversion ghec %}enterprise or {% endif %}organization to connect to an Azure VNET, you can give runner groups access to the virtual network. For more information, see "[AUTOTITLE](/actions/using-github-hosted-runners/connecting-to-a-private-network/about-private-networking-with-github-hosted-runners#using-an-azure-virtual-network-vnet)."
+
+{% endif %}
+
 ## Changing the name of a runner group
 
 {% ifversion ghec %}
 You can rename runner groups at the enterprise and organization levels.
 
 - [Changing the name of an organization runner group](#changing-the-name-of-an-organization-runner-group)
-- [Changing the name of an enterprise runner group](##changing-the-name-of-an-enterprise-runner-group)
+- [Changing the name of an enterprise runner group](#changing-the-name-of-an-enterprise-runner-group)
 
 ### Changing the name of an organization runner group
 

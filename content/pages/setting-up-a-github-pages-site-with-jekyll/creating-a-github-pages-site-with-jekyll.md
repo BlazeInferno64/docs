@@ -52,7 +52,7 @@ Before you can use Jekyll to create a {% data variables.product.prodname_pages %
 
    ```shell
    $ git init REPOSITORY-NAME
-   > Initialized empty Git repository in /Users/octocat/my-site/.git/
+   > Initialized empty Git repository in /REPOSITORY-NAME/.git/
    # Creates a new folder on your computer, initialized as a Git repository
    ```
 
@@ -93,7 +93,7 @@ Before you can use Jekyll to create a {% data variables.product.prodname_pages %
 1. Add "#" to the beginning of the line that starts with `gem "jekyll"` to comment out this line.
 1. Add the `github-pages` gem by editing the line starting with `# gem "github-pages"`. Change this line to:
 
-   ```shell
+   ```ruby
    gem "github-pages", "~> GITHUB-PAGES-VERSION", group: :jekyll_plugins
    ```
 
@@ -102,6 +102,12 @@ Before you can use Jekyll to create a {% data variables.product.prodname_pages %
    The correct version Jekyll will be installed as a dependency of the `github-pages` gem.
 1. Save and close the Gemfile.
 1. From the command line, run `bundle install`.
+1. Open the `.gitignore` file that Jekyll created and ignore the gems lock file by adding this line:
+
+   ```shell
+   Gemfile.lock
+   ```
+
 1. Optionally, make any necessary edits to the `_config.yml` file. This is required for relative paths when the repository is hosted in a subdirectory.  For more information, see "[AUTOTITLE](/get-started/using-git/splitting-a-subfolder-out-into-a-new-repository)."
 
    ```yaml
