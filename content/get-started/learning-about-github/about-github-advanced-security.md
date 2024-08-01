@@ -88,15 +88,11 @@ To learn about what you need to know to plan your {% data variables.product.prod
 {% ifversion security-configurations %}
 {% data reusables.security-configurations.enable-security-features-with-gh-config %}
 
-{% note %}
-
-**Note:** {% data reusables.security-configurations.security-configurations-beta-note-short %}
-
-{% endnote %}
+{% data reusables.security-configurations.security-configurations-beta-note-short %}
 
 {% endif %}
 {%- ifversion ghes %}
-The site administrator must enable {% data variables.product.prodname_advanced_security %} for {% data variables.location.product_location %} before you can use these features. For more information, see "[AUTOTITLE](/admin/code-security/managing-github-advanced-security-for-your-enterprise).
+The site administrator must enable {% data variables.product.prodname_advanced_security %} for {% data variables.location.product_location %} before you can use these features. For more information, see "[AUTOTITLE](/admin/code-security/managing-github-advanced-security-for-your-enterprise)."
 
 Once your system is set up, you can enable and disable these features at the organization or repository level.
 

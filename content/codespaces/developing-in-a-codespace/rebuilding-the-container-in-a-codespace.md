@@ -33,9 +33,12 @@ You can rebuild a container within a codespace in the {% data variables.product.
 ### Rebuilding the dev container in the {% data variables.product.prodname_vscode_shortname %} web client or desktop application
 
 {% data reusables.codespaces.command-palette %}
-1. Start typing "Rebuild" and select **Codespaces: Rebuild Container** or **Codespaces: Full Rebuild Container**.
 
-   ![Screenshot of the "Codespaces: Full Rebuild Container" option in the Command Palette.](/assets/images/help/codespaces/codespaces-rebuild-full.png)
+1. Start typing "Rebuild" and select **Codespaces: Rebuild Container**.
+
+   ![Screenshot of the "Codespaces: Rebuild Container" option in the Command Palette.](/assets/images/help/codespaces/codespaces-rebuild.png)
+
+1. Select **Rebuild** or **Full Rebuild** in the confirmation dialog which opens.
 
 {% data reusables.codespaces.rebuilding-container-procedures %}
 
@@ -50,7 +53,7 @@ If you want to preserve files outside the `/workspaces` directory over a rebuild
 ```json
 {
     "image": "mcr.microsoft.com/devcontainers/base:alpine",
-    "postCreateCommand": ".devcontainer/postCreate.sh"
+    "postCreateCommand": "chmod +x .devcontainer/postCreate.sh && .devcontainer/postCreate.sh"
 }
 ```
 
