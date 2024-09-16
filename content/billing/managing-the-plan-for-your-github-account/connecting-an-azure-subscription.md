@@ -8,10 +8,17 @@ redirect_from:
   - /billing/managing-billing-for-your-github-account/connecting-an-azure-subscription-to-your-enterprise
   - /billing/managing-billing-for-your-github-account/connecting-an-azure-subscription
 versions:
-  fpt: "*"
-  ghec: "*"
+  fpt: '*'
+  ghec: '*'
+  ghes: '>= 3.12'
 shortTitle: Connect an Azure subscription
 ---
+
+{% ifversion metered-ghe-ghas %}
+
+{% data reusables.billing.usage-based-billing %}
+
+{% endif %}
 
 ## About connection of an Azure subscription
 
@@ -25,6 +32,8 @@ If you use {% data variables.product.product_name %} through a Microsoft Enterpr
 
 {% endif %}
 
+{% ifversion fpt or ghec %}
+
 ## About usage-based billing on {% data variables.product.prodname_dotcom_the_website %}
 
 {% data variables.product.company_short %} provides usage-based billing for the following features and situations. You can learn more about billing and spending limits.
@@ -36,6 +45,8 @@ If you use {% data variables.product.product_name %} through a Microsoft Enterpr
 | {% data variables.product.prodname_registry %} usage beyond the amounts included with your plan | "[AUTOTITLE](/billing/managing-billing-for-github-packages/about-billing-for-github-packages)"                                                                       | "[AUTOTITLE](/billing/managing-billing-for-github-packages/about-billing-for-github-packages#about-spending-limits)" |
 | {% data variables.product.prodname_copilot_business_short %} usage                              | "[AUTOTITLE](/billing/managing-billing-for-github-copilot/about-billing-for-github-copilot#about-billing-for-github-copilot-business-and-github-copilot-enterprise)" |                                                                                                                  N/A |
 
+{% endif %}
+
 ## About billing through Azure
 
 If you link your {% data variables.product.company_short %} account to Azure, any usage-based costs starting from that point will be billed through Azure and charged on the 1st of each month. However, remaining {% data variables.product.company_short %} charges, for example charges for your {% data variables.product.prodname_dotcom %} plan, will still be billed on your usual billing date.
@@ -46,11 +57,7 @@ For example, you link your Azure subscription to your organization {% ifversion 
 
 * You must have {% ifversion ghec %}either {% endif %}an organization {% ifversion ghec %}or an enterprise {% endif %}account on {% data variables.location.product_location %}. For more information about the differences between these two types of accounts, see "[AUTOTITLE](/get-started/learning-about-github/types-of-github-accounts)."
 
-  {%- ifversion ghec %}
-
-  * {% data reusables.enterprise.ghec-trial-azure %}
-    {%- endif %}
-  * If the organization you want to connect an Azure subscription to belongs to an enterprise account, you must connect your Azure subscription to the enterprise account, not the organization. {% ifversion fpt %}For more information, see [the {% data variables.product.prodname_ghe_cloud %} version](/enterprise-cloud@latest/{{ currentArticle }}) of this article.{% endif %}
+  If the organization you want to connect an Azure subscription to belongs to an enterprise account, you must connect your Azure subscription to the enterprise account, not the organization. {% ifversion fpt %}For more information, see [the {% data variables.product.prodname_ghe_cloud %} version](/enterprise-cloud@latest/{{ currentArticle }}) of this article.{% endif %}
 
 * You must be an owner of the organization{% ifversion ghec %} or enterprise{% endif %} account. For more information, see {% ifversion fpt %}"[AUTOTITLE](/organizations/managing-peoples-access-to-your-organization-with-roles/roles-in-an-organization)."{% elsif ghec %}the following articles.
 
@@ -65,12 +72,6 @@ For example, you link your Azure subscription to your organization {% ifversion 
 * To select an Azure subscription from the list of available subscriptions, the user must be an owner of the Azure subscription. For more information, see [Assign a user as an administrator of an Azure subscription](https://learn.microsoft.com/azure/role-based-access-control/role-assignments-portal-subscription-admin) in Microsoft docs.
 
 * You must know your Azure subscription ID. For more information, see [Get subscription and tenant IDs in the Azure portal](https://learn.microsoft.com/en-us/azure/azure-portal/get-subscription-tenant-id) in the Microsoft Docs or [contact Azure support](https://azure.microsoft.com/support/).
-
-## Video demonstration of connecting a subscription
-
-To connect an Azure subscription, you'll need appropriate access permissions on both {% data variables.product.product_name %} and the Azure billing portal. This may require coordination between two different people.
-
-To see a demo of the process from beginning to end, see [Billing GitHub consumption through an Azure subscription](https://www.youtube.com/watch?v=DAiIhJKCt8s&ab_channel=GitHub) on {% data variables.product.company_short %}'s YouTube channel. This video demonstrates the process for an enterprise account. If you're connecting a subscription to an organization account, see "[Connecting your Azure subscription to your organization account](/free-pro-team@latest/billing/managing-the-plan-for-your-github-account/connecting-an-azure-subscription#connecting-your-azure-subscription-to-your-organization-account)."
 
 {% ifversion fpt %}
 

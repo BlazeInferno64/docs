@@ -1410,6 +1410,11 @@
     "docs_reference_links": "N/A"
   },
   {
+    "action": "ip_allow_list.disable_idp_ip_allowlist_for_web",
+    "description": "Identity Provider based IP allow list for web interactions was disabled.",
+    "docs_reference_links": "N/A"
+  },
+  {
     "action": "ip_allow_list.disable_skip_idp_ip_allowlist_app_access",
     "description": "N/A",
     "docs_reference_links": "N/A"
@@ -1427,6 +1432,11 @@
   {
     "action": "ip_allow_list.enable_for_installed_apps",
     "description": "An IP allow list was enabled for installed GitHub Apps.",
+    "docs_reference_links": "N/A"
+  },
+  {
+    "action": "ip_allow_list.enable_idp_ip_allowlist_for_web",
+    "description": "Identity Provider based IP allow list for web interactions was enabled.",
     "docs_reference_links": "N/A"
   },
   {
@@ -3998,6 +4008,16 @@
     "action": "team.update_repository_permission",
     "description": "A team's permission to a repository was changed.",
     "docs_reference_links": "N/A"
+  },
+  {
+    "action": "user_email.confirm_claim",
+    "description": "An enterprise managed user claimed an email address.",
+    "docs_reference_links": "N/A"
+  },
+  {
+    "action": "user_email.mark_as_unclaimed",
+    "description": "N/A",
+    "docs_reference_links": "An enterprise managed user unclaimed an email address."
   },
   {
     "action": "user_license.create",
