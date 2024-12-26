@@ -13,15 +13,12 @@ redirect_from:
   - /issues/tracking-your-work-with-issues/creating-a-branch-for-an-issue
 ---
 
-{% note %}
-
-**Note:** The ability to create a branch for an issue is currently in {% data variables.release-phases.public_preview %} and subject to change.
-
-{% endnote %}
+> [!NOTE]
+> The ability to create a branch for an issue is currently in {% data variables.release-phases.public_preview %} and subject to change.
 
 ## About branches connected to an issue
 
-Branches connected to an issue are shown under the "Development" section in the sidebar of an issue. When you create a pull request for one of these branches, it is automatically linked to the issue. The connection with that branch is removed and only the pull request is shown in the "Development" section. For more information, see "[AUTOTITLE](/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue)."
+Branches connected to an issue are shown under the "Development" section in the sidebar of an issue. When you create a pull request for one of these branches, it is automatically linked to the issue. The connection with that branch is removed and only the pull request is shown in the "Development" section. For more information, see [AUTOTITLE](/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue).
 
 ## Creating a branch for an issue
 

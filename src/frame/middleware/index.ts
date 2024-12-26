@@ -61,7 +61,7 @@ import fastlyCacheTest from './fastly-cache-test'
 import trailingSlashes from './trailing-slashes'
 import mockVaPortal from './mock-va-portal'
 import dynamicAssets from '@/assets/middleware/dynamic-assets'
-import contextualizeSearch from '@/search/middleware/contextualize.js'
+import generalSearchMiddleware from '@/search/middleware/general-search-middleware'
 import shielding from '@/shielding/middleware'
 import tracking from '@/tracking/middleware'
 import { MAX_REQUEST_TIMEOUT } from '@/frame/lib/constants.js'
@@ -113,7 +113,11 @@ export default function (app: Express) {
   }
 
   // *** Observability ***
-  if (process.env.DD_API_KEY) {
+  // This DD_API_KEY is only being used to determine if the target
+  // deployment environment is production. The key is not actually
+  // used for sending data. Afer migrating to Moda, we can remove
+  // the DD_API_KEY.
+  if (process.env.DD_API_KEY || process.env.MODA_PROD_SERVICE_ENV) {
     app.use(datadog)
   }
 
@@ -275,7 +279,7 @@ export default function (app: Express) {
   app.use(asyncMiddleware(productExamples))
   app.use(asyncMiddleware(productGroups))
   app.use(asyncMiddleware(glossaries))
-  app.use(asyncMiddleware(contextualizeSearch))
+  app.use(asyncMiddleware(generalSearchMiddleware))
   app.use(asyncMiddleware(featuredLinks))
   app.use(asyncMiddleware(learningTrack))
 

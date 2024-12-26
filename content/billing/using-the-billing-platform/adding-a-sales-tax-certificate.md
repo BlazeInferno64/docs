@@ -12,8 +12,6 @@ topics:
 shortTitle: Add a sales tax certificate
 ---
 
-{% data reusables.billing.us-sales-tax-note %} {% ifversion fpt or ghec %}For more information about updating your billing information, see "[AUTOTITLE](/billing/managing-your-github-billing-settings/adding-or-editing-a-payment-method)."{% endif %}
-
 If you're a {% data variables.product.company_short %} customer in the United States, you need to ensure that your account is set up to calculate sales tax correctly. If you're exempt from sales tax, you can upload a certificate to your account. The format of the certificate you upload must be one of the following:
 
 * JPEG (`.jpg`, `.jpeg`)
@@ -29,7 +27,7 @@ You can upload a sales tax exemption certificate to your organization account if
 {% ifversion fpt or ghec %}
 
 > [!NOTE]
-> This option is not available for accounts that use the {% data variables.product.company_short %} Standard Terms of Service. For information about updating your organization, see "[AUTOTITLE](/organizations/managing-organization-settings/upgrading-to-the-github-customer-agreement)."
+> This option is not available for accounts that use the {% data variables.product.company_short %} Standard Terms of Service. For information about updating your organization, see [AUTOTITLE](/organizations/managing-organization-settings/upgrading-to-the-github-customer-agreement).
 
 {% endif %}
 

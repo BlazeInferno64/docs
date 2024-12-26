@@ -14,21 +14,23 @@ topics:
   - Fundamentals
 ---
 
-{% data reusables.billing.us-sales-tax-note %} For more information about updating your billing information, see "[AUTOTITLE](/billing/managing-your-github-billing-settings/adding-or-editing-a-payment-method)."
->
->If you're exempt from sales tax, you will need to upload a sales tax exemption certificate to your account. See "[AUTOTITLE](/billing/managing-your-github-billing-settings/adding-a-sales-tax-certificate)."
-
 ## About billing on {% data variables.product.prodname_dotcom %}
 
-{% data variables.product.company_short %} bills separately for each account. This means that you will receive a separate bill for your personal account and for each organization or enterprise account you own. For more information about account types, see "[AUTOTITLE](/get-started/learning-about-github/types-of-github-accounts)."
+{% data variables.product.company_short %} bills separately for each account. This means that you will receive a separate bill for your personal account and for each organization or enterprise account you own. For more information about account types, see [AUTOTITLE](/get-started/learning-about-github/types-of-github-accounts).
 
-You can switch between the billing settings for each of your accounts by using the context switcher. See "[Switching between settings for your different accounts](#switching-between-settings-for-your-different-accounts)."
+You can switch between the billing settings for each of your accounts by using the context switcher. See [Switching between settings for your different accounts](#switching-between-settings-for-your-different-accounts).
 
 The bill for each account is a combination of subscriptions and usage-based billing. Subscriptions include your account's plan, such as {% data variables.product.prodname_pro %} or {% data variables.product.prodname_team %}, as well as paid products that have a consistent monthly cost, such as {% data variables.product.prodname_copilot %} and apps from {% data variables.product.prodname_marketplace %}.
 
 Usage-based billing applies when the cost of a paid product depends on how much you use the product. For example, the cost of {% data variables.product.prodname_actions %} depends on how many minutes your jobs spend running and how much storage your artifacts use.
 
 Your plan may come with included amounts of usage-based products. For example, with {% data variables.product.prodname_pro %}, your personal account gets 3,000 minutes of {% data variables.product.prodname_actions %} usage for free each month. You can control usage beyond the included amounts by setting spending limits.
+
+{% ifversion us-sales-tax %}
+
+{% data reusables.billing.us-sales-tax %}
+
+{% endif %}
 
 ## Included amounts by plan
 
@@ -128,7 +130,7 @@ Payments can be made via credit card, PayPal, or Azure subscription. When you up
 
 {% endif %}
 
-See "[AUTOTITLE](/billing/managing-your-github-billing-settings)."
+See [AUTOTITLE](/billing/managing-your-github-billing-settings).
 
 ## Switching between settings for your different accounts
 

@@ -21,7 +21,7 @@ shortTitle: Set up an Advanced Security trial
 
 ## About {% data variables.product.prodname_GH_advanced_security %}
 
-{% data variables.product.prodname_GH_advanced_security %} provides features that help you improve and maintain the security and quality of code, such as {% data variables.product.prodname_code_scanning %}, {% data variables.product.prodname_secret_scanning %}, and dependency review. For more information, see "[AUTOTITLE](/get-started/learning-about-github/about-github-advanced-security)."
+{% data variables.product.prodname_GH_advanced_security %} provides features that help you improve and maintain the security and quality of code, such as {% data variables.product.prodname_code_scanning %}, {% data variables.product.prodname_secret_scanning %}, and dependency review. For more information, see [AUTOTITLE](/get-started/learning-about-github/about-github-advanced-security).
 
 ## About trials of {% data variables.product.prodname_GH_advanced_security %}
 
@@ -33,7 +33,7 @@ During a trial, you can add any number of committers and enable {% data variable
 
 ## Prerequisites
 
-To set up a trial of {% data variables.product.prodname_GH_advanced_security %}, you must be an owner of an enterprise account. For more information, see "[AUTOTITLE](/admin/overview/about-enterprise-accounts)" and "[AUTOTITLE](/admin/managing-accounts-and-repositories/managing-users-in-your-enterprise/roles-in-an-enterprise#enterprise-owners)."
+To set up a trial of {% data variables.product.prodname_GH_advanced_security %}, you must be an owner of an enterprise account. For more information, see [AUTOTITLE](/admin/overview/about-enterprise-accounts) and [AUTOTITLE](/admin/managing-accounts-and-repositories/managing-users-in-your-enterprise/roles-in-an-enterprise#enterprise-owners).
 
 ## Setting up your trial of {% data variables.product.prodname_GH_advanced_security %}
 
@@ -47,7 +47,7 @@ To set up a trial of {% data variables.product.prodname_GH_advanced_security %},
 
 You can finish your trial at any time by purchasing {% data variables.product.prodname_GH_advanced_security %}. If you haven't purchased {% data variables.product.prodname_GH_advanced_security %} by the end of the 30 days, your trial will expire.
 
-{% ifversion metered-ghe-ghas%}
+{% ifversion metered-ghe-ghas %}
 
 If you pay for {% data variables.product.prodname_ghe_cloud %} with usage-based billing, but did not set up a free trial of {% data variables.product.prodname_GH_advanced_security %}, you can still use usage-based billing to pay for {% data variables.product.prodname_GH_advanced_security %} after the {% data variables.product.prodname_ghe_cloud %} trial ends. For more information, contact [{% data variables.product.prodname_dotcom %}'s Sales team](https://enterprise.github.com/contact).
 
@@ -61,6 +61,6 @@ If you pay for {% data variables.product.prodname_ghe_cloud %} with usage-based 
 
 ## Further reading
 
-* "[AUTOTITLE](/get-started/learning-about-github/about-github-advanced-security)"
-* "[AUTOTITLE](/code-security/adopting-github-advanced-security-at-scale)"
-* "[AUTOTITLE](/code-security/securing-your-organization/introduction-to-securing-your-organization-at-scale/about-enabling-security-features-at-scale)"
+* [AUTOTITLE](/get-started/learning-about-github/about-github-advanced-security)
+* [AUTOTITLE](/code-security/adopting-github-advanced-security-at-scale)
+* [AUTOTITLE](/code-security/securing-your-organization/introduction-to-securing-your-organization-at-scale/about-enabling-security-features-at-scale)

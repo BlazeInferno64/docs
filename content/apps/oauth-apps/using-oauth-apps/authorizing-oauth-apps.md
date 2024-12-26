@@ -18,11 +18,8 @@ When an {% data variables.product.prodname_oauth_app %} wants to identify you by
 
 {% ifversion fpt or ghec %}
 
-{% tip %}
-
-**Tip:** You must [verify your email address](/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-email-preferences/verifying-your-email-address) before you can authorize an {% data variables.product.prodname_oauth_app %}.
-
-{% endtip %}
+> [!TIP]
+> You must [verify your email address](/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-email-preferences/verifying-your-email-address) before you can authorize an {% data variables.product.prodname_oauth_app %}.
 
 {% endif %}
 
@@ -33,23 +30,17 @@ When an {% data variables.product.prodname_oauth_app %} wants to identify you by
 * **Read access** only allows an app to _look at_ your data.
 * **Write access** allows an app to _change_ your data.
 
-{% tip %}
-
-**Tip:** {% data reusables.user-settings.review_oauth_tokens_tip %}
-
-{% endtip %}
+> [!TIP]
+> {% data reusables.user-settings.review_oauth_tokens_tip %}
 
 ### About OAuth scopes
 
 _Scopes_ are named groups of permissions that an {% data variables.product.prodname_oauth_app %} can request to access both public and non-public data.
 
-When you want to use an {% data variables.product.prodname_oauth_app %} that integrates with {% data variables.product.product_name %}, that app lets you know what type of access to your data will be required. If you grant access to the app, then the app will be able to perform actions on your behalf, such as reading or modifying data. For example, if you want to use an app that requests `user:email` scope, the app will have read-only access to your private email addresses. For more information, see "[AUTOTITLE](/apps/oauth-apps/building-oauth-apps/scopes-for-oauth-apps)."
+When you want to use an {% data variables.product.prodname_oauth_app %} that integrates with {% data variables.product.product_name %}, that app lets you know what type of access to your data will be required. If you grant access to the app, then the app will be able to perform actions on your behalf, such as reading or modifying data. For example, if you want to use an app that requests `user:email` scope, the app will have read-only access to your private email addresses. For more information, see [AUTOTITLE](/apps/oauth-apps/building-oauth-apps/scopes-for-oauth-apps).
 
-{% tip %}
-
-**Note:** Currently, you can't scope source code access to read-only.
-
-{% endtip %}
+> [!NOTE]
+> Currently, you can't scope source code access to read-only.
 
 {% data reusables.user-settings.token_access_capabilities %} For example, an application can create an access token that is configured with an `admin:org` scope, but if the user of the application is not an organization owner, the application will not be granted administrative access to the organization.
 
@@ -90,16 +81,13 @@ When you authorize an {% data variables.product.prodname_oauth_app %} for your p
 
 If you belong to any organizations with SAML single sign-on (SSO) enabled, and you have created a linked identity for that organization by authenticating via SAML in the past, you must have an active SAML session for each organization each time you authorize an {% data variables.product.prodname_oauth_app %}.
 
-{% note %}
-
-**Note:** If you're encountering issues with an authorized {% data variables.product.prodname_oauth_app %} or {% data variables.product.prodname_github_app %} accessing an organization that is protected by SAML, you may need to revoke the app from your [Authorized {% data variables.product.prodname_github_apps %}](https://github.com/settings/applications) or [Authorized {% data variables.product.prodname_oauth_apps %}](https://github.com/settings/apps/authorizations) page, visit the organization to authenticate and establish an active SAML session, and then attempt to reauthorize the app by accessing it.
-
-{% endnote %}
+> [!NOTE]
+> If you're encountering issues with an authorized {% data variables.product.prodname_oauth_app %} or {% data variables.product.prodname_github_app %} accessing an organization that is protected by SAML, you may need to revoke the app from your [Authorized {% data variables.product.prodname_github_apps %}](https://github.com/settings/applications) or [Authorized {% data variables.product.prodname_oauth_apps %}](https://github.com/settings/apps/authorizations) page, visit the organization to authenticate and establish an active SAML session, and then attempt to reauthorize the app by accessing it.
 
 ## Further reading
 
-* "[AUTOTITLE](/organizations/managing-oauth-access-to-your-organizations-data/about-oauth-app-access-restrictions)"
-* "[AUTOTITLE](/apps/using-github-apps/authorizing-github-apps)"
-* "[AUTOTITLE](/support/learning-about-github-support/github-marketplace-support)"
+* [AUTOTITLE](/organizations/managing-oauth-access-to-your-organizations-data/about-oauth-app-access-restrictions)
+* [AUTOTITLE](/apps/using-github-apps/authorizing-github-apps)
+* [AUTOTITLE](/support/learning-about-github-support/github-marketplace-support)
 
 {% endif %}

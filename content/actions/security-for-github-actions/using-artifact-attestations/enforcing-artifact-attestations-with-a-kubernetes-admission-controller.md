@@ -47,7 +47,7 @@ First, install the Helm chart that deploys the Sigstore Policy Controller:
 helm upgrade policy-controller --install --atomic \
   --create-namespace --namespace artifact-attestations \
   oci://ghcr.io/github/artifact-attestations-helm-charts/policy-controller \
-  --version v0.10.0-github7
+  --version v0.10.0-github9
 ```
 
 This installs the Policy Controller into the `artifact-attestations` namespace. At this point, no policies have been configured, and it will not enforce any attestations.
@@ -60,7 +60,7 @@ Once the policy controller has been deployed, you need to add the GitHub `TrustR
 helm upgrade trust-policies --install --atomic \
  --namespace artifact-attestations \
  oci://ghcr.io/github/artifact-attestations-helm-charts/trust-policies \
- --version v0.6.1 \
+ --version v0.6.2 \
  --set policy.enabled=true \
  --set policy.organization=MY-ORGANIZATION
 ```
@@ -98,7 +98,7 @@ For example, to enforce attestations for images that match the pattern `ghcr.io/
 helm upgrade trust-policies --install --atomic \
  --namespace artifact-attestations \
  oci://ghcr.io/github/artifact-attestations-helm-charts/trust-policies \
- --version v0.6.1 \
+ --version v0.6.2 \
  --set policy.enabled=true \
  --set policy.organization=MY-ORGANIZATION \
  --set-json 'policy.exemptImages=["index.docker.io/library/busybox**"]' \
@@ -111,7 +111,7 @@ Note that any image you intend to admit _must_ have a matching glob pattern in t
 
 {% ifversion ghec %}
 
-If your GitHub Enterprise account has a subdomain on GHE.com, you must specify a value for the GitHub trust domain. This value is used to fetch the trusted materials associated with the data residency region that hosts your GitHub Enterprise account. This value can be found by logging into your enterprise account with the `gh` CLI tool and running the following command:
+If your GitHub Enterprise account has a subdomain on {% data variables.enterprise.data_residency_site %}, you must specify a value for the GitHub trust domain. This value is used to fetch the trusted materials associated with the data residency region that hosts your GitHub Enterprise account. This value can be found by logging into your enterprise account with the `gh` CLI tool and running the following command:
 
 ```bash copy
 gh api meta --jq .domains.artifact_attestations.trust_domain
@@ -131,13 +131,13 @@ To see the full set of options you may configure with the Helm chart, you can ru
 For policy controller options:
 
 ```bash copy
-helm show values oci://ghcr.io/github/artifact-attestations-helm-charts/policy-controller --version v0.10.0-github7
+helm show values oci://ghcr.io/github/artifact-attestations-helm-charts/policy-controller --version v0.10.0-github9
 ```
 
 For trust policy options:
 
 ```bash copy
-helm show values oci://ghcr.io/github/artifact-attestations-helm-charts/trust-policies --version v0.6.1
+helm show values oci://ghcr.io/github/artifact-attestations-helm-charts/trust-policies --version v0.6.2
 ```
 
 For more information on the Sigstore Policy Controller, see the [Sigstore Policy Controller documentation](https://docs.sigstore.dev/policy-controller/overview/).
