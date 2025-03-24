@@ -19,7 +19,7 @@ versions:
   ghec: '*'
 type: how_to
 topics:
-  - Advanced Security
+  - Code Security
   - Code scanning
   - CodeQL
   - Actions
@@ -278,10 +278,10 @@ For more information about the `run` keyword, see [AUTOTITLE](/actions/using-wor
 For repositories with multiple compiled languages, you can specify language-specific build commands. For example, if your repository contains C/C++, C# and Java, you might want to provide manual build steps for one language (here Java). This specifies build steps for Java while still using `autobuild` for C/C++ and C#.
 
 ```yaml
-- if: matrix.language == {% ifversion codeql-language-identifiers-311 %}'c-cpp'{% else %}'cpp'{% endif %} || matrix.language == 'csharp'
+- if: matrix.language == 'c-cpp' || matrix.language == 'csharp'
   name: Autobuild
   uses: {% data reusables.actions.action-codeql-action-autobuild %}
-- if: matrix.language == {% ifversion codeql-language-identifiers-311 %}'java-kotlin'{% else %}'java'{% endif %}
+- if: matrix.language == 'java-kotlin'
   name: Build Java
   run: |
     make bootstrap
@@ -295,7 +295,7 @@ If you added manual build steps for compiled languages and {% data variables.pro
 
 ## Autobuild steps for compiled languages
 
-{% ifversion fpt or ghec %}{% data variables.product.prodname_dotcom %}-hosted runners are always run with the software required by `autobuild`.{% endif %} If you use self-hosted runners for {% data variables.product.prodname_actions %}, you may need to install additional software to use the `autobuild` process. Additionally, if your repository requires a specific version of a build tool, you may need to install it manually. {% ifversion code-scanning-default-setup-self-hosted-310 or default-setup-self-hosted-runners-GHEC %} For self-hosted runners, you should install dependencies directly in the runners themselves. We provide examples of common dependencies for C/C++, C#, and Java in each of the `autobuild` sections of this article for those languages. For more information, see [AUTOTITLE](/actions/hosting-your-own-runners/managing-self-hosted-runners/about-self-hosted-runners).{% endif %}
+{% ifversion fpt or ghec %}{% data variables.product.prodname_dotcom %}-hosted runners are always run with the software required by `autobuild`.{% endif %} If you use self-hosted runners for {% data variables.product.prodname_actions %}, you may need to install additional software to use the `autobuild` process. Additionally, if your repository requires a specific version of a build tool, you may need to install it manually. {% ifversion ghes or default-setup-self-hosted-runners-GHEC %} For self-hosted runners, you should install dependencies directly in the runners themselves. We provide examples of common dependencies for C/C++, C#, and Java in each of the `autobuild` sections of this article for those languages. For more information, see [AUTOTITLE](/actions/hosting-your-own-runners/managing-self-hosted-runners/about-self-hosted-runners).{% endif %}
 
 * [Building C/C++](#building-cc)
 * [Building C#](#building-c)
@@ -337,14 +337,10 @@ On Linux and macOS, the `autobuild` step reviews the files present in the reposi
 
 #### Runner requirements for C/C++
 
-{% ifversion codeql-cpp-autoinstall-dependencies %}
 On Ubuntu Linux runners, `autobuild` may try to automatically install dependencies required by the detected configuration and build steps. By default, this behavior is enabled on {% data variables.product.prodname_dotcom %}-hosted runners and disabled on self-hosted runners. You can enable or disable this feature explicitly by setting `CODEQL_EXTRACTOR_CPP_AUTOINSTALL_DEPENDENCIES` to `true` or `false` in the environment. For more information about defining environment variables, see [AUTOTITLE](/actions/learn-github-actions/variables#defining-environment-variables-for-a-single-workflow).
-{% endif %}
 
-For self-hosted runners{% ifversion codeql-cpp-autoinstall-dependencies %}, unless automatic installation of dependencies is enabled{% endif %}, you will likely need to install the `gcc` compiler, and specific projects may also require access to `clang` or `msvc` executables. You will also need to install the build system (for example `msbuild`, `make`, `cmake`, `bazel`) and utilities (such as `python`, `perl`, `lex`, and `yacc`) that your projects depend on.
-{%- ifversion codeql-cpp-autoinstall-dependencies %}
+For self-hosted runners, unless automatic installation of dependencies is enabled, you will likely need to install the `gcc` compiler, and specific projects may also require access to `clang` or `msvc` executables. You will also need to install the build system (for example `msbuild`, `make`, `cmake`, `bazel`) and utilities (such as `python`, `perl`, `lex`, and `yacc`) that your projects depend on.
 If you enable automatic installation of dependencies, you must ensure that the runner is using Ubuntu and that it can run `sudo apt-get` without requiring a password.
-{%- endif %}
 
 Windows runners require `powershell.exe` to be on the `PATH`.
 
@@ -468,7 +464,7 @@ The `autobuild` process attempts to autodetect a suitable way to install the dep
 1. Extract all Go code in the repository, similar to running `go build ./...`.
 
 > [!NOTE]
-> If you use default setup, it will look for a `go.mod` file to automatically install a compatible version of the Go language.{% ifversion code-scanning-default-setup-self-hosted-310 %} If you're using a self-hosted runner with default setup that doesn't have internet access, you can manually install a compatible version of Go.{% endif %}
+> If you use default setup, it will look for a `go.mod` file to automatically install a compatible version of the Go language.{% ifversion ghes %} If you're using a self-hosted runner with default setup that doesn't have internet access, you can manually install a compatible version of Go.{% endif %}
 
 ### Extractor options for Go
 

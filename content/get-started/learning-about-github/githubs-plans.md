@@ -84,6 +84,13 @@ In addition to the features available with {% data variables.product.prodname_fr
 * {% data variables.contact.github_support %} via email
 * 3,000 {% data variables.product.prodname_actions %} minutes per month
 * 2 GB {% data variables.product.prodname_registry %} storage
+{%- ifversion ghas-products %}
+* The option to purchase {% data variables.product.prodname_GHAS %} products:
+  * {% data variables.product.prodname_GH_code_security %}
+  * {% data variables.product.prodname_GH_secret_protection %}
+  
+  For more information, see [AUTOTITLE](/get-started/learning-about-github/about-github-advanced-security).{%- endif %}
+
 * Advanced tools and insights in private repositories:
   * Required pull request reviewers
   * Multiple pull request reviewers
@@ -97,7 +104,8 @@ In addition to the features available with {% data variables.product.prodname_fr
     > [!NOTE]
     > To publish a {% data variables.product.prodname_pages %} site privately, you need to have an organization account. Additionally, your organization must use {% data variables.product.prodname_ghe_cloud %}.
 
-  * Wikis
+  * Wikis{% ifversion ghas-products %}
+  * Security overview{% endif %}
   * Repository insights graphs: Pulse, contributors, traffic, commits, code frequency, network, and forks
     {% data reusables.repositories.repo-insights-commit-limit %}
 {%- ifversion fpt or ghec %}
@@ -105,13 +113,13 @@ In addition to the features available with {% data variables.product.prodname_fr
   * Organization owners can choose to enable or disable {% data variables.product.prodname_github_codespaces %} for the organization's private {% ifversion ghec %}and internal {% endif %}repositories, and can pay for the usage of members and collaborators. For more information, see [AUTOTITLE](/codespaces/managing-codespaces-for-your-organization/enabling-or-disabling-github-codespaces-for-your-organization) and [AUTOTITLE](/codespaces/managing-codespaces-for-your-organization/choosing-who-owns-and-pays-for-codespaces-in-your-organization).
 {%- endif %}
 
-{% data variables.product.company_short %} bills for {% data variables.product.prodname_team %} on a per-user basis. For more information, see "[About per-user pricing]({% ifversion not fpt %}/free-pro-team@latest{% endif %}/billing/managing-the-plan-for-your-github-account/about-per-user-pricing){% ifversion fpt %}."{% else %}" in the Free, Pro, & Team documentation.{% endif %}
+{% data variables.product.company_short %} bills for {% data variables.product.prodname_team %} on a per-user basis. For more information, see [About per-user pricing]({% ifversion not fpt %}/free-pro-team@latest{% endif %}/billing/managing-the-plan-for-your-github-account/about-per-user-pricing){% ifversion fpt %}.{% else %} in the Free, Pro, & Team documentation.{% endif %}
 
 {% data reusables.actions.actions-billing %}
 
 ## {% data variables.product.prodname_enterprise %}
 
-{% data variables.product.prodname_enterprise %} includes two deployment options: {% data variables.product.prodname_ghe_cloud %}, which is hosted by {% data variables.product.company_short %} in the cloud, and {% data variables.product.prodname_ghe_server %}, which is self-hosted. For more information, see "[About {% data variables.product.prodname_dotcom %} for enterprises]({% ifversion fpt %}/enterprise-cloud@latest{% endif %}/admin/overview/about-github-for-enterprises){% ifversion fpt %}" in the {% data variables.product.prodname_ghe_cloud %} documentation.{% else %}."{% endif %}
+{% data variables.product.prodname_enterprise %} includes two deployment options: {% data variables.product.prodname_ghe_cloud %}, which is hosted by {% data variables.product.company_short %} in the cloud, and {% data variables.product.prodname_ghe_server %}, which is self-hosted. For more information, see [About {% data variables.product.prodname_dotcom %} for enterprises]({% ifversion fpt %}/enterprise-cloud@latest{% endif %}/admin/overview/about-github-for-enterprises){% ifversion fpt %} in the {% data variables.product.prodname_ghe_cloud %} documentation.{% else %}.{% endif %}
 
 In addition to the features available with {% data variables.product.prodname_team %}, {% data variables.product.prodname_enterprise %} includes:
 
@@ -120,9 +128,9 @@ In addition to the features available with {% data variables.product.prodname_te
 * Authentication with SAML single sign-on
 * Access provisioning with SAML or SCIM
 * Deployment protection rules with {% data variables.product.prodname_actions %} for private or internal repositories
-* {% data variables.product.prodname_github_connect %}
-* The option to purchase {% data variables.product.prodname_GH_advanced_security %}. For more information, see [AUTOTITLE](/get-started/learning-about-github/about-github-advanced-security).
-* Additional features such as internal repositories{% ifversion repo-rules %}, security overview, and repository rules{% else %} and security overview{% endif %}.
+* {% data variables.product.prodname_github_connect %}{%- ifversion ghas-products %}{% else %}
+* The option to purchase {% data variables.product.prodname_GHAS %}. For more information, see [AUTOTITLE](/get-started/learning-about-github/about-github-advanced-security){% endif %}
+* Additional features such as internal repositories{%- ifversion ghas-products %}{% else %}, security overview,{% endif %} and repository rules.
 
 {% data variables.product.prodname_ghe_cloud %} specifically includes:
 * 50,000 {% data variables.product.prodname_actions %} minutes per month
@@ -138,10 +146,10 @@ In addition to the features available with {% data variables.product.prodname_te
 
 For a detailed list of the features available with {% data variables.product.prodname_enterprise %}, see our [Pricing](https://github.com/pricing) page.
 
-To see how {% data variables.product.product_name %} compares to GitLab, Bitbucket, and Jenkins, see [Comparing GitHub to other DevOps solutions](https://resources.github.com/devops/tools/compare/).
+To see how {% data variables.product.github %} compares to GitLab, Bitbucket, and Jenkins, see [Comparing GitHub to other DevOps solutions](https://resources.github.com/devops/tools/compare/).
 
 You can set up trials to evaluate {% data variables.product.prodname_ghe_cloud %} and {% data variables.product.prodname_ghe_server %}. For more information, see [AUTOTITLE](/enterprise-cloud@latest/admin/overview/setting-up-a-trial-of-github-enterprise-cloud) and [AUTOTITLE](/enterprise-server@latest/admin/overview/setting-up-a-trial-of-github-enterprise-server).
 
 ## Further reading
 
-* "[About per-user pricing]({% ifversion not ghec %}/enterprise-cloud@latest{% endif %}/billing/managing-the-plan-for-your-github-account/about-per-user-pricing)"{% ifversion not ghec %} in the {% data variables.product.prodname_ghe_cloud %} documentation{% endif %}
+* [About per-user pricing]({% ifversion not ghec %}/enterprise-cloud@latest{% endif %}/billing/managing-the-plan-for-your-github-account/about-per-user-pricing){% ifversion not ghec %} in the {% data variables.product.prodname_ghe_cloud %} documentation{% endif %}

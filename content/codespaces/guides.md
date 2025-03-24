@@ -8,8 +8,8 @@ versions:
   fpt: '*'
   ghec: '*'
 includeGuides:
-  - /codespaces/getting-started/quickstart
-  - /codespaces/getting-started/deep-dive
+  - /codespaces/quickstart
+  - /codespaces/about-codespaces/deep-dive
   - /codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers
   - /codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/setting-up-your-nodejs-project-for-codespaces
   - /codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/setting-up-your-python-project-for-codespaces
@@ -32,7 +32,6 @@ includeGuides:
   - /codespaces/developing-in-a-codespace/stopping-and-starting-a-codespace
   - /codespaces/developing-in-a-codespace/working-collaboratively-in-a-codespace
   - /codespaces/developing-in-a-codespace/using-github-codespaces-in-visual-studio-code
-  - /codespaces/developing-in-a-codespace/using-github-codespaces-in-your-jetbrains-ide
   - /codespaces/developing-in-a-codespace/using-github-codespaces-with-github-cli
   - /codespaces/developing-in-a-codespace/using-source-control-in-your-codespace
   - /codespaces/developing-in-a-codespace/using-github-codespaces-for-pull-requests

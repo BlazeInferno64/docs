@@ -1,7 +1,7 @@
 ---
-title: 'Error: "Advanced Security must be enabled for this repository to use code scanning"'
-shortTitle: 'Advanced Security must be enabled'
-intro: 'If you see this error, make sure that {% data variables.product.prodname_GH_advanced_security %} is enabled.'
+title: 'Error: "{% data variables.product.prodname_advanced_security %} must be enabled for this repository to use code scanning"'
+shortTitle: '{% data variables.product.prodname_advanced_security %} must be enabled'
+intro: 'If you see this error, make sure that {% data variables.product.prodname_GH_code_security %} is enabled.'
 allowTitleToDifferFromFilename: true
 type: reference
 topics:
@@ -17,8 +17,8 @@ versions:
 ## About this error
 
 ```text
-Advanced Security must be enabled for this repository to use code scanning
-403: GitHub Advanced Security is not enabled
+{% data variables.product.prodname_advanced_security %} must be enabled for this repository to use code scanning
+403: {% data variables.product.prodname_GH_advanced_security %} is not enabled
 ```
 
 This error is reported if you try to run {% data variables.product.prodname_code_scanning %} in a repository where {% data variables.product.prodname_GH_advanced_security %} is not enabled or where use of this feature is blocked by a policy.
@@ -39,7 +39,7 @@ If you are on a free, pro, or team plan, you can only use {% data variables.prod
 1. If there is an associated and active **Enable** button, {% data variables.product.prodname_GH_advanced_security %} is available for this repository but not yet enabled.
 1. If use of {% data variables.product.prodname_GH_advanced_security %} is blocked by a policy, the **Enable** button is inactive and the owner of the policy is listed.
 
-   ![Screenshot of the "{% data variables.product.prodname_GH_advanced_security %}" setting. The owner of the enterprise policy and the inactive "Enable" button are highlighted with a dark orange outline.](/assets/images/help/repository/ghas-enterprise-policy-block.png)
+   ![Screenshot of the "{% data variables.product.prodname_GH_advanced_security %}" setting. The owner of the enterprise policy and the inactive "Enable" button are outlined in orange.](/assets/images/help/repository/ghas-enterprise-policy-block.png)
 
 ## Fixing the problem
 

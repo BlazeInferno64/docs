@@ -1,6 +1,6 @@
 ---
 title: Linking a pull request to an issue
-intro: 'You can link a pull request {% ifversion link-existing-branches-to-issue %}or branch {% endif %}to an issue to show that a fix is in progress and to automatically close the issue when the pull request {% ifversion link-existing-branches-to-issue %}or branch {% endif %} is merged.'
+intro: 'You can link a pull request or branch to an issue to show that a fix is in progress and to automatically close the issue when the pull request or branch is merged.'
 redirect_from:
   - /github/managing-your-work-on-github/managing-your-work-with-issues-and-pull-requests/linking-a-pull-request-to-an-issue
   - /articles/closing-issues-via-commit-message
@@ -19,16 +19,16 @@ topics:
 shortTitle: Link PR to issue
 ---
 
-> [!NOTE]
-> The special keywords in a pull request description are interpreted when the pull request targets the repository's _default_ branch. However, if the PR's base is _any other branch_, then these keywords are ignored, no links are created and merging the PR has no effect on the issues. **If you want to link a pull request to an issue using a keyword, the PR must be on the default branch.**
-
 ## About linked issues and pull requests
 
-You can link an issue to a pull request manually or using a supported keyword in the pull request description.
+You can link an issue to a pull request manually or using a supported keyword in the pull request description, that is, the summary text added by the author when they created the pull request.
 
 When you link a pull request to the issue the pull request addresses, collaborators can see that someone is working on the issue.
 
-When you merge a linked pull request into the default branch of a repository, its linked issue is automatically closed. For more information about the default branch, see [AUTOTITLE](/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/changing-the-default-branch).
+When you merge a linked pull request into the **default branch** of a repository, its linked issue is automatically closed. For more information about the default branch, see [AUTOTITLE](/repositories/configuring-branches-and-merges-in-your-repository/managing-branches-in-your-repository/changing-the-default-branch).
+
+> [!NOTE]
+> The special keywords in a pull request description are interpreted only when the pull request targets the repository's _default_ branch. If the pull request targets _any other branch_, then these keywords are ignored, no links are created, and merging the PR has no effect on the issues.
 
 ## Linking a pull request to an issue using a keyword
 
@@ -54,6 +54,8 @@ Issue in the same repository | KEYWORD #ISSUE-NUMBER | `Closes #10`
 Issue in a different repository | KEYWORD OWNER/REPOSITORY#ISSUE-NUMBER | `Fixes octo-org/octo-repo#100`
 Multiple issues | Use full syntax for each issue | `Resolves #10, resolves #123, resolves octo-org/octo-repo#100`
 
+The keywords can be followed by colons or in uppercase. For example: `Closes: #10`, `CLOSES #10`, or `CLOSES: #10`.
+
 Only manually linked pull requests can be manually unlinked. To unlink an issue that you linked using a keyword, you must edit the pull request description to remove the keyword.
 
 You can also use closing keywords in a commit message. The issue will be closed when you merge the commit into the default branch, but the pull request that contains the commit will not be listed as a linked pull request.
@@ -70,8 +72,6 @@ You can manually link up to ten issues to each pull request. The issue and pull 
 {% data reusables.pull_requests.click-development-in-pull-request %}
 1. Click the issue you want to link to the pull request.
 
-{% ifversion link-existing-branches-to-issue %}
-
 ## Manually linking a pull request or branch to an issue using the issue sidebar
 
 Anyone with write permissions to a repository can manually link a pull request or branch to an issue from the issue sidebar.
@@ -85,8 +85,6 @@ You can manually link up to ten issues to each pull request. The issue can be in
 1. Click the repository containing the pull request or branch you want to link to the issue.
 1. Click the pull request or branch you want to link to the issue.
 1. Click **Apply**.
-
-{% endif %}
 
 ## Further reading
 

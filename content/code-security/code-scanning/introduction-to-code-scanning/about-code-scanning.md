@@ -15,7 +15,7 @@ versions:
   ghec: '*'
 type: overview
 topics:
-  - Advanced Security
+  - Code Security
   - Code scanning
 ---
 
@@ -44,7 +44,7 @@ To get started with {% data variables.product.prodname_code_scanning %}, see [AU
 
 {% data variables.product.prodname_code_scanning_caps %} uses {% data variables.product.prodname_actions %}, and each run of a {% data variables.product.prodname_code_scanning %} workflow consumes minutes for {% data variables.product.prodname_actions %}. For more information, see [AUTOTITLE](/billing/managing-billing-for-github-actions/about-billing-for-github-actions).
 
-To use {% data variables.product.prodname_code_scanning %} on a private repository, you will also need a license for {% data variables.product.prodname_GH_advanced_security %}. {% data reusables.advanced-security.ghas-trial %}
+To use {% data variables.product.prodname_code_scanning %} on a private repository, you will also need a license for {% data variables.product.prodname_GH_code_security %}. {% data reusables.advanced-security.ghas-trial %}
 
 {% endif %}
 
@@ -60,7 +60,7 @@ You can configure {% data variables.product.prodname_code_scanning %} to use the
 
 {% data reusables.code-scanning.interoperable-with-tools-that-output-sarif %}
 
-You can run third-party analysis tools within {% data variables.product.product_name %} using actions or within an external CI system. For more information, see [AUTOTITLE](/code-security/code-scanning/creating-an-advanced-setup-for-code-scanning/configuring-advanced-setup-for-code-scanning#configuring-code-scanning-using-third-party-actions) or [AUTOTITLE](/code-security/code-scanning/integrating-with-code-scanning/uploading-a-sarif-file-to-github).
+You can run third-party analysis tools within {% data variables.product.github %} using actions or within an external CI system. For more information, see [AUTOTITLE](/code-security/code-scanning/creating-an-advanced-setup-for-code-scanning/configuring-advanced-setup-for-code-scanning#configuring-code-scanning-using-third-party-actions) or [AUTOTITLE](/code-security/code-scanning/integrating-with-code-scanning/uploading-a-sarif-file-to-github).
 
 ## About the {% data variables.code-scanning.tool_status_page %}
 

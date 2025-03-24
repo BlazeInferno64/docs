@@ -42,9 +42,6 @@ Organizations can enable members and outside collaborators to create and use cod
 
 {% data reusables.codespaces.starting-new-project-template %} For more information, see [AUTOTITLE](/codespaces/developing-in-a-codespace/creating-a-codespace-from-a-template).
 
-> [!NOTE]
-> If you use a JetBrains IDE, you can use {% data variables.product.prodname_cli %} to create a codespace. You can then use the JetBrains Gateway application to open the codespace in a JetBrains IDE. For more information, see [AUTOTITLE](/codespaces/developing-in-a-codespace/using-github-codespaces-in-your-jetbrains-ide).
-
 If you create a codespace from a repository, the codespace will be associated with a specific branch, which cannot be empty. You can create more than one codespace per repository or even per branch.
 
 {% data reusables.codespaces.you-can-see-all-your-codespaces %}
@@ -58,9 +55,9 @@ When you create a codespace, a number of steps happen to create and connect you 
 * Step 3: You can connect to the codespace.
 * Step 4: Codespace continues with post-creation setup.
 
-For more information on what happens when you create a codespace, see [AUTOTITLE](/codespaces/getting-started/deep-dive).
+For more information on what happens when you create a codespace, see [AUTOTITLE](/codespaces/about-codespaces/deep-dive).
 
-For more information on the lifecycle of a codespace, see [AUTOTITLE](/codespaces/getting-started/understanding-the-codespace-lifecycle).
+For more information on the lifecycle of a codespace, see [AUTOTITLE](/codespaces/about-codespaces/understanding-the-codespace-lifecycle).
 
 If you want to use Git hooks for your codespace, then you should set up hooks using the `devcontainer.json` lifecycle scripts, such as `postCreateCommand`. These get executed during step 4, above. For information about the lifecycle scripts, see the [dev containers specification](https://containers.dev/implementors/json_reference/#lifecycle-scripts) on the Development Containers website. Since the dev container for your codespace is created after the repository is cloned, any [git template directory](https://git-scm.com/docs/git-init#_template_directory) configured in the dev container image will not apply to your codespace. Hooks must instead be installed after the codespace is created.
 
@@ -75,7 +72,7 @@ If you want to use Git hooks for your codespace, then you should set up hooks us
 {% data reusables.repositories.navigate-to-repo %}
 1. Under the repository name, select the branch dropdown menu, which is labeled with the name of the current branch, then click the branch you want to create a codespace for.
 
-   ![Screenshot of the expanded branch dropdown menu, listing various branches. The dropdown menu, labeled with a branch icon and "trunk," is highlighted with a dark orange outline.](/assets/images/help/codespaces/branch-drop-down.png)
+   ![Screenshot of the expanded branch dropdown menu, listing various branches. The "trunk" dropdown menu, shown with a branch icon, is outlined in orange.](/assets/images/help/codespaces/branch-drop-down.png)
 
 1. Click the **{% octicon "code" aria-hidden="true" %} Code** button, then click the **Codespaces** tab.
 

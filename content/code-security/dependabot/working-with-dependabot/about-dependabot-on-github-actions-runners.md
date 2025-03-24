@@ -39,9 +39,12 @@ If you are transitioning to using {% data variables.product.prodname_dependabot 
 
 {% data reusables.dependabot.dependabot-on-actions-enterprise-policy-condition %}
 
-## Enabling or disabling {% data variables.product.prodname_dependabot %} on {% data variables.product.prodname_dotcom %}-hosted runners
+> [!NOTE]
+> {% data variables.product.prodname_dependabot %} on {% data variables.product.prodname_actions %} relies on the `ubuntu-latest` label to select the appropriate runner. To ensure {% data variables.product.prodname_dependabot %}  runs on {% data variables.product.github %}-hosted runners, you should not use the label `ubuntu-latest` for self-hosted runners.
 
-This section only applies to standard {% data variables.product.prodname_dotcom %}-hosted runners, not larger runners.
+## Enabling or disabling {% data variables.product.prodname_dependabot %} on {% data variables.product.github %}-hosted runners
+
+This section only applies to standard {% data variables.product.github %}-hosted runners, not larger runners.
 
 New repositories that you create in your user account or in your organization will automatically be configured to run {% data variables.product.prodname_dependabot %} on {% data variables.product.prodname_actions %} if any of the following is true:
 * {% data variables.product.prodname_dependabot %} is installed and enabled, and {% data variables.product.prodname_actions %} is enabled and in use.
@@ -49,7 +52,7 @@ New repositories that you create in your user account or in your organization wi
 
 For existing repositories, you can opt in to run {% data variables.product.prodname_dependabot %} on {% data variables.product.prodname_actions %} as follows.
 
-Future releases of {% data variables.product.product_name %} will remove the ability to disable running {% data variables.product.prodname_dependabot %} on {% data variables.product.prodname_actions %}.
+Future releases of {% data variables.product.github %} will remove the ability to disable running {% data variables.product.prodname_dependabot %} on {% data variables.product.prodname_actions %}.
 
 If you restrict access to your organization's or repository's private resources, you may need to update your list of allowed IP addresses prior to enabling {% data variables.product.prodname_dependabot %} on {% data variables.product.prodname_actions %} runners. You can update your IP allow list to use the {% data variables.product.prodname_dotcom %}-hosted runners IP addresses (instead of the {% data variables.product.prodname_dependabot %} IP addresses), sourced from the [meta](/rest/meta) REST API endpoint.
 
@@ -79,7 +82,7 @@ If a repository in your organization has {% data variables.product.prodname_depe
 
 {% data reusables.profile.access_org %}
 {% data reusables.profile.org_settings %}
-1. In the "Security" section of the sidebar, click **{% octicon "codescan" aria-hidden="true" %} Code security** then **Global settings**.
+{% data reusables.security-configurations.display-global-settings %}
 1. Under "Dependabot", select "{% data variables.product.prodname_dependabot %} on Actions runners" to enable the feature or deselect to disable it.
 
 For more information, see [AUTOTITLE](/code-security/securing-your-organization/enabling-security-features-in-your-organization/configuring-global-security-settings-for-your-organization#enabling-dependency-updates-on-github-actions-runners).

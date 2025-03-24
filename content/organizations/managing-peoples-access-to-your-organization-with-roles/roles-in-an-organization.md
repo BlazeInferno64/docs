@@ -44,7 +44,7 @@ You can assign people to a variety of organization-level roles to control your m
 For more granular control of access to your organization's settings, you can create a custom organization role. For more information, see [AUTOTITLE](/organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-organization-roles).
 {% endif %}
 
-{% ifversion enterprise-owner-join-org %}
+{% ifversion ghec or ghes %}
 If your organization is owned by an enterprise account, enterprise owners can choose to join your organization with any role. For more information, see [AUTOTITLE](/admin/user-management/managing-organizations-in-your-enterprise/managing-your-role-in-an-organization-owned-by-your-enterprise).
 {% endif %}
 
@@ -207,6 +207,12 @@ Some of the features listed below are limited to organizations using {% data var
 | {% ifversion push-protection-bypass-fine-grained-permissions %} |
 | Review and manage {% data variables.product.prodname_secret_scanning %} bypass requests (see [AUTOTITLE](/code-security/secret-scanning/using-advanced-secret-scanning-and-push-protection-features/delegated-bypass-for-push-protection)) | {% octicon "check" aria-label="Yes" %} | {% octicon "x" aria-label="No" %} | {% octicon "x" aria-label="No" %} | {% octicon "x" aria-label="No" %} | {% octicon "check" aria-label="Yes" %} |
 | {% endif %} |
+| {% ifversion security-delegated-alert-dismissal %} |
+| Review and manage {% data variables.product.prodname_secret_scanning %} dismissal requests | {% octicon "check" aria-label="Yes" %} | {% octicon "x" aria-label="No" %} | {% octicon "x" aria-label="No" %} | {% octicon "x" aria-label="No" %} | {% octicon "check" aria-label="Yes" %} |
+| {% endif %} |
+| {% ifversion security-delegated-alert-dismissal %} |
+| Review and manage {% data variables.product.prodname_code_scanning %} dismissal requests | {% octicon "check" aria-label="Yes" %} | {% octicon "x" aria-label="No" %} | {% octicon "x" aria-label="No" %} | {% octicon "x" aria-label="No" %} | {% octicon "check" aria-label="Yes" %} |
+| {% endif %} |
 
 {% endrowheaders %}
 
@@ -241,6 +247,12 @@ Some of the features listed below are limited to organizations using {% data var
 | Manage security and analysis settings (see [AUTOTITLE](/organizations/keeping-your-organization-secure/managing-security-settings-for-your-organization/managing-security-and-analysis-settings-for-your-organization)) | {% octicon "check" aria-label="Yes" %} | {% octicon "x" aria-label="No" %} | {% octicon "check" aria-label="Yes" %} |
 | {% ifversion ghes %} |
 | View the security overview for the organization (see [AUTOTITLE](/code-security/security-overview/about-the-security-overview)) | {% octicon "check" aria-label="Yes" %} | {% octicon "x" aria-label="No" %} | {% octicon "check" aria-label="Yes" %} |
+| {% endif %} |
+| {% ifversion security-delegated-alert-dismissal %} |
+| Review and manage {% data variables.product.prodname_secret_scanning %} dismissal requests | {% octicon "check" aria-label="Yes" %} | {% octicon "x" aria-label="No" %} | {% octicon "x" aria-label="No" %} | {% octicon "x" aria-label="No" %} | {% octicon "check" aria-label="Yes" %} |
+| {% endif %} |
+| {% ifversion security-delegated-alert-dismissal %} |
+| Review and manage {% data variables.product.prodname_code_scanning %} dismissal requests | {% octicon "check" aria-label="Yes" %} | {% octicon "x" aria-label="No" %} | {% octicon "x" aria-label="No" %} | {% octicon "x" aria-label="No" %} | {% octicon "check" aria-label="Yes" %} |
 | {% endif %} |
 | {% ifversion ghes %} |
 | Manage {% data variables.product.prodname_dependabot_security_updates %} (see [AUTOTITLE](/code-security/dependabot/dependabot-security-updates/about-dependabot-security-updates)) | {% octicon "check" aria-label="Yes" %} | {% octicon "x" aria-label="No" %} | {% octicon "check" aria-label="Yes" %} |

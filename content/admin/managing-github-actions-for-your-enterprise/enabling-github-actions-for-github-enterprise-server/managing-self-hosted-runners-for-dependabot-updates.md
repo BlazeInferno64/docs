@@ -6,7 +6,7 @@ redirect_from:
   - /admin/github-actions/enabling-github-actions-for-github-enterprise-server/managing-self-hosted-runners-for-dependabot-updates
 allowTitleToDifferFromFilename: true
 versions:
-  ghes: '> 3.2'
+  ghes: '*'
 topics:
   - Enterprise
   - Security
@@ -23,20 +23,15 @@ To use {% data variables.product.prodname_dependabot_updates %} on {% data varia
 
 ## Prerequisites
 
-{% ifversion dependabot-updates-github-connect %}
 Configuring self-hosted runners is only one step in the middle of the process for enabling {% data variables.product.prodname_dependabot_updates %}. There are several steps you must follow before these steps, including configuring {% data variables.location.product_location %} to use {% data variables.product.prodname_actions %} with self-hosted runners. For more information, see [AUTOTITLE](/admin/configuration/configuring-github-connect/enabling-dependabot-for-your-enterprise).
-{% else %}
-Before you configure self-hosted runners for {% data variables.product.prodname_dependabot_updates %}, you must:
-
-* Configure {% data variables.location.product_location %} to use {% data variables.product.prodname_actions %} with self-hosted runners. For more information, see [AUTOTITLE](/admin/github-actions/getting-started-with-github-actions-for-your-enterprise/getting-started-with-github-actions-for-github-enterprise-server).
-* Enable {% data variables.product.prodname_dependabot_alerts %} for your enterprise. For more information, see [AUTOTITLE](/admin/configuration/configuring-github-connect/enabling-dependabot-for-your-enterprise).
-{% endif %}
 
 ## Configuring self-hosted runners for {% data variables.product.prodname_dependabot_updates %}
 
-## # System requirements for {% data variables.product.prodname_dependabot %} runners
+### System requirements for {% data variables.product.prodname_dependabot %} runners
 
 {% data reusables.dependabot.dependabot-runners-system-requirements %}
+
+{% data reusables.dependabot.vnet-arc-note %}
 
 ### Network requirements for {% data variables.product.prodname_dependabot %} runners
 

@@ -12,7 +12,7 @@ versions:
   ghec: '*'
 type: how_to
 topics:
-  - Advanced Security
+  - Secret Protection
   - Secret scanning
 ---
 
@@ -60,10 +60,9 @@ Before defining a custom pattern, you must ensure that {% data variables.product
 {% data reusables.repositories.navigate-to-code-security-and-analysis %}
 {% data reusables.repositories.navigate-to-ghas-settings %}
 {% data reusables.advanced-security.secret-scanning-new-custom-pattern %}
-{% data reusables.advanced-security.secret-scanning-add-custom-pattern-details %}{% ifversion custom-pattern-dry-run-ga %}
+{% data reusables.advanced-security.secret-scanning-add-custom-pattern-details %}
 1. When you're ready to test your new custom pattern, to identify matches in the repository without creating alerts, click **Save and dry run**.
 {% data reusables.advanced-security.secret-scanning-dry-run-results %}
-{% endif %}
 {% data reusables.advanced-security.secret-scanning-create-custom-pattern %}{% ifversion secret-scanning-push-protection-custom-patterns %}
 1. Optionally, to enable push protection for your custom pattern, click **Enable**.
 
@@ -114,18 +113,16 @@ To enable {% data variables.product.prodname_secret_scanning %} on all repositor
 {% data reusables.profile.access_org %}
 {% data reusables.profile.org_settings %}
 {% ifversion security-configurations %}
-1. In the "Security" section of the sidebar, select the **Code security** dropdown menu, then click **{% data variables.product.prodname_global_settings_caps %}**.
+1. In the "Security" section of the sidebar, select the **{% data variables.product.UI_advanced_security %}** dropdown menu, then click **{% data variables.product.prodname_global_settings_caps %}**.
 {% else %}
 {% data reusables.organizations.security-and-analysis %}
 {% data reusables.repositories.navigate-to-ghas-settings %}
 {% endif %}
 {% data reusables.advanced-security.secret-scanning-new-custom-pattern-org %}
 {% data reusables.advanced-security.secret-scanning-add-custom-pattern-details %}
-{%- ifversion custom-pattern-dry-run-ga %}
 1. When you're ready to test your new custom pattern, to identify matches in select repositories without creating alerts, click **Save and dry run**.
 {% data reusables.advanced-security.secret-scanning-dry-run-select-repos %}
 {% data reusables.advanced-security.secret-scanning-dry-run-results %}
-{%- endif %}
 {% data reusables.advanced-security.secret-scanning-create-custom-pattern %}{% ifversion secret-scanning-push-protection-custom-patterns %}
 1. Optionally, to enable push protection for your custom pattern, click **Enable**. For more information, see [AUTOTITLE](/code-security/secret-scanning/protecting-pushes-with-secret-scanning#enabling-secret-scanning-as-a-push-protection-in-an-organization-for-a-custom-pattern).
 
@@ -135,30 +132,26 @@ After your pattern is created, {% data variables.product.prodname_secret_scannin
 
 ## Defining a custom pattern for an enterprise account
 
-Before defining a custom pattern, you must ensure that you enable secret scanning for your enterprise account. For more information, see "[Enabling {% data variables.product.prodname_GH_advanced_security %} for your enterprise]({% ifversion fpt or ghec %}/enterprise-server@latest/{% endif %}/admin/advanced-security/enabling-github-advanced-security-for-your-enterprise)."
+Before defining a custom pattern, you must ensure that you enable secret scanning for your enterprise account. For more information, see [AUTOTITLE]({% ifversion fpt or ghec %}/enterprise-server@latest/{% endif %}/admin/advanced-security/enabling-github-advanced-security-for-your-enterprise).
 
 > [!NOTE]
 > * At the enterprise level, only the creator of a custom pattern can edit the pattern, and use it in a dry run.
 > * {% data reusables.secret-scanning.dry-runs-enterprise-permissions %}
 
 {% data reusables.enterprise-accounts.access-enterprise %}
-{% data reusables.enterprise-accounts.policies-tab %}{% ifversion security-feature-enablement-policies %}
+{% data reusables.enterprise-accounts.policies-tab %}
 {% data reusables.enterprise-accounts.code-security-and-analysis-policies %}
-1. Under "{% ifversion code-security-wording-only-enterprise %}Code security{% else %}Code security and analysis{% endif %}", click **Security features**.{% else %}
-{% data reusables.enterprise-accounts.advanced-security-policies %}
-{% data reusables.enterprise-accounts.advanced-security-security-features %}{% endif %}
+1. Under "{% data variables.product.UI_advanced_security_ent %}", click **Security features**.
 1. Under "Secret scanning custom patterns", click **New pattern**.
 {% data reusables.advanced-security.secret-scanning-add-custom-pattern-details %}
-{%- ifversion custom-pattern-dry-run-ga %}
 1. When you're ready to test your new custom pattern, to identify matches in the enterprise without creating alerts, click **Save and dry run**.
 {% data reusables.advanced-security.secret-scanning-dry-run-select-enterprise-repos %}
 {% data reusables.advanced-security.secret-scanning-dry-run-results %}
-{%- endif %}
 {% data reusables.advanced-security.secret-scanning-create-custom-pattern %}{% ifversion secret-scanning-push-protection-custom-patterns %}
 1. Optionally, to enable push protection for your custom pattern, click **Enable**. For more information, see [AUTOTITLE](/code-security/secret-scanning/protecting-pushes-with-secret-scanning).
 {% indented_data_reference reusables.secret-scanning.push-protection-enterprise-note spaces=3 %}{% endif %}
 
-After your pattern is created, {% data variables.product.prodname_secret_scanning %} scans for any secrets in repositories within your enterprise's organizations with {% data variables.product.prodname_GH_advanced_security %} enabled, including their entire Git history on all branches. Organization owners and repository administrators will be alerted to any secrets found, and can review the alert in the repository where the secret is found. For more information on viewing {% data variables.secret-scanning.alerts %}, see [AUTOTITLE](/code-security/secret-scanning/managing-alerts-from-secret-scanning).
+After your pattern is created, {% data variables.product.prodname_secret_scanning %} scans for any secrets in repositories within your organizations with {% data variables.product.prodname_GH_secret_protection %} enabled, including their entire Git history on all branches. Organization owners and repository administrators will be alerted to any secrets found, and can review the alert in the repository where the secret is found. For more information on viewing {% data variables.secret-scanning.alerts %}, see [AUTOTITLE](/code-security/secret-scanning/managing-alerts-from-secret-scanning).
 
 ## Further reading
 

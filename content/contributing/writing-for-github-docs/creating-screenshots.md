@@ -1,9 +1,11 @@
 ---
 title: Creating screenshots
 shortTitle: Create screenshots
-intro: "You can help users locate elements of the user interface that are difficult to find by adding screenshots to {% data variables.product.prodname_docs %}."
+intro: 'You can help users locate elements of the user interface that are difficult to find by adding screenshots to {% data variables.product.prodname_docs %}.'
 versions:
-  feature: 'contributing'
+  fpt: '*'
+  ghec: '*'
+  ghes: '*'
 ---
 
 ## About screenshots in {% data variables.product.prodname_docs %}
@@ -93,6 +95,8 @@ In addition to the criteria for inclusion, screenshots must meet the following r
 * 750–1000 pixels wide for full-column images
 * File size of 250 KB or less
 * Descriptive file names, such as `gist-embed-link.png` instead of `right_side_page_03.png`
+* Images captured on macOS must be retina images
+  * In Snagit, select **Snagit** > **Preferences** > **Advanced** and deselect "Scale down retina images when sharing"
 
 ### Accessibility
 
@@ -136,7 +140,7 @@ The stroke is the color `fg.severe` in the [Primer Design System](https://primer
 
 1. To download the Snagit theme, navigate to [`snagit-theme-github-docs.snagtheme`](https://github.com/github/docs/blob/main/contributing/images/snagit-theme-github-docs.snagtheme) in the `github/docs` repository, then click {% octicon "download" aria-label="Download raw content" %}.
 
-   ![Screenshot of the file view for "snagit-theme-github-docs.snagtheme." In the header of the file, a button labeled with a download icon is outlined in dark orange.](/assets/images/contributing/download-snagit-theme.png)
+   ![Screenshot of the file view for "snagit-theme-github-docs.snagtheme." In the header of the file, a button with a download icon is outlined in orange.](/assets/images/contributing/download-snagit-theme.png)
 1. Open Snagit, then select the **Shape** tool.
 1. Under "Quick styles," select **Import**.
 1. Select the Snagit theme from your computer's files. This will install the shape preset.

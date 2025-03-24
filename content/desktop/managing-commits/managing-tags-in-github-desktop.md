@@ -8,7 +8,9 @@ redirect_from:
   - /desktop/contributing-and-collaborating-using-github-desktop/managing-commits/managing-tags
   - /desktop/contributing-and-collaborating-using-github-desktop/managing-commits/managing-tags-in-github-desktop
 versions:
-  feature: desktop
+  fpt: '*'
+  ghec: '*'
+  ghes: '*'
 ---
 ## About tags in {% data variables.product.prodname_desktop %}
 
@@ -35,7 +37,7 @@ versions:
 
 1. All tags associated with the commit are visible in that commit's metadata.
 
-   ![Screenshot of the detailed view of a commit. Above the commit's diff, in the commit's metadata, a tag icon and the label "hello-tag" are outlined in orange.](/assets/images/help/desktop/viewing-tags-in-commit.png)
+   ![Screenshot of the detailed view of a commit. Above the commit's diff, in the metadata, a tag icon and the label "hello-tag" are outlined in orange.](/assets/images/help/desktop/viewing-tags-in-commit.png)
 
 ## Deleting tags
 

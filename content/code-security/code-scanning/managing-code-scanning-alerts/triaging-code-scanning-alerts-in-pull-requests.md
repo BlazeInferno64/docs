@@ -15,7 +15,7 @@ versions:
   ghec: '*'
 type: how_to
 topics:
-  - Advanced Security
+  - Code Security
   - Code scanning
   - Pull requests
   - Alerts
@@ -133,7 +133,7 @@ When {% data variables.product.prodname_copilot_autofix_short %} is enabled for 
 
 Usually, when you suggest changes to a pull request, your comment contains changes for a single file that is changed in the pull request. The following screenshot shows an {% data variables.product.prodname_copilot_autofix_short %} comment that suggests changes to the `index.js` file where the alert is displayed. Since the potential fix requires a new dependency on `escape-html`, the comment also suggests adding this dependency to the `package.json` file, even though the original pull request makes no changes to this file.
 
-![Screenshot of the {% data variables.product.prodname_copilot_autofix_short %} suggestion with explanation and change in the current file. A suggested change in "package.json" is outlined in dark orange.](/assets/images/help/code-scanning/autofix-example.png)
+![Screenshot of {% data variables.product.prodname_copilot_autofix_short %} suggestion to edit the current file. A suggested change in "package.json" is outlined in dark orange.](/assets/images/help/code-scanning/autofix-example.png)
 
 ### Assessing and committing an {% data variables.product.prodname_copilot_autofix_short %} suggestion
 
@@ -169,3 +169,9 @@ An alternative way of closing an alert is to dismiss it. You can dismiss an aler
 {% data reusables.code-scanning.false-positive-fix-codeql %}
 
 For more information about dismissing alerts, see [AUTOTITLE](/code-security/code-scanning/managing-code-scanning-alerts/resolving-code-scanning-alerts#dismissing--alerts).
+
+## Further reading
+
+{%- ifversion copilot-hadron %}
+* [AUTOTITLE](/copilot/using-github-copilot/using-github-copilot-for-pull-requests/using-copilot-to-help-you-work-on-a-pull-request)
+{%- endif %}

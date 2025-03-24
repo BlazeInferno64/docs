@@ -1,6 +1,6 @@
 ---
 title: Viewing and updating Dependabot alerts
-intro: 'If {% data variables.product.product_name %} discovers insecure dependencies in your project, you can view details on the Dependabot alerts tab of your repository. Then, you can update your project to resolve or dismiss the alert.'
+intro: 'If {% data variables.product.github %} discovers insecure dependencies in your project, you can view details on the Dependabot alerts tab of your repository. Then, you can update your project to resolve or dismiss the alert.'
 redirect_from:
   - /articles/viewing-and-updating-vulnerable-dependencies-in-your-repository
   - /github/managing-security-vulnerabilities/viewing-and-updating-vulnerable-dependencies-in-your-repository
@@ -30,7 +30,7 @@ You can enable automatic security updates for any repository that uses {% data v
 
 ## About updates for vulnerable dependencies in your repository
 
-{% data variables.product.product_name %} generates {% data variables.product.prodname_dependabot_alerts %} when we detect that the default branch of your codebase is using dependencies with known security risks. For repositories where {% data variables.product.prodname_dependabot_security_updates %} are enabled, when {% data variables.product.product_name %} detects a vulnerable dependency in the default branch, {% data variables.product.prodname_dependabot %} creates a pull request to fix it. The pull request will upgrade the dependency to the minimum possible secure version needed to avoid the vulnerability.
+{% data variables.product.github %} generates {% data variables.product.prodname_dependabot_alerts %} when we detect that the default branch of your codebase is using dependencies with known security risks. For repositories where {% data variables.product.prodname_dependabot_security_updates %} are enabled, when {% data variables.product.github %} detects a vulnerable dependency in the default branch, {% data variables.product.prodname_dependabot %} creates a pull request to fix it. The pull request will upgrade the dependency to the minimum possible secure version needed to avoid the vulnerability.
 
 {% data reusables.dependabot.no-dependabot-alerts-for-malware %}
 
@@ -43,9 +43,7 @@ You can also audit actions taken in response to {% data variables.product.prodna
 ## Prioritizing {% data variables.product.prodname_dependabot_alerts %}
 
 {% data variables.product.company_short %} helps you prioritize fixing {% data variables.product.prodname_dependabot_alerts %}. By default, {% data variables.product.prodname_dependabot_alerts %} are sorted by importance. The "Most important" sort order helps you prioritize which {% data variables.product.prodname_dependabot_alerts %} to focus on first. Alerts are ranked based on their potential impact, actionability, and relevance. Our prioritization calculation is constantly being improved and includes factors like CVSS score, dependency scope, and whether vulnerable function calls are found for the alert.
-{% ifversion dependabot-auto-triage-rules %}
 You can also use {% data variables.dependabot.auto_triage_rules %} to prioritize {% data variables.product.prodname_dependabot_alerts %}. For more information, see “[AUTOTITLE](/code-security/dependabot/dependabot-auto-triage-rules/about-dependabot-auto-triage-rules).”
-{% endif %}
 
 {% data reusables.dependabot.dependabot-alerts-filters %}
 
@@ -54,6 +52,8 @@ In addition to the filters available via the search bar, you can sort and filter
 The search bar also allows for full text searching of alerts and related security advisories. You can search for part of a security advisory name or description to return the alerts in your repository that relate to that security advisory. For example, searching for `yaml.load() API could execute arbitrary code` will return {% data variables.product.prodname_dependabot_alerts %} linked to [PyYAML insecurely deserializes YAML strings leading to arbitrary code execution](https://github.com/advisories/GHSA-rprw-h62v-c2w7) as the search string appears in the advisory description.
 
 ![Screenshot of the filter and sort menus in the {% data variables.product.prodname_dependabot_alerts %} tab.](/assets/images/help/graphs/dependabot-alerts-filters-checkbox.png)
+
+You can also use the REST API to get a list of {% data variables.product.prodname_dependabot_alerts %} sorted using your filter of choice, for your repository, organization, or enterprise. For more information about API endpoints, see [AUTOTITLE](/rest/dependabot/alerts).
 
 ## Supported ecosystems and manifests for dependency scope
 

@@ -21,7 +21,7 @@ At the top of a page on {% data variables.product.prodname_docs %}, select the d
 ![Screenshot of the header of {% data variables.product.prodname_docs %}. The "Version" dropdown menu is expanded and highlighted with an orange outline.](/assets/images/help/docs/version-picker.png)
 
 > [!NOTE]
-> You can try changing the version now. You're viewing {% ifversion ghes %}a{% else %}the{% endif %} **{% ifversion fpt %}Free, Pro, & Team{% else %}{% data variables.product.product_name %}{% endif %}** version of this article.
+> You can try changing the version now. You're viewing {% ifversion ghes %}a{% else %}the{% endif %} **{% ifversion fpt %}Free, Pro, & Team{% elsif ghec %}{% data variables.product.prodname_ghe_cloud %}{% elsif ghes %}{% data variables.product.prodname_ghe_server %}{% endif %}** version of this article.
 
 ## Determining which {% data variables.product.company_short %} product you use
 
@@ -32,13 +32,6 @@ You may use more than one {% data variables.product.company_short %} plan. For e
 ### {% data variables.product.prodname_dotcom_the_website %} plans or {% data variables.product.prodname_ghe_cloud %}
 
 If you access {% data variables.product.prodname_dotcom %} at https://github.com, you're either using the features of a Free, Pro, or Team plan, or you're using {% data variables.product.prodname_ghe_cloud %}.
-
-{% ifversion global-nav-update %}{% else %}
-In a wide browser window, there is no text that immediately follows the {% data variables.product.company_short %} logo on the left side of the header.
-
-  ![Screenshot of the header of any page on {% data variables.product.prodname_dotcom %}. The {% data variables.product.prodname_dotcom %} logo is highlighted with an orange outline.](/assets/images/help/docs/header-dotcom.png)
-
-{% endif %}
 
 On {% data variables.product.prodname_dotcom_the_website %}, each account has its own plan. Each personal account has an associated plan that provides access to certain features, and each organization has a different associated plan. If your personal account is a member of an organization on {% data variables.product.prodname_dotcom %}, you may have access to different features when you use resources owned by that organization than when you use resources owned by your personal account. For more information, see [AUTOTITLE](/get-started/learning-about-github/types-of-github-accounts).
 

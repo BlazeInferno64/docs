@@ -3,7 +3,9 @@ title: Customizing the table layout
 shortTitle: Customizing tables
 intro: 'You can use the table layout to build a spreadsheet using your project''s items, {% data variables.product.company_short %} metadata, and your custom fields.'
 versions:
-  feature: projects-v2
+  fpt: '*'
+  ghec: '*'
+  ghes: '*'
 type: tutorial
 topics:
   - Projects
@@ -33,13 +35,9 @@ You can group items by a custom field value. {% data reusables.projects.customiz
 
 {% data reusables.projects.customize.group-fields %}
 
-{% ifversion projects-v2-slice-panel %}
-
 ## Slicing by field values
 
 {% data reusables.projects.customize.slice-panel %}
-
-{% endif %}
 
 ## Reordering fields
 
@@ -65,19 +63,8 @@ You can change the order of rows.
 
 You can sort items by a field value.
 
-{% ifversion projects-v2-consistent-sorting %}{% else %}
-
-> [!NOTE]
-> When a table is sorted, you cannot manually reorder rows.
-
-{% endif %}
-
 {% data reusables.projects.customize.sort %}
-
-{% ifversion projects-v2-numeric-summary %}
 
 ## Showing the sum of a number field
 
 {% data reusables.projects.customize.sum %}
-
-{% endif %}

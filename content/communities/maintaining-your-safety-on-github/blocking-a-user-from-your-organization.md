@@ -42,7 +42,7 @@ In your organization's repositories, blocked users also cannot:
 1. Navigate to the comment whose author you would like to block.
 1. In the upper-right corner of the comment, click {% octicon "kebab-horizontal" aria-label="Show options" %}, then click **Block user**.
 
-   ![Screenshot of a pull request comment by octo-user. Below an icon of three horizontal dots, a dropdown menu is expanded, and "Block user" is outlined in orange.](/assets/images/help/repository/comment-menu-block-user.png)
+   ![Screenshot of a pull request comment by octo-user. Below an icon of three dots, a dropdown menu is expanded, and "Block user" is outlined in orange.](/assets/images/help/repository/comment-menu-block-user.png)
 
 1. If you'd like to set a time limit for the block, select the **Block user** dropdown menu, and click the amount of time you'd like to block the user.
 1. If you'd like to hide all of the comments the user has made in the organization, select **Hide this user's comments** and choose a reason.
@@ -50,6 +50,15 @@ In your organization's repositories, blocked users also cannot:
 1. To block the user, click **Block user from organization** or **Block user from organization and send message**.
 
 ## Blocking a user in the organization settings
+
+{% ifversion ghec %}
+
+> [!WARNING]
+> To completely block a user when your enterprise or organization enforces SAML single sign-on (SSO) through an identity provider (IdP), in addition to blocking the user on {% data variables.product.github %}, you should also **remove the user's assignment to the {% data variables.product.github %} application in your IdP**.
+>
+> Not revoking access in your IdP configuration means the user could potentially regain access to the enterprise or organization via SSO.
+
+{% endif %}
 
 1. To block an organization member, first [remove the user](/organizations/managing-membership-in-your-organization/removing-a-member-from-your-organization) from the organization.
 
@@ -66,7 +75,7 @@ In your organization's repositories, blocked users also cannot:
 1. Navigate to the discussion whose author you would like to block.
 1. In the upper-right corner of the comment, click {% octicon "kebab-horizontal" aria-label="Show options" %}, then click **Block user**.
 
-   ![Screenshot of a pull request comment by octo-user. Below an icon of three horizontal dots, a dropdown menu is expanded, and "Block user" is outlined in orange.](/assets/images/help/repository/comment-menu-block-user.png)
+   ![Screenshot of a pull request comment by octo-user. Below an icon of three dots, a dropdown menu is expanded, and "Block user" is outlined in orange.](/assets/images/help/repository/comment-menu-block-user.png)
 
 1. If you'd like to set a time limit for the block, select the **Block user** dropdown menu, and click the amount of time you'd like to block the user.
 1. If you'd like to hide all of the comments the user has made in the organization, select **Hide this user's comments** and choose a reason.

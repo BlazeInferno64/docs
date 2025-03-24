@@ -17,7 +17,7 @@ redirect_from:
 
 When you adopt {% data variables.enterprise.data_residency %}, you can choose where your company's code and data are stored.
 
-After you have **worked with {% data variables.contact.contact_enterprise_sales %}** to create an enterprise account with a dedicated URL on {% data variables.enterprise.data_residency_site %}, you'll use this guide to set up your enterprise. You will:
+After you have **worked with {% data variables.contact.contact_sales_data_residency %}** to create an enterprise account with a dedicated URL on {% data variables.enterprise.data_residency_site %}, you'll use this guide to set up your enterprise. You will:
 
 * Add users by configuring authentication and provisioning with an identity management system
 * Set up billing for your enterprise
@@ -45,7 +45,12 @@ After we create your enterprise, you will receive an email inviting you to choos
 Using an **incognito or private browsing window**:
 
 1. Set the user's password.
-1. Save the user's recovery codes.
+1. Enable two-factor authentication (2FA), and save the user's recovery codes. See [AUTOTITLE](/authentication/securing-your-account-with-two-factor-authentication-2fa/configuring-two-factor-authentication).
+
+   > [!NOTE]
+   > If 2FA isn't enabled, you will need to enter your enterprise's single sign-on (SSO) recovery code each time you sign in as the setup user. You can download these codes once SSO is enabled.
+
+{% data reusables.enterprise-accounts.emu-recommend-password-manager %}
 
 {% data reusables.enterprise-accounts.emu-password-reset-session %}
 

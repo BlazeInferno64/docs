@@ -3,7 +3,9 @@ title: 'Adding items to your {% data variables.projects.project_v2 %}'
 shortTitle: Adding items
 intro: 'Learn how to add pull requests, issues, and draft issues to your projects individually or in bulk.'
 versions:
-  feature: projects-v2
+  fpt: '*'
+  ghec: '*'
+  ghes: '*'
 type: tutorial
 topics:
   - Projects
@@ -26,11 +28,7 @@ When you add an issue or pull request to your project, an event will be added to
 
 {% endif %}
 
-{% ifversion projects-v2-bulk-table-editing %}
-
 For more information about making bulk changes to your items after adding them, see [AUTOTITLE](/issues/planning-and-tracking-with-projects/managing-items-in-your-project/editing-items-in-your-project).
-
-{% endif %}
 
 ### Automatically adding issues and pull requests
 
@@ -95,15 +93,11 @@ You can use the command palette when viewing your project to quickly add items.
 1. Start typing "Add items" and press <kbd>Return</kbd>.
 {% data reusables.projects.bulk-add %}
 
-{% ifversion projects-v2-create-issue-modal %}
-
 ## Creating issues
 
 {% data reusables.projects.about-issue-modal %}
 
 {% data reusables.projects.create-issue-modal %}
-
-{% endif %}
 
 ## Creating draft issues
 

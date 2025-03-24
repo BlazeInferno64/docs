@@ -4,6 +4,7 @@ intro: 'When you create or edit security advisories, the information you provide
 versions:
   fpt: '*'
   ghec: '*'
+permissions: '{% data reusables.permissions.security-repo-enable %}'
 type: how_to
 topics:
   - Security advisories
@@ -13,8 +14,6 @@ redirect_from:
   - /code-security/repository-security-advisories/best-practices-for-writing-repository-security-advisories
   - /code-security/security-advisories/guidance-on-reporting-and-writing/best-practices-for-writing-repository-security-advisories
 ---
-
-Anyone with admin permissions to a public repository can create and edit a security advisory.
 
 {% data reusables.security-advisory.security-researcher-cannot-create-advisory %}
 
@@ -105,7 +104,7 @@ For examples showing how affected versions are defined in some existing advisori
 
 * You cannot specify multiple affected version ranges in the same field, such as `> 2.0, < 2.3, > 3.0, < 3.2`.To specify more than one range, you must create a new **Affected products** section for each range, by clicking the **+ Add another affected product** button.
 
-  ![Screenshot of the "Affected products" area of the security advisory form. A link, labeled "Add another affected product", is highlighted with a dark orange outline.](/assets/images/help/security/security-advisory-add-another-affected-product.png)
+  ![Screenshot of the "Affected products" area of the security advisory form. The "Add another affected product" link is outlined in dark orange.](/assets/images/help/security/security-advisory-add-another-affected-product.png)
 * If the affected version range includes only a single upper or lower bound:
   * The implicit value is always `> 0` if the lower bound is not explicitly specified.
   * The implicit value is always infinity if the upper bound is not explicitly specified.

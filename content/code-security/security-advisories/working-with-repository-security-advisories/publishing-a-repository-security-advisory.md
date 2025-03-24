@@ -1,6 +1,7 @@
 ---
 title: Publishing a repository security advisory
 intro: You can publish a security advisory to alert your community about a security vulnerability in your project.
+permissions: '{% data reusables.permissions.security-repo-enable %}'
 redirect_from:
   - /articles/publishing-a-maintainer-security-advisory
   - /github/managing-security-vulnerabilities/publishing-a-maintainer-security-advisory
@@ -20,8 +21,6 @@ topics:
 shortTitle: Publish repository advisories
 ---
 <!--Marketing-LINK: From /features/security/software-supply-chain page "Publishing a security advisory".-->
-
-Anyone with admin permissions to a security advisory can publish the security advisory.
 
 {% data reusables.security-advisory.repository-level-advisory-note %}
 
@@ -70,7 +69,7 @@ Publishing a security advisory deletes the temporary private fork for the securi
 1. In the "Security Advisories" list, click the name of the security advisory you'd like to publish.
 1. Scroll to the bottom of the advisory form and click **Publish advisory**.
 
-   ![Screenshot of the "Required advisory information has been provided" area of a draft security advisory. The "Publish advisory" button is outlined in dark orange.](/assets/images/help/security/publish-advisory-button.png)
+   ![Screenshot of the "Required advisory information has been provided" area of the page. The "Publish advisory" button is outlined in orange.](/assets/images/help/security/publish-advisory-button.png)
 
   > [!NOTE]
   > If you selected "Request CVE ID later", you will see a **Request CVE** button in place of the **Publish advisory** button. For more information, see [Requesting a CVE identification number (Optional)](#requesting-a-cve-identification-number-optional) below.
@@ -89,7 +88,7 @@ Publishing a security advisory deletes the temporary private fork for the securi
 1. In the "Security Advisories" list, click the name of the security advisory you'd like to request a CVE identification number for.
 1. Scroll to the bottom of the advisory form and click **Request CVE**.
 
-   ![Screenshot of the "Required advisory information has been provided" area of a draft security advisory. The "Request CVE" button is outlined in dark orange.](/assets/images/help/security/security-advisory-request-cve-button.png)
+   ![Screenshot of the "Required advisory information has been provided" area of the page. The "Request CVE" button is outlined in dark orange.](/assets/images/help/security/security-advisory-request-cve-button.png)
 
 ## Further reading
 

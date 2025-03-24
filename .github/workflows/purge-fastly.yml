@@ -5,20 +5,13 @@ name: Purge Fastly
 # **Who does it impact**: Writers and engineers.
 
 on:
+  deployment_status:
   workflow_dispatch:
     inputs:
-      nuke_all:
-        description: "Nuke all 'every-deployment' keys independent of language"
-        required: false
-        type: boolean
-        default: false
       languages:
-        description: "Comma separated languages. E.g. 'en,ja, es' (defaults to all)"
+        description: "Comma separated languages. E.g. 'en,es,ja,pt,zh,ru,fr,ko,de' (defaults to en)"
         required: false
-        default: ''
-  push:
-    branches:
-      - main
+        default: 'en' # Temporary, only purge English on deploy. Set to empty string for all
 
 permissions:
   contents: read
@@ -29,11 +22,12 @@ env:
 
 jobs:
   send-purges:
+    # Run when workflow_dispatch is the event (manual) or when deployment_status is the event (automatic) and it's a successful production deploy
     if: >-
       ${{
         github.repository == 'github/docs-internal' &&
-        (github.event_name != 'workflow_run' ||
-        github.event.workflow_run.conclusion == 'success')
+        (github.event_name != 'deployment_status' ||
+         github.event.deployment_status.state == 'success' && github.event.deployment_status.environment == 'production')
       }}
     runs-on: ubuntu-latest
     steps:
@@ -59,14 +53,9 @@ jobs:
           done
           echo "Production is up to date with the build commit"
 
-      - name: Purge Fastly edge cache independent of language
-        if: ${{ inputs.nuke_all }}
-        run: npm run purge-fastly-edge-cache
-
       - name: Purge Fastly edge cache per language
-        if: ${{ !inputs.nuke_all }}
         env:
-          LANGUAGES: ${{ inputs.languages }}
+          LANGUAGES: ${{ inputs.languages || 'en' }} # Temporary, only purge English on deploy. Set to empty string for all
         run: npm run purge-fastly-edge-cache-per-language
 
       - uses: ./.github/actions/slack-alert

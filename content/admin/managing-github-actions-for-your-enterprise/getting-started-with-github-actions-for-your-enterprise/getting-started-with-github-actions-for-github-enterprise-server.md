@@ -61,11 +61,7 @@ For more information about minimum hardware requirements for {% data variables.l
 
 {% data reusables.enterprise_installation.about-adjusting-resources %}
 
-{% ifversion ghes %}
-
 Optionally, you can limit resource consumption on {% data variables.location.product_location %} by configuring a rate limit for {% data variables.product.prodname_actions %}. For more information, see [AUTOTITLE](/admin/configuration/configuring-your-enterprise/configuring-rate-limits#configuring-rate-limits-for-github-actions).
-
-{% endif %}
 
 ## External storage requirements
 
@@ -79,9 +75,7 @@ All other {% data variables.product.prodname_actions %} data, such as the workfl
 
 * Azure Blob storage
 * Amazon S3
-{%- ifversion actions-ghes-gcp-storage %}
 * Google Cloud Storage
-{%- endif %}
 * S3-compatible MinIO cluster
 
 > [!NOTE]
@@ -93,17 +87,13 @@ All other {% data variables.product.prodname_actions %} data, such as the workfl
 
 {% data reusables.actions.proxy-considerations %} For more information about using a proxy with {% data variables.product.prodname_ghe_server %}, see [AUTOTITLE](/admin/configuration/configuring-network-settings/configuring-an-outbound-web-proxy-server).
 
-{% ifversion ghes %}
-
 ## Enabling {% data variables.product.prodname_actions %} with your storage provider
 
 Follow one of the procedures below to enable {% data variables.product.prodname_actions %} with your chosen storage provider:
 
 * [Enabling GitHub Actions with Azure Blob storage](/admin/github-actions/enabling-github-actions-for-github-enterprise-server/enabling-github-actions-with-azure-blob-storage)
 * [Enabling GitHub Actions with Amazon S3 storage](/admin/github-actions/enabling-github-actions-for-github-enterprise-server/enabling-github-actions-with-amazon-s3-storage)
-{%- ifversion actions-ghes-gcp-storage %}
 * [Enabling GitHub Actions with Google Cloud Storage](/admin/github-actions/enabling-github-actions-for-github-enterprise-server/enabling-github-actions-with-google-cloud-storage)
-{%- endif %}
 * [Enabling GitHub Actions with MinIO storage](/admin/github-actions/enabling-github-actions-for-github-enterprise-server/enabling-github-actions-with-minio-storage)
 
 ## Managing access permissions for {% data variables.product.prodname_actions %} in your enterprise
@@ -123,8 +113,6 @@ You can control which actions your users are allowed to use in your enterprise. 
 For more information, see [AUTOTITLE](/admin/github-actions/managing-access-to-actions-from-githubcom/about-using-actions-in-your-enterprise).
 
 {% data reusables.actions.general-security-hardening %}
-
-{% endif %}
 
 ## Reserved names
 

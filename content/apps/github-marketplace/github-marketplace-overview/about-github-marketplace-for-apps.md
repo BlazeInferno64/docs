@@ -1,6 +1,6 @@
 ---
 title: About GitHub Marketplace for apps
-intro: 'Learn about {% data variables.product.prodname_marketplace %} where you can share your apps publicly with all {% data variables.product.product_name %} users.'
+intro: 'Learn about {% data variables.product.prodname_marketplace %} where you can share your apps with everyone.'
 redirect_from:
   - /apps/marketplace/getting-started
   - /marketplace/getting-started
@@ -45,8 +45,6 @@ If you're interested in creating an app for {% data variables.product.prodname_m
 {% data reusables.marketplace.github_apps_preferred %}, although you can list both OAuth and {% data variables.product.prodname_github_apps %} in {% data variables.product.prodname_marketplace %}. For more information, see [AUTOTITLE](/apps/oauth-apps/building-oauth-apps/differences-between-github-apps-and-oauth-apps) and [AUTOTITLE](/apps/creating-github-apps/about-creating-github-apps/migrating-oauth-apps-to-github-apps).
 
 ### {% data variables.product.prodname_copilot_extensions %}
-
-{% data reusables.copilot.copilot-extensions.public-preview-note %}
 
 {% data reusables.copilot.copilot-extensions.copilot-extensions-intro %}
 

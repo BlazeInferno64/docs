@@ -97,8 +97,6 @@ You can open a new issue from a specific line or lines of code in a file or pull
 {% data reusables.repositories.assign-an-issue-as-project-maintainer %}
 {% data reusables.repositories.submit-new-issue %}
 
-{% ifversion discussions %}
-
 ## Creating an issue from discussion
 
 People with triage permission to a repository can create an issue from a discussion.
@@ -115,18 +113,12 @@ When you create an issue from a discussion, the contents of the discussion post 
 {% data reusables.repositories.assign-an-issue-as-project-maintainer %}
 {% data reusables.repositories.submit-new-issue %}
 
-{% endif %}
-
-{% ifversion projects-v2-create-issue-modal %}
-
 ## Creating an issue from a project
 
 {% data reusables.projects.about-issue-modal %} For more information about Projects, see [AUTOTITLE](/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects).
 
 1. Navigate to your project.
 {% data reusables.projects.create-issue-modal %}
-
-{% endif %}
 
 {% ifversion projects-v1 %}
 
@@ -162,7 +154,7 @@ Query parameter | Example
 `labels` | `https://github.com/octo-org/octo-repo/issues/new?labels=help+wanted,bug` creates an issue with the labels "help wanted" and "bug".
 `milestone` | `https://github.com/octo-org/octo-repo/issues/new?milestone=testing+milestones` creates an issue with the milestone "testing milestones."
 `assignees` | `https://github.com/octo-org/octo-repo/issues/new?assignees=octocat` creates an issue and assigns it to @octocat.
-`projects` | `https://github.com/octo-org/octo-repo/issues/new?title=Bug+fix&projects=octo-org/1` creates an issue with the title "Bug fix" and adds it to the organization's project 1. {% ifversion projects-v2 and projects-v1 %}{% ifversion projects-in-issue-forms %}{% else %}Only {% data variables.projects.projects_v1_boards %} can currently be specified in URL queries.{% endif %}{% endif %}
+`projects` | `https://github.com/octo-org/octo-repo/issues/new?title=Bug+fix&projects=octo-org/1` creates an issue with the title "Bug fix" and adds it to the organization's project 1.
 `template` | `https://github.com/octo-org/octo-repo/issues/new?template=issue_template.md` creates an issue with a template in the issue body. The `template` query parameter works with templates stored in an `ISSUE_TEMPLATE` subdirectory within the root, `docs/` or `.github/` directory in a repository. For more information, see [AUTOTITLE](/communities/using-templates-to-encourage-useful-issues-and-pull-requests).
 
 {% ifversion fpt or ghec %}

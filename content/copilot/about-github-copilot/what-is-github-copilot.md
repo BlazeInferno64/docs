@@ -43,7 +43,7 @@ redirect_from:
 
 * In your IDE
 * In {% data variables.product.prodname_mobile %}, as a chat interface
-* In {% data variables.product.prodname_windows_terminal %} Canary, through the Terminal Chat chat interface
+* In {% data variables.product.prodname_windows_terminal %} Canary, through the Terminal Chat interface
 * On the command line, through the {% data variables.product.prodname_cli %}
 * On the {% data variables.product.github %} website
 
@@ -61,6 +61,8 @@ For more information, see [AUTOTITLE](/copilot/about-github-copilot/github-copil
 **As an organization owner**, you can purchase a subscription to {% data variables.product.prodname_copilot_for_business %} for your organization. See [AUTOTITLE](/copilot/managing-copilot/managing-github-copilot-in-your-organization/subscribing-to-copilot-for-your-organization). If your organization is owned by an enterprise that has a {% data variables.product.prodname_copilot_short %} subscription, you can ask your enterprise owner to enable {% data variables.product.prodname_copilot_short %} for your organization by going to [https://github.com/settings/copilot](https://github.com/settings/copilot) and requesting access under "Get Copilot from an organization."
 
 **As an enterprise owner**, you can purchase a subscription to {% data variables.product.prodname_copilot_for_business %} or {% data variables.product.prodname_copilot_enterprise %} for your enterprise, and allow organizations to grant access to members. See [AUTOTITLE](/copilot/managing-copilot/managing-copilot-for-your-enterprise/subscribing-to-copilot-for-your-enterprise).
+
+**As a prospective enterprise owner**, you can sign up for a free 30-day trial of {% data variables.product.prodname_ghe_cloud %}, including {% data variables.product.prodname_copilot_business_short %}. See [AUTOTITLE](/enterprise-cloud@latest/admin/overview/setting-up-a-trial-of-github-enterprise-cloud).
 
 If you **don't need other features**, you can request an enterprise account specifically for managing {% data variables.product.prodname_copilot_for_business %} licenses. You won't pay for {% data variables.product.prodname_enterprise %} seats, and you won't be able to create organizations or repositories. See [AUTOTITLE](/enterprise-cloud@latest/admin/copilot-business-only/about-enterprise-accounts-for-copilot-business).
 

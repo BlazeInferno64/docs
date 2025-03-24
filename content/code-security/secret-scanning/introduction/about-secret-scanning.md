@@ -1,6 +1,6 @@
 ---
 title: About secret scanning
-intro: '{% data variables.product.product_name %} scans repositories for known types of secrets, to prevent fraudulent use of secrets that were committed accidentally.'
+intro: '{% data variables.product.github %} scans repositories for known types of secrets, to prevent fraudulent use of secrets that were committed accidentally.'
 product: '{% data reusables.gated-features.secret-scanning %}'
 redirect_from:
   - /github/administering-a-repository/about-token-scanning
@@ -16,7 +16,7 @@ versions:
 type: overview
 topics:
   - Secret scanning
-  - Advanced Security
+  - Secret Protection
 shortTitle: Secret scanning
 ---
 
@@ -24,11 +24,15 @@ shortTitle: Secret scanning
 
 {% data variables.product.prodname_secret_scanning_caps %} is a security feature that helps detect and prevent the accidental inclusion of sensitive information such as API keys, passwords, tokens, and other secrets in your repository. When enabled, {% data variables.product.prodname_secret_scanning %} scans commits in repositories for known types of secrets and alerts repository administrators upon detection.
 
-{% data variables.product.prodname_secret_scanning_caps %} scans your entire Git history on all branches present in your {% data variables.product.prodname_dotcom %} repository for secrets{% ifversion ghec or ghes %}, even if the repository is archived{% endif %}.{% ifversion ghes < 3.11 %} {% data variables.product.prodname_secret_scanning_caps %} does not scan issues.{% endif %} {% data variables.product.prodname_dotcom %} will also periodically run a full Git history scan for new secret types in existing content in {% ifversion fpt %}public{% else %}{% data variables.product.prodname_GH_advanced_security %}{% endif %} repositories where {% data variables.product.prodname_secret_scanning %} is enabled when new supported secret types are added.
+<!-- expires 2025-04-04 -->
+
+{% data variables.product.prodname_secret_scanning_caps %} scans your entire Git history on all branches present in your {% data variables.product.prodname_dotcom %} repository for secrets{% ifversion ghec or ghes %}, even if the repository is archived{% endif %}. {% data variables.product.prodname_dotcom %} will also periodically run a full Git history scan for new secret types in existing content in {% ifversion fpt %}public repositories{% else %}repositories with {% data variables.product.prodname_GH_secret_protection %} enabled{% endif %} where {% data variables.product.prodname_secret_scanning %} is enabled when new supported secret types are added.
+
+<!-- end expires 2025-04-04 -->
 
 {% data reusables.secret-scanning.what-is-scanned %}
 
-When a supported secret is leaked, {% data variables.product.product_name %} generates a {% data variables.product.prodname_secret_scanning %} alert. Alerts are reported on the **Security** tab of repositories on {% data variables.product.product_name %}, where you can view, evaluate, and resolve them. For more information, see [AUTOTITLE](/code-security/secret-scanning/managing-alerts-from-secret-scanning).
+When a supported secret is leaked, {% data variables.product.github %} generates a {% data variables.product.prodname_secret_scanning %} alert. Alerts are reported on the **Security** tab of repositories on {% data variables.product.github %}, where you can view, evaluate, and resolve them. For more information, see [AUTOTITLE](/code-security/secret-scanning/managing-alerts-from-secret-scanning).
 
 {% ifversion fpt or ghec %}Service providers can partner with {% data variables.product.company_short %} to provide their secret formats for scanning. We automatically run {% data variables.product.prodname_secret_scanning %} for partner patterns on all public repositories and public npm packages.{% data reusables.secret-scanning.partner-program-link %}
 

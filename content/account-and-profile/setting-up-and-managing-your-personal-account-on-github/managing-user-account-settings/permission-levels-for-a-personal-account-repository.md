@@ -19,7 +19,7 @@ shortTitle: Repository permissions
 
 Repositories owned by personal accounts have one owner. Ownership permissions can't be shared with another personal account.
 
-You can also {% ifversion fpt or ghec %}invite{% else %}add{% endif %} users on {% data variables.product.product_name %} to your repository as collaborators. For more information, see [AUTOTITLE](/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-access-to-your-personal-repositories/inviting-collaborators-to-a-personal-repository).
+You can also {% ifversion fpt or ghec %}invite{% else %}add{% endif %} users to your repository as collaborators. For more information, see [AUTOTITLE](/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-access-to-your-personal-repositories/inviting-collaborators-to-a-personal-repository).
 
 > [!TIP]
 > If you require more granular access to a repository owned by your personal account, consider transferring the repository to an organization. For more information, see [AUTOTITLE](/repositories/creating-and-managing-repositories/transferring-a-repository#transferring-a-repository-owned-by-your-personal-account).
@@ -43,7 +43,7 @@ The repository owner has full control of the repository. In addition to the acti
 | Manage security and analysis settings for the repository | [AUTOTITLE](/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-security-and-analysis-settings-for-your-repository) |
 | {% endif %} |
 | {% ifversion fpt or ghec %} |
-| Enable the dependency graph for a private repository | [AUTOTITLE](/code-security/supply-chain-security/understanding-your-software-supply-chain/exploring-the-dependencies-of-a-repository#enabling-and-disabling-the-dependency-graph-for-a-private-repository) |
+| Enable the dependency graph for a private {% ifversion ghec %}or internal {% endif %}repository, or public fork | [AUTOTITLE](/code-security/supply-chain-security/understanding-your-software-supply-chain/exploring-the-dependencies-of-a-repository#enabling-and-disabling-the-dependency-graph) |
 | {% endif %} |
 | Delete and restore packages | [AUTOTITLE](/packages/learn-github-packages/deleting-and-restoring-a-package) |
 | Customize the repository's social media preview | [AUTOTITLE](/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/customizing-your-repositorys-social-media-preview) |

@@ -31,9 +31,7 @@ Some administrative ports are required to configure {% data variables.location.p
 | 1194/UDP | VPN | Secure replication network tunnel in high availability configuration. Required to be open for communication between all nodes in the configuration.|
 | 123/UDP| NTP | Required for time protocol operation. |
 | 161/UDP | SNMP | Required for network monitoring protocol operation. |
-| {% ifversion ghes > 3.11 %} |
 | 9103/TCP | HTTP | Required for future support of Prometheus scraping. |
-| {% endif %} |
 
 ## Application ports for end users
 
@@ -69,7 +67,7 @@ If you enable automatic access to {% data variables.product.prodname_dotcom_the_
 
 ## {% data variables.product.prodname_github_connect %} ports
 
-If you enable {% data variables.product.prodname_github_connect %}, the connection between {% data variables.product.product_name %} and {% data variables.product.prodname_dotcom_the_website %} uses HTTPS over ports 443 or 80, and TLS is required. For more information, see [AUTOTITLE](/admin/configuration/configuring-github-connect/about-github-connect).
+If you enable {% data variables.product.prodname_github_connect %}, the connection between {% data variables.product.prodname_ghe_server %} and {% data variables.product.prodname_dotcom_the_website %} uses HTTPS over ports 443 or 80, and TLS is required. For more information, see [AUTOTITLE](/admin/configuration/configuring-github-connect/about-github-connect).
 
 ## Further reading
 

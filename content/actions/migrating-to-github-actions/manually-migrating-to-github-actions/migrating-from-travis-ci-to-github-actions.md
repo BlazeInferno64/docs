@@ -45,7 +45,7 @@ Travis CI and {% data variables.product.prodname_actions %} both use YAML to cre
 
 ### Custom variables
 
-Travis CI lets you set variables and share them between stages. Similarly, {% data variables.product.prodname_actions %} lets you define variables for a workflows. For more information, see [AUTOTITLE](/actions/learn-github-actions/variables).
+Travis CI lets you set variables and share them between stages. Similarly, {% data variables.product.prodname_actions %} lets you define variables for a workflow. For more information, see [AUTOTITLE](/actions/learn-github-actions/variables).
 
 ### Default variables
 
@@ -163,7 +163,7 @@ When migrating from Travis CI, consider the following key features in {% data va
 
 ### Storing secrets
 
-{% data variables.product.prodname_actions %} allows you to store secrets and reference them in your jobs. {% data variables.product.prodname_actions %} organizations can limit which repositories can access organization secrets. Deployment protection rules can require manual approval for a workflow to access environment secrets. For more information, see [AUTOTITLE](/actions/security-guides/using-secrets-in-github-actions).
+{% data variables.product.prodname_actions %} allows you to store secrets and reference them in your jobs. {% data variables.product.prodname_actions %} organizations can limit which repositories can access organization secrets. Deployment protection rules can require manual approval for a workflow to access environment secrets. For more information, see [AUTOTITLE](/actions/security-for-github-actions/security-guides/about-secrets).
 
 ### Sharing files between jobs and workflows
 
@@ -183,13 +183,7 @@ The concurrent jobs and workflow execution times in {% data variables.product.pr
 
 ### Using different languages in {% data variables.product.prodname_actions %}
 
-When working with different languages in {% data variables.product.prodname_actions %}, you can create a step in your job to set up your language dependencies. For more information about working with a particular language, see the specific guide:
-* [Building and testing Node.js](/actions/automating-builds-and-tests/building-and-testing-nodejs)
-* [Building and testing Python](/actions/automating-builds-and-tests/building-and-testing-python)
-* [Building and testing PowerShell](/actions/automating-builds-and-tests/building-and-testing-powershell)
-* [Building and testing Java with Maven](/actions/automating-builds-and-tests/building-and-testing-java-with-maven)
-* [Building and testing Java with Gradle](/actions/automating-builds-and-tests/building-and-testing-java-with-gradle)
-* [Building and testing Java with Ant](/actions/automating-builds-and-tests/building-and-testing-java-with-ant)
+When working with different languages in {% data variables.product.prodname_actions %}, you can create a step in your job to set up your language dependencies. For more information about working with a particular language, see [AUTOTITLE](/actions/use-cases-and-examples/building-and-testing).
 
 ## Executing scripts
 

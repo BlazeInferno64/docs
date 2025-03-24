@@ -1,6 +1,7 @@
 ---
 title: Editing security advisories in the GitHub Advisory Database
 intro: 'You can submit improvements to any advisory published in the {% data variables.product.prodname_advisory_database %} by making a community contribution.'
+permissions: '{% data reusables.permissions.global-security-advisories-edit %}'
 redirect_from:
   - /code-security/security-advisories/editing-security-advisories-in-the-github-advisory-database
   - /code-security/supply-chain-security/managing-vulnerabilities-in-your-projects-dependencies/editing-security-advisories-in-the-github-advisory-database
@@ -42,7 +43,7 @@ Only repository owners and administrators can edit repository-level security adv
 
 You can also open a pull request directly on an advisory file in the [github/advisory-database](https://github.com/github/advisory-database) repository. For more information, see the [contribution guidelines](https://github.com/github/advisory-database/blob/main/CONTRIBUTING.md).
 
-{% ifversion security-advisories-ghes %}
+{% ifversion ghes %}
 
 ## Editing advisories from {% data variables.product.prodname_ghe_server %}
 

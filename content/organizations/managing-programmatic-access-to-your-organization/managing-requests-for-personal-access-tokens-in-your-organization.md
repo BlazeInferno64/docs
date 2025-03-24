@@ -8,8 +8,6 @@ versions:
 shortTitle: Manage token requests
 ---
 
-{% data reusables.user-settings.pat-v2-org-opt-in %}
-
 ## About {% data variables.product.pat_v2 %} requests
 
 When organization members create a {% data variables.product.pat_v2 %} to access resources owned by the organization, if the organization requires approval for {% data variables.product.pat_v2 %}s, then an organization owner must approve the token before it can be used to access any resources that are not public. For more information, see [AUTOTITLE](/organizations/managing-programmatic-access-to-your-organization/setting-a-personal-access-token-policy-for-your-organization).
@@ -19,11 +17,7 @@ When organization members create a {% data variables.product.pat_v2 %} to access
 > [!NOTE]
 > Only {% data variables.product.pat_v2 %}s, not {% data variables.product.pat_v1_plural %}, are subject to approval. Unless the organization has restricted access by {% data variables.product.pat_v1_plural %}, any {% data variables.product.pat_v1 %} can access organization resources without prior approval. For more information, see [AUTOTITLE](/organizations/managing-programmatic-access-to-your-organization/setting-a-personal-access-token-policy-for-your-organization).
 
-{% ifversion pat-v2-org-admin-api %}
-
 Organization owners can also use the REST API to review and manage {% data variables.product.pat_v2 %} requests. These endpoints can only be called by {% data variables.product.prodname_github_apps %}, and cannot be called with {% data variables.product.pat_generic_plural %} or {% data variables.product.prodname_oauth_apps %}. For more information, see [AUTOTITLE](/rest/orgs/orgs#list-requests-to-access-organization-resources-with-fine-grained-personal-access-tokens).
-
-{% endif %}
 
 ## Managing {% data variables.product.pat_v2 %} requests
 
