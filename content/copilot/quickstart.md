@@ -4,6 +4,17 @@ intro: 'Quickly learn how to use {% data variables.product.prodname_copilot %}.'
 allowTitleToDifferFromFilename: true
 versions:
   feature: copilot
+redirect_from:
+  - /copilot/getting-started-with-github-copilot
+  - /github/copilot/getting-started-with-github-copilot/getting-started-with-github-copilot-in-visual-studio-code
+  - /github/copilot/getting-started-with-github-copilot/getting-started-with-github-copilot-in-a-jetbrains-ide
+  - /github/copilot/getting-started-with-github-copilot/getting-started-with-github-copilot-in-neovim
+  - /github/copilot/getting-started-with-github-copilot/getting-started-with-github-copilot-in-visual-studio
+  - /copilot/getting-started-with-github-copilot/getting-started-with-github-copilot-in-visual-studio-code
+  - /copilot/getting-started-with-github-copilot/getting-started-with-github-copilot-in-a-jetbrains-ide
+  - /copilot/getting-started-with-github-copilot/getting-started-with-github-copilot-in-neovim
+  - /copilot/getting-started-with-github-copilot/getting-started-with-github-copilot-in-visual-studio
+  - /copilot/using-github-copilot/getting-started-with-github-copilot
 shortTitle: Quickstart
 topics:
   - Copilot
@@ -27,13 +38,13 @@ Instructions for using {% data variables.product.prodname_copilot_short %} diffe
 
 ## Prerequisite
 
-To use {% data variables.product.prodname_copilot %} on the {% data variables.product.github %} website, you must have an active {% data variables.product.prodname_copilot %} subscription. {% data reusables.copilot.subscription-prerequisite %}
+To use {% data variables.product.prodname_copilot_short %} on the {% data variables.product.github %} website, you must have an active {% data variables.product.prodname_copilot_short %} plan. {% data reusables.copilot.subscription-prerequisite %}
 {% endif %}
 
 ## Asking your first question
 
 1. On {% data variables.product.github %}, navigate to a repository and open a file.
-1. Click the {% data variables.product.prodname_copilot_short %} icon ({% octicon "copilot" aria-hidden="true" %}) at the top right of the file view.
+1. Click the {% data variables.product.prodname_copilot_short %} icon ({% octicon "copilot" aria-hidden="true" aria-label="copilot" %}) at the top right of the file view.
 
    ![Screenshot of the {% data variables.product.prodname_copilot_short %} button, highlighted with a dark orange outline, at the top of the file view.](/assets/images/help/copilot/copilot-button-for-file.png)
 

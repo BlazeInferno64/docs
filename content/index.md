@@ -84,7 +84,7 @@ children:
   - video-transcripts
   - contributing
   - github-models
-
+  - nonprofit
 childGroups:
   - name: Get started
     octicon: RocketIcon
@@ -110,7 +110,7 @@ childGroups:
       - copilot/using-github-copilot/copilot-chat/prompt-engineering-for-copilot-chat
       - copilot/using-github-copilot/copilot-chat/asking-github-copilot-questions-in-github
       - copilot/copilot-chat-cookbook
-      - copilot/building-copilot-extensions/quickstart-for-github-copilot-extensions-using-agents
+      - copilot/using-github-copilot/coding-agent
   - name: CI/CD and DevOps
     octicon: GearIcon
     children:
@@ -161,6 +161,7 @@ childGroups:
       - communities
       - sponsors
       - education
+      - nonprofit
       - support
       - contributing
   - name: More docs
