@@ -8,7 +8,7 @@
 # ---------------------------------------------------------------
 # To update the sha:
 # https://github.com/github/gh-base-image/pkgs/container/gh-base-image%2Fgh-base-noble
-FROM ghcr.io/github/gh-base-image/gh-base-noble:20250630-232247-g421d4a07a AS base
+FROM ghcr.io/github/gh-base-image/gh-base-noble:20250805-204228-g50c20871f AS base
 
 # Install curl for Node install and determining the early access branch
 # Install git for cloning docs-early-access & translations repos
@@ -18,7 +18,7 @@ FROM ghcr.io/github/gh-base-image/gh-base-noble:20250630-232247-g421d4a07a AS ba
 # Must run as root
 RUN apt-get -qq update && apt-get -qq install --no-install-recommends curl git \
   && curl -sL https://deb.nodesource.com/setup_22.x | bash - \
-  && apt-get install -y nodejs \
+  && apt-get install -y nodejs=22.17.0-1nodesource1 \
   && node --version
 
 # Create the node user and home directory

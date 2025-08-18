@@ -8,6 +8,10 @@ versions:
   ghec: '*'
 children:
   - /secrets
-  - /about-security-hardening-with-openid-connect
+  - /github_token
+  - /openid-connect
+  - /artifact-attestations
+  - /script-injections
+  - /compromised-runners
+  - /kubernetes-admissions-controller
 ---
-

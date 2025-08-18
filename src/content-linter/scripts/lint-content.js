@@ -7,14 +7,14 @@ import { applyFixes } from 'markdownlint-rule-helpers'
 import boxen from 'boxen'
 import ora from 'ora'
 
-import walkFiles from '#src/workflows/walk-files.ts'
-import { allConfig, allRules, customRules } from '../lib/helpers/get-rules.js'
-import { customConfig, githubDocsFrontmatterConfig } from '../style/github-docs.js'
-import { defaultConfig } from '../lib/default-markdownlint-options.js'
-import { prettyPrintResults } from './pretty-print-results.js'
-import { getLintableYml } from '#src/content-linter/lib/helpers/get-lintable-yml.js'
-import { printAnnotationResults } from '../lib/helpers/print-annotations.js'
-import languages from '#src/languages/lib/languages.js'
+import walkFiles from '@/workflows/walk-files'
+import { allConfig, allRules, customRules } from '../lib/helpers/get-rules'
+import { customConfig, githubDocsFrontmatterConfig } from '../style/github-docs'
+import { defaultConfig } from '../lib/default-markdownlint-options'
+import { prettyPrintResults } from './pretty-print-results'
+import { getLintableYml } from '@/content-linter/lib/helpers/get-lintable-yml'
+import { printAnnotationResults } from '../lib/helpers/print-annotations'
+import languages from '@/languages/lib/languages'
 
 program
   .description('Run GitHub Docs Markdownlint rules.')
@@ -551,7 +551,11 @@ function getMarkdownLintConfig(errorsOnly, runRules) {
       continue
     }
 
-    if (runRules && !runRules.includes(ruleName)) continue
+    // Check if the rule should be included based on user-specified rules
+    if (runRules && !shouldIncludeRule(ruleName, runRules)) continue
+
+    // Skip british-english-quotes rule in CI/PRs (only run in pre-commit)
+    if (ruleName === 'british-english-quotes' && !isPrecommit) continue
 
     // There are a subset of rules run on just the frontmatter in files
     if (githubDocsFrontmatterConfig[ruleName]) {
@@ -565,6 +569,7 @@ function getMarkdownLintConfig(errorsOnly, runRules) {
       const searchReplaceRules = []
       const dataSearchReplaceRules = []
       const ymlSearchReplaceRules = []
+      const frontmatterSearchReplaceRules = []
 
       for (const searchRule of ruleConfig.rules) {
         const searchRuleSeverity = getRuleSeverity(searchRule, isPrecommit)
@@ -575,6 +580,11 @@ function getMarkdownLintConfig(errorsOnly, runRules) {
         }
         if (searchRule['yml-files']) {
           ymlSearchReplaceRules.push(searchRule)
+        }
+        // Add search-replace rules to frontmatter configuration for rules that make sense in frontmatter
+        // This ensures rules like TODOCS detection work in frontmatter
+        if (searchRule.applyToFrontmatter) {
+          frontmatterSearchReplaceRules.push(searchRule)
         }
       }
 
@@ -589,6 +599,10 @@ function getMarkdownLintConfig(errorsOnly, runRules) {
       if (ymlSearchReplaceRules.length > 0) {
         config.yml[ruleName] = { ...ruleConfig, rules: ymlSearchReplaceRules }
         if (customRule) configuredRules.yml.push(customRule)
+      }
+      if (frontmatterSearchReplaceRules.length > 0) {
+        config.frontMatter[ruleName] = { ...ruleConfig, rules: frontmatterSearchReplaceRules }
+        if (customRule) configuredRules.frontMatter.push(customRule)
       }
       continue
     }
@@ -623,6 +637,29 @@ function getCustomRule(ruleName) {
       `A content-lint rule ('${ruleName}') is configured in the markdownlint config file but does not have a corresponding rule function.`,
     )
   return rule
+}
+
+// Check if a rule should be included based on user-specified rules
+// Handles both short names (e.g., GHD053, MD001) and long names (e.g., header-content-requirement, heading-increment)
+export function shouldIncludeRule(ruleName, runRules) {
+  // First check if the rule name itself is in the list
+  if (runRules.includes(ruleName)) {
+    return true
+  }
+
+  // For custom rules, check if any of the rule's names (short or long) are in the runRules list
+  const customRule = customRules.find((rule) => rule.names.includes(ruleName))
+  if (customRule) {
+    return customRule.names.some((name) => runRules.includes(name))
+  }
+
+  // For built-in markdownlint rules, check if any of the rule's names are in the runRules list
+  const builtinRule = allRules.find((rule) => rule.names.includes(ruleName))
+  if (builtinRule) {
+    return builtinRule.names.some((name) => runRules.includes(name))
+  }
+
+  return false
 }
 
 /*
@@ -668,9 +705,7 @@ function isOptionsValid() {
   }
 
   // rules should only contain existing, correctly spelled rules
-  const allRulesList = Object.values(allRules)
-    .map((rule) => rule.names)
-    .flat()
+  const allRulesList = [...allRules.map((rule) => rule.names).flat(), ...Object.keys(allConfig)]
   const rules = program.opts().rules || []
   for (const rule of rules) {
     if (!allRulesList.includes(rule)) {

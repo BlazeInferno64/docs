@@ -2,9 +2,12 @@ import { createHmac } from 'crypto'
 import { Agent } from 'node:https'
 import got from 'got'
 import { isNil } from 'lodash-es'
-import statsd from '@/observability/lib/statsd.js'
-import { report } from '@/observability/lib/failbot.js'
-import { MAX_REQUEST_TIMEOUT } from '@/frame/lib/constants.js'
+import statsd from '@/observability/lib/statsd'
+import { report } from '@/observability/lib/failbot'
+import { MAX_REQUEST_TIMEOUT } from '@/frame/lib/constants'
+import { createLogger } from '@/observability/logger'
+
+const logger = createLogger(import.meta.url)
 
 const TIME_OUT_TEXT = 'ms has passed since batch creation'
 const SERVER_DISCONNECT_TEXT = 'The server disconnected before a response was received'
@@ -70,6 +73,13 @@ async function _publish(
   ) {
     const error = new Error(`Failed to send event to Hydro (${statusCode})`)
     if (inProd) {
+      logger.error('Failed to send event to Hydro', {
+        error,
+        statusCode,
+        body,
+        requestBody,
+      })
+      // Report the error to Failbot
       report(error, { statusCode, body, requestBody })
     } else {
       throw error

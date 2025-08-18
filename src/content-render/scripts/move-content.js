@@ -27,8 +27,8 @@ import walk from 'walk-sync'
 import yaml from 'js-yaml'
 import escapeStringRegexp from 'escape-string-regexp'
 
-import fm from '#src/frame/lib/frontmatter.js'
-import readFrontmatter from '#src/frame/lib/read-frontmatter.js'
+import fm from '@/frame/lib/frontmatter'
+import readFrontmatter from '@/frame/lib/read-frontmatter'
 
 // This is so you can optionally run it again the test fixtures root.
 const ROOT = process.env.ROOT || '.'
@@ -171,6 +171,9 @@ async function main(opts, nameTuple) {
   // Updating featuredLinks front matter actually doesn't care if
   // the file is a folder or not. It just needs to know the old and new hrefs.
   changeFeaturedLinks(oldHref, newHref)
+
+  // Update any links in ChildGroups on the homepage.
+  changeHomepageLinks(oldHref, newHref, verbose)
 
   if (!undo) {
     if (verbose) {
@@ -502,8 +505,27 @@ function editFiles(files, updateParent, opts) {
     }
   }
 
+  // Add contentType frontmatter to moved files
+  if (files.length > 0) {
+    const filePaths = files.map(([oldPath, newPath, oldHref, newHref]) => newPath)
+    try {
+      const cmd = ['run', 'add-content-type', '--', '--paths', ...filePaths]
+      const result = execFileSync('npm', cmd, { cwd: process.cwd(), encoding: 'utf8' })
+      if (result.trim()) {
+        console.log(result.trim())
+      }
+    } catch (error) {
+      console.warn(`Warning: Failed to add contentType frontmatter: ${error.message}`)
+    }
+  }
+
   if (useGit) {
-    const cmd = ['commit', '-a', '-m', `set ${REDIRECT_FROM_KEY} on ${files.length} files`]
+    const cmd = [
+      'commit',
+      '-a',
+      '-m',
+      `set ${REDIRECT_FROM_KEY} and contentType on ${files.length} files`,
+    ]
     execFileSync('git', cmd)
     if (verbose) {
       console.log(`git commit command: ${chalk.grey(cmd.join(' '))}`)
@@ -581,6 +603,23 @@ function changeLearningTracks(filePath, oldHref, newHref) {
   fs.writeFileSync(filePath, newContent, 'utf-8')
 }
 
+function changeHomepageLinks(oldHref, newHref, verbose) {
+  // Can't deserialize and serialize the Yaml because it would lose
+  // formatting and comments. So regex replace it.
+  // Homepage childGroup links do not have a leading '/', so we need to remove that.
+  const homepageOldHref = oldHref.replace('/', '')
+  const homepageNewHref = newHref.replace('/', '')
+  const escapedHomepageOldHref = escapeStringRegexp(homepageOldHref)
+  const regex = new RegExp(`- ${escapedHomepageOldHref}$`, 'gm')
+  const homepage = path.join(CONTENT_ROOT, 'index.md')
+  const oldContent = fs.readFileSync(homepage, 'utf-8')
+  const newContent = oldContent.replace(regex, `- ${homepageNewHref}`)
+  if (oldContent !== newContent) {
+    fs.writeFileSync(homepage, newContent, 'utf-8')
+    if (verbose) console.log(`Updated homepage links`)
+  }
+}
+
 function changeFeaturedLinks(oldHref, newHref) {
   const allFiles = walk(CONTENT_ROOT, {
     globs: ['**/*.md'],
@@ -588,7 +627,7 @@ function changeFeaturedLinks(oldHref, newHref) {
     directories: false,
   }).filter((file) => !file.includes('README.md'))
 
-  const regex = new RegExp(`(^|%})${escapeStringRegexp(oldHref)}($|{%)`)
+  const regex = new RegExp(`(^|%} )${escapeStringRegexp(oldHref)}($| {%)`)
 
   for (const file of allFiles) {
     let changed = false
