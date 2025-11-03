@@ -8,7 +8,7 @@
 # ---------------------------------------------------------------
 # To update the sha:
 # https://github.com/github/gh-base-image/pkgs/container/gh-base-image%2Fgh-base-noble
-FROM ghcr.io/github/gh-base-image/gh-base-noble:20250805-204228-g50c20871f AS base
+FROM ghcr.io/github/gh-base-image/gh-base-noble:20251016-101023-g0e97a15f4 AS base
 
 # Install curl for Node install and determining the early access branch
 # Install git for cloning docs-early-access & translations repos
@@ -17,8 +17,8 @@ FROM ghcr.io/github/gh-base-image/gh-base-noble:20250805-204228-g50c20871f AS ba
 # Ubuntu's apt-get install nodejs is _very_ outdated
 # Must run as root
 RUN apt-get -qq update && apt-get -qq install --no-install-recommends curl git \
-  && curl -sL https://deb.nodesource.com/setup_22.x | bash - \
-  && apt-get install -y nodejs=22.17.0-1nodesource1 \
+  && curl -sL https://deb.nodesource.com/setup_24.x | bash - \
+  && apt-get install -y nodejs \
   && node --version
 
 # Create the node user and home directory
@@ -53,9 +53,9 @@ RUN --mount=type=secret,id=DOCS_BOT_PAT_BASE,mode=0444 \
   echo "Don't cache this step by printing date: $(date)" && \
   . ./build-scripts/fetch-repos.sh
 
-# -----------------------------------------
+# ------------------------------------------------
 # PROD_DEPS STAGE: Install production dependencies
-# -----------------------------------------
+# ------------------------------------------------
 FROM base AS prod_deps
 USER node:node
 WORKDIR $APP_HOME
@@ -66,17 +66,17 @@ COPY --chown=node:node package.json package-lock.json ./
 # Install only production dependencies (skip scripts to avoid husky)
 RUN npm ci --omit=dev --ignore-scripts --registry https://registry.npmjs.org/
 
-# -----------------------------------------
+# ------------------------------------------------------------
 # ALL_DEPS STAGE: Install all dependencies on top of prod deps
-# -----------------------------------------
+# ------------------------------------------------------------
 FROM prod_deps AS all_deps
 
 # Install dev dependencies on top of production ones
 RUN npm ci --registry https://registry.npmjs.org/
 
-# -----------------------------------------
+# ----------------------------------
 # BUILD STAGE: Build the application
-# -----------------------------------------
+# ----------------------------------
 FROM base AS build
 USER node:node
 WORKDIR $APP_HOME
@@ -84,7 +84,7 @@ WORKDIR $APP_HOME
 # Source code
 COPY --chown=node:node src src/
 COPY --chown=node:node package.json ./
-COPY --chown=node:node next.config.js ./
+COPY --chown=node:node next.config.ts ./
 COPY --chown=node:node tsconfig.json ./
 
 # From the clones stage
@@ -99,17 +99,17 @@ COPY --chown=node:node --from=all_deps $APP_HOME/node_modules node_modules/
 # Build the application
 RUN npm run build
 
-# -----------------------------------------
+# ---------------------------------------------
 # WARMUP_CACHE STAGE: Warm up remote JSON cache
-# -----------------------------------------
+# ---------------------------------------------
 FROM build AS warmup_cache
 
 # Generate remote JSON cache
 RUN npm run warmup-remotejson
 
-# -----------------------------------------
+# --------------------------------------
 # PRECOMPUTE STAGE: Precompute page info
-# -----------------------------------------
+# --------------------------------------
 FROM build AS precompute_stage
 
 # Generate precomputed page info
@@ -125,7 +125,7 @@ WORKDIR $APP_HOME
 # Source code
 COPY --chown=node:node src src/
 COPY --chown=node:node package.json ./
-COPY --chown=node:node next.config.js ./
+COPY --chown=node:node next.config.ts ./
 COPY --chown=node:node tsconfig.json ./
 
 # From clones stage
@@ -152,6 +152,4 @@ ARG BUILD_SHA
 ENV BUILD_SHA=$BUILD_SHA
 
 # Entrypoint to start the server
-# Note: Currently we have to use tsx because
-# we have a mix of `.ts` and `.js` files with multiple import patterns
 CMD ["node_modules/.bin/tsx", "src/frame/server.ts"]

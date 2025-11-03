@@ -40,7 +40,9 @@ export function createProcessor(context: Context): UnifiedProcessor {
       .use(gfm)
       // Markdown AST below vvv
       .use(parseInfoString)
-      .use(rewriteLocalLinks, context)
+      // Using 'as any' because rewriteLocalLinks is a factory function that takes context
+      // and returns a transformer, but TypeScript's unified plugin types don't handle this pattern
+      .use(rewriteLocalLinks as any, context)
       .use(emoji)
       // Markdown AST above ^^^
       .use(remark2rehype, { allowDangerousHtml: true })
@@ -57,7 +59,7 @@ export function createProcessor(context: Context): UnifiedProcessor {
         subset: false,
         aliases: {
           // As of Jan 2024, 'jsonc' is not supported by highlight.js. It
-          // just because plain text.
+          // just becomes plain text.
           // But 'jsonc' works great in github.com. For example, when
           // previewing and edited .md content in the browser. Or viewing
           // PR diffs in web view.
@@ -66,6 +68,9 @@ export function createProcessor(context: Context): UnifiedProcessor {
           // but with this alias you get the nice syntax highlighting when
           // viewed on our site.
           json: 'jsonc',
+          // Docs supports a custom 'copilot' language, which is useful for contributors,
+          // but is not a supported highlight.js language, so alias to 'text'.
+          text: 'copilot',
         },
       })
       .use(raw)
@@ -84,20 +89,28 @@ export function createProcessor(context: Context): UnifiedProcessor {
 }
 
 export function createMarkdownOnlyProcessor(context: Context): UnifiedProcessor {
-  return unified()
-    .use(remarkParse)
-    .use(gfm)
-    .use(rewriteLocalLinks, context)
-    .use(remarkStringify) as UnifiedProcessor
+  return (
+    unified()
+      .use(remarkParse)
+      .use(gfm)
+      // Using 'as any' because rewriteLocalLinks is a factory function that takes context
+      // and returns a transformer, but TypeScript's unified plugin types don't handle this pattern
+      .use(rewriteLocalLinks as any, context)
+      .use(remarkStringify) as UnifiedProcessor
+  )
 }
 
 export function createMinimalProcessor(context: Context): UnifiedProcessor {
-  return unified()
-    .use(remarkParse)
-    .use(gfm)
-    .use(rewriteLocalLinks, context)
-    .use(remark2rehype, { allowDangerousHtml: true })
-    .use(slug)
-    .use(raw)
-    .use(html) as UnifiedProcessor
+  return (
+    unified()
+      .use(remarkParse)
+      .use(gfm)
+      // Using 'as any' because rewriteLocalLinks is a factory function that takes context
+      // and returns a transformer, but TypeScript's unified plugin types don't handle this pattern
+      .use(rewriteLocalLinks as any, context)
+      .use(remark2rehype, { allowDangerousHtml: true })
+      .use(slug)
+      .use(raw)
+      .use(html) as UnifiedProcessor
+  )
 }

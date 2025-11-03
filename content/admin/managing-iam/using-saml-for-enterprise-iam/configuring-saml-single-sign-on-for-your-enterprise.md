@@ -53,9 +53,9 @@ For more information, see [AUTOTITLE](/organizations/managing-saml-single-sign-o
 
 {% elsif ghes %}
 
-SAML SSO allows you to centrally control and secure access to {% data variables.location.product_location %} from your SAML IdP. When an unauthenticated user visits {% data variables.location.product_location %} in a browser, {% data variables.product.github %} will redirect the user to your SAML IdP to authenticate. After the user successfully authenticates with an account on the IdP, the IdP redirects the user back to {% data variables.location.product_location %}. {% data variables.product.github %} validates the response from your IdP, then grants access to the user.
+SAML SSO allows you to centrally control and secure access to {% data variables.location.product_location %} from your SAML IdP.
 
-After a user successfully authenticates on your IdP, the user's SAML session for {% data variables.location.product_location %} is active in the browser for 24 hours. After 24 hours, the user must authenticate again with your IdP.
+If an unauthenticated user attempts to sign in to {% data variables.location.product_location %} and you have disabled [built-in authentication](/admin/identity-and-access-management/managing-iam-for-your-enterprise/allowing-built-in-authentication-for-users-outside-your-provider), {% data variables.product.github %} redirects the user to your SAML IdP for authentication. After the user successfully authenticates with an account on the IdP, the IdP redirects the user back to {% data variables.location.product_location %}. {% data variables.product.github %} validates the response from your IdP, then grants access to the user. The user's SAML session is active in the browser for 24 hours. After that, the user must authenticate again with your IdP.
 
 {% data reusables.saml.saml-ghes-account-revocation %}
 
@@ -98,6 +98,9 @@ For more detailed information about how to enable SAML using Okta, see [AUTOTITL
 1. In the **Sign on URL** field, type the HTTPS endpoint of your IdP for single sign-on requests. This value is available in your IdP configuration.
 1. Optionally, in the **Issuer** field, type your SAML issuer URL to verify the authenticity of sent messages.
 1. Under **Public Certificate**, paste a certificate to verify SAML responses. This is the public key corresponding to the private key used to sign SAML responses.
+
+   > [!NOTE]
+   > {% data variables.product.github %} does not enforce the expiration of this SAML IdP certificate. This means that even if this certificate expires, your SAML authentication will continue to work. However, if your IdP administrator regenerates the SAML certificate, and you don't update it on the {% data variables.product.github %} side, users will encounter a `digest mismatch` error during SAML authentication attempts due to the certificate mismatch. See [Error: Digest mismatch](/admin/managing-iam/using-saml-for-enterprise-iam/troubleshooting-saml-authentication#error-digest-mismatch).
 
    To find the certificate, refer to the documentation for your IdP. Some IdPs call this an X.509 certificate.
 

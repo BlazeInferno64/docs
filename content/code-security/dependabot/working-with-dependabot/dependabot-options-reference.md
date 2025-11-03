@@ -167,6 +167,8 @@ Supported by: `bundler`, `composer`, `mix`, `maven`, `npm`, and `pip`.
 * Supports only the value `scope`
 * When defined any prefix is followed by the type of dependencies updated in the commit: `deps` or `deps-dev`.
 
+{% ifversion dependabot-option-cooldown %}
+
 ## `cooldown` {% octicon "versions" aria-label="Version updates" height="24" %}
 
 Defines a **cooldown period** for dependency updates, allowing updates to be delayed for a configurable number of days.
@@ -233,6 +235,8 @@ The table below shows the package managers for which SemVer is supported.
 >
 > * If `semver-major-days`, `semver-minor-days`, or `semver-patch-days` are not defined, the `default-days` settings will take precedence for cooldown-based updates.
 > * The `exclude` list always take precedence over the `include` list. If a dependency is specified in both lists, it is **excluded from cooldown** and will be updated immediately.
+
+{% endif %}
 
 ## `directories` or `directory` {% octicon "versions" aria-label="Version updates" height="24" %} {% octicon "shield-check" aria-label="Security updates" height="24" %}
 
@@ -346,9 +350,9 @@ For examples, see [AUTOTITLE](/code-security/dependabot/dependabot-version-updat
 
 Specify which semantic versions (SemVer) to ignore. SemVer is an accepted standard for defining versions of software packages, in the form `x.y.z`. {% data variables.product.prodname_dependabot %} assumes that versions in this form are always `major.minor.patch`.
 
-* Use `patch` to include patch releases.
-* Use `minor` to include minor releases.
-* Use `major` to include major releases.
+* Use `version-update:semver-patch` to include patch releases.
+* Use `version-update:semver-minor` to include minor releases.
+* Use `version-update:semver-major` to include major releases.
 
 ## `insecure-external-code-execution` {% octicon "versions" aria-label="Version updates" height="24" %} {% octicon "shield-check" aria-label="Security updates" height="24" %}
 
@@ -477,6 +481,9 @@ Package manager | YAML value      | Supported versions |
 | Bundler | `bundler` | {% ifversion ghes < 3.15 %}v1, {% endif %}v2 |
 | Cargo       | `cargo`          | v1               |
 | Composer       | `composer`       | v2         |
+| {% ifversion dependabot-conda-support %} |
+| Conda         | `conda`          | Not applicable               |
+| {% endif %} |
 | Dev containers | `devcontainers`         | Not applicable               |
 | Docker         | `docker`         | v1               |
 | {% ifversion dependabot-docker-compose-support %} |
@@ -503,6 +510,9 @@ Package manager | YAML value      | Supported versions |
 | pnpm   | `npm`            | v7, v8 <br>v9, v10 (version updates only)    |
 | poetry         | `pip`            | v2               |
 | pub         | `pub`            | v2  |
+| {% ifversion dependabot-rust-toolchain-support %} |
+| Rust toolchain | `rust-toolchain` | Not applicable   |
+| {% endif %} |
 | Swift   | `swift`      | v5  |
 | Terraform    | `terraform`      | >= 0.13, <= 1.10.x  |
 | uv           | `uv`             | v0 |
@@ -568,8 +578,10 @@ Supported values: `REGISTRY_NAME` or `"*"`
 
 ## `reviewers` {% octicon "versions" aria-label="Version updates" height="24" %} {% octicon "shield-check" aria-label="Security updates" height="24" %}
 
-> [!NOTE]
-> The `reviewers` property is closing down and will be removed in a future release of GitHub Enterprise Server.
+> [!IMPORTANT]
+> The `reviewers` property is closing down and will be removed in a future release of {% data variables.product.prodname_ghe_server %}.
+>
+> You can also automatically add reviewers and assignees using a CODEOWNERS file. See [AUTOTITLE](/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners).
 
 Specify individual reviewers, or teams of reviewers, for all pull requests raised for a package manager.  For examples, see [AUTOTITLE](/code-security/dependabot/dependabot-version-updates/customizing-dependabot-prs).
 
@@ -583,9 +595,6 @@ When `reviewers` is defined:
 * {% octicon "shield-check" aria-hidden="true" aria-label="shield-check" %} All pull requests for security updates are created with the chosen reviewers, unless `target-branch` defines updates to a non-default branch.
 
 Reviewers must have at least read access to the repository.
-
-> [!NOTE]
-> You can also automatically add reviewers and assignees using a CODEOWNERS file. See [AUTOTITLE](/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners).
 
 {% endif %}
 
@@ -601,6 +610,8 @@ Reviewers must have at least read access to the repository.
 | `cronjob` | Defines the cron expression if the interval type is `cron`. |
 | `timezone` | Specify the timezone of the `time` value.  |
 
+{% ifversion fpt or ghec %}
+
 ### `interval`
 
 Supported values: `daily`, `weekly`, `monthly`, `quarterly`, `semiannually`, `yearly`, or `cron`
@@ -614,6 +625,21 @@ Each package manager **must** define a schedule interval.
 * Use `semiannually` to run every six months, on the first day of January and July.
 * Use `yearly` to run on the first day of January.
 * Use `cron` for cron expression based scheduling option. See [`cronjob`](#cronjob).
+
+{% elsif ghes %}
+
+### `interval`
+
+Supported values: `daily`, `weekly`, `monthly`, or `cron`
+
+Each package manager **must** define a schedule interval.
+
+* Use `daily` to run on every weekday, Monday to Friday.
+* Use `weekly` to run once a week, by default on Monday.
+* Use `monthly` to run on the first day of each month.
+* Use `cron` for cron expression based scheduling option. See [`cronjob`](#cronjob).
+
+{% endif %}
 
 By default, {% data variables.product.prodname_dependabot %} randomly assigns a time to apply all the updates in the configuration file. You can use the `time` and `timezone` parameters to set a specific runtime for all intervals.  If you use a `cron` interval, you can define the update time with a `cronjob` expression.
 
@@ -631,16 +657,11 @@ Optionally, run all updates for a package manager at a specific time of day. By 
 
 ### `cronjob`
 
-Supported values: Valid cron expression in cron format or natural expression.
+Supported values: Valid cron expression in cron syntax or natural expression.
+
+{% data reusables.repositories.cron %}
 
 Examples : `0 9 * * *`, `every day at 5pm`
-
-cron format is defined as the following:
-* `*` The minute field.
-* `*` The hour field (in 24-hour time).
-* `*` The day of the month (matches any day of the month).
-* `*` The month (matches any month).
-* `*` The day of the week (matches any day of the week).
 
 `0 9 * * *` is equivalent to "every day at 9am". `every day at 5pm` is equivalent to `0 17 * * *`.
 
@@ -683,6 +704,66 @@ When `target-branch` is defined:
 * All pull requests for version updates are opened targeting the specified branch.
 * Options defined for this `package-ecosystem` no longer apply to security updates because security updates always use the default branch for the repository.
 
+## `exclude-paths` {% octicon "versions" aria-label="Version updates only" height="24" %}
+
+Use to specify paths of directories and files that {% data variables.product.prodname_dependabot %} should ignore when scanning for manifests and dependencies. This option is useful when you want to prevent updates for dependencies in certain locations, such as test assets, vendored code, or specific files.
+
+{% data variables.product.prodname_dependabot %} default behavior:
+
+* All directories and files in the specified `directory` are included in the update scan unless excluded by this option.
+
+When `exclude-paths` is defined:
+
+* All files and directories matching the specified paths are ignored during update scans for the given `package-ecosystem` entry.
+
+| Parameter | Purpose |
+|-----------|---------|
+| `exclude-paths` | A list of glob patterns for files or directories to ignore. |
+
+Glob patterns are supported, such as `**` for recursive matching and `*` for single-segment wildcards. Patterns are relative to the `directory` specified for the update configuration. Each ecosystem can have its own `exclude-paths` settings.
+
+### Example
+
+```yaml copy
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    exclude-paths:
+      - "src/test/assets"
+      - "vendor/**"
+      - "src/*.js"
+      - "src/test/helper.js"
+
+# Sample patterns that can be used-
+
+# Pattern: docs/*.json
+# Matches: docs/foo.json, docs/bar.json
+
+# Pattern: *.lock
+# Matches: Gemfile.lock, package.lock, foo.lock (in any directory)
+
+# Pattern: test/**
+# Matches: test/foo.rb, test/bar/baz.rb, test/any/depth/file.txt
+
+# Pattern: config/settings.yml
+# Matches: config/settings.yml
+
+# Pattern: **/*.md
+# Matches: README.md, docs/guide.md, any/depth/file.md
+
+# Pattern: src/*
+# Matches: src/main.rb, src/app.js
+# Does NOT match: src/utils/helper.rb
+
+# Pattern: hidden/.*
+# Matches: hidden/.env, hidden/.secret
+```
+
+In this example, {% data variables.product.prodname_dependabot %} will ignore the `src/test/assets` directory, all files under `vendor/`, all JavaScript files directly under `src/`, and the specific file `src/test/helper.js` when scanning for updates.
+
 ## `vendor` {% octicon "versions" aria-label="Version updates" height="24" %} {% octicon "shield-check" aria-label="Security updates" height="24" %}
 
 Supported by: `bundler` and `gomod` only.
@@ -722,7 +803,7 @@ When `versioning-strategy` is defined, {% data variables.product.prodname_depend
 |--------|--------|
 | `auto` | Default behavior.|
 | `increase`| Always increase the minimum version requirement to match the new version. If a range already exists, typically this only increases the lower bound. |
-| `increase-if-necessary` | Leave the constraint if the original constraint allows the new version, otherwise, bump the constraint. |
+| `increase-if-necessary` | Leave the version requirement unchanged if it already allows the new release (Dependabot still updates the resolved version). Otherwise widen the requirement. |
 | `lockfile-only` | Only create pull requests to update lockfiles. Ignore any new versions that would require package manifest changes. |
 | `widen`| Widen the allowed version requirements to include both the new and old versions, when possible. Typically, this only increases the maximum allowed version requirement. |
 

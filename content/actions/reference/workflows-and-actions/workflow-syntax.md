@@ -107,7 +107,11 @@ run-name: Deploy to ${{ inputs.deploy_target }} by @${{ github.actor }}
 
 ## `on.schedule`
 
-{% data reusables.actions.workflows.section-triggering-a-workflow-schedule %}
+You can use `on.schedule` to define a time schedule for your workflows.
+
+{% data reusables.repositories.actions-scheduled-workflow-example %}
+
+For more information about `schedule` events, see [AUTOTITLE](/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule).
 
 ## `on.workflow_call`
 
@@ -378,6 +382,14 @@ env:
 ### Choosing runners in a group
 
 {% data reusables.actions.jobs.choosing-runner-group %}
+
+{% ifversion not ghes %}
+
+## `jobs.<job_id>.snapshot`
+
+{% data reusables.actions.jobs.choosing-runner-custom-images %}
+
+{% endif %}
 
 ## `jobs.<job_id>.environment`
 
@@ -882,7 +894,7 @@ Prevents a job from failing when a step fails. Set to `true` to allow a job to p
 
 ## `jobs.<job_id>.steps[*].timeout-minutes`
 
-The maximum number of minutes to run the step before killing the process.
+The maximum number of minutes to run the step before killing the process. Maximum: 360 for both {% data variables.product.github %}-hosted and self-hosted runners.
 
 Fractional values are not supported. `timeout-minutes` must be a positive integer.
 
@@ -997,8 +1009,6 @@ An excluded configuration only has to be a partial match for it to be excluded.
 All `include` combinations are processed after `exclude`. This allows you to use `include` to add back combinations that were previously excluded.
 
 ## `jobs.<job_id>.strategy.fail-fast`
-
-`jobs.<job_id>.strategy.fail-fast` applies to the entire matrix. If `jobs.<job_id>.strategy.fail-fast` is set to `true` or its expression evaluates to `true`, {% data variables.product.github %} will cancel all in-progress and queued jobs in the matrix if any job in the matrix fails. This property defaults to `true`.
 
 {% data reusables.actions.jobs.section-using-a-build-matrix-for-your-jobs-failfast %}
 

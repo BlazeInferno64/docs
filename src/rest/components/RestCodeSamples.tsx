@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef, FormEvent } from 'react'
-import { FormControl, IconButton, Select, TabNav } from '@primer/react'
+import React, { useState, useEffect, useRef, FormEvent } from 'react'
+import { FormControl, IconButton, Select, SegmentedControl } from '@primer/react'
 import { CheckIcon, CopyIcon, InfoIcon } from '@primer/octicons-react'
 import { announce } from '@primer/live-region-element'
 import Cookies from '@/frame/components/lib/cookies'
@@ -100,7 +100,6 @@ export function RestCodeSamples({ operation, slug, heading }: Props) {
   const [selectedLanguage, setSelectedLanguage] = useState(languageSelectOptions[0])
   const [selectedExample, setSelectedExample] = useState(exampleSelectOptions[0])
   const [selectedResponse, setSelectedResponse] = useState(responseSelectOptions[0])
-  const [responseMaxHeight, setResponseMaxHeight] = useState(0)
 
   const isSingleExample = languageExamples.length === 1
   const displayedExample: ExampleT = languageExamples[selectedExample.languageIndex]
@@ -116,19 +115,6 @@ export function RestCodeSamples({ operation, slug, heading }: Props) {
   const handleLanguageSelection = (languageKey: CodeSampleKeys) => {
     setSelectedLanguage(languageKey)
     Cookies.set('codeSampleLanguagePreferred', languageKey)
-  }
-
-  const handleResponseResize = () => {
-    if (requestCodeExample.current) {
-      const requestCodeHeight = requestCodeExample.current.clientHeight || 0
-      const { innerHeight: height } = window
-      if (responseCodeExample) {
-        // 520 pixels roughly accounts for the space taken up by the
-        // nav bar, headers, language picker, method section, and response
-        // picker
-        setResponseMaxHeight(height - requestCodeHeight - 520)
-      }
-    }
   }
 
   // Change the language based on cookies
@@ -152,7 +138,6 @@ export function RestCodeSamples({ operation, slug, heading }: Props) {
     // (ClientSideHighlightJS) will have already handled highlighting
     if (reqElem && !firstRender.current) {
       highlightElement(reqElem)
-      handleResponseResize()
     }
   }, [selectedLanguage])
 
@@ -195,15 +180,6 @@ export function RestCodeSamples({ operation, slug, heading }: Props) {
       firstRender.current = false
     }
   }, [])
-
-  // Handle the resizing of the response section when the window is resized
-  useEffect(() => {
-    handleResponseResize()
-    window.addEventListener('resize', handleResponseResize)
-    return () => {
-      window.removeEventListener('resize', handleResponseResize)
-    }
-  })
 
   const [isCopied, setCopied] = useClipboard(displayedExample[selectedLanguage] as string, {
     successDuration: 1400,
@@ -260,26 +236,28 @@ export function RestCodeSamples({ operation, slug, heading }: Props) {
         </div>
         <div className="border-top d-inline-flex flex-justify-between width-full flex-items-center pt-2">
           <div className="d-inline-flex ml-2">
-            <TabNav aria-label={`Example language selector for ${operation.title}`}>
+            <SegmentedControl
+              className={styles.segmentedControl}
+              aria-label={`Example language selector for ${operation.title}`}
+            >
               {languageSelectOptions.map((optionKey) => (
-                <TabNav.Link
+                <SegmentedControl.Button
                   key={optionKey}
                   selected={optionKey === selectedLanguage}
-                  onClick={(e) => {
+                  onClick={(e: React.MouseEvent) => {
                     e.preventDefault()
                     handleLanguageSelection(optionKey)
                   }}
-                  onKeyDown={(event) => {
+                  onKeyDown={(event: React.KeyboardEvent) => {
                     if (event.key === 'Enter') {
                       handleLanguageSelection(optionKey)
                     }
                   }}
-                  href="#"
                 >
                   {t(`code_sample_options.${optionKey}`)}
-                </TabNav.Link>
+                </SegmentedControl.Button>
               ))}
-            </TabNav>
+            </SegmentedControl>
           </div>
           <div className="mr-2">
             <IconButton
@@ -316,31 +294,30 @@ export function RestCodeSamples({ operation, slug, heading }: Props) {
           __html: displayedExample.response.description || t('response'),
         }}
       ></h4>
-      <div className="border rounded-1">
+      <div className="border rounded-1 pt-2">
         {displayedExample.response.schema ? (
-          <TabNav
-            className="pt-2 mx-2"
+          <SegmentedControl
+            className={cx(styles.segmentedControl, 'mx-2')}
             aria-label={`Example response format selector for ${operation.title}`}
           >
             {responseSelectOptions.map((optionKey) => (
-              <TabNav.Link
+              <SegmentedControl.Button
                 key={optionKey}
                 selected={optionKey === selectedResponse}
-                onClick={(e) => {
+                onClick={(e: React.MouseEvent) => {
                   e.preventDefault()
                   handleResponseSelection(optionKey)
                 }}
-                onKeyDown={(event) => {
+                onKeyDown={(event: React.KeyboardEvent) => {
                   if (event.key === 'Enter') {
                     handleResponseSelection(optionKey)
                   }
                 }}
-                href="#"
               >
                 {t(`response_options.${optionKey}`)}
-              </TabNav.Link>
+              </SegmentedControl.Button>
             ))}
-          </TabNav>
+          </SegmentedControl>
         ) : null}
         <div className="">
           {/* Status code */}
@@ -359,7 +336,6 @@ export function RestCodeSamples({ operation, slug, heading }: Props) {
                 'border-top rounded-1 my-0',
               )}
               data-highlight={'json'}
-              style={{ maxHeight: responseMaxHeight }}
               // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
               tabIndex={0}
             >

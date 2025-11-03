@@ -3,7 +3,7 @@ title: Best practices for using GitHub Copilot to work on tasks
 shortTitle: Get the best results
 allowTitleToDifferFromFilename: true
 intro: 'Learn how to get the best results from {% data variables.copilot.copilot_coding_agent %}.'
-product: '{% data reusables.gated-features.copilot-coding-agent %}<br><a href="https://github.com/features/copilot/plans?ref_cta=Copilot+plans+signup&ref_loc=best+practices+for+using+copilot+to+work+on+tasks&ref_page=docs" target="_blank" class="btn btn-primary mt-3 mr-3 no-underline"><span>Sign up for {% data variables.product.prodname_copilot_short %}</span> {% octicon "link-external" height:16 %}</a>'
+product: '{% data reusables.gated-features.copilot-coding-agent %}<br><a href="https://github.com/features/copilot/plans?ref_product=copilot&ref_type=engagement&ref_style=button" target="_blank" class="btn btn-primary mt-3 mr-3 no-underline"><span>Sign up for {% data variables.product.prodname_copilot_short %}</span> {% octicon "link-external" height:16 %}</a>'
 versions:
   feature: copilot
 topics:
@@ -17,11 +17,12 @@ redirect_from:
   - /copilot/how-tos/agents/copilot-coding-agent/best-practices-for-using-copilot-to-work-on-tasks
   - /copilot/tutorials/coding-agent/best-practices
 contentType: tutorials
+category:
+  - Automate simple user stories
+  - Author and optimize with Copilot
 ---
 
 > [!NOTE]
-> {% data reusables.copilot.coding-agent.preview-note-text %}
->
 > For an introduction to {% data variables.copilot.copilot_coding_agent %}, see [AUTOTITLE](/copilot/concepts/about-copilot-coding-agent).
 
 ## Making sure your issues are well-scoped
@@ -77,7 +78,13 @@ By adding custom instructions to your repository, you can guide {% data variable
 
 If {% data variables.product.prodname_copilot_short %} is able to build, test and validate its changes in its own development environment, it is more likely to produce good pull requests which can be merged quickly.
 
-You can add instructions in a single `.github/copilot-instructions.md` file in the repository, or create one or more `.github/instructions/**/*.instructions.md` files applying to different files or directories in your repository.
+{% data variables.copilot.copilot_coding_agent %} supports a number of different types of custom instructions files:
+
+* `/.github/copilot-instructions.md`
+* `/.github/instructions/**/*.instructions.md`
+* `**/AGENTS.md`
+* `/CLAUDE.md`
+* `/GEMINI.md`
 
 For more information, see [AUTOTITLE](/copilot/customizing-copilot/adding-repository-custom-instructions-for-github-copilot?tool=webui).
 
@@ -85,7 +92,7 @@ For more information, see [AUTOTITLE](/copilot/customizing-copilot/adding-reposi
 
 To add instructions that apply to all tasks assigned to {% data variables.product.prodname_copilot_short %} in your repository, create a `.github/copilot-instructions.md` file in the root of your repository. This file should contain information about your project, such as how to build and test it, and any coding standards or conventions you want {% data variables.product.prodname_copilot_short %} to follow. Note that the instructions will also apply to {% data variables.copilot.copilot_chat_short %} and {% data variables.copilot.copilot_code-review_short %}.
 
-The first time you ask {% data variables.product.prodname_copilot_short %} to create a pull request in a given repository, {% data variables.product.prodname_copilot_short %} will leave a comment with a link to automatically generate custom instructions. You can also ask {% data variables.product.prodname_copilot_short %} to generate custom instructions for you at any time using our recommended prompt. See [AUTOTITLE](/copilot/how-tos/configure-custom-instructions/add-repository-instructions?tool=webui#asking-copilot-coding-agent-to-generate-a-githubcopilot-instructionsmd-file).
+The first time you ask {% data variables.product.prodname_copilot_short %} to create a pull request in a given repository, {% data variables.product.prodname_copilot_short %} will leave a comment with a link to automatically generate custom instructions. You can also ask {% data variables.product.prodname_copilot_short %} to generate custom instructions for you at any time using our recommended prompt. See [AUTOTITLE](/copilot/how-tos/configure-custom-instructions/add-repository-instructions?tool=webui#asking-copilot-coding-agent-to-generate-a-copilot-instructionsmd-file).
 
 You can also choose to write your own custom instructions at any time. Here is an example of an effective `copilot-instructions.md` file:
 
@@ -153,6 +160,20 @@ When writing Playwright tests, please follow these guidelines to ensure consiste
 ## Using the Model Context Protocol (MCP)
 
 You can extend the capabilities of {% data variables.copilot.copilot_coding_agent %} by using MCP. This allows {% data variables.copilot.copilot_coding_agent %} to use tools provided by local and remote MCP servers. The {% data variables.product.github %} MCP server and [Playwright MCP server](https://github.com/microsoft/playwright-mcp) are enabled by default. For more information, see [AUTOTITLE](/copilot/using-github-copilot/coding-agent/extending-copilot-coding-agent-with-mcp).
+
+## Creating {% data variables.copilot.custom_agents_short %}
+
+While custom instructions help guide {% data variables.product.prodname_copilot_short %}'s general behavior across your repository, {% data variables.copilot.custom_agents_short %} create entirely specialized agents with focused expertise and tailored tool configurations. These agents are designed for specific, recurring workflows where domain expertise and consistent behavior are crucial. {% data variables.copilot.custom_agents_caps_short %} are defined as Markdown files called {% data variables.copilot.agent_profiles %}.
+
+Here are some examples of {% data variables.copilot.custom_agents_short %} you could create:
+
+{% data reusables.copilot.custom-agents-examples-list %}
+
+By default, {% data variables.copilot.custom_agents_short %} inherit any MCP server tools that have been configured in the repository, but you can also configure {% data variables.copilot.custom_agents_short %} to only have access to specific tools.
+
+You can use {% data variables.copilot.custom_agents_short %} anywhere you use {% data variables.copilot.copilot_coding_agent %}, including when assigning an issue or prompting with a task.
+
+For more information on creating and configuring {% data variables.copilot.custom_agents_short %}, see [AUTOTITLE](/copilot/how-tos/use-copilot-agents/coding-agent/create-custom-agents).
 
 ## Pre-installing dependencies in {% data variables.product.prodname_copilot %}'s environment
 

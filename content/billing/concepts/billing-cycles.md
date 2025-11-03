@@ -26,7 +26,7 @@ Your billing experience depends on whether your products are metered, volume-bas
 
 ## Billing cycles for metered products
 
-Metered products have a fixed **billing period** that runs from the first day of each month to the last day of the month.
+Metered products have a fixed **billing period** that starts at 00:00:00 UTC on the first day of each month and ends at 23:59:59 UTC on the last day of the month.
 
 At the end of each month, your metered usage is calculated and scheduled to be billed on your **bill cycle day**.
 
@@ -37,6 +37,8 @@ At the end of each month, your metered usage is calculated and scheduled to be b
 ## Billing cycles for volume-based products
 
 Volume-based licenses may follow a different billing cycle. These products are often billed based on the anniversary date of your subscription rather than by calendar month.
+
+You can switch between annual and monthly billing from the "Licensing" page under "Billing and licensing", see [AUTOTITLE](/copilot/how-tos/manage-your-account/view-and-change-your-copilot-plan#changing-your-billing-cycle).
 
 ## How mid-cycle changes affect your billing
 

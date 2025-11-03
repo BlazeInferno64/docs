@@ -364,6 +364,9 @@ The `job` context contains information about the currently running job.
 | Property name | Type | Description |
 |---------------|------|-------------|
 | `job` | `object` | This context changes for each job in a workflow run. You can access this context from any step in a job. This object contains all the properties listed below. |
+| {% ifversion fpt or ghec %} |
+| `job.check_run_id` | `number` | The check run ID of the current job. |
+| {% endif %} |
 | `job.container` | `object` | Information about the job's container. For more information about containers, see [AUTOTITLE](/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idcontainer). |
 | `job.container.id` | `string` | The ID of the container. |
 | `job.container.network` | `string` | The ID of the container network. The runner creates the network used by all containers in a job. |
@@ -375,11 +378,12 @@ The `job` context contains information about the currently running job.
 
 ### Example contents of the `job` context
 
-This example `job` context uses a PostgreSQL service container with mapped ports. If there are no containers or service containers used in a job, the `job` context only contains the `status` property.
+This example `job` context uses a PostgreSQL service container with mapped ports. If there are no containers or service containers used in a job, the `job` context only contains the `status` and `check_run_id` properties.
 
 ```json
 {
   "status": "success",
+  {% ifversion fpt or ghec %}"check_run_id": 51725241954,{% endif %}
   "container": {
     "network": "github_network_53269bd575974817b43f4733536b200c"
   },

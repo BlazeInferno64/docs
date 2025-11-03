@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { uniqBy } from 'lodash-es'
 import { executeAISearch } from '../helpers/execute-search-actions'
 import { useRouter } from 'next/router'
@@ -417,7 +417,7 @@ export function AskAIResults({
             className={'btn-octicon'}
             aria-label={t('ai.thumbs_up')}
             sx={{
-              border: 'none',
+              border: feedbackSelected === 'up' ? '1px solid var(--color-btn-text)' : 'none',
               backgroundColor: feedbackSelected === 'up' ? '' : 'unset',
               boxShadow: 'unset',
               color: feedbackSelected === 'up' ? 'var(--fgColor-accent) !important;' : '',
@@ -439,7 +439,7 @@ export function AskAIResults({
             className={'btn-octicon'}
             aria-label={t('ai.thumbs_down')}
             sx={{
-              border: 'none',
+              border: feedbackSelected === 'down' ? '1px solid var(--color-btn-text)' : 'none',
               backgroundColor: feedbackSelected === 'down' ? '' : 'unset',
               boxShadow: 'unset',
               color: feedbackSelected === 'down' ? 'var(--fgColor-accent) !important;' : '',
@@ -500,9 +500,6 @@ export function AskAIResults({
                   const refIndex = index + referencesIndexOffset
                   return (
                     <ActionList.Item
-                      sx={{
-                        marginLeft: '0px',
-                      }}
                       key={`reference-${index}`}
                       id={`search-option-reference-${index + referencesIndexOffset}`}
                       tabIndex={-1}
@@ -569,6 +566,6 @@ function sendAISearchResultEvent({
     ai_search_result_response_status: status,
     ai_search_result_connected_event_id: connectedEventId,
     eventGroupKey: ASK_AI_EVENT_GROUP,
-    eventGroupId: eventGroupId,
+    eventGroupId,
   })
 }

@@ -11,6 +11,7 @@ versions:
   feature: copilot
 category:
   - Refactoring code
+  - Author and optimize with Copilot
 complexity:
   - Advanced
 octicon: rocket
@@ -29,7 +30,7 @@ Hardcoded SQL queries and tightly coupled data access code can make it difficult
 
 This Python code connects to a SQLite database, retrieves a user record, and returns the user data. However, it fails to abstract the database connection logic and uses a hardcoded query that's vulnerable to SQL injection.
 
-```python
+```python id=database-connection
 import sqlite3
 
 def get_user_by_id(user_id):
@@ -45,7 +46,9 @@ def get_user_by_id(user_id):
 
 You can start by asking {% data variables.product.prodname_copilot_short %} a general question about how to improve the code.
 
-`How can I improve this code to make it safe and easier to update and expand? List possible improvements but don't show revised code.`
+```copilot copy prompt ref=database-connection
+How can I improve this code to make it safe and easier to update and expand? List possible improvements but don't show revised code.
+```
 
 ## Example response 1
 
@@ -60,7 +63,9 @@ You can start by asking {% data variables.product.prodname_copilot_short %} a ge
 
 You can use the response to your first prompt to write a more specific prompt.
 
-`Rewrite this code to make it more scalable and easier to maintain. Use a context manager. Avoid hardcoded SQL queries and tightly coupled data access code. Instead, use a repository pattern to abstract database interactions and make the code more modular and reusable. Where possible optimize the code to improve performance. Include error trapping, and make sure the code is not vulnerable to SQL injection.`
+```copilot copy prompt ref=database-connection
+Rewrite this code to make it more scalable and easier to maintain. Use a context manager. Avoid hardcoded SQL queries and tightly coupled data access code. Instead, use a repository pattern to abstract database interactions and make the code more modular and reusable. Where possible optimize the code to improve performance. Include error trapping, and make sure the code is not vulnerable to SQL injection.
+```
 
 ## Example response 2
 

@@ -143,10 +143,32 @@
       },
       {
         "category": "billing",
+        "slug": "get-billing-premium-request-usage-report-for-an-organization",
+        "subcategory": "enhanced-billing",
+        "verb": "get",
+        "requestPath": "/organizations/{org}/settings/billing/premium_request/usage",
+        "access": "read",
+        "user-to-server": true,
+        "server-to-server": true,
+        "additional-permissions": false
+      },
+      {
+        "category": "billing",
         "slug": "get-billing-usage-report-for-an-organization",
         "subcategory": "enhanced-billing",
         "verb": "get",
         "requestPath": "/organizations/{org}/settings/billing/usage",
+        "access": "read",
+        "user-to-server": true,
+        "server-to-server": true,
+        "additional-permissions": false
+      },
+      {
+        "category": "billing",
+        "slug": "get-billing-usage-summary-report-for-an-organization",
+        "subcategory": "enhanced-billing",
+        "verb": "get",
+        "requestPath": "/organizations/{org}/settings/billing/usage/summary",
         "access": "read",
         "user-to-server": true,
         "server-to-server": true,
@@ -917,7 +939,7 @@
         "subcategory": "push-protection",
         "verb": "get",
         "requestPath": "/orgs/{org}/secret-scanning/pattern-configurations",
-        "access": "write",
+        "access": "read",
         "user-to-server": true,
         "server-to-server": true,
         "additional-permissions": false
@@ -998,6 +1020,72 @@
         "user-to-server": true,
         "server-to-server": true,
         "additional-permissions": false
+      },
+      {
+        "category": "orgs",
+        "slug": "get-immutable-releases-settings-for-an-organization",
+        "subcategory": "orgs",
+        "verb": "get",
+        "requestPath": "/orgs/{org}/settings/immutable-releases",
+        "access": "read",
+        "user-to-server": true,
+        "server-to-server": true,
+        "additional-permissions": false
+      },
+      {
+        "category": "orgs",
+        "slug": "set-immutable-releases-settings-for-an-organization",
+        "subcategory": "orgs",
+        "verb": "put",
+        "requestPath": "/orgs/{org}/settings/immutable-releases",
+        "access": "write",
+        "user-to-server": true,
+        "server-to-server": true,
+        "additional-permissions": false
+      },
+      {
+        "category": "orgs",
+        "slug": "list-selected-repositories-for-immutable-releases-enforcement",
+        "subcategory": "orgs",
+        "verb": "get",
+        "requestPath": "/orgs/{org}/settings/immutable-releases/repositories",
+        "access": "read",
+        "user-to-server": true,
+        "server-to-server": true,
+        "additional-permissions": false
+      },
+      {
+        "category": "orgs",
+        "slug": "set-selected-repositories-for-immutable-releases-enforcement",
+        "subcategory": "orgs",
+        "verb": "put",
+        "requestPath": "/orgs/{org}/settings/immutable-releases/repositories",
+        "access": "write",
+        "user-to-server": true,
+        "server-to-server": true,
+        "additional-permissions": true
+      },
+      {
+        "category": "orgs",
+        "slug": "enable-a-selected-repository-for-immutable-releases-in-an-organization",
+        "subcategory": "orgs",
+        "verb": "put",
+        "requestPath": "/orgs/{org}/settings/immutable-releases/repositories/{repository_id}",
+        "access": "write",
+        "user-to-server": true,
+        "server-to-server": true,
+        "additional-permissions": true
+      },
+      {
+        "category": "orgs",
+        "slug": "disable-a-selected-repository-for-immutable-releases-in-an-organization",
+        "subcategory": "orgs",
+        "verb": "delete",
+        "requestPath": "/orgs/{org}/settings/immutable-releases/repositories/{repository_id}",
+        "access": "write",
+        "user-to-server": true,
+        "server-to-server": true,
+        "additional-permissions": true
       },
       {
         "category": "copilot",
@@ -1156,6 +1244,34 @@
         "verb": "get",
         "requestPath": "/orgs/{org}/organization-roles/{role_id}",
         "access": "read",
+        "user-to-server": true,
+        "server-to-server": true,
+        "additional-permissions": false
+      }
+    ]
+  },
+  "custom_properties_for_organizations": {
+    "title": "Custom properties for organizations",
+    "displayTitle": "Organization permissions for \"Custom properties for organizations\"",
+    "permissions": [
+      {
+        "category": "orgs",
+        "slug": "get-all-custom-property-values-for-an-organization",
+        "subcategory": "custom-properties-for-orgs",
+        "verb": "get",
+        "requestPath": "/organizations/{org}/org-properties/values",
+        "access": "read",
+        "user-to-server": true,
+        "server-to-server": true,
+        "additional-permissions": false
+      },
+      {
+        "category": "orgs",
+        "slug": "create-or-update-custom-property-values-for-an-organization",
+        "subcategory": "custom-properties-for-orgs",
+        "verb": "patch",
+        "requestPath": "/organizations/{org}/org-properties/values",
+        "access": "write",
         "user-to-server": true,
         "server-to-server": true,
         "additional-permissions": false
@@ -1364,6 +1480,78 @@
         "user-to-server": true,
         "server-to-server": true,
         "additional-permissions": true
+      }
+    ]
+  },
+  "organization_runner_custom_images": {
+    "title": "Hosted runner custom images",
+    "displayTitle": "Organization permissions for \"Hosted runner custom images\"",
+    "permissions": [
+      {
+        "category": "actions",
+        "slug": "list-custom-images-for-an-organization",
+        "subcategory": "hosted-runners",
+        "verb": "get",
+        "requestPath": "/orgs/{org}/actions/hosted-runners/images/custom",
+        "access": "read",
+        "user-to-server": true,
+        "server-to-server": true,
+        "additional-permissions": false
+      },
+      {
+        "category": "actions",
+        "slug": "get-a-custom-image-definition-for-github-actions-hosted-runners",
+        "subcategory": "hosted-runners",
+        "verb": "get",
+        "requestPath": "/orgs/{org}/actions/hosted-runners/images/custom/{image_definition_id}",
+        "access": "read",
+        "user-to-server": true,
+        "server-to-server": true,
+        "additional-permissions": false
+      },
+      {
+        "category": "actions",
+        "slug": "delete-a-custom-image-from-the-organization",
+        "subcategory": "hosted-runners",
+        "verb": "delete",
+        "requestPath": "/orgs/{org}/actions/hosted-runners/images/custom/{image_definition_id}",
+        "access": "write",
+        "user-to-server": true,
+        "server-to-server": true,
+        "additional-permissions": false
+      },
+      {
+        "category": "actions",
+        "slug": "list-image-versions-of-a-custom-image-for-an-organization",
+        "subcategory": "hosted-runners",
+        "verb": "get",
+        "requestPath": "/orgs/{org}/actions/hosted-runners/images/custom/{image_definition_id}/versions",
+        "access": "read",
+        "user-to-server": true,
+        "server-to-server": true,
+        "additional-permissions": false
+      },
+      {
+        "category": "actions",
+        "slug": "get-an-image-version-of-a-custom-image-for-github-actions-hosted-runners",
+        "subcategory": "hosted-runners",
+        "verb": "get",
+        "requestPath": "/orgs/{org}/actions/hosted-runners/images/custom/{image_definition_id}/versions/{version}",
+        "access": "read",
+        "user-to-server": true,
+        "server-to-server": true,
+        "additional-permissions": false
+      },
+      {
+        "category": "actions",
+        "slug": "delete-an-image-version-of-custom-image-from-the-organization",
+        "subcategory": "hosted-runners",
+        "verb": "delete",
+        "requestPath": "/orgs/{org}/actions/hosted-runners/images/custom/{image_definition_id}/versions/{version}",
+        "access": "write",
+        "user-to-server": true,
+        "server-to-server": true,
+        "additional-permissions": false
       }
     ]
   },
@@ -2664,22 +2852,99 @@
     "displayTitle": "Organization permissions for \"Projects\"",
     "permissions": [
       {
-        "category": "projects-classic",
-        "slug": "list-organization-projects",
+        "category": "projects",
+        "slug": "list-projects-for-organization",
         "subcategory": "projects",
         "verb": "get",
-        "requestPath": "/orgs/{org}/projects",
+        "requestPath": "/orgs/{org}/projectsV2",
         "access": "read",
         "user-to-server": true,
         "server-to-server": true,
         "additional-permissions": false
       },
       {
-        "category": "projects-classic",
-        "slug": "create-an-organization-project",
+        "category": "projects",
+        "slug": "get-project-for-organization",
         "subcategory": "projects",
+        "verb": "get",
+        "requestPath": "/orgs/{org}/projectsV2/{project_number}",
+        "access": "read",
+        "user-to-server": true,
+        "server-to-server": true,
+        "additional-permissions": false
+      },
+      {
+        "category": "projects",
+        "slug": "list-project-fields-for-organization",
+        "subcategory": "fields",
+        "verb": "get",
+        "requestPath": "/orgs/{org}/projectsV2/{project_number}/fields",
+        "access": "read",
+        "user-to-server": true,
+        "server-to-server": true,
+        "additional-permissions": false
+      },
+      {
+        "category": "projects",
+        "slug": "get-project-field-for-organization",
+        "subcategory": "fields",
+        "verb": "get",
+        "requestPath": "/orgs/{org}/projectsV2/{project_number}/fields/{field_id}",
+        "access": "read",
+        "user-to-server": true,
+        "server-to-server": true,
+        "additional-permissions": false
+      },
+      {
+        "category": "projects",
+        "slug": "list-items-for-an-organization-owned-project",
+        "subcategory": "items",
+        "verb": "get",
+        "requestPath": "/orgs/{org}/projectsV2/{project_number}/items",
+        "access": "read",
+        "user-to-server": true,
+        "server-to-server": true,
+        "additional-permissions": false
+      },
+      {
+        "category": "projects",
+        "slug": "add-item-to-organization-owned-project",
+        "subcategory": "items",
         "verb": "post",
-        "requestPath": "/orgs/{org}/projects",
+        "requestPath": "/orgs/{org}/projectsV2/{project_number}/items",
+        "access": "write",
+        "user-to-server": true,
+        "server-to-server": true,
+        "additional-permissions": false
+      },
+      {
+        "category": "projects",
+        "slug": "get-an-item-for-an-organization-owned-project",
+        "subcategory": "items",
+        "verb": "get",
+        "requestPath": "/orgs/{org}/projectsV2/{project_number}/items/{item_id}",
+        "access": "read",
+        "user-to-server": true,
+        "server-to-server": true,
+        "additional-permissions": false
+      },
+      {
+        "category": "projects",
+        "slug": "update-project-item-for-organization",
+        "subcategory": "items",
+        "verb": "patch",
+        "requestPath": "/orgs/{org}/projectsV2/{project_number}/items/{item_id}",
+        "access": "write",
+        "user-to-server": true,
+        "server-to-server": true,
+        "additional-permissions": false
+      },
+      {
+        "category": "projects",
+        "slug": "delete-project-item-for-organization",
+        "subcategory": "items",
+        "verb": "delete",
+        "requestPath": "/orgs/{org}/projectsV2/{project_number}/items/{item_id}",
         "access": "write",
         "user-to-server": true,
         "server-to-server": true,
@@ -2703,50 +2968,6 @@
         "verb": "delete",
         "requestPath": "/orgs/{org}/teams/{team_slug}/projects/{project_id}",
         "access": "admin",
-        "user-to-server": true,
-        "server-to-server": true,
-        "additional-permissions": true
-      },
-      {
-        "category": "projects-classic",
-        "slug": "get-a-project-card",
-        "subcategory": "cards",
-        "verb": "get",
-        "requestPath": "/projects/columns/cards/{card_id}",
-        "access": "read",
-        "user-to-server": true,
-        "server-to-server": true,
-        "additional-permissions": true
-      },
-      {
-        "category": "projects-classic",
-        "slug": "update-an-existing-project-card",
-        "subcategory": "cards",
-        "verb": "patch",
-        "requestPath": "/projects/columns/cards/{card_id}",
-        "access": "write",
-        "user-to-server": true,
-        "server-to-server": true,
-        "additional-permissions": true
-      },
-      {
-        "category": "projects-classic",
-        "slug": "delete-a-project-card",
-        "subcategory": "cards",
-        "verb": "delete",
-        "requestPath": "/projects/columns/cards/{card_id}",
-        "access": "write",
-        "user-to-server": true,
-        "server-to-server": true,
-        "additional-permissions": true
-      },
-      {
-        "category": "projects-classic",
-        "slug": "move-a-project-card",
-        "subcategory": "cards",
-        "verb": "post",
-        "requestPath": "/projects/columns/cards/{card_id}/moves",
-        "access": "write",
         "user-to-server": true,
         "server-to-server": true,
         "additional-permissions": true
@@ -2786,65 +3007,10 @@
       },
       {
         "category": "projects-classic",
-        "slug": "list-project-cards",
-        "subcategory": "cards",
-        "verb": "get",
-        "requestPath": "/projects/columns/{column_id}/cards",
-        "access": "read",
-        "user-to-server": true,
-        "server-to-server": true,
-        "additional-permissions": true
-      },
-      {
-        "category": "projects-classic",
-        "slug": "create-a-project-card",
-        "subcategory": "cards",
-        "verb": "post",
-        "requestPath": "/projects/columns/{column_id}/cards",
-        "access": "write",
-        "user-to-server": true,
-        "server-to-server": true,
-        "additional-permissions": true
-      },
-      {
-        "category": "projects-classic",
         "slug": "move-a-project-column",
         "subcategory": "columns",
         "verb": "post",
         "requestPath": "/projects/columns/{column_id}/moves",
-        "access": "write",
-        "user-to-server": true,
-        "server-to-server": true,
-        "additional-permissions": true
-      },
-      {
-        "category": "projects-classic",
-        "slug": "get-a-project",
-        "subcategory": "projects",
-        "verb": "get",
-        "requestPath": "/projects/{project_id}",
-        "access": "read",
-        "user-to-server": true,
-        "server-to-server": true,
-        "additional-permissions": true
-      },
-      {
-        "category": "projects-classic",
-        "slug": "update-a-project",
-        "subcategory": "projects",
-        "verb": "patch",
-        "requestPath": "/projects/{project_id}",
-        "access": "write",
-        "user-to-server": true,
-        "server-to-server": true,
-        "additional-permissions": true
-      },
-      {
-        "category": "projects-classic",
-        "slug": "delete-a-project",
-        "subcategory": "projects",
-        "verb": "delete",
-        "requestPath": "/projects/{project_id}",
         "access": "write",
         "user-to-server": true,
         "server-to-server": true,
@@ -2890,28 +3056,6 @@
         "verb": "get",
         "requestPath": "/projects/{project_id}/collaborators/{username}/permission",
         "access": "admin",
-        "user-to-server": true,
-        "server-to-server": true,
-        "additional-permissions": true
-      },
-      {
-        "category": "projects-classic",
-        "slug": "list-project-columns",
-        "subcategory": "columns",
-        "verb": "get",
-        "requestPath": "/projects/{project_id}/columns",
-        "access": "read",
-        "user-to-server": true,
-        "server-to-server": true,
-        "additional-permissions": true
-      },
-      {
-        "category": "projects-classic",
-        "slug": "create-a-project-column",
-        "subcategory": "columns",
-        "verb": "post",
-        "requestPath": "/projects/{project_id}/columns",
-        "access": "write",
         "user-to-server": true,
         "server-to-server": true,
         "additional-permissions": true
@@ -5313,6 +5457,39 @@
         "additional-permissions": true
       },
       {
+        "category": "repos",
+        "slug": "check-if-immutable-releases-are-enabled-for-a-repository",
+        "subcategory": "repos",
+        "verb": "get",
+        "requestPath": "/repos/{owner}/{repo}/immutable-releases",
+        "access": "read",
+        "user-to-server": true,
+        "server-to-server": true,
+        "additional-permissions": false
+      },
+      {
+        "category": "repos",
+        "slug": "enable-immutable-releases",
+        "subcategory": "repos",
+        "verb": "put",
+        "requestPath": "/repos/{owner}/{repo}/immutable-releases",
+        "access": "write",
+        "user-to-server": true,
+        "server-to-server": true,
+        "additional-permissions": false
+      },
+      {
+        "category": "repos",
+        "slug": "disable-immutable-releases",
+        "subcategory": "repos",
+        "verb": "delete",
+        "requestPath": "/repos/{owner}/{repo}/immutable-releases",
+        "access": "write",
+        "user-to-server": true,
+        "server-to-server": true,
+        "additional-permissions": false
+      },
+      {
         "category": "interactions",
         "slug": "get-interaction-restrictions-for-a-repository",
         "subcategory": "repos",
@@ -5354,7 +5531,7 @@
         "access": "read",
         "user-to-server": true,
         "server-to-server": true,
-        "additional-permissions": false
+        "additional-permissions": true
       },
       {
         "category": "collaborators",
@@ -5820,6 +5997,17 @@
         "verb": "delete",
         "requestPath": "/orgs/{org}/attestations/digest/{subject_digest}",
         "access": "write",
+        "user-to-server": true,
+        "server-to-server": true,
+        "additional-permissions": false
+      },
+      {
+        "category": "orgs",
+        "slug": "list-attestation-repositories",
+        "subcategory": "attestations",
+        "verb": "get",
+        "requestPath": "/orgs/{org}/attestations/repositories",
+        "access": "read",
         "user-to-server": true,
         "server-to-server": true,
         "additional-permissions": false
@@ -6538,6 +6726,28 @@
         "subcategory": "markdown",
         "verb": "post",
         "requestPath": "/markdown",
+        "access": "read",
+        "user-to-server": true,
+        "server-to-server": true,
+        "additional-permissions": false
+      },
+      {
+        "category": "orgs",
+        "slug": "create-artifact-metadata-storage-record",
+        "subcategory": "artifact-metadata",
+        "verb": "post",
+        "requestPath": "/orgs/{org}/artifacts/metadata/storage-record",
+        "access": "write",
+        "user-to-server": true,
+        "server-to-server": true,
+        "additional-permissions": false
+      },
+      {
+        "category": "orgs",
+        "slug": "list-artifact-storage-records",
+        "subcategory": "artifact-metadata",
+        "verb": "get",
+        "requestPath": "/orgs/{org}/artifacts/{subject_digest}/metadata/storage-records",
         "access": "read",
         "user-to-server": true,
         "server-to-server": true,
@@ -8109,6 +8319,17 @@
         "additional-permissions": true
       },
       {
+        "category": "issues",
+        "slug": "get-parent-issue",
+        "subcategory": "sub-issues",
+        "verb": "get",
+        "requestPath": "/repos/{owner}/{repo}/issues/{issue_number}/parent",
+        "access": "read",
+        "user-to-server": true,
+        "server-to-server": true,
+        "additional-permissions": false
+      },
+      {
         "category": "reactions",
         "slug": "list-reactions-for-an-issue",
         "subcategory": "reactions",
@@ -8832,50 +9053,6 @@
     "permissions": [
       {
         "category": "projects-classic",
-        "slug": "get-a-project-card",
-        "subcategory": "cards",
-        "verb": "get",
-        "requestPath": "/projects/columns/cards/{card_id}",
-        "access": "read",
-        "user-to-server": true,
-        "server-to-server": true,
-        "additional-permissions": true
-      },
-      {
-        "category": "projects-classic",
-        "slug": "update-an-existing-project-card",
-        "subcategory": "cards",
-        "verb": "patch",
-        "requestPath": "/projects/columns/cards/{card_id}",
-        "access": "write",
-        "user-to-server": true,
-        "server-to-server": true,
-        "additional-permissions": true
-      },
-      {
-        "category": "projects-classic",
-        "slug": "delete-a-project-card",
-        "subcategory": "cards",
-        "verb": "delete",
-        "requestPath": "/projects/columns/cards/{card_id}",
-        "access": "write",
-        "user-to-server": true,
-        "server-to-server": true,
-        "additional-permissions": true
-      },
-      {
-        "category": "projects-classic",
-        "slug": "move-a-project-card",
-        "subcategory": "cards",
-        "verb": "post",
-        "requestPath": "/projects/columns/cards/{card_id}/moves",
-        "access": "write",
-        "user-to-server": true,
-        "server-to-server": true,
-        "additional-permissions": true
-      },
-      {
-        "category": "projects-classic",
         "slug": "get-a-project-column",
         "subcategory": "columns",
         "verb": "get",
@@ -8909,65 +9086,10 @@
       },
       {
         "category": "projects-classic",
-        "slug": "list-project-cards",
-        "subcategory": "cards",
-        "verb": "get",
-        "requestPath": "/projects/columns/{column_id}/cards",
-        "access": "read",
-        "user-to-server": true,
-        "server-to-server": true,
-        "additional-permissions": true
-      },
-      {
-        "category": "projects-classic",
-        "slug": "create-a-project-card",
-        "subcategory": "cards",
-        "verb": "post",
-        "requestPath": "/projects/columns/{column_id}/cards",
-        "access": "write",
-        "user-to-server": true,
-        "server-to-server": true,
-        "additional-permissions": true
-      },
-      {
-        "category": "projects-classic",
         "slug": "move-a-project-column",
         "subcategory": "columns",
         "verb": "post",
         "requestPath": "/projects/columns/{column_id}/moves",
-        "access": "write",
-        "user-to-server": true,
-        "server-to-server": true,
-        "additional-permissions": true
-      },
-      {
-        "category": "projects-classic",
-        "slug": "get-a-project",
-        "subcategory": "projects",
-        "verb": "get",
-        "requestPath": "/projects/{project_id}",
-        "access": "read",
-        "user-to-server": true,
-        "server-to-server": true,
-        "additional-permissions": true
-      },
-      {
-        "category": "projects-classic",
-        "slug": "update-a-project",
-        "subcategory": "projects",
-        "verb": "patch",
-        "requestPath": "/projects/{project_id}",
-        "access": "write",
-        "user-to-server": true,
-        "server-to-server": true,
-        "additional-permissions": true
-      },
-      {
-        "category": "projects-classic",
-        "slug": "delete-a-project",
-        "subcategory": "projects",
-        "verb": "delete",
-        "requestPath": "/projects/{project_id}",
         "access": "write",
         "user-to-server": true,
         "server-to-server": true,
@@ -9016,50 +9138,6 @@
         "user-to-server": true,
         "server-to-server": true,
         "additional-permissions": true
-      },
-      {
-        "category": "projects-classic",
-        "slug": "list-project-columns",
-        "subcategory": "columns",
-        "verb": "get",
-        "requestPath": "/projects/{project_id}/columns",
-        "access": "read",
-        "user-to-server": true,
-        "server-to-server": true,
-        "additional-permissions": true
-      },
-      {
-        "category": "projects-classic",
-        "slug": "create-a-project-column",
-        "subcategory": "columns",
-        "verb": "post",
-        "requestPath": "/projects/{project_id}/columns",
-        "access": "write",
-        "user-to-server": true,
-        "server-to-server": true,
-        "additional-permissions": true
-      },
-      {
-        "category": "projects-classic",
-        "slug": "list-repository-projects",
-        "subcategory": "projects",
-        "verb": "get",
-        "requestPath": "/repos/{owner}/{repo}/projects",
-        "access": "read",
-        "user-to-server": true,
-        "server-to-server": true,
-        "additional-permissions": false
-      },
-      {
-        "category": "projects-classic",
-        "slug": "create-a-repository-project",
-        "subcategory": "projects",
-        "verb": "post",
-        "requestPath": "/repos/{owner}/{repo}/projects",
-        "access": "write",
-        "user-to-server": true,
-        "server-to-server": true,
-        "additional-permissions": false
       }
     ]
   },
@@ -10831,6 +10909,17 @@
       },
       {
         "category": "billing",
+        "slug": "get-billing-premium-request-usage-report-for-a-user",
+        "subcategory": "enhanced-billing",
+        "verb": "get",
+        "requestPath": "/users/{username}/settings/billing/premium_request/usage",
+        "access": "read",
+        "user-to-server": true,
+        "server-to-server": false,
+        "additional-permissions": false
+      },
+      {
+        "category": "billing",
         "slug": "get-shared-storage-billing-for-a-user",
         "subcategory": "billing",
         "verb": "get",
@@ -10850,6 +10939,34 @@
         "user-to-server": true,
         "server-to-server": false,
         "additional-permissions": false
+      },
+      {
+        "category": "billing",
+        "slug": "get-billing-usage-summary-report-for-a-user",
+        "subcategory": "enhanced-billing",
+        "verb": "get",
+        "requestPath": "/users/{username}/settings/billing/usage/summary",
+        "access": "read",
+        "user-to-server": true,
+        "server-to-server": false,
+        "additional-permissions": false
+      }
+    ]
+  },
+  "private_repository_invitations": {
+    "title": "Private repository invitations",
+    "displayTitle": "User permissions for \"Private repository invitations\"",
+    "permissions": [
+      {
+        "category": "collaborators",
+        "slug": "list-repository-invitations",
+        "subcategory": "invitations",
+        "verb": "get",
+        "requestPath": "/repos/{owner}/{repo}/invitations",
+        "access": "read",
+        "user-to-server": true,
+        "server-to-server": true,
+        "additional-permissions": true
       }
     ]
   },

@@ -1,6 +1,6 @@
 ---
 title: Configuring your GitHub Copilot agent to communicate with GitHub
-intro: 'Learn how to verify payloads and get resources from {% data variables.product.github %} with your {% data variables.copilot.copilot_agent_short %}.'
+intro: Learn how to verify payloads and get resources from {% data variables.product.github %} with your {% data variables.copilot.copilot_agent_short %}.
 versions:
   feature: copilot-extensions
 topics:
@@ -12,6 +12,8 @@ redirect_from:
   - /copilot/how-tos/build-copilot-extensions/building-a-copilot-agent-for-your-copilot-extension/communicate-with-github
   - /copilot/how-tos/build-copilot-extensions/build-a-copilot-agent/communicate-with-github
 contentType: how-tos
+category: 
+  - Integrate Copilot with your tools
 ---
 
 ## Prerequisites

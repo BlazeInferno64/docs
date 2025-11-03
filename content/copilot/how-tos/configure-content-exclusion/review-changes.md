@@ -17,6 +17,8 @@ redirect_from:
   - /copilot/how-tos/content-exclusion/reviewing-changes-to-content-exclusions-for-github-copilot
   - /copilot/how-tos/content-exclusion/review-changes
 contentType: how-tos
+category: 
+  - Configure Copilot
 ---
 
 Organization and repository settings include the ability to exclude content from being used by {% data variables.product.prodname_copilot %}. You can review any changes that are made to these content exclusion settings.
@@ -57,14 +59,10 @@ Organization and repository settings include the ability to exclude content from
 ## Reviewing changes in your enterprise
 
 {% data reusables.enterprise-accounts.access-enterprise %}
-{% data reusables.enterprise-accounts.policies-tab %}
-{% data reusables.enterprise-accounts.copilot-tab %}
-
-1. On the {% data variables.product.prodname_copilot %} page, click the **Content exclusion** tab.
-
-   At the bottom of the page you'll see the name of the person who last changed the content exclusion settings, and information about when they made this change.
-
-1. Click the time of the last change.
+{% data reusables.enterprise-accounts.ai-controls-tab %}
+{% data reusables.enterprise-accounts.view-copilot-policies %}
+1. Click {% octicon "circle-slash" aria-hidden="true" aria-label="circle-slash" %} **Content exclusion**.
+1. At the bottom of the page, you'll see the name of the person who last changed the content exclusion settings, and information about when they made this change. Click the time of the last change.
 
    ![Screenshot of the last edited information. The time of change link is highlighted with a dark orange outline.](/assets/images/help/copilot/content-exclusions-last-edited-by.png)
 
@@ -75,5 +73,7 @@ Organization and repository settings include the ability to exclude content from
 {% data reusables.copilot.more-details-content-exclusion-logs %}
 
 {% endif %}
+
+## Further reading
 
 * [AUTOTITLE](/copilot/concepts/content-exclusion-for-github-copilot)

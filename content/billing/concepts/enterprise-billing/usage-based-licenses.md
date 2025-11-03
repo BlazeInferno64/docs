@@ -23,15 +23,17 @@ shortTitle: Usage-based licenses
 contentType: concepts
 ---
 
-With usage-based billing, you pay monthly for the number of {% data variables.product.prodname_enterprise %} and {% data variables.product.prodname_GH_cs_and_sp %} licenses you use. You do not need to buy a predefined number of licenses in advance.
+Usage-based billing means you pay each month for the number of licenses actually consumed in your enterprise account, instead of committing to a fixed number in advance. This model provides flexibility and can be more cost-efficient than traditional volume licensing.
 
-Usage-based billing for licenses provides flexibility and cost savings compared to more traditional licensing models, such as volume or subscription models.
+{% ifversion enhanced-billing-platform %}
+
+For how billing cycles work and how mid-cycle changes (such as adding or removing seats) affect charges, see [AUTOTITLE](/billing/concepts/billing-cycles) and [AUTOTITLE](/billing/concepts/impact-of-plan-changes).
+
+{% endif %}
 
 ## Do I have usage-based billing?
 
 {% data reusables.billing.do-i-have-usage-based %}
-
-{% data variables.visual_studio.prodname_vss_ghe %} is currently not supported for usage-based billing.
 
 ## Can I use {% data variables.product.prodname_ghe_server %}?
 
@@ -39,9 +41,27 @@ Although you can sync licenses with {% data variables.product.prodname_ghe_serve
 
 For a detailed comparison between usage-based and volume licensing models, see [AUTOTITLE](/billing/concepts/enterprise-billing/combined-enterprise-use#about-licensing-models).
 
+## Can I use a {% data variables.product.prodname_vs %} bundle?
+
+If you have a {% data variables.product.prodname_vs %} bundle with {% data variables.product.prodname_ghe_cloud %}, you can switch to usage-based billing by contacting your account manager or {% data variables.contact.contact_enterprise_sales %} ahead of contract renewal.
+
+Usage-based billing will apply to non-bundled licenses, categorized as "GitHub Enterprise licenses" on your enterprise's Licensing page. These licenses include:
+
+* Licenses for enterprise members who are not matched to a {% data variables.product.prodname_vs %} account.
+* Any extra {% data variables.product.prodname_enterprise %} licenses you consume beyond the number of licenses purchased in your volume agreement.
+
+Bundled licenses ({% data variables.product.prodname_vs %} plus {% data variables.product.prodname_enterprise %}) **remain on a volume agreement**.
+
+Before switching to usage-based billing, to ensure you are not charged extra for {% data variables.product.prodname_vs %} users who should consume a bundled license:
+
+* Ensure all {% data variables.product.prodname_vs %} users are correctly matched to their account on {% data variables.product.github %}. See [AUTOTITLE](/enterprise-cloud@latest/billing/how-tos/set-up-payment/set-up-vs-subscription#reconciling-users-across-visual-studio-and-github).
+* Add all {% data variables.product.prodname_vs %} users to your enterprise on **{% data variables.product.prodname_ghe_cloud %}** before adding them to {% data variables.product.prodname_ghe_server %}. Users who are only on {% data variables.product.prodname_ghe_server %} will consume a "{% data variables.product.prodname_enterprise %}" license once you switch to usage-based billing.
+
 ## How are metered licenses measured?
 
 {% data reusables.billing.metered-license-measures %}
+
+To view your license usage and history, see [AUTOTITLE](/billing/how-tos/manage-plan-and-licenses/view-enterprise-usage).
 
 ## Which payment methods can I use?
 

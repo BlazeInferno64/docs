@@ -27,7 +27,7 @@ There are a couple of customization options you can implement to optimize {% dat
 
 ## Controlling the frequency and timings of dependency updates
 
-{% data variables.product.prodname_dependabot %} runs its checks for version updates at a frequency set by you in the configuration file, where the required field, `schedule.interval`, must be set to `daily`, `weekly`, `monthly`, `quarterly`, `semiannually`, `yearly`, or `cron` (see [cronjob](/code-security/dependabot/working-with-dependabot/dependabot-options-reference#cronjob)).
+{% data variables.product.prodname_dependabot %} runs its checks for version updates at a frequency set by you in the configuration file, where the required field, `schedule.interval`, must be set to `daily`, `weekly`, `monthly`, `quarterly`, `semiannually`, `yearly`, or `cron` (see [`cronjob`](/code-security/dependabot/working-with-dependabot/dependabot-options-reference#cronjob)).
 
 By default, {% data variables.product.prodname_dependabot %} balances its workload by assigning a random time to check and raise pull requests for dependency updates.
 
@@ -57,6 +57,8 @@ updates:
 ```
 
 See also [schedule](/code-security/dependabot/working-with-dependabot/dependabot-options-reference#schedule-).
+
+{% ifversion dependabot-option-cooldown %}
 
 ### Setting up a cooldown period for dependency updates
 
@@ -101,6 +103,8 @@ SemVer is supported for most package managers. Updates to new versions for depen
 * Patch updates: Delayed by 3 days (`semver-patch-days: 3`).
 
 See also [`cooldown`](/code-security/dependabot/working-with-dependabot/dependabot-options-reference#cooldown-).
+
+{% endif %}
 
 ## Prioritizing meaningful updates
 

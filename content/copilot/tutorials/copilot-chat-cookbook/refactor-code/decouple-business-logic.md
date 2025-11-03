@@ -11,6 +11,7 @@ versions:
   feature: copilot
 category:
   - Refactoring code
+  - Author and optimize with Copilot
 complexity:
   - Advanced
 octicon: rocket
@@ -27,7 +28,7 @@ In many front-end frameworks, business logic can become embedded within user int
 
 In this JavaScript code, the `Counter` component configures the business logic for the component and also defines UI code for using the component in a web page.
 
-```javascript
+```javascript id=counter-component
 import React, { useState } from 'react';
 
 const Counter = () => {
@@ -54,7 +55,9 @@ export default Counter;
 
 ## Example prompt
 
-`Use Redux to separate the UI code from the Counter component in this code.`
+```copilot copy prompt ref=counter-component
+Use Redux to separate the UI code from the Counter component in this code.
+```
 
 ## Example response
 

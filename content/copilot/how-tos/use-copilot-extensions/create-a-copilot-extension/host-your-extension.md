@@ -1,6 +1,6 @@
 ---
 title: Configuring your server to host your GitHub Copilot extension
-intro: 'Learn how to make your {% data variables.product.prodname_copilot_short %} extension accessible to the internet.'
+intro: Learn how to make your {% data variables.product.prodname_copilot_short %} extension accessible to the internet.
 versions:
   feature: copilot-extensions
 redirect_from:
@@ -14,6 +14,8 @@ topics:
   - Copilot
 shortTitle: Host your extension
 contentType: how-tos
+category: 
+  - Integrate Copilot with your tools
 ---
 
 Your {% data variables.copilot.copilot_extension_short %} must be hosted on a server that is accessible to the internet. In this guide, we will use [ngrok](https://ngrok.com/) to create a tunnel to your local server, but you could also use a service like [localtunnel](https://localtunnel.github.io/www/).

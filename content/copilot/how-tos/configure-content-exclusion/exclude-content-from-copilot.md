@@ -24,11 +24,16 @@ redirect_from:
 topics:
   - Copilot
 contentType: how-tos
+category: 
+  - Configure Copilot
 ---
 
 ## Configuring content exclusion for your repository
 
 You can use your repository settings to specify content in your repository that {% data variables.product.prodname_copilot %} should ignore.
+
+> [!NOTE]
+> {% data variables.copilot.copilot_cli %}, {% data variables.copilot.copilot_coding_agent %}, and Agent mode in {% data variables.copilot.copilot_chat_short %} in IDEs, do not support content exclusion. For more information, see [AUTOTITLE](/copilot/concepts/agents/coding-agent/about-coding-agent) and [AUTOTITLE](/copilot/how-tos/chat-with-copilot/chat-in-ide).
 
 {% data reusables.repositories.navigate-to-repo %}
 {% data reusables.repositories.sidebar-settings %}
@@ -150,9 +155,9 @@ git@gitlab.com:gitlab-org/gitlab-runner.git:
 As an enterprise owner, you can use the enterprise settings to specify files that {% data variables.product.prodname_copilot %} should ignore. The files can be within a Git repository or anywhere on the file system that is not under Git control.
 
 {% data reusables.enterprise-accounts.access-enterprise %}
-{% data reusables.enterprise-accounts.policies-tab %}
-{% data reusables.enterprise-accounts.copilot-tab %}
-1. Click the **Content exclusion** tab.
+{% data reusables.enterprise-accounts.ai-controls-tab %}
+{% data reusables.enterprise-accounts.view-copilot-policies %}
+1. Click {% octicon "circle-slash" aria-hidden="true" aria-label="circle-slash" %} **Content exclusion**.
 1. Use paths to specify which content to exclude. See the previous section, [Configuring content exclusion for your organization](#configuring-content-exclusion-for-your-organization).
 
 > [!NOTE]

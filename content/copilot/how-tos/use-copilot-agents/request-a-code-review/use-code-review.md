@@ -16,19 +16,21 @@ redirect_from:
   - /copilot/how-tos/agents/copilot-code-review/use-code-review
   - /copilot/how-tos/agents/request-a-code-review/use-code-review
 contentType: how-tos
+category: 
+  - Author and optimize with Copilot
 ---
 
 ## Introduction
 
 {% data variables.product.prodname_copilot %} can review your code and provide feedback. Where possible, {% data variables.product.prodname_copilot_short %}'s feedback includes suggested changes which you can apply with a couple of clicks.
 
-For a full introduction to {% data variables.copilot.copilot_code-review %}, see [AUTOTITLE](/copilot/concepts/code-review/code-review).
+For a full introduction to {% data variables.copilot.copilot_code-review %}, see [AUTOTITLE](/copilot/concepts/code-review).
 
 {% webui %}
 
 ## Using {% data variables.copilot.copilot_code-review_short %}
 
-These instructions explain how to use {% data variables.copilot.copilot_code-review_short %} in the {% data variables.product.github %} website. To see instructions for other popular coding environments, use the tool switcher at the top of the page.
+These instructions explain how to use {% data variables.copilot.copilot_code-review_short %} in the {% data variables.product.github %} website. To see instructions for other popular coding environments, click the appropriate tab at the top of the page.
 
 1. On {% data variables.product.prodname_dotcom_the_website %}, create a pull request or navigate to an existing pull request.
 1. Open the **Reviewers** menu, then select **{% data variables.product.prodname_copilot_short %}**.
@@ -52,6 +54,11 @@ These instructions explain how to use {% data variables.copilot.copilot_code-rev
 Where possible, {% data variables.product.prodname_copilot_short %}'s feedback includes suggested changes which you can apply with a couple of clicks.
 
 If you're happy with the changes, you can accept a single suggestion from {% data variables.product.prodname_copilot_short %} and commit it, or accept a group of suggestions together in a single commit. For more information, see [AUTOTITLE](/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/incorporating-feedback-in-your-pull-request).
+
+You can also invoke {% data variables.copilot.copilot_coding_agent %} to implement suggested changes. To do this, you must:
+
+* Opt into the {% data variables.release-phases.public_preview %} for {% data variables.copilot.copilot_code-review-tools_short %} and enable {% data variables.copilot.copilot_coding_agent %}.
+* On review comments from {% data variables.copilot.copilot_code-review %}, click **Implement suggestion**. This creates a draft comment on the pull request, where you can instruct {% data variables.product.prodname_copilot_short %} to address specific feedback. {% data variables.product.prodname_copilot_short %} will create a new pull request against your branch with the suggestions applied.
 
 ## Providing feedback on {% data variables.product.prodname_copilot_short %}'s reviews
 
@@ -81,19 +88,9 @@ By default, you manually request a review from {% data variables.product.prodnam
 
 {% data reusables.copilot.code-review.custom-instructions-information %}
 
-## Customizing {% data variables.product.prodname_copilot_short %}'s reviews with coding guidelines
-
-{% data reusables.copilot.code-review.custom-coding-guidelines %}
-
 {% endwebui %}
 
 {% vscode %}
-
-## Using {% data variables.copilot.copilot_code-review_short %}
-
-These instructions explain how to use {% data variables.copilot.copilot_code-review_short %} in {% data variables.product.prodname_vscode %}. To see instructions for other popular coding environments, use the tool switcher at the top of the page.
-
-> [!NOTE] {% data variables.copilot.copilot_code-review_short %} is available in {% data variables.product.prodname_vscode %} with version 0.22 or later of the {% data variables.copilot.copilot_chat %} extension.
 
 ### Reviewing a selection of code
 
@@ -144,11 +141,10 @@ To provide feedback, hover over the comment and click the thumbs up or thumbs do
 
 ## Customizing {% data variables.product.prodname_copilot_short %}'s reviews with custom instructions
 
+> [!NOTE]
+> {% data reusables.copilot.custom-instructions-ccr-support %}
+
 {% data reusables.copilot.code-review.custom-instructions-information %}
-
-## Customizing {% data variables.product.prodname_copilot_short %}'s reviews with coding guidelines
-
-{% data reusables.copilot.code-review.custom-coding-guidelines %}
 
 {% endvscode %}
 
@@ -160,7 +156,7 @@ To use {% data variables.copilot.copilot_code-review_short %}, you must use {% d
 
 ## Using {% data variables.copilot.copilot_code-review_short %}
 
-These instructions explain how to use {% data variables.copilot.copilot_code-review_short %} in {% data variables.product.prodname_vs %}. To see instructions for other popular coding environments, use the tool switcher at the top of the page.
+These instructions explain how to use {% data variables.copilot.copilot_code-review_short %} in {% data variables.product.prodname_vs %}. To see instructions for other popular coding environments, click the appropriate tab at the top of the page.
 
 1. In the Git Changes window, click **Review changes with {% data variables.product.prodname_copilot_short %}**.
    This button appears as a comment icon with a sparkle.
@@ -182,7 +178,7 @@ For more information on enabling and configuring {% data variables.copilot.copil
 
 ## Using {% data variables.copilot.copilot_code-review_short %}
 
-These instructions explain how to use {% data variables.copilot.copilot_code-review_short %} in {% data variables.product.prodname_mobile %}. To see instructions for other popular coding environments, use the tool switcher at the top of the page.
+These instructions explain how to use {% data variables.copilot.copilot_code-review_short %} in {% data variables.product.prodname_mobile %}. To see instructions for other popular coding environments, click the appropriate tab at the top of the page.
 
 1. In {% data variables.product.prodname_mobile %}, open a pull request.
 1. Scroll down to the **Reviews** section and expand it.
@@ -192,3 +188,62 @@ These instructions explain how to use {% data variables.copilot.copilot_code-rev
 {% data variables.product.prodname_copilot_short %} will review the changes and provide feedback.
 
 {% endmobile %}
+
+{% xcode %}
+
+## Prerequisite
+
+To use {% data variables.copilot.copilot_code-review_short %} in Xcode, you must use version 0.41.0 or later of the {% data variables.copilot.copilot_chat %} extension. Download the latest release from the [`github/CopilotForXcode` repository](https://github.com/github/CopilotForXcode/releases/latest).
+
+## Using {% data variables.copilot.copilot_code-review_short %}
+
+These instructions explain how to use {% data variables.copilot.copilot_code-review_short %} in Xcode. To see instructions for other popular coding environments, click the appropriate tab at the top of the page.
+
+1. In Xcode, make some changes to one or more files.
+1. Open the {% data variables.product.prodname_copilot_short %} chat window by clicking **Editor** in the menu bar, clicking **{% data variables.product.prodname_copilot %}** then **Open Chat**.
+1. Near the bottom right of the prompt box in the {% data variables.product.prodname_copilot_short %} chat window, click the **Code Review** button (a speech bubble icon).
+
+   ![Screenshot of the {% data variables.product.prodname_copilot_short %} chat window in Xcode, with the 'Code Review' button outlined in dark orange.](/assets/images/help/copilot/code-review/xcode-ccr-button.png)
+
+1. Click either **Review Staged Changes** or **Review Unstaged Changes**.
+1. A list of files containing changes is displayed in the chat window. Click the check boxes to deselect any files you don't want {% data variables.product.prodname_copilot_short %} to review.
+1. Click **Continue** to start the review process.
+1. If {% data variables.product.prodname_copilot_short %} finds things to comment on, it displays a **Reviewed Changes** list in the chat window, listing the files it has commented on. Click a file in this list to see the comments.
+
+   Each comment is shown in a popup, overlaid over the editor.
+
+   ![Screenshot of a {% data variables.copilot.copilot_code-review_short %} review comment.](/assets/images/help/copilot/code-review/xcode-review-popup.png)
+
+1. If there is more than one comment in the file, use the up and down arrows, at the top right of the popup, to navigate between comments.
+1. {% data variables.product.prodname_copilot_short %} may suggest replacement code. You can apply the suggested change by clicking **Accept** or reject it by clicking **Dismiss**.
+1. Click another file in the **Reviewed Changes** list in the chat window, to see the review comments for another file.
+
+{% endxcode %}
+
+{% jetbrains %}
+
+## Prerequisites
+
+* **Access to {% data variables.product.prodname_copilot_short %}**. {% data reusables.copilot.subscription-prerequisite %}
+
+* **Compatible JetBrains IDE**. To use {% data variables.product.prodname_copilot %} in JetBrains, you must have a compatible JetBrains IDE installed. {% data variables.product.prodname_copilot %} is compatible with the following IDEs:
+
+  {% data reusables.copilot.jetbrains-compatible-ides %}
+
+{% data reusables.copilot.jetbrains-plugin-prerequisites %}
+
+## Using {% data variables.copilot.copilot_code-review_short %}
+
+These instructions explain how to use {% data variables.copilot.copilot_code-review_short %} in JetBrains IDEs. To see instructions for other popular coding environments, click the appropriate tab at the top of the page.
+
+1. In a JetBrains IDE, make some changes to one or more files.
+1. Open the "Commit" tool window on the left-hand side.
+1. Above the commit message input field, click **Copilot: Review Code Changes**. This button appears as a magnifying glass icon with a sparkle.
+1. {% data variables.product.prodname_copilot_short %} will begin reviewing your changes.
+1. {% data variables.product.prodname_copilot_short %} displays comments in your code with a summary of each potential issue. You can:
+
+   * Review and make changes based on the suggestions.
+   * Dismiss a comment by clicking **Discard**.
+1. If there is more than one comment, use the up and down arrows, at the top right of the popup, to navigate between comments.
+
+{% endjetbrains %}

@@ -31,7 +31,7 @@ export default async function secretScanning(
   const { currentVersion } = req.context
 
   req.context.secretScanningData = secretScanningData.filter((entry) =>
-    getApplicableVersions(entry.versions).includes(currentVersion),
+    currentVersion ? getApplicableVersions(entry.versions).includes(currentVersion) : false,
   )
 
   // Some entries might use Liquid syntax, so we need
@@ -45,6 +45,9 @@ export default async function secretScanning(
     }
     if (entry.isduplicate) {
       entry.secretType += ' <br/><a href="#token-versions">Token versions</a>'
+    }
+    if (entry.ismultipart) {
+      entry.secretType += ' <br/><a href="#multi-part-secrets">Multi-part secrets</a>'
     }
   })
 

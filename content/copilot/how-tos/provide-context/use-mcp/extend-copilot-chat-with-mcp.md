@@ -1,8 +1,8 @@
 ---
-title: Extending GitHub Copilot Chat with the Model Context Protocol (MCP)
+title: Extending GitHub Copilot Chat with Model Context Protocol (MCP) servers
 allowTitleToDifferFromFilename: true
 shortTitle: Extend Copilot Chat with MCP
-intro: 'Learn how to use the Model Context Protocol (MCP) to extend {% data variables.copilot.copilot_chat_short %}.'
+intro: 'Connect MCP servers to {% data variables.copilot.copilot_chat_short %} to share context from other applications.'
 versions:
   feature: copilot
 defaultTool: vscode
@@ -15,9 +15,9 @@ redirect_from:
   - /copilot/how-tos/context/model-context-protocol/extend-copilot-chat-with-mcp
   - /copilot/how-tos/context/use-mcp/extend-copilot-chat-with-mcp
 contentType: how-tos
+category: 
+  - Integrate Copilot with your tools
 ---
-
-{% data reusables.copilot.mcp-availability-and-preview-note %}
 
 ## Introduction
 
@@ -32,10 +32,29 @@ For information on currently available MCP servers, see [the MCP servers reposit
 ## Prerequisites
 
 * **Access to {% data variables.product.prodname_copilot_short %}**. {% data reusables.copilot.subscription-prerequisite %}
-* **{% data variables.product.prodname_vscode %} version 1.99 or later**. For information on installing {% data variables.product.prodname_vscode %}, see the [{% data variables.product.prodname_vscode %} download page](https://code.visualstudio.com/Download).
+* **{% data variables.product.prodname_vscode %} version 1.99 or later**. For information on installing {% data variables.product.prodname_vscode %}, see the [{% data variables.product.prodname_vscode %} download page](https://code.visualstudio.com/Download?ref_product=copilot&ref_type=engagement&ref_style=text).
 * {% data reusables.copilot.mcp-policy-requirement %}
 
 ## Configuring MCP servers in {% data variables.product.prodname_vscode %}
+
+MCP servers can be configured manually in a configuration file, or through the {% data variables.product.github %} MCP Registry. The {% data variables.product.github %} MCP Registry provides a curated list of MCP servers that you can easily add to your {% data variables.product.prodname_vscode %} instance.
+
+### Using the {% data variables.product.github %} MCP Registry
+
+>[!NOTE]
+> The {% data variables.product.github %} MCP Registry is in {% data variables.release-phases.public_preview %} and may change.
+
+Only MCP servers listed in the {% data variables.product.github %} MCP Registry can be added through the registry. Other servers can be configured manually. See [Configuring MCP servers manually](#configuring-mcp-servers-manually).
+
+1. In {% data variables.product.prodname_vscode %}, open the extensions panel by clicking the extensions icon in the sidebar or pressing <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>X</kbd> (Windows/Linux) / <kbd>Command</kbd>+<kbd>Shift</kbd>+<kbd>X</kbd> (Mac).
+1. In the extensions search bar, click the filter icon and select **MCP Registry** from the dropdown.
+1. If it is your first time using the MCP Registry, follow the prompts on screen to enable the registry.
+1. In the search bar, type the name of the MCP server you want to add and select it from the search results.
+1. On the MCP server's configuration page, click **Install**.
+1. To check that the MCP server is configured correctly, open the command palette by pressing <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> (Windows/Linux) / <kbd>Command</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> (Mac).
+1. Type and select **MCP: List Servers**. You should see the MCP server listed as a configured server.
+
+### Configuring MCP servers manually
 
 To configure MCP servers in {% data variables.product.prodname_vscode %}, you need to set up a configuration script that specifies the details of the MCP servers you want to use. You can configure MCP servers for either:
 
@@ -121,6 +140,77 @@ If you already have an MCP configuration in Claude Desktop, you can use that con
 
 {% endvscode %}
 
+{% visualstudio %}
+
+## Prerequisites
+
+* **Access to {% data variables.product.prodname_copilot_short %}**. {% data reusables.copilot.subscription-prerequisite %}
+* **{% data variables.product.prodname_vs %} version 17.14 or later**. For more information on installing {% data variables.product.prodname_vs %}, see the [{% data variables.product.prodname_vs %} downloads page](https://visualstudio.microsoft.com/downloads/).
+* **Sign in to {% data variables.product.company_short %} from {% data variables.product.prodname_vs %}**.
+* {% data reusables.copilot.mcp-policy-requirement %}
+
+## Configuring MCP servers in {% data variables.product.prodname_vs %}
+
+1. In the {% data variables.product.prodname_vs %} menu bar, click **View**, then click **{% data variables.copilot.copilot_chat %}**.
+1. At the bottom of the chat panel, select **Agent** from the mode dropdown.
+1. In the {% data variables.copilot.copilot_chat_short %} window, click the tools icon, then click the plus icon in the tool picker window.
+1. In the "Configure MCP server" pop-up window, fill out the fields, including server ID, type, and any additional fields required for the specific MCP server configuration.
+
+   {% data variables.product.prodname_vs %} supports both remote and local servers. Remote servers, defined with a URL and credentials, are hosted externally for easier setup and sharing, while local servers, defined with command-line invocation, run on your local machine and can access local resources. See example configurations below, using the {% data variables.product.github %} MCP server as an example.
+
+1. Click **Save**.
+1. If you are using a remote server with OAuth authentication, in the `mcp.json` file, click **Auth** from the CodeLens above the server to authenticate to the server. A pop-up or new window will appear, allowing you to authenticate with your account. The server will only be able to access the scopes you approve, and that your organization policies allow.
+1. In the {% data variables.copilot.copilot_chat_short %} window, click the tools icon. You should now see additional tools from the MCP server that you configured.
+
+### Remote server configuration example with OAuth
+
+  1. For "Server ID", type `github`.
+  1. For "Type", select "HTTP/SSE" from the dropdown.
+  1. For "URL", type `https://api.githubcopilot.com/mcp/`.
+  1. After clicking **Save**, the configuration in the `mcp.json` file should look like this:
+
+      ```json copy
+          {
+            "servers": {
+              "github": {
+                "url": "https://api.githubcopilot.com/mcp/"
+              }
+            }
+          }
+      ```
+
+  1. In the `mcp.json` file, click **Auth** from the CodeLens above the server to authenticate to the server. A pop-up will come up allowing you to authenticate with your {% data variables.product.github %} account.
+
+### Local server configuration example
+
+  1. For "Server ID", type `github`.
+  1. For "Type", select "stdio" from the dropdown.
+  1. For "Command (with optional arguments)", type `docker "run", "-i", "--rm", "-e", "GITHUB_PERSONAL_ACCESS_TOKEN", "ghcr.io/github/github-mcp-server"`
+  1. Add an environment variable "GITHUB_PERSONAL_ACCESS_TOKEN" set to your {% data variables.product.pat_generic %}.
+  1. After clicking **Save**, the configuration in the `mcp.json` file should look like this:
+
+        ```json copy
+            {
+              "servers": {
+                "github": {
+                  "type": "stdio",
+                  "command": "docker",
+                  "args": [
+                    "run", "-i", "--rm", "-e", "GITHUB_PERSONAL_ACCESS_TOKEN",
+                    "ghcr.io/github/github-mcp-server"
+                  ],
+                  "env": {
+                    "GITHUB_PERSONAL_ACCESS_TOKEN": "YOUR_GITHUB_PAT"
+                  }
+                }
+              }
+            }
+        ```
+
+For more information on configuring MCP servers in {% data variables.product.prodname_vs %}, see [Use MCP servers in {% data variables.product.prodname_vs %} (Preview)](https://learn.microsoft.com/en-us/visualstudio/ide/mcp-servers?view=vs-2022) in the {% data variables.product.prodname_vs %} documentation.
+
+{% endvisualstudio %}
+
 {% jetbrains %}
 
 ## Prerequisites
@@ -131,7 +221,16 @@ If you already have an MCP configuration in Claude Desktop, you can use that con
   {% data reusables.copilot.jetbrains-compatible-ides %}
 * {% data reusables.copilot.mcp-policy-requirement %}
 
-## Configuring MCP servers in JetBrains IDEs
+## Configuring MCP servers from your MCP registry
+
+1. In your JetBrains IDE, open {% data variables.copilot.copilot_chat_short %}.
+1. In the {% data variables.copilot.copilot_chat_short %} window, click the {% octicon "mcp" aria-hidden="true" aria-label="mcp" %} MCP icon.
+1. In the MCP Registry window, find the MCP server(s) you want to add from the list of available servers.
+1. Next to each MCP server you want to add, click **Install**.
+1. When you are finished adding MCP servers, click **OK**.
+1. In the {% data variables.copilot.copilot_chat_short %} window, click the tools icon. You should now see additional tools from the MCP server(s) that you installed.
+
+## Configuring MCP servers manually
 
 {% data reusables.copilot.jetbrains-mcp-setup-steps %}
 1. In the `mcp.json` file, define your MCP servers. JetBrains IDEs support both remote and local servers. Remote servers are hosted externally for easier setup and sharing, while local servers run on your local machine and can access local resources.
@@ -156,7 +255,18 @@ You can use the following configurations as examples:
 * **{% data variables.product.prodname_copilot %} for Xcode extension**. See [AUTOTITLE](/copilot/configuring-github-copilot/installing-the-github-copilot-extension-in-your-environment).
 * {% data reusables.copilot.mcp-policy-requirement %}
 
-## Configuring MCP servers in Xcode
+## Configuring MCP servers from your MCP registry
+
+1. In Xcode, open {% data variables.copilot.copilot_chat_short %}.
+1. In the {% data variables.copilot.copilot_chat_short %} window, click the {% octicon "gear" aria-label="The Settings gear" %} icon to open settings.
+1. In the settings window, select the **Tools** tab.
+1. Next to **MCP Registry URL (Optional)**, click **Browse MCP Servers**.
+1. In the MCP Registry window, find the MCP server(s) you want to add from the list of available servers.
+1. Next to each MCP server you want to add, click **Install**.
+1. When you are finished adding MCP servers, close the **MCP Servers Marketplace** window.
+1. In the settings window, under **Available MCP Tools**, click the **>** icon to expand the list of available MCP tools. You should now see additional tools from the MCP server(s) that you installed.
+
+## Configuring MCP servers manually
 
 {% data reusables.copilot.xcode-mcp-setup-steps %}
 1. Define your MCP servers, editing `mcp.json`. Xcode supports both remote and local servers. Remote servers are hosted externally for easier setup and sharing, while local servers run on your local machine and can access local resources.
@@ -179,7 +289,16 @@ You can use the following configurations as examples:
 
 {% data reusables.copilot.eclipse-prerequisites %}
 
-## Configuring MCP servers in Eclipse
+## Configuring MCP servers from your MCP registry
+
+1. In Eclipse, open {% data variables.copilot.copilot_chat_short %}.
+1. In the {% data variables.copilot.copilot_chat_short %} window, click the {% octicon "mcp" aria-hidden="true" aria-label="mcp" %} MCP icon.
+1. In the MCP Registry window, find the MCP server(s) you want to add from the list of available servers.
+1. Next to each MCP server you want to add, click **Install**.
+1. When you are finished adding MCP servers, click **Close**.
+1. In the {% data variables.copilot.copilot_chat_short %} window, click the tools icon. You should now see additional tools from the MCP server(s) that you installed.
+
+## Configuring MCP servers manually
 
 {% data reusables.copilot.eclipse-mcp-setup-steps %}
 1. Under "Server Configurations", define your MCP servers. Eclipse supports both remote and local servers. Remote servers are hosted externally for easier setup and sharing, while local servers run on your local machine and can access local resources.

@@ -10,8 +10,8 @@ children:
   - /manage-for-organization
   - /manage-for-enterprise
   - /download-activity-report
+  - /configure-mcp-server-access
 redirect_from:
   - /copilot/how-tos/administer
 contentType: how-tos
 ---
-

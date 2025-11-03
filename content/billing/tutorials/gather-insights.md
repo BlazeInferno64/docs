@@ -11,7 +11,6 @@ topics:
   - Billing
   - Enterprise
   - Team
-permissions: '{% data reusables.permissions.enhanced-billing-platform %}'
 product: '{% data reusables.billing.enhanced-billing-platform-product %}'
 shortTitle: Gather insights
 contentType: tutorials
@@ -54,7 +53,7 @@ You can view the usage of your personal account and download the usage data for 
 
 ## Viewing usage for your {% data variables.enterprise.enterprise_or_org %}
 
-You can view the usage of your {% data variables.enterprise.enterprise_or_org %} members and download the usage data for further analysis.
+{% ifversion fpt %}Organization **owners**{% elsif ghec or ghes %}Enterprise **owners**{% endif %} and **billing managers** can view the usage of your {% data variables.enterprise.enterprise_or_org %} members and download the usage data for further analysis.
 
 {% ifversion fpt %}
 
@@ -87,6 +86,8 @@ You can view the usage of your {% data variables.enterprise.enterprise_or_org %}
    * For a per user breakdown of premium requests for the last 45 days, click **{% data variables.product.prodname_copilot_short %} premium requests usage report**.
 
    >[!TIP] The premium request usage report includes all premium requests, both within and beyond the allowance.
+
+{% data reusables.billing.usage-reports-api-limitation %}
 
 ## Viewing license usage
 

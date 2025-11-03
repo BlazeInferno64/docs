@@ -7,6 +7,8 @@ versions:
   feature: copilot
 topics:
   - Copilot
+category:
+  - Configure Copilot
 redirect_from:
   - /copilot/reference/proxy-server-and-firewall-settings-for-copilot
   - /copilot/managing-copilot/managing-github-copilot-in-your-organization/configuring-your-proxy-server-or-firewall-for-copilot
@@ -18,20 +20,21 @@ If your company employs security measures like a firewall or proxy server, you s
 
 ## {% data variables.product.github %} public URLs
 
-| Domain and/or URL                      | Purpose |
-| :------------------------------------- | :--------------------------------- |
-| `https://github.com/login/*`             | Authentication |
-| `https://github.com/enterprises/YOUR-ENTERPRISE/*` | Authentication for {% data variables.enterprise.prodname_managed_users %}, only required with {% data variables.product.prodname_emus %} |
-| `https://api.github.com/user`             | User Management |
-| `https://api.github.com/copilot_internal/*` | User Management |
+| Domain and/or URL                                           | Purpose |
+|:------------------------------------------------------------| :--------------------------------- |
+| `https://github.com/login/*`                                | Authentication |
+| `https://github.com/enterprises/YOUR-ENTERPRISE/*`          | Authentication for {% data variables.enterprise.prodname_managed_users %}, only required with {% data variables.product.prodname_emus %} |
+| `https://api.github.com/user`                               | User Management |
+| `https://api.github.com/copilot_internal/*`                 | User Management |
 | `https://copilot-telemetry.githubusercontent.com/telemetry` | Telemetry |
-| `https://default.exp-tas.com` | Telemetry |
-| `https://copilot-proxy.githubusercontent.com` | API service for {% data variables.product.prodname_copilot_short %} suggestions |
-| `https://origin-tracker.githubusercontent.com` | API service for {% data variables.product.prodname_copilot_short %} suggestions |
-| `https://*.githubcopilot.com`[^1] | API service for {% data variables.product.prodname_copilot_short %} suggestions |
-| `https://*.individual.githubcopilot.com`[^2] | API service for {% data variables.product.prodname_copilot_short %} suggestions |
-| `https://*.business.githubcopilot.com`[^3] | API service for {% data variables.product.prodname_copilot_short %} suggestions |
-| `https://*.enterprise.githubcopilot.com`[^4] | API service for {% data variables.product.prodname_copilot_short %} suggestions |
+| `https://collector.github.com/*`                            | Analytics telemetry |
+| `https://default.exp-tas.com`                               | Telemetry |
+| `https://copilot-proxy.githubusercontent.com`               | API service for {% data variables.product.prodname_copilot_short %} suggestions |
+| `https://origin-tracker.githubusercontent.com`              | API service for {% data variables.product.prodname_copilot_short %} suggestions |
+| `https://*.githubcopilot.com/*`[^1]                         | API service for {% data variables.product.prodname_copilot_short %} suggestions |
+| `https://*.individual.githubcopilot.com`[^2]                | API service for {% data variables.product.prodname_copilot_short %} suggestions |
+| `https://*.business.githubcopilot.com`[^3]                  | API service for {% data variables.product.prodname_copilot_short %} suggestions |
+| `https://*.enterprise.githubcopilot.com`[^4]                | API service for {% data variables.product.prodname_copilot_short %} suggestions |
 
 Depending on the security policies and editors your organization uses, you may need to allowlist additional domains and URLs. For more information on specific editors, see [Further reading](#further-reading).
 

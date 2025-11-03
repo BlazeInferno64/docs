@@ -10,11 +10,12 @@ children:
   - /manage-plan
   - /manage-access
   - /manage-enterprise-policies
-  - /manage-copilot-coding-agent
+  - /manage-agents
+  - /manage-spark
+  - /view-usage-and-adoption
 redirect_from:
   - /copilot/managing-copilot/managing-copilot-for-your-enterprise
   - /copilot/how-tos/administer/enterprises
   - /copilot/how-tos/administer/manage-for-enterprise
 contentType: how-tos
 ---
-

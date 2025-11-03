@@ -58,6 +58,14 @@ If you're configuring SCIM provisioning for a new enterprise, make sure to compl
 {% else %}
 
 * SCIM is a server-to-server protocol. Your instance's REST API endpoints must be accessible to your SCIM provider.
+
+This table contains the network requirements to configure GHES SCIM with an IdP:
+
+| System | Direction | Purpose | Protocol / Port | Notes |
+|------------|------------|----------|------------------|-------|
+| GitHub Enterprise Server | Inbound | Receives SCIM API requests from IdP for users and groups | TCP 443 (HTTPS) | [AUTOTITLE](/enterprise-server/rest/enterprise-admin/scim) must be reachable from IdP |
+| Identity Provider (IdP) | Outbound | Sends SCIM provisioning requests to GitHub for users and groups | TCP 443 (HTTPS) | IdP acts as SCIM client, initiating outbound HTTPS connections to GitHub's SCIM API endpoints. |
+
 * For authentication, your instance must use SAML SSO, or a mix of SAML and built-in authentication.
   * You cannot mix SCIM with other external authentication methods. If you use CAS or LDAP, you will need to migrate to SAML before using SCIM.
   * After you have configured SCIM, you must keep SAML authentication enabled to continue using SCIM.
@@ -86,6 +94,11 @@ To ensure you can continue to sign in and configure settings when SCIM is enable
    Ensure the user's email and username are different from any user you plan on provisioning through SCIM. If your email provider supports it, you can modify an email address by adding `+admin`, for example `johndoe+admin@example.com`.
 
    {% ifversion scim-for-ghes-ga %}You can use any username for your setup user, but we recommend using `scim-admin`. Although the `scim-admin` user consumes a license when first created, the license is freed once SCIM is enabled. With any other username, the user will continue to consume a license after SCIM is enabled.{% endif %}
+
+1. Copy the password reset link after creating the user, and open it in a private browser window. Set a password for this user.
+
+   > [!IMPORTANT]
+   > As this user will act as a break-glass account, ensure you store the password securely in a password manager. Otherwise you risk losing access to this account.
 
 1. Promote the user to an enterprise owner. See [AUTOTITLE](/admin/managing-accounts-and-repositories/managing-users-in-your-enterprise/promoting-or-demoting-a-site-administrator#promoting-a-user-from-the-enterprise-settings).
 

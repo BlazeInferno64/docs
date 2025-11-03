@@ -46,6 +46,7 @@ GitHub | `saml_csrf_token_legacy` | This cookie is set by SAML auth path method 
 GitHub | `saml_return_to` | This cookie is set by the SAML auth path method to maintain state during the SAML authentication loop. | Until user closes browser or completes authentication request
 GitHub | `saml_return_to_legacy` | This cookie is set by the SAML auth path method to maintain state during the SAML authentication loop. | Until user closes browser or completes authentication request
 GitHub | `show_cookie_banner` | Set based on the client’s region and used to determine if a cookie consent banner should be shown | Session
+GitHub | `social_csrf_token` | This cookie is set by the social initiate path to ensure that the user that started the flow is the same user that completes it. | 5 minutes
 GitHub | `tz` | This cookie allows us to customize timestamps to your time zone. | Session
 GitHub | `user_session` | This cookie is used to log you in. | Two weeks
 [Microsoft](https://privacy.microsoft.com/en-us/privacystatement) | `ai_session` | Application Insights session ID | One year
@@ -112,6 +113,6 @@ GitHub | `user_session` | This cookie is used to log you in. | Two weeks
 [Quantcast](https://www.quantcast.com/privacy/) | `d` | This cookie is used for Market and Audience Segmentation and Targeted advertising services. | 3 months
 [Quantcast](https://www.quantcast.com/privacy/) | `mc` | This cookie is used to track anonymous information about how website visitors use the site. | 13 months
 [Yahoo](https://policies.yahoo.com/us/en/yahoo/privacy/index.htm?redirect=no) | `A3` | This cookie is used for search and advertising. | One year
-[Yahoo](https://policies.yahoo.com/us/en/yahoo/privacy/index.htm?redirect=no) | `b` | This cookie collects anonymous data related to the visitor's website visits, such as the number of visits, average time spent on the website and what pages have been loaded. The registered data is used to categorize the users' interest and demographical profiles with the purpose of customizing the website content depending on the visitor. | One year
+[Yahoo](https://policies.yahoo.com/us/en/yahoo/privacy/index.htm?redirect=no) | `b` | This cookie collects anonymous data related to the visitor's website visits, such as the number of visits, average time spent on the website and what pages have been loaded. The registered data is used to categorize the users' interest and demographic profiles with the purpose of customizing the website content depending on the visitor. | One year
 
 (*) The expiration dates for the cookies listed above generally apply on a rolling basis.

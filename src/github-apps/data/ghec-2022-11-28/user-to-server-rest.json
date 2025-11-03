@@ -37,6 +37,42 @@
       "requestPath": "/orgs/{org}/actions/hosted-runners"
     },
     {
+      "slug": "list-custom-images-for-an-organization",
+      "subcategory": "hosted-runners",
+      "verb": "get",
+      "requestPath": "/orgs/{org}/actions/hosted-runners/images/custom"
+    },
+    {
+      "slug": "get-a-custom-image-definition-for-github-actions-hosted-runners",
+      "subcategory": "hosted-runners",
+      "verb": "get",
+      "requestPath": "/orgs/{org}/actions/hosted-runners/images/custom/{image_definition_id}"
+    },
+    {
+      "slug": "delete-a-custom-image-from-the-organization",
+      "subcategory": "hosted-runners",
+      "verb": "delete",
+      "requestPath": "/orgs/{org}/actions/hosted-runners/images/custom/{image_definition_id}"
+    },
+    {
+      "slug": "list-image-versions-of-a-custom-image-for-an-organization",
+      "subcategory": "hosted-runners",
+      "verb": "get",
+      "requestPath": "/orgs/{org}/actions/hosted-runners/images/custom/{image_definition_id}/versions"
+    },
+    {
+      "slug": "get-an-image-version-of-a-custom-image-for-github-actions-hosted-runners",
+      "subcategory": "hosted-runners",
+      "verb": "get",
+      "requestPath": "/orgs/{org}/actions/hosted-runners/images/custom/{image_definition_id}/versions/{version}"
+    },
+    {
+      "slug": "delete-an-image-version-of-custom-image-from-the-organization",
+      "subcategory": "hosted-runners",
+      "verb": "delete",
+      "requestPath": "/orgs/{org}/actions/hosted-runners/images/custom/{image_definition_id}/versions/{version}"
+    },
+    {
       "slug": "get-github-owned-images-for-github-hosted-runners-in-an-organization",
       "subcategory": "hosted-runners",
       "verb": "get",
@@ -1185,10 +1221,22 @@
   ],
   "billing": [
     {
+      "slug": "get-billing-premium-request-usage-report-for-an-organization",
+      "subcategory": "enhanced-billing",
+      "verb": "get",
+      "requestPath": "/organizations/{org}/settings/billing/premium_request/usage"
+    },
+    {
       "slug": "get-billing-usage-report-for-an-organization",
       "subcategory": "enhanced-billing",
       "verb": "get",
       "requestPath": "/organizations/{org}/settings/billing/usage"
+    },
+    {
+      "slug": "get-billing-usage-summary-report-for-an-organization",
+      "subcategory": "enhanced-billing",
+      "verb": "get",
+      "requestPath": "/organizations/{org}/settings/billing/usage/summary"
     },
     {
       "slug": "get-github-actions-billing-for-an-organization",
@@ -1227,6 +1275,12 @@
       "requestPath": "/users/{username}/settings/billing/packages"
     },
     {
+      "slug": "get-billing-premium-request-usage-report-for-a-user",
+      "subcategory": "enhanced-billing",
+      "verb": "get",
+      "requestPath": "/users/{username}/settings/billing/premium_request/usage"
+    },
+    {
       "slug": "get-shared-storage-billing-for-a-user",
       "subcategory": "billing",
       "verb": "get",
@@ -1237,6 +1291,12 @@
       "subcategory": "enhanced-billing",
       "verb": "get",
       "requestPath": "/users/{username}/settings/billing/usage"
+    },
+    {
+      "slug": "get-billing-usage-summary-report-for-a-user",
+      "subcategory": "enhanced-billing",
+      "verb": "get",
+      "requestPath": "/users/{username}/settings/billing/usage/summary"
     }
   ],
   "branches": [
@@ -2739,10 +2799,112 @@
       "requestPath": "/enterprises/{enterprise}/consumed-licenses"
     },
     {
+      "slug": "get-all-enterprise-roles-for-an-enterprise",
+      "subcategory": "enterprise-roles",
+      "verb": "get",
+      "requestPath": "/enterprises/{enterprise}/enterprise-roles"
+    },
+    {
+      "slug": "remove-all-enterprise-roles-from-a-team",
+      "subcategory": "enterprise-roles",
+      "verb": "delete",
+      "requestPath": "/enterprises/{enterprise}/enterprise-roles/teams/{team_slug}"
+    },
+    {
+      "slug": "assign-an-enterprise-role-to-a-team",
+      "subcategory": "enterprise-roles",
+      "verb": "put",
+      "requestPath": "/enterprises/{enterprise}/enterprise-roles/teams/{team_slug}/{role_id}"
+    },
+    {
+      "slug": "remove-an-enterprise-role-from-a-team",
+      "subcategory": "enterprise-roles",
+      "verb": "delete",
+      "requestPath": "/enterprises/{enterprise}/enterprise-roles/teams/{team_slug}/{role_id}"
+    },
+    {
+      "slug": "remove-all-enterprise-roles-from-a-user",
+      "subcategory": "enterprise-roles",
+      "verb": "delete",
+      "requestPath": "/enterprises/{enterprise}/enterprise-roles/users/{username}"
+    },
+    {
+      "slug": "assign-an-enterprise-role-to-an-enterprise-user",
+      "subcategory": "enterprise-roles",
+      "verb": "put",
+      "requestPath": "/enterprises/{enterprise}/enterprise-roles/users/{username}/{role_id}"
+    },
+    {
+      "slug": "remove-enterprise-user-role-assignment",
+      "subcategory": "enterprise-roles",
+      "verb": "delete",
+      "requestPath": "/enterprises/{enterprise}/enterprise-roles/users/{username}/{role_id}"
+    },
+    {
+      "slug": "get-an-enterprise-role",
+      "subcategory": "enterprise-roles",
+      "verb": "get",
+      "requestPath": "/enterprises/{enterprise}/enterprise-roles/{role_id}"
+    },
+    {
+      "slug": "list-teams-that-are-assigned-to-an-enterprise-role",
+      "subcategory": "enterprise-roles",
+      "verb": "get",
+      "requestPath": "/enterprises/{enterprise}/enterprise-roles/{role_id}/teams"
+    },
+    {
+      "slug": "list-users-that-are-assigned-to-an-enterprise-role",
+      "subcategory": "enterprise-roles",
+      "verb": "get",
+      "requestPath": "/enterprises/{enterprise}/enterprise-roles/{role_id}/users"
+    },
+    {
       "slug": "get-a-license-sync-status",
       "subcategory": "license",
       "verb": "get",
       "requestPath": "/enterprises/{enterprise}/license-sync-status"
+    },
+    {
+      "slug": "get-organization-custom-properties-schema-for-an-enterprise",
+      "subcategory": "custom-properties-for-orgs",
+      "verb": "get",
+      "requestPath": "/enterprises/{enterprise}/org-properties/schema"
+    },
+    {
+      "slug": "create-or-update-organization-custom-property-definitions-on-an-enterprise",
+      "subcategory": "custom-properties-for-orgs",
+      "verb": "patch",
+      "requestPath": "/enterprises/{enterprise}/org-properties/schema"
+    },
+    {
+      "slug": "get-an-organization-custom-property-definition-from-an-enterprise",
+      "subcategory": "custom-properties-for-orgs",
+      "verb": "get",
+      "requestPath": "/enterprises/{enterprise}/org-properties/schema/{custom_property_name}"
+    },
+    {
+      "slug": "create-or-update-an-organization-custom-property-definition-on-an-enterprise",
+      "subcategory": "custom-properties-for-orgs",
+      "verb": "put",
+      "requestPath": "/enterprises/{enterprise}/org-properties/schema/{custom_property_name}"
+    },
+    {
+      "slug": "remove-an-organization-custom-property-definition-from-an-enterprise",
+      "subcategory": "custom-properties-for-orgs",
+      "verb": "delete",
+      "requestPath": "/enterprises/{enterprise}/org-properties/schema/{custom_property_name}"
+    },
+    {
+      "slug": "list-custom-property-values-for-organizations-in-an-enterprise",
+      "subcategory": "custom-properties-for-orgs",
+      "verb": "get",
+      "requestPath": "/enterprises/{enterprise}/org-properties/values"
+    },
+    {
+      "slug": "create-or-update-custom-property-values-for-organizations-in-an-enterprise",
+      "subcategory": "custom-properties-for-orgs",
+      "verb": "patch",
+      "requestPath": "/enterprises/{enterprise}/org-properties/values"
     },
     {
       "slug": "get-custom-properties-for-an-enterprise",
@@ -3361,6 +3523,12 @@
       "requestPath": "/repos/{owner}/{repo}/issues/{issue_number}/lock"
     },
     {
+      "slug": "get-parent-issue",
+      "subcategory": "sub-issues",
+      "verb": "get",
+      "requestPath": "/repos/{owner}/{repo}/issues/{issue_number}/parent"
+    },
+    {
       "slug": "remove-sub-issue",
       "subcategory": "sub-issues",
       "verb": "delete",
@@ -3655,6 +3823,18 @@
       "requestPath": "/organizations/{organization_id}/custom_roles"
     },
     {
+      "slug": "get-all-custom-property-values-for-an-organization",
+      "subcategory": "custom-properties-for-orgs",
+      "verb": "get",
+      "requestPath": "/organizations/{org}/org-properties/values"
+    },
+    {
+      "slug": "create-or-update-custom-property-values-for-an-organization",
+      "subcategory": "custom-properties-for-orgs",
+      "verb": "patch",
+      "requestPath": "/organizations/{org}/org-properties/values"
+    },
+    {
       "slug": "get-an-organization",
       "subcategory": "orgs",
       "verb": "get",
@@ -3673,8 +3853,20 @@
       "requestPath": "/orgs/{org}"
     },
     {
+      "slug": "create-artifact-metadata-storage-record",
+      "subcategory": "artifact-metadata",
+      "verb": "post",
+      "requestPath": "/orgs/{org}/artifacts/metadata/storage-record"
+    },
+    {
+      "slug": "list-artifact-storage-records",
+      "subcategory": "artifact-metadata",
+      "verb": "get",
+      "requestPath": "/orgs/{org}/artifacts/{subject_digest}/metadata/storage-records"
+    },
+    {
       "slug": "list-attestations-by-bulk-subject-digests",
-      "subcategory": "orgs",
+      "subcategory": "attestations",
       "verb": "post",
       "requestPath": "/orgs/{org}/attestations/bulk-list"
     },
@@ -3691,6 +3883,12 @@
       "requestPath": "/orgs/{org}/attestations/digest/{subject_digest}"
     },
     {
+      "slug": "list-attestation-repositories",
+      "subcategory": "attestations",
+      "verb": "get",
+      "requestPath": "/orgs/{org}/attestations/repositories"
+    },
+    {
       "slug": "delete-attestations-by-id",
       "subcategory": "attestations",
       "verb": "delete",
@@ -3698,7 +3896,7 @@
     },
     {
       "slug": "list-attestations",
-      "subcategory": "orgs",
+      "subcategory": "attestations",
       "verb": "get",
       "requestPath": "/orgs/{org}/attestations/{subject_digest}"
     },
@@ -4321,6 +4519,42 @@
       "requestPath": "/orgs/{org}/security-managers/teams/{team_slug}"
     },
     {
+      "slug": "get-immutable-releases-settings-for-an-organization",
+      "subcategory": "orgs",
+      "verb": "get",
+      "requestPath": "/orgs/{org}/settings/immutable-releases"
+    },
+    {
+      "slug": "set-immutable-releases-settings-for-an-organization",
+      "subcategory": "orgs",
+      "verb": "put",
+      "requestPath": "/orgs/{org}/settings/immutable-releases"
+    },
+    {
+      "slug": "list-selected-repositories-for-immutable-releases-enforcement",
+      "subcategory": "orgs",
+      "verb": "get",
+      "requestPath": "/orgs/{org}/settings/immutable-releases/repositories"
+    },
+    {
+      "slug": "set-selected-repositories-for-immutable-releases-enforcement",
+      "subcategory": "orgs",
+      "verb": "put",
+      "requestPath": "/orgs/{org}/settings/immutable-releases/repositories"
+    },
+    {
+      "slug": "enable-a-selected-repository-for-immutable-releases-in-an-organization",
+      "subcategory": "orgs",
+      "verb": "put",
+      "requestPath": "/orgs/{org}/settings/immutable-releases/repositories/{repository_id}"
+    },
+    {
+      "slug": "disable-a-selected-repository-for-immutable-releases-in-an-organization",
+      "subcategory": "orgs",
+      "verb": "delete",
+      "requestPath": "/orgs/{org}/settings/immutable-releases/repositories/{repository_id}"
+    },
+    {
       "slug": "list-hosted-compute-network-configurations-for-an-organization",
       "subcategory": "network-configurations",
       "verb": "get",
@@ -4615,43 +4849,63 @@
       "requestPath": "/orgs/{org}/private-registries/{secret_name}"
     }
   ],
-  "projects-classic": [
+  "projects": [
     {
-      "slug": "list-organization-projects",
+      "slug": "list-projects-for-organization",
       "subcategory": "projects",
       "verb": "get",
-      "requestPath": "/orgs/{org}/projects"
+      "requestPath": "/orgs/{org}/projectsV2"
     },
     {
-      "slug": "create-an-organization-project",
+      "slug": "get-project-for-organization",
       "subcategory": "projects",
+      "verb": "get",
+      "requestPath": "/orgs/{org}/projectsV2/{project_number}"
+    },
+    {
+      "slug": "list-project-fields-for-organization",
+      "subcategory": "fields",
+      "verb": "get",
+      "requestPath": "/orgs/{org}/projectsV2/{project_number}/fields"
+    },
+    {
+      "slug": "get-project-field-for-organization",
+      "subcategory": "fields",
+      "verb": "get",
+      "requestPath": "/orgs/{org}/projectsV2/{project_number}/fields/{field_id}"
+    },
+    {
+      "slug": "list-items-for-an-organization-owned-project",
+      "subcategory": "items",
+      "verb": "get",
+      "requestPath": "/orgs/{org}/projectsV2/{project_number}/items"
+    },
+    {
+      "slug": "add-item-to-organization-owned-project",
+      "subcategory": "items",
       "verb": "post",
-      "requestPath": "/orgs/{org}/projects"
+      "requestPath": "/orgs/{org}/projectsV2/{project_number}/items"
     },
     {
-      "slug": "get-a-project-card",
-      "subcategory": "cards",
+      "slug": "get-an-item-for-an-organization-owned-project",
+      "subcategory": "items",
       "verb": "get",
-      "requestPath": "/projects/columns/cards/{card_id}"
+      "requestPath": "/orgs/{org}/projectsV2/{project_number}/items/{item_id}"
     },
     {
-      "slug": "update-an-existing-project-card",
-      "subcategory": "cards",
+      "slug": "update-project-item-for-organization",
+      "subcategory": "items",
       "verb": "patch",
-      "requestPath": "/projects/columns/cards/{card_id}"
+      "requestPath": "/orgs/{org}/projectsV2/{project_number}/items/{item_id}"
     },
     {
-      "slug": "delete-a-project-card",
-      "subcategory": "cards",
+      "slug": "delete-project-item-for-organization",
+      "subcategory": "items",
       "verb": "delete",
-      "requestPath": "/projects/columns/cards/{card_id}"
-    },
-    {
-      "slug": "move-a-project-card",
-      "subcategory": "cards",
-      "verb": "post",
-      "requestPath": "/projects/columns/cards/{card_id}/moves"
-    },
+      "requestPath": "/orgs/{org}/projectsV2/{project_number}/items/{item_id}"
+    }
+  ],
+  "projects-classic": [
     {
       "slug": "get-a-project-column",
       "subcategory": "columns",
@@ -4671,40 +4925,10 @@
       "requestPath": "/projects/columns/{column_id}"
     },
     {
-      "slug": "list-project-cards",
-      "subcategory": "cards",
-      "verb": "get",
-      "requestPath": "/projects/columns/{column_id}/cards"
-    },
-    {
-      "slug": "create-a-project-card",
-      "subcategory": "cards",
-      "verb": "post",
-      "requestPath": "/projects/columns/{column_id}/cards"
-    },
-    {
       "slug": "move-a-project-column",
       "subcategory": "columns",
       "verb": "post",
       "requestPath": "/projects/columns/{column_id}/moves"
-    },
-    {
-      "slug": "get-a-project",
-      "subcategory": "projects",
-      "verb": "get",
-      "requestPath": "/projects/{project_id}"
-    },
-    {
-      "slug": "update-a-project",
-      "subcategory": "projects",
-      "verb": "patch",
-      "requestPath": "/projects/{project_id}"
-    },
-    {
-      "slug": "delete-a-project",
-      "subcategory": "projects",
-      "verb": "delete",
-      "requestPath": "/projects/{project_id}"
     },
     {
       "slug": "list-project-collaborators",
@@ -4729,30 +4953,6 @@
       "subcategory": "collaborators",
       "verb": "get",
       "requestPath": "/projects/{project_id}/collaborators/{username}/permission"
-    },
-    {
-      "slug": "list-project-columns",
-      "subcategory": "columns",
-      "verb": "get",
-      "requestPath": "/projects/{project_id}/columns"
-    },
-    {
-      "slug": "create-a-project-column",
-      "subcategory": "columns",
-      "verb": "post",
-      "requestPath": "/projects/{project_id}/columns"
-    },
-    {
-      "slug": "list-repository-projects",
-      "subcategory": "projects",
-      "verb": "get",
-      "requestPath": "/repos/{owner}/{repo}/projects"
-    },
-    {
-      "slug": "create-a-repository-project",
-      "subcategory": "projects",
-      "verb": "post",
-      "requestPath": "/repos/{owner}/{repo}/projects"
     }
   ],
   "pulls": [
@@ -5377,6 +5577,24 @@
       "requestPath": "/repos/{owner}/{repo}/hooks/{hook_id}/tests"
     },
     {
+      "slug": "check-if-immutable-releases-are-enabled-for-a-repository",
+      "subcategory": "repos",
+      "verb": "get",
+      "requestPath": "/repos/{owner}/{repo}/immutable-releases"
+    },
+    {
+      "slug": "enable-immutable-releases",
+      "subcategory": "repos",
+      "verb": "put",
+      "requestPath": "/repos/{owner}/{repo}/immutable-releases"
+    },
+    {
+      "slug": "disable-immutable-releases",
+      "subcategory": "repos",
+      "verb": "delete",
+      "requestPath": "/repos/{owner}/{repo}/immutable-releases"
+    },
+    {
       "slug": "list-repository-languages",
       "subcategory": "repos",
       "verb": "get",
@@ -5855,7 +6073,7 @@
       "requestPath": "/orgs/{org}/external-group/{group_id}"
     },
     {
-      "slug": "list-external-groups-in-an-organization",
+      "slug": "list-external-groups-available-to-an-organization",
       "subcategory": "external-groups",
       "verb": "get",
       "requestPath": "/orgs/{org}/external-groups"

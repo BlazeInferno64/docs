@@ -11,6 +11,9 @@ redirect_from:
   - /copilot/using-github-copilot/ai-models/comparing-ai-models-using-different-tasks
   - /copilot/tutorials/comparing-ai-models-using-different-tasks
 contentType: tutorials
+category:
+  - Rapid prototyping
+  - Author and optimize with Copilot
 ---
 
 ## Overview
@@ -31,7 +34,7 @@ Consider a scenario where you are writing helper functions for access control in
 
 Below is the helper function that grants editor access to a document:
 
-```python
+```python id=grant-editor-access
 def grant_editor_access(user_id, doc_id):
     access = AccessManager()
     access.assign_role(
@@ -44,7 +47,9 @@ def grant_editor_access(user_id, doc_id):
 
 ### Example prompt
 
-`Add a docstring to the function that explains what it does.`
+```copilot prompt copy ref=grant-editor-access
+Add a docstring to the function that explains what it does.
+```
 
 ### Example response
 
@@ -77,9 +82,9 @@ def grant_editor_access(user_id, doc_id):
 * {% data variables.copilot.copilot_gpt_41 %} can recognize the pattern and provide a clear, concise explanation.
 * The task doesn't require deep reasoning or complex logic.
 
-## {% data variables.copilot.copilot_o4_mini %}
+## {% data variables.copilot.copilot_gpt_5_mini %}
 
-OpenAI {% data variables.copilot.copilot_o4_mini %} is a fast, cost-efficient model designed for simple or repetitive coding tasks. It delivers reliable, concise answers with very low latency, making it ideal for real-time suggestions and lightweight development workflows. {% data variables.copilot.copilot_o4_mini %} is optimized for speed and responsiveness, so you can quickly iterate on small code changes or get instant feedback on straightforward prompts.
+OpenAI {% data variables.copilot.copilot_gpt_5_mini %} is a fast, cost-efficient model designed for simple or repetitive coding tasks. It delivers reliable, concise answers with very low latency, making it ideal for real-time suggestions and lightweight development workflows. {% data variables.copilot.copilot_gpt_5_mini %} is optimized for speed and responsiveness, so you can quickly iterate on small code changes or get instant feedback on straightforward prompts.
 
 ### Example scenario
 
@@ -87,7 +92,7 @@ Suppose you are building a utility script and need to filter a list of user reco
 
 Here’s a sample list of users:
 
-```python
+```python id=user-list
 users = [
     {"name": "Alice", "active": True, "signup_date": "2023-12-10"},
     {"name": "Bob", "active": False, "signup_date": "2023-11-05"},
@@ -97,7 +102,9 @@ users = [
 
 ### Example prompt
 
-`Filter the list of users to only include active users, and sort them by signup_date.`
+```copilot prompt copy ref=user-list
+Filter the list of users to only include active users, and sort them by signup_date.
+```
 
 ### Example response
 
@@ -113,15 +120,15 @@ active_users_sorted = sorted(active_users, key=lambda user: user["signup_date"])
 print(active_users_sorted)
 ```
 
-### Why {% data variables.copilot.copilot_o4_mini %} is a good fit
+### Why {% data variables.copilot.copilot_gpt_5_mini %} is a good fit
 
 * The task is straightforward and benefits from fast, low-latency responses.
-* {% data variables.copilot.copilot_o4_mini %} is optimized for cost and speed, making it ideal for quick edits, prototyping, and utility code.
+* {% data variables.copilot.copilot_gpt_5_mini %} is optimized for cost and speed, making it ideal for quick edits, prototyping, and utility code.
 * Use this model when you want reliable answers for simple coding questions without waiting for unnecessary depth.
 
-## {% data variables.copilot.copilot_gemini_flash %}
+## {% data variables.copilot.copilot_gpt_5 %}
 
-{% data reusables.copilot.model-use-cases.gemini-20-flash %}
+{% data reusables.copilot.model-use-cases.gpt-5 %}
 
 ### Example scenario
 
@@ -131,7 +138,9 @@ You’re designing a shopping cart system and have a UML class diagram that outl
 
 ### Example prompt
 
-`Use this UML diagram to generate the classes for a shopping cart system.`
+```copilot copy
+Use this UML diagram to generate the classes for a shopping cart system.
+```
 
 ### Example response
 
@@ -163,7 +172,7 @@ class Cart:
         return Order("", None, 0)
 ```
 
-### Why {% data variables.copilot.copilot_gemini_flash %} is a good fit
+### Why {% data variables.copilot.copilot_gpt_5 %} is a good fit
 
 * It can interpret visual assets, such as UML diagrams, wireframes, or flowcharts, to generate code scaffolding or suggest architecture.
 * It can be useful for reviewing screenshots of UI layouts or form designs and generating.
@@ -183,9 +192,9 @@ For a complete walkthrough of the scenario, see [AUTOTITLE](/copilot/tutorials/w
 * It performs well on everyday coding tasks like test generation, boilerplate scaffolding, and validation logic.
 * The task leans into multi-step reasoning, but still stays within the confidence zone of a less advanced model because the logic isn’t too deep.
 
-## {% data variables.copilot.copilot_claude_sonnet_37 %}
+## {% data variables.copilot.copilot_claude_sonnet_45 %}
 
-{% data reusables.copilot.model-use-cases.claude-37-sonnet %}
+{% data reusables.copilot.model-use-cases.claude-sonnet-45 %}
 
 ### Example scenario
 
@@ -193,9 +202,9 @@ Consider a scenario where you're modernizing a legacy COBOL application by rewri
 
 For a complete walkthrough of the scenario, see [AUTOTITLE](/copilot/tutorials/modernizing-legacy-code-with-github-copilot).
 
-### Why {% data variables.copilot.copilot_claude_sonnet_37 %} is a good fit
+### Why {% data variables.copilot.copilot_claude_sonnet_45 %} is a good fit
 
-* {% data variables.copilot.copilot_claude_sonnet_37 %} handles complex context well, making it suited for workflows that span multiple files or languages.
+* {% data variables.copilot.copilot_claude_sonnet_45 %} handles complex context well, making it suited for workflows that span multiple files or languages.
 * Its hybrid reasoning architecture allows it to switch between quick answers and deeper, step-by-step problem-solving.
 
 ## Further reading

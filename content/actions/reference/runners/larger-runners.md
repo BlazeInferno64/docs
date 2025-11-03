@@ -65,8 +65,6 @@ The following machines are available for macOS {% data variables.actions.hosted_
 
 {% data reusables.actions.larger-runners-table %}
 
->[!NOTE] The XLarge macOS runner is in public preview and subject to change.
-
 ## Limitations for macOS {% data variables.actions.hosted_runners %}
 
 {% data reusables.actions.macos-runner-limitations %}
@@ -80,6 +78,6 @@ When enabled, instances of the {% data variables.actions.hosted_runner %} will r
 {% data reusables.actions.larger-runner-static-ip-contact-support %}
 
 > [!NOTE]
-> If runners are unused for more than 30 days, their IP address ranges are automatically removed and cannot be recovered.
+> If runners are unused for more than 90 days, their IP address ranges are automatically removed and cannot be recovered.
 
 {% endif %}

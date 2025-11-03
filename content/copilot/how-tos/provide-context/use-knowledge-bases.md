@@ -10,7 +10,17 @@ redirect_from:
   - /copilot/how-tos/context/using-knowledge-bases
   - /copilot/how-tos/context/use-knowledge-bases
 contentType: how-tos
+category: 
+  - Author and optimize with Copilot
 ---
+
+<!-- expires 2025-10-31 -->
+
+<!-- When this expires, check with the stakeholder for release #6165 if the knowledge bases content can be deleted -->
+
+{% data reusables.copilot.knowledge-bases-retirement %}
+
+<!-- end expires 2025-10-31 -->
 
 ## Introduction
 

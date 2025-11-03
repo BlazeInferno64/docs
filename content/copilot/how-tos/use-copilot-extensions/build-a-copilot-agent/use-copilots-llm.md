@@ -1,6 +1,6 @@
 ---
 title: Using GitHub Copilot's LLM for your agent
-intro: 'Learn how to use {% data variables.product.prodname_copilot_short %}''s LLM for your agent.'
+intro: Learn how to use {% data variables.product.prodname_copilot_short %}'s LLM for your agent.
 versions:
   feature: copilot-extensions
 topics:
@@ -13,6 +13,8 @@ redirect_from:
   - /copilot/how-tos/build-copilot-extensions/building-a-copilot-agent-for-your-copilot-extension/use-copilots-llm
   - /copilot/how-tos/build-copilot-extensions/build-a-copilot-agent/use-copilots-llm
 contentType: how-tos
+category: 
+  - Integrate Copilot with your tools
 ---
 
 ## About {% data variables.product.prodname_copilot_short %}'s Large Language Model (LLM)

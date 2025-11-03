@@ -13,6 +13,8 @@ shortTitle: Download activity report
 redirect_from:
   - /copilot/how-tos/administer/download-activity-report
 contentType: how-tos
+category: 
+  - Manage Copilot for a team
 ---
 
 You can download a CSV report for {% data variables.product.prodname_copilot_short %} user activity in your organization. The data in the report allows you to:
@@ -29,12 +31,8 @@ You can download a CSV report for {% data variables.product.prodname_copilot_sho
 
 ## Downloading the report for an enterprise
 
-1. Navigate to your enterprise account.
-{% data reusables.enterprise-accounts.policies-tab %}
-{% data reusables.enterprise-accounts.copilot-tab %}
-1. Next to "Access management", click **Activity report**.
-
-   ![Screenshot of the "Access management" tab in Copilot policies. The "Activity report" button is highlighted with an orange outline.](/assets/images/help/copilot/activity-report-enterprise.png)
+{% data reusables.enterprise-accounts.copilot-licensing %}
+1. To download the usage report, select **{% octicon "download" aria-hidden="true" aria-label="download" %} CSV report**, then click **Activity report (new)**.
 
 ## Downloading the report for an organization
 
@@ -43,17 +41,6 @@ You can download a CSV report for {% data variables.product.prodname_copilot_sho
 1. Click **Get activity report**.
 
    ![Screenshot of the "Access" page. The "Get activity report" button is highlighted with an orange outline.](/assets/images/help/copilot/activity-report-org.png)
-
-## Downloading the report for a non-GHE enterprise
-
-These instructions apply if GitHub has provisioned you with a dedicated enterprise account for managing Copilot Business licenses. See [AUTOTITLE](/enterprise-cloud@latest/admin/copilot-business-only/about-enterprise-accounts-for-copilot-business).
-
-1. Navigate to your enterprise account.
-1. At the top of the page, click **{% octicon "credit-card" aria-hidden="true" aria-label="credit-card" %} Billing and licensing**.
-1. Click **Manage seats**.
-1. Click **Get activity report**.
-
-   ![Screenshot of the licensing page for Copilot Business. The "Get activity report" button is highlighted with an orange outline.](/assets/images/help/copilot/activity-report-non-ghe.png)
 
 ## Report fields
 
