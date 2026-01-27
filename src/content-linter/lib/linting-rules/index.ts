@@ -1,6 +1,4 @@
-// @ts-ignore - markdownlint-rule-search-replace doesn't provide TypeScript declarations
 import searchReplace from 'markdownlint-rule-search-replace'
-// @ts-ignore - @github/markdownlint-github doesn't provide TypeScript declarations
 import markdownlintGitHub from '@github/markdownlint-github'
 
 import { imageAltTextEndPunctuation } from '@/content-linter/lib/linting-rules/image-alt-text-end-punctuation'
@@ -44,19 +42,18 @@ import { tableColumnIntegrity } from '@/content-linter/lib/linting-rules/table-c
 import { thirdPartyActionPinning } from '@/content-linter/lib/linting-rules/third-party-action-pinning'
 import { liquidTagWhitespace } from '@/content-linter/lib/linting-rules/liquid-tag-whitespace'
 import { linkQuotation } from '@/content-linter/lib/linting-rules/link-quotation'
-import { octiconAriaLabels } from '@/content-linter/lib/linting-rules/octicon-aria-labels'
 import { liquidIfversionVersions } from '@/content-linter/lib/linting-rules/liquid-ifversion-versions'
 import { outdatedReleasePhaseTerminology } from '@/content-linter/lib/linting-rules/outdated-release-phase-terminology'
 import { frontmatterVersionsWhitespace } from '@/content-linter/lib/linting-rules/frontmatter-versions-whitespace'
-import { headerContentRequirement } from '@/content-linter/lib/linting-rules/header-content-requirement'
 import { thirdPartyActionsReusable } from '@/content-linter/lib/linting-rules/third-party-actions-reusable'
-import { frontmatterLandingRecommended } from '@/content-linter/lib/linting-rules/frontmatter-landing-recommended'
+import { frontmatterLandingCarousels } from '@/content-linter/lib/linting-rules/frontmatter-landing-carousels'
 import { ctasSchema } from '@/content-linter/lib/linting-rules/ctas-schema'
 import { journeyTracksLiquid } from './journey-tracks-liquid'
 import { journeyTracksGuidePathExists } from './journey-tracks-guide-path-exists'
 import { journeyTracksUniqueIds } from './journey-tracks-unique-ids'
 import { frontmatterHeroImage } from './frontmatter-hero-image'
 import { frontmatterIntroLinks } from './frontmatter-intro-links'
+import { frontmatterChildren } from './frontmatter-children'
 
 // Using any type because @github/markdownlint-github doesn't provide TypeScript declarations
 // The elements in the array have a 'names' property that contains rule identifiers
@@ -108,20 +105,20 @@ export const gitHubDocsMarkdownlint = {
     thirdPartyActionPinning, // GHD041
     liquidTagWhitespace, // GHD042
     linkQuotation, // GHD043
-    octiconAriaLabels, // GHD044
+    // GHD044 removed - octicon aria-labels are now auto-generated
     codeAnnotationCommentSpacing, // GHD045
     outdatedReleasePhaseTerminology, // GHD046
     tableColumnIntegrity, // GHD047
     frontmatterVersionsWhitespace, // GHD051
-    headerContentRequirement, // GHD053
     thirdPartyActionsReusable, // GHD054
-    frontmatterLandingRecommended, // GHD056
+    frontmatterLandingCarousels, // GHD056
     ctasSchema, // GHD057
     journeyTracksLiquid, // GHD058
     journeyTracksGuidePathExists, // GHD059
     journeyTracksUniqueIds, // GHD060
     frontmatterHeroImage, // GHD061
     frontmatterIntroLinks, // GHD062
+    frontmatterChildren, // GHD063
 
     // Search-replace rules
     searchReplace, // Open-source plugin

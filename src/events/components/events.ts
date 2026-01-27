@@ -1,4 +1,5 @@
 import Cookies from '@/frame/components/lib/cookies'
+import { ANALYTICS_ENABLED } from '@/frame/lib/constants'
 import { parseUserAgent } from './user-agent'
 import { Router } from 'next/router'
 import { isLoggedIn } from '@/frame/components/hooks/useHasAccount'
@@ -110,6 +111,7 @@ export function sendEvent<T extends EventType>({
       path_article: getMetaContent('path-article'),
       page_document_type: getMetaContent('page-document-type'),
       page_type: getMetaContent('page-type'),
+      content_type: getMetaContent('page-content-type'),
       status: Number(getMetaContent('status') || 0),
       is_logged_in: isLoggedIn(),
 
@@ -165,7 +167,9 @@ function flushQueue() {
   eventQueue = []
 
   try {
-    navigator.sendBeacon(endpoint, new Blob([eventsBody], { type: 'application/json' }))
+    if (ANALYTICS_ENABLED) {
+      navigator.sendBeacon(endpoint, new Blob([eventsBody], { type: 'application/json' }))
+    }
   } catch (err) {
     console.warn(`sendBeacon to '${endpoint}' failed.`, err)
   }
@@ -331,11 +335,11 @@ async function waitForPageReady() {
 }
 
 function initClipboardEvent() {
-  ;['copy', 'cut', 'paste'].forEach((verb) => {
+  for (const verb of ['copy', 'cut', 'paste']) {
     document.documentElement.addEventListener(verb, () => {
       sendEvent({ type: EventType.clipboard, clipboard_operation: verb })
     })
-  })
+  }
 }
 
 function initCopyButtonEvent() {
@@ -435,6 +439,7 @@ function initPrintEvent() {
 }
 
 export function initializeEvents() {
+  if (!ANALYTICS_ENABLED) return
   if (initialized) return
   initialized = true
   initPageAndExitEvent() // must come first

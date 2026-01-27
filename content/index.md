@@ -125,11 +125,10 @@ childGroups:
   - name: Security and quality
     octicon: ShieldLockIcon
     children:
-      - code-security/secret-scanning
-      - code-security/supply-chain-security
-      - code-security/dependabot
-      - code-security/code-scanning
-      - code-security/code-quality
+      - code-security/how-tos/secure-your-secrets
+      - code-security/how-tos/secure-your-supply-chain
+      - code-security/how-tos/scan-code-for-vulnerabilities
+      - code-security/how-tos/maintain-quality-code
   - name: Client apps
     octicon: DeviceMobileIcon
     children:
@@ -146,10 +145,9 @@ childGroups:
     octicon: OrganizationIcon
     children:
       - organizations
-      - code-security/securing-your-organization
+      - code-security/how-tos/secure-at-scale
       - enterprise-onboarding
       - admin
-      - gh-wa
   - name: Developers
     octicon: CodeSquareIcon
     children:
@@ -157,7 +155,6 @@ childGroups:
       - rest
       - graphql
       - webhooks
-      - copilot/how-tos/use-copilot-extensions
       - github-models
   - name: Community
     octicon: GlobeIcon
@@ -197,4 +194,3 @@ externalProducts:
     href: 'https://wellarchitected.github.com/'
     external: true
 ---
-

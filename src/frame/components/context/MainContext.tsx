@@ -86,6 +86,7 @@ type EnterpriseServerReleases = {
   oldestSupported: string
   nextDeprecationDate: string
   supported: Array<string>
+  releasesWithOldestDeprecationDate: Array<string>
 }
 
 export type MainContextT = {
@@ -118,6 +119,7 @@ export type MainContextT = {
   page: {
     documentType: string
     type?: string
+    contentType?: string
     topics: Array<string>
     title: string
     fullTitle?: string
@@ -192,7 +194,11 @@ export const getMainContext = async (req: any, res: any): Promise<MainContextT> 
 
   // To know whether we need this key, we need to match this
   // with the business logic in `DeprecationBanner.tsx` which is as follows:
-  if (req.context.currentVersion.includes(req.context.enterpriseServerReleases.oldestSupported)) {
+  if (
+    req.context.enterpriseServerReleases.releasesWithOldestDeprecationDate.includes(
+      req.context.currentRelease,
+    )
+  ) {
     reusables.enterprise_deprecation = {
       version_was_deprecated: req.context.getDottedData(
         'reusables.enterprise_deprecation.version_was_deprecated',
@@ -217,6 +223,7 @@ export const getMainContext = async (req: any, res: any): Promise<MainContextT> 
     (page && {
       documentType,
       type: req.context.page.type || null,
+      contentType: req.context.page.contentType || null,
       title: req.context.page.title,
       fullTitle: req.context.page.fullTitle || null,
       topics: req.context.page.topics || [],
@@ -262,6 +269,7 @@ export const getMainContext = async (req: any, res: any): Promise<MainContextT> 
       'oldestSupported',
       'nextDeprecationDate',
       'supported',
+      'releasesWithOldestDeprecationDate',
     ]),
     enterpriseServerVersions: req.context.enterpriseServerVersions,
     error: req.context.error ? req.context.error.toString() : '',

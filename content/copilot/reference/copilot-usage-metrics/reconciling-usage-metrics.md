@@ -2,7 +2,7 @@
 title: Reconciling Copilot usage metrics across dashboards, APIs, and reports
 shortTitle: Reconciling Copilot usage metrics
 intro: Understand how {% data variables.product.prodname_copilot_short %} usage metrics differ between dashboards, APIs, and exported reports.
-permissions: Enterprise owners and billing managers
+permissions: '{% data reusables.copilot.usage-metrics-permissions %}'
 versions:
   feature: copilot
 topics:
@@ -17,6 +17,9 @@ redirect_from:
 {% data reusables.copilot.usage-metrics-preview %}
 
 The {% data variables.product.prodname_copilot_short %} usage metrics dashboard, APIs, and export files all use the same underlying telemetry data, but they aggregate and present it differently. Understanding these differences helps you reconcile numbers across sources and trust your analysis when preparing internal reports.
+
+* The {% data variables.product.prodname_copilot_short %} usage metrics dashboard reports data at the **enterprise-level**.
+* The {% data variables.product.prodname_copilot_short %} usage metrics APIs support **enterprise-, organization-, and user-level** records.
 
 ## Prerequisite
 

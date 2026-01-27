@@ -51,11 +51,11 @@ This table lists the AI models available in {% data variables.product.prodname_c
 
 ## Model retirement history
 
-The following table lists AI models that have been retired from {% data variables.product.prodname_copilot_short %}, along with their retirement dates and suggested alternatives.
+The following table lists AI models that are retired or scheduled for retirement from {% data variables.product.prodname_copilot_short %}, along with their retirement dates and suggested alternatives.
 
 {% rowheaders %}
 
-| Model name                                                  | Retired date                | Suggested alternative             |
+| Model name                                                  | Retirement date             | Suggested alternative             |
 |-------------------------------------------------------------|-----------------------------|-----------------------------------|
 | {% for model in tables.copilot.model-deprecation-history %} |
 | {{ model.name }}                                            | {{ model.retirement_date }} | {{ model.suggested_alternative }} |
@@ -70,6 +70,11 @@ The following table shows which models are available in each client.
 > [!NOTE]
 > * {% data reusables.copilot.auto-model-selection %}
 > * {% data reusables.copilot.gpt-5-codex-vscode-support %}
+> * {% data variables.copilot.copilot_gpt_51_codex %} and {% data variables.copilot.copilot_gpt_51_codex_mini %} are supported in: 
+>   * Visual Studio Code versions 1.104.1 or higher
+>   * JetBrains, Copilot plugin versions 1.5.61 or higher
+>   * Xcode, Copilot plugin versions 0.45.0 or later
+>   * Eclipse, Copilot plugin versions 0.13.0 or later 
 
 {% rowheaders %}
 
@@ -99,6 +104,6 @@ For more information about premium requests, see [AUTOTITLE](/copilot/managing-c
 
 * For task-based guidance on selecting a model, see [AUTOTITLE](/copilot/reference/ai-models/model-comparison).
 * To configure which models are available to you, see [AUTOTITLE](/copilot/using-github-copilot/ai-models/configuring-access-to-ai-models-in-copilot).
-* To learn how to change your current model, see [AUTOTITLE](/copilot/using-github-copilot/ai-models/changing-the-ai-model-for-copilot-chat) or [AUTOTITLE](/copilot/using-github-copilot/ai-models/changing-the-ai-model-for-copilot-code-completion).
+* To learn how to change your current model, see [AUTOTITLE](/copilot/using-github-copilot/ai-models/changing-the-ai-model-for-copilot-chat) or [AUTOTITLE](/copilot/how-tos/use-ai-models/change-the-completion-model).
 * To learn more about Responsible Use and Responsible AI, see [{% data variables.product.prodname_copilot_short %} Trust Center](https://copilot.github.trust.page/) and [AUTOTITLE](/copilot/responsible-use-of-github-copilot-features).
 * To learn how {% data variables.copilot.copilot_chat_short %} serves different AI models, see [AUTOTITLE](/copilot/reference/ai-models/model-hosting).

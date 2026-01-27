@@ -11,6 +11,7 @@ children:
   - /customization-library
   - /coding-agent
   - /spark
+  - /use-custom-instructions
   - /enhance-agent-mode-with-mcp
   - /compare-ai-models
   - /speed-up-development-work
@@ -20,25 +21,29 @@ children:
   - /explore-pull-requests
   - /write-tests
   - /refactor-code
+  - /optimize-code-reviews
+  - /reduce-technical-debt
   - /review-ai-generated-code
   - /learn-a-new-language
   - /modernize-legacy-code
+  - /modernize-java-applications
   - /migrate-a-project
   - /plan-a-project
+  - /vibe-coding
   - /upgrade-projects
-  - /try-extensions
 redirect_from:
   - /copilot/using-github-copilot/guides-on-using-github-copilot
 contentType: tutorials
-heroImage: /assets/images/banner-images/hero-3.png
+heroImage: /assets/images/banner-images/hero-3
 layout: bespoke-landing
 sidebarLink:
   text: All tutorials
   href: /copilot/tutorials
-recommended:
-  - /copilot/tutorials/copilot-chat-cookbook
-  - /copilot/tutorials/customization-library
-  - /copilot/tutorials/roll-out-at-scale
+carousels:
+  recommended:
+    - /copilot/tutorials/copilot-chat-cookbook
+    - /copilot/tutorials/customization-library
+    - /copilot/tutorials/roll-out-at-scale
 includedCategories:
   - Accelerate PR velocity
   - Automate simple user stories

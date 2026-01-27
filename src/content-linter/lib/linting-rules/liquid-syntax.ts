@@ -1,4 +1,3 @@
-// @ts-ignore - markdownlint-rule-helpers doesn't provide TypeScript declarations
 import { addError } from 'markdownlint-rule-helpers'
 
 import { getFrontmatter } from '../helpers/utils'
@@ -34,6 +33,7 @@ export const frontmatterLiquidSyntax = {
 
     for (const key of keysWithLiquid) {
       const value = fm[key]
+      if (typeof value !== 'string') continue
       try {
         liquid.parse(value)
       } catch (error) {
