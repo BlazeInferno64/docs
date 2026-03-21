@@ -122,9 +122,7 @@ ${errors
 
     const warningSection =
       warnings.length > 0
-        ? `### ⚠️ ${warnings.length} Redirect${warnings.length === 1 ? '' : 's'} to Update
-
-${warnings.map((group) => `- \`${group.target}\` → \`${group.occurrences[0]?.redirectTarget || '?'}\``).join('\n')}
+        ? `### ℹ️ ${warnings.length} redirect${warnings.length === 1 ? '' : 's'} to update
 
 `
         : ''
@@ -132,6 +130,9 @@ ${warnings.map((group) => `- \`${group.target}\` → \`${group.occurrences[0]?.r
     const detailsLink = actionUrl ? `[View full details](${actionUrl})\n` : ''
 
     return `## 🔗 Link Check Results
+
+> [!NOTE]
+> **This check is being actively worked on** and may produce false positives. If something looks wrong, you can safely ignore it for now.
 
 ${errorSection}${warningSection}${detailsLink}
 <!-- link-checker-pr-comment -->`

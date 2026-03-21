@@ -63,7 +63,43 @@ export const DefaultLayout = (props: Props) => {
 
   const metaDescription = page.introPlainText ? page.introPlainText : t('default_description')
 
-  const SOCIAL_CATEGORIES = new Set(['code-security', 'actions', 'issues', 'copilot'])
+  const SOCIAL_CATEGORIES = new Set([
+    'account-and-profile',
+    'actions',
+    'admin',
+    'apps',
+    'authentication',
+    'billing',
+    'code-security',
+    'codespaces',
+    'communities',
+    'contributing',
+    'copilot',
+    'desktop',
+    'discussions',
+    'education',
+    'enterprise-onboarding',
+    'get-started',
+    'github-cli',
+    'github-models',
+    'graphql',
+    'integrations',
+    'issues',
+    'migrations',
+    'nonprofit',
+    'organizations',
+    'packages',
+    'pages',
+    'pull-requests',
+    'repositories',
+    'rest',
+    'search-github',
+    'site-policy',
+    'sponsors',
+    'subscriptions-and-notifications',
+    'support',
+    'webhooks',
+  ])
   const SOCIAL_CARD_IMG_BASE_URL = `${xHost ? `https://${xHost}` : ''}/assets/cb-345/images/social-cards`
 
   function getCategoryImageUrl(category: string): string {
@@ -114,9 +150,6 @@ export const DefaultLayout = (props: Props) => {
             )
           })}
 
-        {/* For local site search indexing */}
-        {page.topics.length > 0 && <meta name="keywords" content={page.topics.join(',')} />}
-
         {/* For analytics events */}
         {router.locale && <meta name="path-language" content={router.locale} />}
         {currentVersion && <meta name="path-version" content={currentVersion} />}
@@ -127,7 +160,6 @@ export const DefaultLayout = (props: Props) => {
             content={relativePath.replace('/index.md', '').replace('.md', '')}
           />
         )}
-        {page.type && <meta name="page-type" content={page.type} />}
         {page.contentType && <meta name="page-content-type" content={page.contentType} />}
         {page.documentType && <meta name="page-document-type" content={page.documentType} />}
         {status && <meta name="status" content={status.toString()} />}

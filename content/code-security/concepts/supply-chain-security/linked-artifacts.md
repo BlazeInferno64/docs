@@ -4,9 +4,6 @@ intro: "The {% data variables.product.virtual_registry %} helps you audit and pr
 versions:
   feature: virtual-registry
 shortTitle: 'Linked artifacts'
-topics:
-  - Vulnerabilities
-  - Dependencies
 contentType: concepts
 ---
 
@@ -37,6 +34,8 @@ The {% data variables.product.virtual_registry %} combines data from two differe
 Storage records include the repository containing the artifact's source code, the registry where the artifact is stored, and any attestations proving the artifact's integrity and provenance. You can use this data to quickly find an artifact's owning team and build details.
 
 ![Screenshot of an artifact page. Highlighted fields: storage registry, artifact repository, source repository.](/assets/images/help/security/virtual-registry-storage-record.png)
+
+The _artifact repository_ is not mandatory. It refers to the concept of a repository in certain external package registries: a place where multiple packages can be grouped. By contrast, the _source repository_ refers to the {% data variables.product.github %} repository where the artifact is built. The source repository is mandatory, and is detected automatically if the artifact has a build provenance attestation.
 
 For more information about attestations and SLSA levels, see [AUTOTITLE](/actions/concepts/security/artifact-attestations).
 

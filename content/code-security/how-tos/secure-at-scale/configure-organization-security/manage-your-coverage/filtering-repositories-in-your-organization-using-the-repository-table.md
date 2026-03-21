@@ -5,19 +5,12 @@ intro: You can filter the repository table for your organization to better manag
 permissions: '{% data reusables.permissions.security-org-enable %}'
 versions:
   feature: security-configurations
-topics:
-  - Code Security
-  - Secret Protection
-  - Organizations
-  - Security
 redirect_from:
   - /code-security/securing-your-organization/managing-the-security-of-your-organization/filtering-repositories-in-your-organization-using-the-repository-table
 contentType: how-tos
 ---
 
-## About filtering repositories in your organization
-
-By default, when managing {% data variables.product.prodname_security_configurations %} for repositories in your organization, the repository table displays all repositories in your organization. You can filter the repository table to help you apply and detach {% data variables.product.prodname_security_configurations %}, as well as manage {% data variables.product.prodname_AS %} license usage in your organization.
+You can filter the repository table in your organization to quickly find and manage specific repositories when applying {% data variables.product.prodname_security_configurations %} or managing {% data variables.product.prodname_AS %} license usage in the organization. This article explains how to use filters in the repository table.
 
 ## Filtering the repository table with the search bar
 

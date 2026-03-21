@@ -24,6 +24,7 @@ export type ExtendedRequest = Request & {
   context?: Context
   language?: string
   userLanguage?: string
+  userVersion?: string
   FailBot?: Failbot
 }
 
@@ -55,9 +56,7 @@ export type PageFrontmatter = {
   effectiveDate?: string
   featuredLinks?: FeaturedLinks
   changelog?: ChangeLog
-  type?: string
   contentType?: string
-  topics?: string[]
   includeGuides?: string[]
   learningTracks?: string[]
   beta_product?: boolean
@@ -190,6 +189,7 @@ export type Context = {
   renderedPage?: string
   miniTocItems?: MiniTocItem[]
   markdownRequested?: boolean
+  markdownViaUrl?: boolean
 }
 export type LearningTracks = {
   [group: string]: {
@@ -327,7 +327,7 @@ export type SecretScanningData = {
   isPrivateWithGhas: boolean
   hasPushProtection: boolean
   hasValidityCheck: boolean | string
-  ismultipart?: boolean
+  hasExtendedMetadata?: boolean
   base64Supported: boolean
   isduplicate: boolean
 }
@@ -386,7 +386,6 @@ export type Page = {
   complexity?: string[]
   industry?: string[]
   sidebarLink?: SidebarLink
-  type?: string
   contentType?: string
   children?: string[]
 }
@@ -502,6 +501,5 @@ export type MarkdownFrontmatter = {
   versions: FrontmatterVersions
   subcategory?: boolean
   hidden?: boolean
-  type?: string
   contentType?: string
 }

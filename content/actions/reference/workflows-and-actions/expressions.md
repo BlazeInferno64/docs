@@ -1,7 +1,7 @@
 ---
 title: Evaluate expressions in workflows and actions
 shortTitle: Expressions
-intro: 'Find information for expressions in {% data variables.product.prodname_actions %}.'
+intro: Find information for expressions in {% data variables.product.prodname_actions %}.
 versions:
   fpt: '*'
   ghes: '*'
@@ -11,6 +11,9 @@ redirect_from:
   - /actions/writing-workflows/choosing-what-your-workflow-does/expressions
   - /actions/writing-workflows/choosing-what-your-workflow-does/evaluate-expressions-in-workflows-and-actions
   - /actions/reference/evaluate-expressions-in-workflows-and-actions
+category:
+  - Write workflows
+contentType: reference
 ---
 
 ## Literals
@@ -297,12 +300,13 @@ Sets `MY_ENV_VAR` to `production` when the ref is `refs/heads/main`, otherwise s
 
 ```yaml
 env:
-  MY_ENV_VAR: ${{ case(
-    github.ref == 'refs/heads/main', 'production',
-    github.ref == 'refs/heads/staging', 'staging',
-    startsWith(github.ref, 'refs/heads/feature/'), 'development',
-    'unknown'
-  ) }}
+  MY_ENV_VAR: |-
+    ${{ case(
+      github.ref == 'refs/heads/main', 'production',
+      github.ref == 'refs/heads/staging', 'staging',
+      startsWith(github.ref, 'refs/heads/feature/'), 'development',
+      'unknown'
+    ) }}
 ```
 
 {% endraw %}

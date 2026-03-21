@@ -25,6 +25,24 @@
       "requestPath": "/enterprises/{enterprise}/actions/cache/storage-limit"
     },
     {
+      "slug": "list-oidc-custom-property-inclusions-for-an-enterprise",
+      "subcategory": "oidc",
+      "verb": "get",
+      "requestPath": "/enterprises/{enterprise}/actions/oidc/customization/properties/repo"
+    },
+    {
+      "slug": "create-an-oidc-custom-property-inclusion-for-an-enterprise",
+      "subcategory": "oidc",
+      "verb": "post",
+      "requestPath": "/enterprises/{enterprise}/actions/oidc/customization/properties/repo"
+    },
+    {
+      "slug": "delete-an-oidc-custom-property-inclusion-for-an-enterprise",
+      "subcategory": "oidc",
+      "verb": "delete",
+      "requestPath": "/enterprises/{enterprise}/actions/oidc/customization/properties/repo/{custom_property_name}"
+    },
+    {
       "slug": "get-github-actions-cache-retention-limit-for-an-organization",
       "subcategory": "cache",
       "verb": "get",
@@ -155,6 +173,24 @@
       "subcategory": "hosted-runners",
       "verb": "delete",
       "requestPath": "/orgs/{org}/actions/hosted-runners/{hosted_runner_id}"
+    },
+    {
+      "slug": "list-oidc-custom-property-inclusions-for-an-organization",
+      "subcategory": "oidc",
+      "verb": "get",
+      "requestPath": "/orgs/{org}/actions/oidc/customization/properties/repo"
+    },
+    {
+      "slug": "create-an-oidc-custom-property-inclusion-for-an-organization",
+      "subcategory": "oidc",
+      "verb": "post",
+      "requestPath": "/orgs/{org}/actions/oidc/customization/properties/repo"
+    },
+    {
+      "slug": "delete-an-oidc-custom-property-inclusion-for-an-organization",
+      "subcategory": "oidc",
+      "verb": "delete",
+      "requestPath": "/orgs/{org}/actions/oidc/customization/properties/repo/{custom_property_name}"
     },
     {
       "slug": "get-the-customization-template-for-an-oidc-subject-claim-for-an-organization",
@@ -2387,6 +2423,54 @@
       "requestPath": "/orgs/{org}/copilot/billing/selected_users"
     },
     {
+      "slug": "get-copilot-coding-agent-permissions-for-an-organization",
+      "subcategory": "copilot-coding-agent-management",
+      "verb": "get",
+      "requestPath": "/orgs/{org}/copilot/coding-agent/permissions"
+    },
+    {
+      "slug": "set-copilot-coding-agent-permissions-for-an-organization",
+      "subcategory": "copilot-coding-agent-management",
+      "verb": "put",
+      "requestPath": "/orgs/{org}/copilot/coding-agent/permissions"
+    },
+    {
+      "slug": "list-repositories-enabled-for-copilot-coding-agent-in-an-organization",
+      "subcategory": "copilot-coding-agent-management",
+      "verb": "get",
+      "requestPath": "/orgs/{org}/copilot/coding-agent/permissions/repositories"
+    },
+    {
+      "slug": "set-selected-repositories-for-copilot-coding-agent-in-an-organization",
+      "subcategory": "copilot-coding-agent-management",
+      "verb": "put",
+      "requestPath": "/orgs/{org}/copilot/coding-agent/permissions/repositories"
+    },
+    {
+      "slug": "enable-a-repository-for-copilot-coding-agent-in-an-organization",
+      "subcategory": "copilot-coding-agent-management",
+      "verb": "put",
+      "requestPath": "/orgs/{org}/copilot/coding-agent/permissions/repositories/{repository_id}"
+    },
+    {
+      "slug": "disable-a-repository-for-copilot-coding-agent-in-an-organization",
+      "subcategory": "copilot-coding-agent-management",
+      "verb": "delete",
+      "requestPath": "/orgs/{org}/copilot/coding-agent/permissions/repositories/{repository_id}"
+    },
+    {
+      "slug": "get-copilot-content-exclusion-rules-for-an-organization",
+      "subcategory": "copilot-content-exclusion-management",
+      "verb": "get",
+      "requestPath": "/orgs/{org}/copilot/content_exclusion"
+    },
+    {
+      "slug": "set-copilot-content-exclusion-rules-for-an-organization",
+      "subcategory": "copilot-content-exclusion-management",
+      "verb": "put",
+      "requestPath": "/orgs/{org}/copilot/content_exclusion"
+    },
+    {
       "slug": "get-copilot-metrics-for-an-organization",
       "subcategory": "copilot-metrics",
       "verb": "get",
@@ -2723,6 +2807,110 @@
       "requestPath": "/emojis"
     }
   ],
+  "enterprise-teams": [
+    {
+      "slug": "list-enterprise-teams",
+      "subcategory": "enterprise-teams",
+      "verb": "get",
+      "requestPath": "/enterprises/{enterprise}/teams"
+    },
+    {
+      "slug": "create-an-enterprise-team",
+      "subcategory": "enterprise-teams",
+      "verb": "post",
+      "requestPath": "/enterprises/{enterprise}/teams"
+    },
+    {
+      "slug": "list-members-in-an-enterprise-team",
+      "subcategory": "enterprise-team-members",
+      "verb": "get",
+      "requestPath": "/enterprises/{enterprise}/teams/{enterprise-team}/memberships"
+    },
+    {
+      "slug": "bulk-add-team-members",
+      "subcategory": "enterprise-team-members",
+      "verb": "post",
+      "requestPath": "/enterprises/{enterprise}/teams/{enterprise-team}/memberships/add"
+    },
+    {
+      "slug": "bulk-remove-team-members",
+      "subcategory": "enterprise-team-members",
+      "verb": "post",
+      "requestPath": "/enterprises/{enterprise}/teams/{enterprise-team}/memberships/remove"
+    },
+    {
+      "slug": "get-enterprise-team-membership",
+      "subcategory": "enterprise-team-members",
+      "verb": "get",
+      "requestPath": "/enterprises/{enterprise}/teams/{enterprise-team}/memberships/{username}"
+    },
+    {
+      "slug": "add-team-member",
+      "subcategory": "enterprise-team-members",
+      "verb": "put",
+      "requestPath": "/enterprises/{enterprise}/teams/{enterprise-team}/memberships/{username}"
+    },
+    {
+      "slug": "remove-team-membership",
+      "subcategory": "enterprise-team-members",
+      "verb": "delete",
+      "requestPath": "/enterprises/{enterprise}/teams/{enterprise-team}/memberships/{username}"
+    },
+    {
+      "slug": "get-organization-assignments",
+      "subcategory": "enterprise-team-organizations",
+      "verb": "get",
+      "requestPath": "/enterprises/{enterprise}/teams/{enterprise-team}/organizations"
+    },
+    {
+      "slug": "add-organization-assignments",
+      "subcategory": "enterprise-team-organizations",
+      "verb": "post",
+      "requestPath": "/enterprises/{enterprise}/teams/{enterprise-team}/organizations/add"
+    },
+    {
+      "slug": "remove-organization-assignments",
+      "subcategory": "enterprise-team-organizations",
+      "verb": "post",
+      "requestPath": "/enterprises/{enterprise}/teams/{enterprise-team}/organizations/remove"
+    },
+    {
+      "slug": "get-organization-assignment",
+      "subcategory": "enterprise-team-organizations",
+      "verb": "get",
+      "requestPath": "/enterprises/{enterprise}/teams/{enterprise-team}/organizations/{org}"
+    },
+    {
+      "slug": "add-an-organization-assignment",
+      "subcategory": "enterprise-team-organizations",
+      "verb": "put",
+      "requestPath": "/enterprises/{enterprise}/teams/{enterprise-team}/organizations/{org}"
+    },
+    {
+      "slug": "delete-an-organization-assignment",
+      "subcategory": "enterprise-team-organizations",
+      "verb": "delete",
+      "requestPath": "/enterprises/{enterprise}/teams/{enterprise-team}/organizations/{org}"
+    },
+    {
+      "slug": "get-an-enterprise-team",
+      "subcategory": "enterprise-teams",
+      "verb": "get",
+      "requestPath": "/enterprises/{enterprise}/teams/{team_slug}"
+    },
+    {
+      "slug": "update-an-enterprise-team",
+      "subcategory": "enterprise-teams",
+      "verb": "patch",
+      "requestPath": "/enterprises/{enterprise}/teams/{team_slug}"
+    },
+    {
+      "slug": "delete-an-enterprise-team",
+      "subcategory": "enterprise-teams",
+      "verb": "delete",
+      "requestPath": "/enterprises/{enterprise}/teams/{team_slug}"
+    }
+  ],
   "gists": [
     {
       "slug": "list-gists-for-the-authenticated-user",
@@ -3057,6 +3245,18 @@
       "requestPath": "/repos/{owner}/{repo}/issues/comments/{comment_id}"
     },
     {
+      "slug": "pin-an-issue-comment",
+      "subcategory": "comments",
+      "verb": "put",
+      "requestPath": "/repos/{owner}/{repo}/issues/comments/{comment_id}/pin"
+    },
+    {
+      "slug": "unpin-an-issue-comment",
+      "subcategory": "comments",
+      "verb": "delete",
+      "requestPath": "/repos/{owner}/{repo}/issues/comments/{comment_id}/pin"
+    },
+    {
       "slug": "list-issue-events-for-a-repository",
       "subcategory": "events",
       "verb": "get",
@@ -3139,6 +3339,12 @@
       "subcategory": "events",
       "verb": "get",
       "requestPath": "/repos/{owner}/{repo}/issues/{issue_number}/events"
+    },
+    {
+      "slug": "list-issue-field-values-for-an-issue",
+      "subcategory": "issue-field-values",
+      "verb": "get",
+      "requestPath": "/repos/{owner}/{repo}/issues/{issue_number}/issue-field-values"
     },
     {
       "slug": "list-labels-for-an-issue",
@@ -3283,6 +3489,24 @@
       "subcategory": "labels",
       "verb": "get",
       "requestPath": "/repos/{owner}/{repo}/milestones/{milestone_number}/labels"
+    },
+    {
+      "slug": "add-issue-field-values-to-an-issue",
+      "subcategory": "issue-field-values",
+      "verb": "post",
+      "requestPath": "/repositories/{repository_id}/issues/{issue_number}/issue-field-values"
+    },
+    {
+      "slug": "set-issue-field-values-for-an-issue",
+      "subcategory": "issue-field-values",
+      "verb": "put",
+      "requestPath": "/repositories/{repository_id}/issues/{issue_number}/issue-field-values"
+    },
+    {
+      "slug": "delete-an-issue-field-value-from-an-issue",
+      "subcategory": "issue-field-values",
+      "verb": "delete",
+      "requestPath": "/repositories/{repository_id}/issues/{issue_number}/issue-field-values/{issue_field_id}"
     },
     {
       "slug": "list-user-account-issues-assigned-to-the-authenticated-user",
@@ -3739,6 +3963,30 @@
       "subcategory": "members",
       "verb": "get",
       "requestPath": "/orgs/{org}/invitations/{invitation_id}/teams"
+    },
+    {
+      "slug": "list-issue-fields-for-an-organization",
+      "subcategory": "issue-fields",
+      "verb": "get",
+      "requestPath": "/orgs/{org}/issue-fields"
+    },
+    {
+      "slug": "create-issue-field-for-an-organization",
+      "subcategory": "issue-fields",
+      "verb": "post",
+      "requestPath": "/orgs/{org}/issue-fields"
+    },
+    {
+      "slug": "update-issue-field-for-an-organization",
+      "subcategory": "issue-fields",
+      "verb": "patch",
+      "requestPath": "/orgs/{org}/issue-fields/{issue_field_id}"
+    },
+    {
+      "slug": "delete-issue-field-for-an-organization",
+      "subcategory": "issue-fields",
+      "verb": "delete",
+      "requestPath": "/orgs/{org}/issue-fields/{issue_field_id}"
     },
     {
       "slug": "list-issue-types-for-an-organization",
@@ -5155,24 +5403,6 @@
       "subcategory": "repos",
       "verb": "get",
       "requestPath": "/repos/{owner}/{repo}/tags"
-    },
-    {
-      "slug": "closing-down---list-tag-protection-states-for-a-repository",
-      "subcategory": "tags",
-      "verb": "get",
-      "requestPath": "/repos/{owner}/{repo}/tags/protection"
-    },
-    {
-      "slug": "closing-down---create-a-tag-protection-state-for-a-repository",
-      "subcategory": "tags",
-      "verb": "post",
-      "requestPath": "/repos/{owner}/{repo}/tags/protection"
-    },
-    {
-      "slug": "closing-down---delete-a-tag-protection-state-for-a-repository",
-      "subcategory": "tags",
-      "verb": "delete",
-      "requestPath": "/repos/{owner}/{repo}/tags/protection/{tag_protection_id}"
     },
     {
       "slug": "download-a-repository-archive-tar",

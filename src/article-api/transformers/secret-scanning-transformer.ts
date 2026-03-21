@@ -51,9 +51,6 @@ export class SecretScanningTransformer implements PageTransformer {
           if (entry.isduplicate) {
             entry.secretType += ' <br/><a href="#token-versions">Token versions</a>'
           }
-          if (entry.ismultipart) {
-            entry.secretType += ' <br/><a href="#multi-part-secrets">Multi-part secrets</a>'
-          }
         }
 
         context.secretScanningData = data
@@ -68,6 +65,19 @@ export class SecretScanningTransformer implements PageTransformer {
 
     // Strip HTML comments from the rendered content
     content = content.replace(/<!--.*?-->/gs, '')
+
+    // Replace HTML icon spans with plain text equivalents
+    content = content.replace(/<span[^>]*aria-label="Supported"[^>]*>[^<]*<\/span>/g, '✓')
+    content = content.replace(/<span[^>]*aria-label="Unsupported"[^>]*>[^<]*<\/span>/g, '✗')
+    // Convert <br/> tags to newlines and <a href="...">text</a> to markdown links
+    content = content.replace(/<br\s*\/?>/gi, '\n')
+    content = content.replace(/<a\s+href="([^"]*)"[^>]*>([^<]*)<\/a>/gi, '[$2]($1)')
+    // Strip any remaining HTML tags (loop to handle nested/malformed tags)
+    let previous = ''
+    while (content !== previous) {
+      previous = content
+      content = content.replace(/<[^>]+>/g, '')
+    }
 
     // Normalize whitespace after stripping comments
     content = content.replace(/\n{3,}/g, '\n\n').trim()
